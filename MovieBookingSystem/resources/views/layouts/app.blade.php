@@ -15,7 +15,6 @@
 <div class="stars" id="stars"></div>
 <button class="scroll-top" id="scrollTop"><i class="fas fa-arrow-up"></i></button>
 
-{{-- ✅ FIXED: was @include('header') and @include('footer') --}}
 @include('header')
 
 <main>

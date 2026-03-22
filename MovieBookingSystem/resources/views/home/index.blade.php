@@ -166,7 +166,6 @@
 </div>
 
 <style>
-/* ══ HERO SLIDER ══ */
 .hero-slider {
     position: relative;
     width: 100%;
@@ -198,7 +197,6 @@
     z-index: 2;
 }
 
-/* ── Content: Shifted left-padding to 12% to avoid arrow overlap ── */
 .slide-content {
     position: relative;
     z-index: 10;
@@ -285,7 +283,6 @@
 }
 .btn-trailer:hover { background: rgba(255,255,255,0.2); border-color: var(--c1); transform: translateY(-2px); }
 
-/* ── Minimalist Left Arrow ── */
 .slider-nav {
     position: absolute;
     top: 50%; transform: translateY(-50%);
@@ -299,12 +296,10 @@
 .slider-nav:hover { opacity: 0.45; transform: translateY(-50%) translateX(-5px); }
 .prev { left: 2.5rem; }
 
-/* ══════════════════════════════════════════════
-    NEXT PREVIEW — Fixed spacing and alignment
-══════════════════════════════════════════════ */
+
 .next-preview {
     position: absolute;
-    top: 50%; right: 3rem; /* Moved left away from edge */
+    top: 50%; right: 3rem; 
     transform: translateY(-50%);
     z-index: 20;
     display: flex; flex-direction: row; align-items: center;

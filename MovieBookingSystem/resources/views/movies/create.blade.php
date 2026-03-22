@@ -25,14 +25,12 @@
 
         <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;">
 
-            {{-- Title --}}
             <div style="grid-column:1/-1;">
                 <label style="display:block;margin-bottom:0.5rem;font-weight:500;">Title <span style="color:#ff4444;">*</span></label>
                 <input type="text" name="title" value="{{ old('title') }}" placeholder="e.g. Dune: Part Two"
                     style="width:100%;background:var(--bg);border:1px solid var(--border);color:white;padding:0.75rem 1rem;border-radius:10px;outline:none;box-sizing:border-box;">
             </div>
 
-            {{-- Genre --}}
             <div>
                 <label style="display:block;margin-bottom:0.5rem;font-weight:500;">Genre <span style="color:#ff4444;">*</span></label>
                 <select name="genre" style="width:100%;background:var(--bg);border:1px solid var(--border);color:white;padding:0.75rem 1rem;border-radius:10px;outline:none;">
@@ -43,35 +41,30 @@
                 </select>
             </div>
 
-            {{-- Duration --}}
             <div>
                 <label style="display:block;margin-bottom:0.5rem;font-weight:500;">Duration (minutes) <span style="color:#ff4444;">*</span></label>
                 <input type="number" name="duration" value="{{ old('duration') }}" placeholder="e.g. 148" min="1"
                     style="width:100%;background:var(--bg);border:1px solid var(--border);color:white;padding:0.75rem 1rem;border-radius:10px;outline:none;box-sizing:border-box;">
             </div>
 
-            {{-- Release Date --}}
             <div>
                 <label style="display:block;margin-bottom:0.5rem;font-weight:500;">Release Date <span style="color:#ff4444;">*</span></label>
                 <input type="date" name="release_date" value="{{ old('release_date') }}"
                     style="width:100%;background:var(--bg);border:1px solid var(--border);color:white;padding:0.75rem 1rem;border-radius:10px;outline:none;box-sizing:border-box;">
             </div>
 
-            {{-- Rating --}}
             <div>
                 <label style="display:block;margin-bottom:0.5rem;font-weight:500;">Rating (0–10)</label>
                 <input type="number" name="rating" value="{{ old('rating') }}" placeholder="e.g. 8.5" min="0" max="10" step="0.1"
                     style="width:100%;background:var(--bg);border:1px solid var(--border);color:white;padding:0.75rem 1rem;border-radius:10px;outline:none;box-sizing:border-box;">
             </div>
 
-            {{-- Description --}}
             <div style="grid-column:1/-1;">
                 <label style="display:block;margin-bottom:0.5rem;font-weight:500;">Description <span style="color:#ff4444;">*</span></label>
                 <textarea name="description" rows="4" placeholder="Movie synopsis..."
                     style="width:100%;background:var(--bg);border:1px solid var(--border);color:white;padding:0.75rem 1rem;border-radius:10px;resize:vertical;outline:none;box-sizing:border-box;">{{ old('description') }}</textarea>
             </div>
 
-            {{-- Poster Upload --}}
             <div style="grid-column:1/-1;">
                 <label style="display:block;margin-bottom:0.5rem;font-weight:500;">Poster Image</label>
                 <div style="border:2px dashed var(--border);border-radius:12px;padding:2rem;text-align:center;cursor:pointer;transition:border-color 0.3s;"

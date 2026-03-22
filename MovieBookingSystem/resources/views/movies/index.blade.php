@@ -7,7 +7,7 @@
     <div class="sec-head" style="margin-bottom:2rem;">
         <h1 class="sec-title" style="font-size:3rem;">Now <span class="acc">Showing</span></h1>
 
-        {{-- Search & Filter form — submits to same page --}}
+        <!-- Search & Filter form — submits to same page -->
         <form method="GET" action="{{ route('movies.index') }}" style="display:flex;gap:1rem;flex-wrap:wrap;align-items:center;">
             <div style="display:flex;align-items:center;background:var(--card);border:1px solid var(--border);border-radius:12px;overflow:hidden;">
                 <input type="text" name="search" value="{{ request('search') }}"
@@ -57,7 +57,6 @@
         <div class="mcard" style="background:var(--card);border-radius:16px;overflow:hidden;border:1px solid var(--border);transition:all 0.3s;cursor:pointer;"
              onclick="location.href='{{ route('movies.show', $movie->id) }}'">
 
-            {{-- Poster --}}
             <div class="mthumb" style="height:280px;position:relative;overflow:hidden;background:linear-gradient(145deg,#1a0033,#660094);display:flex;align-items:center;justify-content:center;">
                 @if($movie->poster)
                     <img src="{{ asset('storage/' . $movie->poster) }}" alt="{{ $movie->title }}"
@@ -74,7 +73,6 @@
                 </div>
             </div>
 
-            {{-- Info --}}
             <div class="minfo" style="padding:1rem;">
                 <div style="display:flex;justify-content:space-between;align-items:start;margin-bottom:0.4rem;gap:0.5rem;">
                     <div class="mname" style="font-weight:600;font-size:0.95rem;line-height:1.3;">{{ $movie->title }}</div>
@@ -94,7 +92,6 @@
         @endforeach
     </div>
 
-    {{-- Pagination --}}
     <div style="display:flex;justify-content:center;margin-top:3rem;">
         {{ $movies->links() }}
     </div>
