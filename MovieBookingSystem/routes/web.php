@@ -10,6 +10,7 @@ use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
 use App\Http\Controllers\Auth\ResetPasswordController;
+use App\Http\Controllers\AdminController;
 
 // Home
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -48,3 +49,5 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/profile', fn() => view('profile'))->name('profile');
     Route::get('/profile/reviews', fn() => view('profile.reviews'))->name('profile.reviews');
 });
+
+Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
