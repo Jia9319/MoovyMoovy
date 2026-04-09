@@ -48,13 +48,9 @@ Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('
 // Protected routes
 Route::middleware(['auth'])->group(function () {
 
-    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show'); 
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/reviews', fn() => view('profile.reviews'))->name('profile.reviews');
 
-    Route::get('/admin/dashboard', function () {
-        if (auth()->user()->role !== 'admin') {
-            return redirect('/profile')->with('error', 'Access Denied!');
-        }
-        return "<h1>Welcome to Admin Dashboard, " . auth()->user()->name . "!</h1>";
-        })->name('admin.dashboard');
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/reports', [AdminController::class, 'viewReports'])->name('admin.reports');
 });
