@@ -54,6 +54,15 @@ Route::post('password/email', [ForgotPasswordController::class, 'sendResetLinkEm
 Route::get('password/reset/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
 Route::post('password/reset', [ResetPasswordController::class, 'reset'])->name('password.update');
 
+Route::resource('showtimes', ShowtimeController::class)->except(['index', 'show']);
+ 
+    // Reviews — store is nested under movie
+    Route::post('/movies/{movie}/reviews',  [ReviewController::class, 'store'])->name('reviews.store');
+    Route::put('/reviews/{review}',         [ReviewController::class, 'update'])->name('reviews.update');
+    Route::delete('/reviews/{review}',      [ReviewController::class, 'destroy'])->name('reviews.destroy');
+    Route::post('/reviews/{review}/like',   [ReviewController::class, 'like'])->name('reviews.like');
+    Route::post('/reviews/{review}/report', [ReviewController::class, 'report'])->name('reviews.report');
+    
 // Protected routes
 Route::middleware(['auth'])->group(function () {
 
