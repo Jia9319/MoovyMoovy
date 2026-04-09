@@ -22,15 +22,49 @@
         
         <div class="profile-dropdown">
             <div class="profile-avatar">
-                <i class="fas fa-user"></i>
+                @auth
+                    <span class="text-[10px] font-bold text-purple-300">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                @else
+                    <i class="fas fa-user text-purple-300/50"></i>
+                @endauth
             </div>
+
             <div class="dropdown-content">
-                <a href="#" class="dropdown-item"><i class="fas fa-user-circle"></i> My Profile</a>
-                <a href="#" class="dropdown-item"><i class="fas fa-ticket-alt"></i> My Bookings</a>
-                <a href="#" class="dropdown-item"><i class="fas fa-heart"></i> Watchlist</a>
-                <a href="#" class="dropdown-item"><i class="fas fa-cog"></i> Settings</a>
+                @auth
+                    <div class="px-4 py-2 border-b border-white/5 mb-1">
+                        <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Account</p>
+                        <p class="text-sm font-bold text-white truncate">{{ Auth::user()->name }}</p>
+                    </div>
+                @endauth
+
+                <a href="{{ auth()->check() ? route('profile.show') : route('login') }}" class="dropdown-item">
+                    <i class="fas fa-user-circle"></i> My Profile
+                </a>
+                
+                <a href="{{ auth()->check() ? route('profile.reviews') : route('login') }}" class="dropdown-item">
+                    <i class="fas fa-star"></i> My Reviews
+                </a>
+
+                <a href="{{ auth()->check() ? url('/bookings') : route('login') }}" class="dropdown-item">
+                    <i class="fas fa-ticket-alt"></i> My Bookings
+                </a>
+
                 <div class="dropdown-divider"></div>
-                <a href="#" class="dropdown-item"><i class="fas fa-sign-out-alt"></i> Logout</a>
+
+                @auth
+                    <a href="#" class="dropdown-item text-red-400" 
+                       onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                        <i class="fas fa-sign-out-alt"></i> Logout
+                    </a>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">@csrf</form>
+                @else
+                    <a href="{{ route('login') }}" class="dropdown-item font-bold text-purple-400">
+                        <i class="fas fa-sign-in-alt"></i> Sign In
+                    </a>
+                    <a href="{{ route('register') }}" class="dropdown-item">
+                        <i class="fas fa-user-plus"></i> Join Moovy
+                    </a>
+                @endauth
             </div>
         </div>
         
