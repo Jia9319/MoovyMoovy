@@ -687,6 +687,10 @@ section {
     background: var(--grad-2);
     border: none;
     color: #fff;
+<<<<<<< HEAD
+=======
+    text-decoration: none;
+>>>>>>> hongfei
     padding: clamp(0.5rem, 2vw, 0.625rem) clamp(1rem, 3vw, 1.5rem);
     border-radius: 8px;
     font-family: 'DM Sans', sans-serif;
@@ -694,9 +698,19 @@ section {
     font-weight: 700;
     cursor: pointer;
     transition: all 0.3s;
+<<<<<<< HEAD
 }
 
 .fcard-btn:hover { 
+=======
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.fcard-btn:hover { 
+    text-decoration: none;
+>>>>>>> hongfei
     opacity: .9;
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(150,20,208,0.4);
@@ -778,6 +792,10 @@ section {
     background: var(--grad-2);
     border: none;
     color: #fff;
+<<<<<<< HEAD
+=======
+    text-decoration: none;
+>>>>>>> hongfei
     padding: clamp(0.625rem, 2vw, 0.75rem) clamp(1rem, 3vw, 1.75rem);
     border-radius: 9px;
     font-family: 'DM Sans', sans-serif;
@@ -791,6 +809,10 @@ section {
 }
 
 .mbtn:hover {
+<<<<<<< HEAD
+=======
+    text-decoration: none;
+>>>>>>> hongfei
     transform: translateY(-2px) !important;
     box-shadow: 0 8px 30px rgba(150,20,208,.7);
 }

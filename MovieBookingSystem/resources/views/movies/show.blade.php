@@ -23,9 +23,16 @@
                 {{ $movie->description }}
             </p>
             <div class="movie-actions" style="display: flex; gap: 1rem;">
+<<<<<<< HEAD
                 <button class="btn-book" style="background: var(--grad-2); color: white; border: none; padding: 0.875rem 2rem; border-radius: 8px; cursor: pointer;">
                     Book Tickets
                 </button>
+=======
+                <a href="{{ route('booking.select', ['movie_id' => $movie->id, 'title' => $movie->title, 'genre' => $movie->genre, 'duration' => $movie->duration, 'poster' => $movie->poster_url]) }}"
+                   class="btn-book" style="display: inline-flex; align-items: center; justify-content: center; background: var(--grad-2); color: white; border: none; padding: 0.875rem 2rem; border-radius: 8px; cursor: pointer; text-decoration: none;">
+                    Book Tickets
+                </a>
+>>>>>>> hongfei
                 @auth
                 <button class="btn-edit" onclick="location.href='{{ route('movies.edit', $movie->id) }}'" 
                     style="background: rgba(255,255,255,0.1); color: white; border: 1px solid var(--border); padding: 0.875rem 2rem; border-radius: 8px; cursor: pointer;">
@@ -157,6 +164,16 @@
     box-shadow: 0 5px 15px rgba(150,20,208,0.4);
 }
 
+<<<<<<< HEAD
+=======
+.btn-book {
+    color: #fff;
+    position: relative;
+    z-index: 15;
+    pointer-events: auto;
+}
+
+>>>>>>> hongfei
 .review-card:hover {
     border-color: var(--c1);
     transform: translateX(5px);

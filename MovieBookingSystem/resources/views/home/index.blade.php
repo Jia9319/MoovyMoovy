@@ -26,7 +26,11 @@
                             Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.
                         </p>
                         <div class="movie-actions">
+<<<<<<< HEAD
                             <button class="btn-book">Book Tickets</button>
+=======
+                            <a href="{{ route('booking.select') }}" class="btn-book" id="heroBookBtn">Book Tickets</a>
+>>>>>>> hongfei
                             
                         </div>
                     </div>
@@ -82,7 +86,11 @@
                 <span class="fcard-tag">Featured</span>
                 <div class="fcard-title">DUNE: PART TWO</div>
                 <div class="fcard-meta"><span class="rat">★ 8.5</span><span>2h 46m</span><span>Sci-Fi</span></div>
+<<<<<<< HEAD
                 <button class="fcard-btn">Book Ticket</button>
+=======
+                <a href="{{ route('booking.select', ['title' => 'Dune: Part Two', 'genre' => 'Sci-Fi', 'duration' => 166]) }}" class="fcard-btn">Book Ticket</a>
+>>>>>>> hongfei
             </div>
         </div>
         <div class="fcard">
@@ -92,7 +100,11 @@
                 <span class="fcard-tag">Trending</span>
                 <div class="fcard-title sm">THE BATMAN 2</div>
                 <div class="fcard-meta"><span class="rat">★ 8.6</span><span>2h 55m</span></div>
+<<<<<<< HEAD
                 <button class="fcard-btn">Book Ticket</button>
+=======
+                <a href="{{ route('booking.select', ['title' => 'The Batman 2', 'genre' => 'Superhero', 'duration' => 175]) }}" class="fcard-btn">Book Ticket</a>
+>>>>>>> hongfei
             </div>
         </div>
         <div class="fcard">
@@ -102,7 +114,11 @@
                 <span class="fcard-tag">New</span>
                 <div class="fcard-title sm">SPIDER-MAN 4</div>
                 <div class="fcard-meta"><span class="rat">★ 8.7</span><span>2h 20m</span></div>
+<<<<<<< HEAD
                 <button class="fcard-btn">Book Ticket</button>
+=======
+                <a href="{{ route('booking.select', ['title' => 'Spider-Man 4', 'genre' => 'Superhero', 'duration' => 140]) }}" class="fcard-btn">Book Ticket</a>
+>>>>>>> hongfei
             </div>
         </div>
     </div>
@@ -125,7 +141,11 @@
                         @endif
                     </div>
                     <div class="moverlay">
+<<<<<<< HEAD
                         <button class="mbtn">Book Ticket</button>
+=======
+                        <a href="{{ route('booking.select', ['title' => ($i==1 ? 'Dune: Part Two' : ($i==2 ? 'Gladiator II' : ($i==3 ? 'The Batman 2' : 'Spider-Man 4'))), 'genre' => ($i==2 ? 'Action' : ($i==1 ? 'Sci-Fi' : 'Superhero')), 'duration' => ($i==1 ? 166 : ($i==2 ? 148 : ($i==3 ? 175 : 140)))]) }}" class="mbtn">Book Ticket</a>
+>>>>>>> hongfei
                     </div>
                 </div>
                 <span class="genre-badge">
@@ -270,6 +290,13 @@
     padding: 0.875rem 2rem; border-radius: 8px;
     font-weight: 600; cursor: pointer;
     transition: all 0.3s; font-size: 0.9375rem;
+<<<<<<< HEAD
+=======
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+>>>>>>> hongfei
 }
 .btn-book:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(150,20,208,0.5); }
 
@@ -381,36 +408,60 @@ const movies = [
     {
         id: 1, title: "DUNE: PART TWO",
         rating: "8.5", duration: "2h 46m", genre: "Sci-Fi", year: "2024",
+<<<<<<< HEAD
+=======
+        durationMinutes: 166,
+>>>>>>> hongfei
         description: "Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.",
         bgGradient: "linear-gradient(145deg, #1a0033, #660094)"
     },
     {
         id: 2, title: "THE BATMAN 2",
         rating: "8.6", duration: "2h 55m", genre: "Superhero", year: "2025",
+<<<<<<< HEAD
+=======
+        durationMinutes: 175,
+>>>>>>> hongfei
         description: "The Dark Knight returns to face new threats in Gotham City as a mysterious villain emerges from the shadows.",
         bgGradient: "linear-gradient(145deg, #200044, #9614d0)"
     },
     {
         id: 3, title: "SPIDER-MAN 4",
         rating: "8.7", duration: "2h 20m", genre: "Superhero", year: "2026",
+<<<<<<< HEAD
+=======
+        durationMinutes: 140,
+>>>>>>> hongfei
         description: "The web-slinger returns in his most thrilling adventure yet, facing a multiversal threat that could destroy everything.",
         bgGradient: "linear-gradient(145deg, #100020, #bb44f0)"
     },
     {
         id: 4, title: "GLADIATOR II",
         rating: "8.3", duration: "2h 28m", genre: "Action", year: "2024",
+<<<<<<< HEAD
+=======
+        durationMinutes: 148,
+>>>>>>> hongfei
         description: "Years after witnessing the death of Maximus, Lucius is forced to enter the Colosseum after his home is conquered.",
         bgGradient: "linear-gradient(145deg, #0d0020, #4a0080)"
     },
     {
         id: 5, title: "OPPENHEIMER",
         rating: "9.0", duration: "3h 0m", genre: "Drama", year: "2023",
+<<<<<<< HEAD
+=======
+        durationMinutes: 180,
+>>>>>>> hongfei
         description: "The story of American scientist J. Robert Oppenheimer and his role in the development of the atomic bomb.",
         bgGradient: "linear-gradient(145deg, #1a0040, #660094)"
     },
     {
         id: 6, title: "JOHN WICK 5",
         rating: "8.1", duration: "2h 10m", genre: "Action", year: "2025",
+<<<<<<< HEAD
+=======
+        durationMinutes: 130,
+>>>>>>> hongfei
         description: "The legendary assassin returns for one final mission that will determine the fate of the High Table.",
         bgGradient: "linear-gradient(145deg, #08000f, #9614d0)"
     }
@@ -431,6 +482,11 @@ const prevBtn = document.getElementById('prevSlide');
 const nextPreview = document.getElementById('nextPreview');
 const nextPreviewTitle = document.getElementById('nextPreviewTitle');
 const nextThumbInner = document.getElementById('nextThumbInner');
+<<<<<<< HEAD
+=======
+const heroBookBtn = document.getElementById('heroBookBtn');
+const bookingSelectBaseUrl = @json(route('booking.select'));
+>>>>>>> hongfei
 
 totalSlidesSpan.textContent = String(movies.length).padStart(2, '0');
 
@@ -462,6 +518,18 @@ function updateSlide() {
     movieDesc.textContent = movie.description;
     currentSlideSpan.textContent = String(currentIndex + 1).padStart(2, '0');
 
+<<<<<<< HEAD
+=======
+    if (heroBookBtn) {
+        const params = new URLSearchParams({
+            title: movie.title,
+            genre: movie.genre,
+            duration: String(movie.durationMinutes),
+        });
+        heroBookBtn.href = `${bookingSelectBaseUrl}?${params.toString()}`;
+    }
+
+>>>>>>> hongfei
     updateNextPreview();
     resetProgressBar();
 }
