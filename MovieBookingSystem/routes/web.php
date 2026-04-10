@@ -26,6 +26,14 @@ Route::resource('cinemas', CinemaController::class)->only(['index', 'show']);
 // Showtimes (full CRUD)
 Route::resource('showtimes', ShowtimeController::class);
 
+// Booking
+Route::get('/booking/select', [BookingController::class, 'select'])->name('booking.select');
+Route::get('/booking/seat', [BookingController::class, 'seat'])->name('booking.seat');
+Route::get('/booking/food', [BookingController::class, 'food'])->name('booking.food');
+Route::get('/booking/payment', [BookingController::class, 'payment'])->name('booking.payment');
+Route::get('/booking/ticket', [BookingController::class, 'ticket'])->name('booking.ticket');
+Route::get('/booking/summary', [BookingController::class, 'summary'])->name('booking.summary');
+
 // Reviews (no index/show page — displayed inside movies/show)
 Route::post('/movies/{movie}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 Route::put('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
