@@ -23,7 +23,7 @@
                 {{ $movie->description }}
             </p>
             <div class="movie-actions" style="display: flex; gap: 1rem;">
-                <a href="{{ route('booking.select', ['movie_id' => $movie->id, 'title' => $movie->title, 'genre' => $movie->genre, 'duration' => $movie->duration, 'poster' => $movie->poster]) }}" class="btn-book" style="background: var(--grad-2); color: white; border: none; padding: 0.875rem 2rem; border-radius: 8px; cursor: pointer; text-decoration: none; font-weight: 600; display: inline-block;">
+                <a href="{{ route('booking.select', ['movie_id' => $movie->id, 'title' => $movie->title, 'genre' => $movie->genre, 'duration' => $movie->duration, 'poster' => $movie->poster]) }}" class="book-ticket-btn">
                     Book Tickets
                 </a>
                 @auth
@@ -155,7 +155,7 @@
 
 
 <style>
-.btn-book:hover, .btn-write-review:hover {
+.btn-write-review:hover {
     transform: translateY(-2px);
     box-shadow: 0 5px 15px rgba(150,20,208,0.4);
 }

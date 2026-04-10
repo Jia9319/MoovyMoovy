@@ -26,7 +26,7 @@
                             Paul Atreides unites with Chani and the Fremen while seeking revenge against the conspirators who destroyed his family.
                         </p>
                         <div class="movie-actions">
-                            <a id="heroBookBtn" href="{{ route('booking.select', ['movie_id' => 1, 'title' => 'DUNE: PART TWO', 'genre' => 'Sci-Fi', 'duration' => 166]) }}" class="btn-book" style="text-decoration: none; display: inline-block;">Book Tickets</a>
+                            <a id="heroBookBtn" href="{{ route('booking.select', ['movie_id' => 1, 'title' => 'DUNE: PART TWO', 'genre' => 'Sci-Fi', 'duration' => 166]) }}" class="book-ticket-btn">Book Tickets</a>
                             
                         </div>
                     </div>
@@ -82,7 +82,7 @@
                 <span class="fcard-tag">Featured</span>
                 <div class="fcard-title">DUNE: PART TWO</div>
                 <div class="fcard-meta"><span class="rat">★ 8.5</span><span>2h 46m</span><span>Sci-Fi</span></div>
-                <a class="fcard-btn" style="text-decoration: none; display: inline-block;" href="{{ route('booking.select', ['movie_id' => 1, 'title' => 'DUNE: PART TWO', 'genre' => 'Sci-Fi', 'duration' => 166]) }}">Book Ticket</a>
+                <a class="fcard-btn book-ticket-btn" href="{{ route('booking.select', ['movie_id' => 1, 'title' => 'DUNE: PART TWO', 'genre' => 'Sci-Fi', 'duration' => 166]) }}">Book Ticket</a>
             </div>
         </div>
         <div class="fcard">
@@ -92,7 +92,7 @@
                 <span class="fcard-tag">Trending</span>
                 <div class="fcard-title sm">THE BATMAN 2</div>
                 <div class="fcard-meta"><span class="rat">★ 8.6</span><span>2h 55m</span></div>
-                <a class="fcard-btn" style="text-decoration: none; display: inline-block;" href="{{ route('booking.select', ['movie_id' => 3, 'title' => 'THE BATMAN 2', 'genre' => 'Superhero', 'duration' => 175]) }}">Book Ticket</a>
+                <a class="fcard-btn book-ticket-btn" href="{{ route('booking.select', ['movie_id' => 3, 'title' => 'THE BATMAN 2', 'genre' => 'Superhero', 'duration' => 175]) }}">Book Ticket</a>
             </div>
         </div>
         <div class="fcard">
@@ -102,7 +102,7 @@
                 <span class="fcard-tag">New</span>
                 <div class="fcard-title sm">SPIDER-MAN 4</div>
                 <div class="fcard-meta"><span class="rat">★ 8.7</span><span>2h 20m</span></div>
-                <a class="fcard-btn" style="text-decoration: none; display: inline-block;" href="{{ route('booking.select', ['movie_id' => 4, 'title' => 'SPIDER-MAN 4', 'genre' => 'Superhero', 'duration' => 140]) }}">Book Ticket</a>
+                <a class="fcard-btn book-ticket-btn" href="{{ route('booking.select', ['movie_id' => 4, 'title' => 'SPIDER-MAN 4', 'genre' => 'Superhero', 'duration' => 140]) }}">Book Ticket</a>
             </div>
         </div>
     </div>
@@ -125,7 +125,7 @@
                         @endif
                     </div>
                     <div class="moverlay">
-                        <a class="mbtn" style="text-decoration: none; display: inline-block;" href="{{ route('booking.select', ['movie_id' => $i, 'title' => ($i==1 ? 'DUNE: PART TWO' : ($i==2 ? 'GLADIATOR II' : ($i==3 ? 'THE BATMAN 2' : 'SPIDER-MAN 4'))), 'genre' => ($i==1 ? 'Sci-Fi' : ($i==2 ? 'Action' : 'Superhero')), 'duration' => ($i==1 ? 166 : ($i==2 ? 148 : ($i==3 ? 175 : 140)))]) }}">Book Ticket</a>
+                        <a class="mbtn book-ticket-btn" href="{{ route('booking.select', ['movie_id' => $i, 'title' => ($i==1 ? 'DUNE: PART TWO' : ($i==2 ? 'GLADIATOR II' : ($i==3 ? 'THE BATMAN 2' : 'SPIDER-MAN 4'))), 'genre' => ($i==1 ? 'Sci-Fi' : ($i==2 ? 'Action' : 'Superhero')), 'duration' => ($i==1 ? 166 : ($i==2 ? 148 : ($i==3 ? 175 : 140)))]) }}">Book Ticket</a>
                     </div>
                 </div>
                 <span class="genre-badge">
@@ -263,15 +263,6 @@
     max-width: 90%;
 }
 .movie-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-.btn-book {
-    background: var(--grad-2);
-    color: white; border: none;
-    padding: 0.875rem 2rem; border-radius: 8px;
-    font-weight: 600; cursor: pointer;
-    transition: all 0.3s; font-size: 0.9375rem;
-}
-.btn-book:hover { transform: translateY(-2px); box-shadow: 0 8px 25px rgba(150,20,208,0.5); }
 
 .btn-trailer {
     background: rgba(255,255,255,0.1);
