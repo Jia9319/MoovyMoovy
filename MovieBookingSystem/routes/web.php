@@ -4,8 +4,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\MovieController;
 use App\Http\Controllers\ShowtimeController;
+use App\Http\Controllers\BookingController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\CinemaController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
 use App\Http\Controllers\Auth\ForgotPasswordController;
@@ -23,6 +25,14 @@ Route::resource('cinemas', CinemaController::class)->only(['index', 'show']);
 
 // Showtimes (full CRUD)
 Route::resource('showtimes', ShowtimeController::class);
+
+// Booking
+Route::get('/booking/select', [BookingController::class, 'select'])->name('booking.select');
+Route::get('/booking/seat', [BookingController::class, 'seat'])->name('booking.seat');
+Route::get('/booking/food', [BookingController::class, 'food'])->name('booking.food');
+Route::get('/booking/payment', [BookingController::class, 'payment'])->name('booking.payment');
+Route::post('/booking/ticket', [BookingController::class, 'ticket'])->name('booking.ticket');
+Route::get('/booking/summary', [BookingController::class, 'summary'])->name('booking.summary');
 
 // Reviews (no index/show page — displayed inside movies/show)
 Route::post('/movies/{movie}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
@@ -55,8 +65,10 @@ Route::resource('showtimes', ShowtimeController::class)->except(['index', 'show'
     
 // Protected routes
 Route::middleware(['auth'])->group(function () {
-    Route::get('/profile', fn() => view('profile'))->name('profile');
-    Route::get('/profile/reviews', fn() => view('profile.reviews'))->name('profile.reviews');
-});
 
-Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
+    Route::get('/profile/reviews', fn() => view('profile.reviews'))->name('profile.reviews');
+
+    Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/reports', [AdminController::class, 'viewReports'])->name('admin.reports');
+});

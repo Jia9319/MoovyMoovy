@@ -5,7 +5,7 @@
 @section('content')
 
 {{-- ═══════════════════════════════════════════════════════════════
-     MOVIE HERO - Premium Card Layout (No Background Poster)
+     MOVIE HERO - Premium Card Layout
      ═══════════════════════════════════════════════════════════════ --}}
 <div class="movie-hero-premium">
     <div class="movie-hero-container">
@@ -81,6 +81,7 @@
                     <i class="fas fa-play"></i>
                     <span>Watch Trailer</span>
                 </button>
+
                 @auth
                 <div class="admin-actions">
                     <a href="{{ route('movies.edit', $movie->id) }}" class="btn-edit-premium">
@@ -102,7 +103,7 @@
 </div>
 
 {{-- ═══════════════════════════════════════════════════════════════
-     SHOWTIMES SECTION - Premium Cards
+     SHOWTIMES SECTION
      ═══════════════════════════════════════════════════════════════ --}}
 <section class="showtimes-premium">
     <div class="section-header-premium">
@@ -155,10 +156,12 @@
                 <span class="price-label">From</span>
                 <strong>RM {{ number_format($showtime->price, 2) }}</strong>
             </div>
-            <button class="btn-select-seat" data-showtime-id="{{ $showtime->id }}">
+            
+            <a href="{{ route('booking.seat', ['movie_id' => $movie->id, 'showtime_id' => $showtime->id]) }}" class="btn-select-seat">
                 Select Seats
                 <i class="fas fa-arrow-right"></i>
-            </button>
+            </a>
+
             @auth
             <div class="showtime-admin">
                 <a href="{{ route('showtimes.edit', $showtime->id) }}" class="admin-icon edit">
@@ -181,16 +184,14 @@
         <h3>No Showtimes Available</h3>
         <p>Check back later for showtimes.</p>
         @auth
-        <a href="{{ route('showtimes.create') }}?movie_id={{ $movie->id }}" class="btn-primary">
-            Add First Showtime
-        </a>
+        <a href="{{ route('showtimes.create') }}?movie_id={{ $movie->id }}" class="btn-primary">Add Showtime</a>
         @endauth
     </div>
     @endforelse
 </section>
 
 {{-- ═══════════════════════════════════════════════════════════════
-     REVIEWS SECTION - Modern Design
+     REVIEWS SECTION - ADDED BACK
      ═══════════════════════════════════════════════════════════════ --}}
 <section class="reviews-premium">
     <div class="section-header-premium">
@@ -238,9 +239,9 @@
             <div class="rating-bar-item">
                 <div class="rating-bar-label">{{ $i }} stars</div>
                 <div class="rating-bar-track">
-                    <div class="rating-bar-fill" style="width: {{ $ratingBreakdown[$i] }}%;"></div>
+                    <div class="rating-bar-fill" style="width: {{ $ratingBreakdown[$i] ?? 0 }}%;"></div>
                 </div>
-                <div class="rating-bar-percent">{{ $ratingBreakdown[$i] }}%</div>
+                <div class="rating-bar-percent">{{ $ratingBreakdown[$i] ?? 0 }}%</div>
             </div>
             @endfor
         </div>
@@ -431,166 +432,183 @@
 
 @push('scripts')
 <script>
-// Modal helpers
-function openModal(modal) {
-    if (!modal) return;
-    modal.classList.add('open');
-    document.body.style.overflow = 'hidden';
-}
+document.addEventListener('DOMContentLoaded', function() {
+    // Modal helpers
+    function openModal(modal) {
+        if (!modal) return;
+        modal.classList.add('open');
+        document.body.style.overflow = 'hidden';
+    }
 
-function closeModal(modal) {
-    if (!modal) return;
-    modal.classList.remove('open');
-    document.body.style.overflow = '';
-}
+    function closeModal(modal) {
+        if (!modal) return;
+        modal.classList.remove('open');
+        document.body.style.overflow = '';
+    }
 
-// Star rating system
-function highlightStars(stars, value) {
-    stars.forEach(star => {
-        const starVal = parseInt(star.dataset.val);
-        if (starVal <= value) {
-            star.classList.add('fas');
-            star.classList.remove('far');
-        } else {
-            star.classList.add('far');
-            star.classList.remove('fas');
-        }
-    });
-}
-
-function initStars(selector, inputId) {
-    const stars = document.querySelectorAll(selector);
-    const input = document.getElementById(inputId);
-    if (!stars.length || !input) return;
-    
-    stars.forEach(star => {
-        star.addEventListener('mouseenter', () => {
-            highlightStars(stars, parseInt(star.dataset.val));
-        });
-        star.addEventListener('mouseleave', () => {
-            highlightStars(stars, parseInt(input.value) || 0);
-        });
-        star.addEventListener('click', () => {
-            input.value = star.dataset.val;
-            highlightStars(stars, parseInt(star.dataset.val));
-        });
-    });
-}
-
-initStars('.star-pick', 'ratingInput');
-initStars('.edit-star', 'editRatingInput');
-
-// Write Review Modal
-const writeModal = document.getElementById('reviewModal');
-const openBtns = document.querySelectorAll('#openReviewModal, #openReviewModalEmpty');
-openBtns.forEach(btn => {
-    if (btn) btn.addEventListener('click', () => openModal(writeModal));
-});
-
-if (writeModal) {
-    writeModal.addEventListener('click', (e) => {
-        if (e.target === writeModal) closeModal(writeModal);
-    });
-}
-
-document.querySelectorAll('.modal-close-premium, .btn-cancel-premium').forEach(btn => {
-    btn.addEventListener('click', () => {
-        closeModal(writeModal);
-        closeModal(document.getElementById('editReviewModal'));
-    });
-});
-
-// Form validation
-const reviewForm = document.getElementById('reviewForm');
-if (reviewForm) {
-    reviewForm.addEventListener('submit', (e) => {
-        const rating = document.getElementById('ratingInput')?.value;
-        const content = reviewForm.querySelector('[name=content]')?.value.trim();
-        const ratingErr = document.getElementById('ratingErr');
-        const contentErr = document.getElementById('contentErr');
-        
-        let hasError = false;
-        if (!rating) {
-            if (ratingErr) ratingErr.style.display = 'block';
-            hasError = true;
-        } else if (ratingErr) ratingErr.style.display = 'none';
-        
-        if (!content || content.length < 10) {
-            if (contentErr) contentErr.style.display = 'block';
-            hasError = true;
-        } else if (contentErr) contentErr.style.display = 'none';
-        
-        if (hasError) e.preventDefault();
-    });
-}
-
-// Edit Review Modal
-const editModal = document.getElementById('editReviewModal');
-document.querySelectorAll('.edit-review-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-        const form = document.getElementById('editReviewForm');
-        if (form) form.action = '/reviews/' + btn.dataset.id;
-        
-        document.getElementById('editTitle').value = btn.dataset.title || '';
-        document.getElementById('editContent').value = btn.dataset.content || '';
-        document.getElementById('editRatingInput').value = btn.dataset.rating;
-        
-        highlightStars(document.querySelectorAll('.edit-star'), parseInt(btn.dataset.rating));
-        openModal(editModal);
-    });
-});
-
-// Like functionality
-document.querySelectorAll('.like-btn-premium').forEach(btn => {
-    btn.addEventListener('click', async () => {
-        const response = await fetch('/reviews/' + btn.dataset.id + '/like', {
-            method: 'POST',
-            headers: {
-                'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content,
-                'Accept': 'application/json'
+    // Star rating system
+    function highlightStars(stars, value) {
+        stars.forEach(star => {
+            const starVal = parseInt(star.dataset.val);
+            if (starVal <= value) {
+                star.classList.add('fas');
+                star.classList.remove('far');
+            } else {
+                star.classList.add('far');
+                star.classList.remove('fas');
             }
         });
-        const data = await response.json();
-        btn.querySelector('.like-count').textContent = data.like_count;
-        btn.querySelector('i').className = data.liked ? 'fas fa-thumbs-up' : 'far fa-thumbs-up';
-    });
-});
-
-// Sort reviews
-const sortSelect = document.getElementById('sortReviews');
-if (sortSelect) {
-    sortSelect.addEventListener('change', () => {
-        const cards = Array.from(document.querySelectorAll('.review-card-premium'));
-        const list = document.getElementById('reviewsList');
-        const value = sortSelect.value;
-        
-        cards.sort((a, b) => {
-            if (value === 'highest') return b.dataset.rating - a.dataset.rating;
-            if (value === 'lowest') return a.dataset.rating - b.dataset.rating;
-            return b.dataset.date - a.dataset.date;
-        });
-        
-        cards.forEach(card => list.appendChild(card));
-    });
-}
-
-// Book button
-document.getElementById('bookNowBtn')?.addEventListener('click', () => {
-    const firstShowtime = document.querySelector('.btn-select-seat');
-    if (firstShowtime) {
-        firstShowtime.scrollIntoView({ behavior: 'smooth' });
-        firstShowtime.classList.add('pulse-animation');
-        setTimeout(() => firstShowtime.classList.remove('pulse-animation'), 1000);
-    } else {
-        alert('No showtimes available. Please check back later!');
     }
-});
 
-// Seat selection
-document.querySelectorAll('.btn-select-seat').forEach(btn => {
-    btn.addEventListener('click', () => {
-        alert('🎟️ Seat selection coming soon!');
+    function initStars(selector, inputId) {
+        const stars = document.querySelectorAll(selector);
+        const input = document.getElementById(inputId);
+        if (!stars.length || !input) return;
+        
+        stars.forEach(star => {
+            star.addEventListener('mouseenter', () => {
+                highlightStars(stars, parseInt(star.dataset.val));
+            });
+            star.addEventListener('mouseleave', () => {
+                highlightStars(stars, parseInt(input.value) || 0);
+            });
+            star.addEventListener('click', () => {
+                input.value = star.dataset.val;
+                highlightStars(stars, parseInt(star.dataset.val));
+            });
+        });
+    }
+
+    initStars('.star-pick', 'ratingInput');
+    initStars('.edit-star', 'editRatingInput');
+
+    // Write Review Modal
+    const writeModal = document.getElementById('reviewModal');
+    const openBtns = document.querySelectorAll('#openReviewModal, #openReviewModalEmpty');
+    openBtns.forEach(btn => {
+        if (btn) btn.addEventListener('click', () => openModal(writeModal));
     });
+
+    if (writeModal) {
+        writeModal.addEventListener('click', (e) => {
+            if (e.target === writeModal) closeModal(writeModal);
+        });
+    }
+
+    // Close modal buttons
+    document.querySelectorAll('.modal-close-premium, .btn-cancel-premium').forEach(btn => {
+        btn.addEventListener('click', () => {
+            closeModal(writeModal);
+            closeModal(document.getElementById('editReviewModal'));
+        });
+    });
+
+    // Form validation
+    const reviewForm = document.getElementById('reviewForm');
+    if (reviewForm) {
+        reviewForm.addEventListener('submit', (e) => {
+            const rating = document.getElementById('ratingInput')?.value;
+            const content = reviewForm.querySelector('[name=content]')?.value.trim();
+            const ratingErr = document.getElementById('ratingErr');
+            const contentErr = document.getElementById('contentErr');
+            
+            let hasError = false;
+            if (!rating) {
+                if (ratingErr) ratingErr.style.display = 'block';
+                hasError = true;
+            } else if (ratingErr) ratingErr.style.display = 'none';
+            
+            if (!content || content.length < 10) {
+                if (contentErr) contentErr.style.display = 'block';
+                hasError = true;
+            } else if (contentErr) contentErr.style.display = 'none';
+            
+            if (hasError) e.preventDefault();
+        });
+    }
+
+    // Edit Review Modal
+    const editModal = document.getElementById('editReviewModal');
+    document.querySelectorAll('.edit-review-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const form = document.getElementById('editReviewForm');
+            if (form) form.action = '/reviews/' + btn.dataset.id;
+            
+            const editTitle = document.getElementById('editTitle');
+            const editContent = document.getElementById('editContent');
+            const editRatingInput = document.getElementById('editRatingInput');
+            
+            if (editTitle) editTitle.value = btn.dataset.title || '';
+            if (editContent) editContent.value = btn.dataset.content || '';
+            if (editRatingInput) editRatingInput.value = btn.dataset.rating;
+            
+            highlightStars(document.querySelectorAll('.edit-star'), parseInt(btn.dataset.rating));
+            openModal(editModal);
+        });
+    });
+
+    // Like functionality
+    document.querySelectorAll('.like-btn-premium').forEach(btn => {
+        btn.addEventListener('click', async () => {
+            try {
+                const response = await fetch('/reviews/' + btn.dataset.id + '/like', {
+                    method: 'POST',
+                    headers: {
+                        'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content,
+                        'Accept': 'application/json'
+                    }
+                });
+                const data = await response.json();
+                const likeCount = btn.querySelector('.like-count');
+                const icon = btn.querySelector('i');
+                if (likeCount) likeCount.textContent = data.like_count;
+                if (icon) icon.className = data.liked ? 'fas fa-thumbs-up' : 'far fa-thumbs-up';
+            } catch (error) {
+                console.error('Error liking review:', error);
+            }
+        });
+    });
+
+    // Sort reviews
+    const sortSelect = document.getElementById('sortReviews');
+    if (sortSelect) {
+        sortSelect.addEventListener('change', () => {
+            const cards = Array.from(document.querySelectorAll('.review-card-premium'));
+            const list = document.getElementById('reviewsList');
+            const value = sortSelect.value;
+            
+            cards.sort((a, b) => {
+                if (value === 'highest') return b.dataset.rating - a.dataset.rating;
+                if (value === 'lowest') return a.dataset.rating - b.dataset.rating;
+                return b.dataset.date - a.dataset.date;
+            });
+            
+            cards.forEach(card => list.appendChild(card));
+        });
+    }
+
+    // Book button - scroll to showtimes
+    const bookBtn = document.getElementById('bookNowBtn');
+    if (bookBtn) {
+        bookBtn.addEventListener('click', () => {
+            const firstShowtime = document.querySelector('.btn-select-seat');
+            if (firstShowtime) {
+                firstShowtime.scrollIntoView({ behavior: 'smooth' });
+                firstShowtime.classList.add('pulse-animation');
+                setTimeout(() => firstShowtime.classList.remove('pulse-animation'), 1000);
+            } else {
+                alert('No showtimes available. Please check back later!');
+            }
+        });
+    }
+
+    // Trailer button
+    const trailerBtn = document.querySelector('.btn-trailer-premium');
+    if (trailerBtn) {
+        trailerBtn.addEventListener('click', () => {
+            alert('🎬 Trailer coming soon!');
+        });
+    }
 });
 </script>
 @endpush
