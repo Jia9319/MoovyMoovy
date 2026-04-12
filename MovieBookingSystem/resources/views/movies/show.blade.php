@@ -3,163 +3,595 @@
 @section('title', $movie->title . ' - MoovyMoovy')
 
 @section('content')
-<!-- Movie Hero Section -->
-<div class="movie-hero" style="position: relative; min-height: 70vh; background: linear-gradient(135deg, #1a0033, #0a0018); overflow: hidden;">
-    <div class="hero-content" style="position: relative; z-index: 2; padding: 120px 5% 4rem;">
-        <div class="movie-details" style="max-width: 600px;">
-            <h1 class="movie-title" style="font-family: 'Bebas Neue'; font-size: 4rem; margin-bottom: 1rem;">
-                {{ $movie->title }}
-            </h1>
-            <div class="movie-meta" style="display: flex; gap: 1rem; margin-bottom: 1.5rem; color: var(--muted);">
-                <span>★ {{ $movie->rating ?? 'N/A' }}</span>
-                <span>•</span>
-                <span>{{ $movie->duration }} min</span>
-                <span>•</span>
-                <span>{{ $movie->genre }}</span>
-                <span>•</span>
-                <span>{{ date('Y', strtotime($movie->release_date)) }}</span>
+
+{{-- ═══════════════════════════════════════════════════════════════
+     MOVIE HERO - Premium Card Layout (No Background Poster)
+     ═══════════════════════════════════════════════════════════════ --}}
+<div class="movie-hero-premium">
+    <div class="movie-hero-container">
+        {{-- Left: Poster Card --}}
+        <div class="movie-poster-card">
+            @if($movie->poster)
+                <div class="poster-wrapper">
+                    <img src="{{ asset('storage/' . $movie->poster) }}" alt="{{ $movie->title }}">
+                    <div class="poster-badge">
+                        <i class="fas fa-play"></i>
+                        <span>Now Showing</span>
+                    </div>
+                </div>
+            @else
+                <div class="poster-placeholder-premium">
+                    <i class="fas fa-film"></i>
+                    <span>{{ strtoupper($movie->title) }}</span>
+                </div>
+            @endif
+        </div>
+
+        {{-- Right: Movie Info --}}
+        <div class="movie-info-premium">
+            <div class="info-header">
+                <div class="movie-rating-badge">
+                    <i class="fas fa-star"></i>
+                    <span>{{ $avgRating ?: 'N/A' }}</span>
+                </div>
+                <div class="movie-review-count">
+                    <i class="fas fa-comments"></i>
+                    <span>{{ $reviewCount }} Reviews</span>
+                </div>
             </div>
-            <p class="movie-description" style="color: var(--muted); line-height: 1.6; margin-bottom: 2rem;">
-                {{ $movie->description }}
-            </p>
-            <div class="movie-actions" style="display: flex; gap: 1rem;">
-                <button class="btn-book" style="background: var(--grad-2); color: white; border: none; padding: 0.875rem 2rem; border-radius: 8px; cursor: pointer;">
-                    Book Tickets
+
+            <h1 class="movie-title-premium">{{ $movie->title }}</h1>
+            
+            <div class="movie-meta-grid">
+                <div class="meta-item-premium">
+                    <i class="fas fa-clock"></i>
+                    <div>
+                        <span class="meta-label">Duration</span>
+                        <strong>{{ $movie->duration }} min</strong>
+                    </div>
+                </div>
+                <div class="meta-item-premium">
+                    <i class="fas fa-tag"></i>
+                    <div>
+                        <span class="meta-label">Genre</span>
+                        <strong>{{ $movie->genre }}</strong>
+                    </div>
+                </div>
+                <div class="meta-item-premium">
+                    <i class="fas fa-calendar"></i>
+                    <div>
+                        <span class="meta-label">Release Year</span>
+                        <strong>{{ $movie->release_date->format('Y') }}</strong>
+                    </div>
+                </div>
+            </div>
+
+            <div class="movie-description-premium">
+                <h3>Synopsis</h3>
+                <p>{{ $movie->description }}</p>
+            </div>
+
+            <div class="movie-actions-premium">
+                <button class="btn-book-premium" id="bookNowBtn">
+                    <i class="fas fa-ticket-alt"></i>
+                    <span>Book Tickets</span>
+                    <i class="fas fa-arrow-right"></i>
+                </button>
+                <button class="btn-trailer-premium">
+                    <i class="fas fa-play"></i>
+                    <span>Watch Trailer</span>
                 </button>
                 @auth
-                <button class="btn-edit" onclick="location.href='{{ route('movies.edit', $movie->id) }}'" 
-                    style="background: rgba(255,255,255,0.1); color: white; border: 1px solid var(--border); padding: 0.875rem 2rem; border-radius: 8px; cursor: pointer;">
-                    Edit Movie
-                </button>
+                <div class="admin-actions">
+                    <a href="{{ route('movies.edit', $movie->id) }}" class="btn-edit-premium">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <form action="{{ route('movies.destroy', $movie->id) }}" method="POST"
+                          onsubmit="return confirm('Delete this movie and all its data?')"
+                          style="display:inline;">
+                        @csrf @method('DELETE')
+                        <button type="submit" class="btn-delete-premium">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </form>
+                </div>
                 @endauth
             </div>
         </div>
     </div>
 </div>
 
-<!-- Showtimes Section -->
-<section style="padding: 4rem 5%; background: var(--bg);">
-    <div class="sec-head" style="margin-bottom: 2rem;">
-        <h2 class="sec-title">Showtimes</h2>
+{{-- ═══════════════════════════════════════════════════════════════
+     SHOWTIMES SECTION - Premium Cards
+     ═══════════════════════════════════════════════════════════════ --}}
+<section class="showtimes-premium">
+    <div class="section-header-premium">
+        <div class="header-left">
+            <h2 class="section-title-premium">
+                <i class="fas fa-clock"></i>
+                Showtimes
+            </h2>
+            <p class="section-subtitle-premium">Select your preferred time and cinema</p>
+        </div>
         @auth
-        <a href="{{ route('showtimes.create', ['movie_id' => $movie->id]) }}" class="btn-add" 
-           style="background: var(--grad-2); color: white; padding: 0.5rem 1rem; border-radius: 8px; text-decoration: none;">
-            + Add Showtime
+        <a href="{{ route('showtimes.create') }}?movie_id={{ $movie->id }}" class="btn-add-premium">
+            <i class="fas fa-plus"></i>
+            <span>Add Showtime</span>
         </a>
         @endauth
     </div>
-    
-    <div class="showtimes-grid" style="display: grid; gap: 1rem;">
-        @forelse($movie->showtimes as $showtime)
-        <div class="showtime-card" style="background: var(--card); border: 1px solid var(--border); border-radius: 12px; padding: 1rem; display: flex; justify-content: space-between; align-items: center;">
-            <div>
-                <div style="font-weight: 600;">{{ $showtime->cinema }}</div>
-                <div style="color: var(--muted); font-size: 0.875rem;">
-                    {{ date('l, d M Y', strtotime($showtime->date)) }} at {{ date('h:i A', strtotime($showtime->time)) }}
+
+    @forelse($movie->showtimes as $showtime)
+    <div class="showtime-card-premium">
+        <div class="showtime-left">
+            <div class="cinema-icon">
+                <i class="fas fa-building"></i>
+            </div>
+            <div class="showtime-info">
+                <h4 class="cinema-name">{{ $showtime->cinema }}</h4>
+                <div class="showtime-details">
+                    <span class="showtime-date">
+                        <i class="far fa-calendar-alt"></i>
+                        {{ $showtime->date->format('l, d M Y') }}
+                    </span>
+                    <span class="showtime-time">
+                        <i class="far fa-clock"></i>
+                        {{ date('h:i A', strtotime($showtime->time)) }}
+                    </span>
+                    @if($showtime->hall)
+                    <span class="showtime-hall">
+                        <i class="fas fa-door-open"></i>
+                        Hall {{ $showtime->hall }}
+                    </span>
+                    @endif
+                    @if($showtime->format)
+                    <span class="showtime-format">{{ $showtime->format }}</span>
+                    @endif
                 </div>
             </div>
-            <div style="display: flex; gap: 1rem; align-items: center;">
-                <div style="color: var(--c1); font-weight: 600;">RM {{ $showtime->price }}</div>
-                @auth
-                <button onclick="location.href='{{ route('showtimes.edit', $showtime->id) }}'" class="edit-showtime" 
-                    style="background: none; border: none; color: var(--c1); cursor: pointer;">
+        </div>
+        <div class="showtime-right">
+            <div class="showtime-price">
+                <span class="price-label">From</span>
+                <strong>RM {{ number_format($showtime->price, 2) }}</strong>
+            </div>
+            <button class="btn-select-seat" data-showtime-id="{{ $showtime->id }}">
+                Select Seats
+                <i class="fas fa-arrow-right"></i>
+            </button>
+            @auth
+            <div class="showtime-admin">
+                <a href="{{ route('showtimes.edit', $showtime->id) }}" class="admin-icon edit">
                     <i class="fas fa-edit"></i>
-                </button>
-                <form action="{{ route('showtimes.destroy', $showtime->id) }}" method="POST" style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="delete-showtime" onclick="return confirm('Delete this showtime?')"
-                        style="background: none; border: none; color: #ff4444; cursor: pointer;">
+                </a>
+                <form action="{{ route('showtimes.destroy', $showtime->id) }}" method="POST"
+                      onsubmit="return confirm('Delete this showtime?')" style="display:inline;">
+                    @csrf @method('DELETE')
+                    <button type="submit" class="admin-icon delete">
                         <i class="fas fa-trash"></i>
                     </button>
                 </form>
-                @endauth
             </div>
+            @endauth
         </div>
-        @empty
-        <div style="text-align: center; padding: 2rem; color: var(--muted);">
-            No showtimes available for this movie yet.
-        </div>
-        @endforelse
     </div>
+    @empty
+    <div class="empty-state-premium">
+        <i class="fas fa-calendar-times"></i>
+        <h3>No Showtimes Available</h3>
+        <p>Check back later for showtimes.</p>
+        @auth
+        <a href="{{ route('showtimes.create') }}?movie_id={{ $movie->id }}" class="btn-primary">
+            Add First Showtime
+        </a>
+        @endauth
+    </div>
+    @endforelse
 </section>
 
-<!-- Reviews Section -->
-<section style="padding: 2rem 5% 4rem; background: var(--bg);">
-    <div class="sec-head" style="margin-bottom: 2rem;">
-        <h2 class="sec-title">Reviews</h2>
-        <button class="btn-write-review" id="openReviewModal" 
-            style="background: var(--grad-2); color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 8px; cursor: pointer;">
-            <i class="fas fa-pen"></i> Write a Review
-        </button>
+{{-- ═══════════════════════════════════════════════════════════════
+     REVIEWS SECTION - Modern Design
+     ═══════════════════════════════════════════════════════════════ --}}
+<section class="reviews-premium">
+    <div class="section-header-premium">
+        <div class="header-left">
+            <h2 class="section-title-premium">
+                <i class="fas fa-star"></i>
+                Audience Reviews
+            </h2>
+            <p class="section-subtitle-premium">What people are saying about this movie</p>
+        </div>
+        <div class="header-right">
+            <select id="sortReviews" class="sort-select-premium">
+                <option value="latest">📅 Latest First</option>
+                <option value="highest">⭐ Highest Rated</option>
+                <option value="lowest">⭐ Lowest Rated</option>
+            </select>
+            @auth
+            <button id="openReviewModal" class="btn-write-review">
+                <i class="fas fa-pen"></i>
+                Write a Review
+            </button>
+            @else
+            <a href="{{ route('login') }}" class="btn-write-review">
+                <i class="fas fa-sign-in-alt"></i>
+                Login to Review
+            </a>
+            @endauth
+        </div>
     </div>
-    
-    <!-- Reviews List -->
-    <div class="reviews-list" style="display: flex; flex-direction: column; gap: 1.5rem;">
-        @forelse($movie->reviews as $review)
-        <div class="review-card" style="background: var(--card); border-radius: 16px; padding: 1.5rem; border: 1px solid var(--border);">
-            <div style="display: flex; justify-content: space-between; align-items: start; margin-bottom: 1rem;">
-                <div style="display: flex; align-items: center; gap: 1rem;">
-                    <div class="avatar" style="width: 48px; height: 48px; background: var(--grad-2); border-radius: 50%; display: flex; align-items: center; justify-content: center;">
-                        <i class="fas fa-user"></i>
+
+    {{-- Rating Summary Card --}}
+    @if($reviewCount > 0)
+    <div class="rating-summary-premium">
+        <div class="rating-score">
+            <div class="score-number">{{ number_format($avgRating, 1) }}</div>
+            <div class="score-stars">
+                @for($i=1;$i<=5;$i++)
+                    <i class="{{ $i <= round($avgRating) ? 'fas' : 'far' }} fa-star"></i>
+                @endfor
+            </div>
+            <div class="score-total">{{ $reviewCount }} reviews</div>
+        </div>
+        <div class="rating-bars">
+            @for($i=5;$i>=1;$i--)
+            <div class="rating-bar-item">
+                <div class="rating-bar-label">{{ $i }} stars</div>
+                <div class="rating-bar-track">
+                    <div class="rating-bar-fill" style="width: {{ $ratingBreakdown[$i] }}%;"></div>
+                </div>
+                <div class="rating-bar-percent">{{ $ratingBreakdown[$i] }}%</div>
+            </div>
+            @endfor
+        </div>
+    </div>
+    @endif
+
+    {{-- Reviews List --}}
+    <div id="reviewsList" class="reviews-grid">
+        @forelse($movie->reviews->sortByDesc('created_at') as $review)
+        <div class="review-card-premium"
+             data-rating="{{ $review->rating }}"
+             data-date="{{ $review->created_at->timestamp }}">
+            <div class="review-header-premium">
+                <div class="reviewer-info">
+                    <div class="reviewer-avatar">
+                        @if($review->is_anonymous)
+                            <i class="fas fa-user-secret"></i>
+                        @else
+                            <i class="fas fa-user"></i>
+                        @endif
                     </div>
                     <div>
-                        <h4 style="font-weight: 600;">{{ $review->is_anonymous ? 'Anonymous' : $review->user->name }}</h4>
-                        <div style="color: #ffc107; font-size: 0.875rem;">
-                            @for($i = 1; $i <= 5; $i++)
-                                @if($i <= $review->rating)
-                                    <i class="fas fa-star"></i>
-                                @else
-                                    <i class="far fa-star"></i>
-                                @endif
+                        <div class="reviewer-name">
+                            {{ $review->is_anonymous ? 'Anonymous User' : $review->user->name }}
+                        </div>
+                        <div class="review-rating">
+                            @for($i=1;$i<=5;$i++)
+                                <i class="{{ $i <= $review->rating ? 'fas' : 'far' }} fa-star"></i>
                             @endfor
                         </div>
                     </div>
                 </div>
-                <div style="color: var(--muted); font-size: 0.75rem;">
+                <div class="review-date">
+                    <i class="far fa-calendar-alt"></i>
                     {{ $review->created_at->diffForHumans() }}
                 </div>
             </div>
-            <h5 style="font-size: 1rem; margin-bottom: 0.5rem;">{{ $review->title }}</h5>
-            <p style="color: var(--muted); line-height: 1.6; margin-bottom: 1rem;">{{ $review->content }}</p>
             
-            @auth
-            @if(auth()->id() == $review->user_id)
-            <div style="display: flex; gap: 1rem;">
-                <button class="edit-review" data-review-id="{{ $review->id }}" 
-                    style="background: none; border: none; color: var(--c1); cursor: pointer;">
-                    <i class="fas fa-edit"></i> Edit
-                </button>
-                <form action="{{ route('reviews.destroy', $review->id) }}" method="POST" style="display: inline;">
-                    @csrf
-                    @method('DELETE')
-                    <button type="submit" class="delete-review" onclick="return confirm('Delete this review?')"
-                        style="background: none; border: none; color: #ff4444; cursor: pointer;">
-                        <i class="fas fa-trash"></i> Delete
-                    </button>
-                </form>
-            </div>
+            @if($review->title)
+            <h4 class="review-title">{{ $review->title }}</h4>
             @endif
-            @endauth
+            
+            <p class="review-content">{{ $review->content }}</p>
+            
+            <div class="review-footer">
+                <button class="like-btn-premium" data-id="{{ $review->id }}">
+                    <i class="far fa-thumbs-up"></i>
+                    <span class="like-count">{{ $review->likes->count() }}</span>
+                </button>
+                <button class="share-btn-premium">
+                    <i class="fas fa-share-alt"></i>
+                    <span>Share</span>
+                </button>
+                @auth
+                @if(auth()->id() == $review->user_id)
+                <div class="review-actions">
+                    <button class="edit-review-btn"
+                        data-id="{{ $review->id }}"
+                        data-rating="{{ $review->rating }}"
+                        data-title="{{ $review->title }}"
+                        data-content="{{ $review->content }}">
+                        <i class="fas fa-edit"></i> Edit
+                    </button>
+                    <form action="{{ route('reviews.destroy', $review->id) }}" method="POST"
+                          onsubmit="return confirm('Delete your review?')" style="display:inline;">
+                        @csrf @method('DELETE')
+                        <button type="submit" class="delete-review-btn">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    </form>
+                </div>
+                @endif
+                @endauth
+            </div>
         </div>
         @empty
-        <div style="text-align: center; padding: 2rem; color: var(--muted);">
-            No reviews yet. Be the first to review!
+        <div class="empty-state-premium">
+            <i class="fas fa-comment-slash"></i>
+            <h3>No Reviews Yet</h3>
+            <p>Be the first to share your thoughts about this movie!</p>
+            @auth
+            <button id="openReviewModalEmpty" class="btn-write-review">
+                Write a Review
+            </button>
+            @endauth
         </div>
         @endforelse
     </div>
 </section>
 
+{{-- ═══════════════════════════════════════════════════════════════
+     MODALS
+     ═══════════════════════════════════════════════════════════════ --}}
 
-<style>
-.btn-book:hover, .btn-write-review:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 5px 15px rgba(150,20,208,0.4);
+{{-- Write Review Modal --}}
+<div id="reviewModal" class="modal-premium">
+    <div class="modal-content-premium">
+        <div class="modal-header-premium">
+            <h3>
+                <i class="fas fa-star" style="color: #ffc107;"></i>
+                Write Your Review
+            </h3>
+            <button class="modal-close-premium">&times;</button>
+        </div>
+        @auth
+        <form id="reviewForm" action="{{ route('reviews.store', $movie->id) }}" method="POST">
+            @csrf
+            <div class="form-group-premium">
+                <label class="form-label-premium">Your Rating <span class="required">*</span></label>
+                <div class="star-rating-select">
+                    @for($i=1;$i<=5;$i++)
+                    <i class="far fa-star star-pick" data-val="{{ $i }}"></i>
+                    @endfor
+                </div>
+                <input type="hidden" name="rating" id="ratingInput" value="">
+                <div id="ratingErr" class="field-error">Please select a rating</div>
+            </div>
+            
+            <div class="form-group-premium">
+                <label class="form-label-premium">Review Title</label>
+                <input type="text" name="title" class="form-input-premium" placeholder="Summarize your experience">
+            </div>
+            
+            <div class="form-group-premium">
+                <label class="form-label-premium">Your Review <span class="required">*</span></label>
+                <textarea name="content" class="form-textarea-premium" rows="5" 
+                    placeholder="What did you think about this movie?"></textarea>
+                <div id="contentErr" class="field-error">Please write at least 10 characters</div>
+            </div>
+            
+            <label class="checkbox-premium">
+                <input type="checkbox" name="is_anonymous" value="1">
+                <span>Post anonymously</span>
+            </label>
+            
+            <div class="modal-buttons">
+                <button type="submit" class="btn-submit-premium">
+                    <i class="fas fa-paper-plane"></i> Submit Review
+                </button>
+                <button type="button" class="btn-cancel-premium">Cancel</button>
+            </div>
+        </form>
+        @endauth
+    </div>
+</div>
+
+{{-- Edit Review Modal --}}
+<div id="editReviewModal" class="modal-premium">
+    <div class="modal-content-premium">
+        <div class="modal-header-premium">
+            <h3>
+                <i class="fas fa-edit"></i>
+                Edit Your Review
+            </h3>
+            <button class="modal-close-premium">&times;</button>
+        </div>
+        <form id="editReviewForm" method="POST">
+            @csrf @method('PUT')
+            <div class="form-group-premium">
+                <label class="form-label-premium">Rating</label>
+                <div class="star-rating-select">
+                    @for($i=1;$i<=5;$i++)
+                    <i class="far fa-star edit-star" data-val="{{ $i }}"></i>
+                    @endfor
+                </div>
+                <input type="hidden" name="rating" id="editRatingInput" value="">
+            </div>
+            
+            <div class="form-group-premium">
+                <label class="form-label-premium">Review Title</label>
+                <input type="text" name="title" id="editTitle" class="form-input-premium">
+            </div>
+            
+            <div class="form-group-premium">
+                <label class="form-label-premium">Your Review</label>
+                <textarea name="content" id="editContent" class="form-textarea-premium" rows="5"></textarea>
+            </div>
+            
+            <div class="modal-buttons">
+                <button type="submit" class="btn-submit-premium">
+                    <i class="fas fa-save"></i> Save Changes
+                </button>
+                <button type="button" class="btn-cancel-premium">Cancel</button>
+            </div>
+        </form>
+    </div>
+</div>
+
+@push('scripts')
+<script>
+// Modal helpers
+function openModal(modal) {
+    if (!modal) return;
+    modal.classList.add('open');
+    document.body.style.overflow = 'hidden';
 }
 
-.review-card:hover {
-    border-color: var(--c1);
-    transform: translateX(5px);
+function closeModal(modal) {
+    if (!modal) return;
+    modal.classList.remove('open');
+    document.body.style.overflow = '';
 }
-</style>
+
+// Star rating system
+function highlightStars(stars, value) {
+    stars.forEach(star => {
+        const starVal = parseInt(star.dataset.val);
+        if (starVal <= value) {
+            star.classList.add('fas');
+            star.classList.remove('far');
+        } else {
+            star.classList.add('far');
+            star.classList.remove('fas');
+        }
+    });
+}
+
+function initStars(selector, inputId) {
+    const stars = document.querySelectorAll(selector);
+    const input = document.getElementById(inputId);
+    if (!stars.length || !input) return;
+    
+    stars.forEach(star => {
+        star.addEventListener('mouseenter', () => {
+            highlightStars(stars, parseInt(star.dataset.val));
+        });
+        star.addEventListener('mouseleave', () => {
+            highlightStars(stars, parseInt(input.value) || 0);
+        });
+        star.addEventListener('click', () => {
+            input.value = star.dataset.val;
+            highlightStars(stars, parseInt(star.dataset.val));
+        });
+    });
+}
+
+initStars('.star-pick', 'ratingInput');
+initStars('.edit-star', 'editRatingInput');
+
+// Write Review Modal
+const writeModal = document.getElementById('reviewModal');
+const openBtns = document.querySelectorAll('#openReviewModal, #openReviewModalEmpty');
+openBtns.forEach(btn => {
+    if (btn) btn.addEventListener('click', () => openModal(writeModal));
+});
+
+if (writeModal) {
+    writeModal.addEventListener('click', (e) => {
+        if (e.target === writeModal) closeModal(writeModal);
+    });
+}
+
+document.querySelectorAll('.modal-close-premium, .btn-cancel-premium').forEach(btn => {
+    btn.addEventListener('click', () => {
+        closeModal(writeModal);
+        closeModal(document.getElementById('editReviewModal'));
+    });
+});
+
+// Form validation
+const reviewForm = document.getElementById('reviewForm');
+if (reviewForm) {
+    reviewForm.addEventListener('submit', (e) => {
+        const rating = document.getElementById('ratingInput')?.value;
+        const content = reviewForm.querySelector('[name=content]')?.value.trim();
+        const ratingErr = document.getElementById('ratingErr');
+        const contentErr = document.getElementById('contentErr');
+        
+        let hasError = false;
+        if (!rating) {
+            if (ratingErr) ratingErr.style.display = 'block';
+            hasError = true;
+        } else if (ratingErr) ratingErr.style.display = 'none';
+        
+        if (!content || content.length < 10) {
+            if (contentErr) contentErr.style.display = 'block';
+            hasError = true;
+        } else if (contentErr) contentErr.style.display = 'none';
+        
+        if (hasError) e.preventDefault();
+    });
+}
+
+// Edit Review Modal
+const editModal = document.getElementById('editReviewModal');
+document.querySelectorAll('.edit-review-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+        const form = document.getElementById('editReviewForm');
+        if (form) form.action = '/reviews/' + btn.dataset.id;
+        
+        document.getElementById('editTitle').value = btn.dataset.title || '';
+        document.getElementById('editContent').value = btn.dataset.content || '';
+        document.getElementById('editRatingInput').value = btn.dataset.rating;
+        
+        highlightStars(document.querySelectorAll('.edit-star'), parseInt(btn.dataset.rating));
+        openModal(editModal);
+    });
+});
+
+// Like functionality
+document.querySelectorAll('.like-btn-premium').forEach(btn => {
+    btn.addEventListener('click', async () => {
+        const response = await fetch('/reviews/' + btn.dataset.id + '/like', {
+            method: 'POST',
+            headers: {
+                'X-CSRF-TOKEN': document.querySelector('meta[name=csrf-token]').content,
+                'Accept': 'application/json'
+            }
+        });
+        const data = await response.json();
+        btn.querySelector('.like-count').textContent = data.like_count;
+        btn.querySelector('i').className = data.liked ? 'fas fa-thumbs-up' : 'far fa-thumbs-up';
+    });
+});
+
+// Sort reviews
+const sortSelect = document.getElementById('sortReviews');
+if (sortSelect) {
+    sortSelect.addEventListener('change', () => {
+        const cards = Array.from(document.querySelectorAll('.review-card-premium'));
+        const list = document.getElementById('reviewsList');
+        const value = sortSelect.value;
+        
+        cards.sort((a, b) => {
+            if (value === 'highest') return b.dataset.rating - a.dataset.rating;
+            if (value === 'lowest') return a.dataset.rating - b.dataset.rating;
+            return b.dataset.date - a.dataset.date;
+        });
+        
+        cards.forEach(card => list.appendChild(card));
+    });
+}
+
+// Book button
+document.getElementById('bookNowBtn')?.addEventListener('click', () => {
+    const firstShowtime = document.querySelector('.btn-select-seat');
+    if (firstShowtime) {
+        firstShowtime.scrollIntoView({ behavior: 'smooth' });
+        firstShowtime.classList.add('pulse-animation');
+        setTimeout(() => firstShowtime.classList.remove('pulse-animation'), 1000);
+    } else {
+        alert('No showtimes available. Please check back later!');
+    }
+});
+
+// Seat selection
+document.querySelectorAll('.btn-select-seat').forEach(btn => {
+    btn.addEventListener('click', () => {
+        alert('🎟️ Seat selection coming soon!');
+    });
+});
+</script>
+@endpush
 @endsection
