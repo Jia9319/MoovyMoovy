@@ -9,6 +9,9 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // Seed movies data
-        $this->call(MovieSeeder::class);
+        $this->call([
+            MovieSeeder::class,
+            OfferSeeder::class,
+        ]);
     }
 }

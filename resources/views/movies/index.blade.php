@@ -70,7 +70,7 @@
                 <div class="mname">{{ Str::limit($movie->title, 35) }}</div>
                 <div class="genre-badge">{{ $movie->genre }}</div>
                 <div class="mmeta">
-                    <div class="mrating">★ {{ $movie->rating ?? 'N/A' }}</div>
+                    <div class="mrating">★ {{ $movie->rating ?? '0.0' }}</div>
                     <div class="mdur">{{ $movie->duration }} min</div>
                 </div>
                 <div class="mprice">
@@ -81,225 +81,38 @@
         @endforeach
     </div>
 
+    <!-- Simple Pagination - Only page numbers -->
+    @if($movies->hasPages())
     <div class="pagination-wrapper">
-        {{ $movies->links() }}
+        <div class="pagination">
+            {{-- Previous --}}
+            @if($movies->onFirstPage())
+                <span class="disabled">&laquo;</span>
+            @else
+                <a href="{{ $movies->previousPageUrl() }}">&laquo;</a>
+            @endif
+
+            {{-- Page Numbers --}}
+            @foreach($movies->getUrlRange(1, $movies->lastPage()) as $page => $url)
+                @if($page == $movies->currentPage())
+                    <span class="active">{{ $page }}</span>
+                @else
+                    <a href="{{ $url }}">{{ $page }}</a>
+                @endif
+            @endforeach
+
+            {{-- Next --}}
+            @if($movies->hasMorePages())
+                <a href="{{ $movies->nextPageUrl() }}">&raquo;</a>
+            @else
+                <span class="disabled">&raquo;</span>
+            @endif
+        </div>
     </div>
+    @endif
     @endif
 </section>
 
-<style>
-.movies-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-    gap: 1.5rem;
-}
 
-.mcard {
-    background: var(--card);
-    border-radius: 16px;
-    overflow: hidden;
-    border: 1px solid var(--border);
-    transition: all 0.3s;
-    cursor: pointer;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-}
-
-.mcard:hover {
-    transform: translateY(-8px);
-    border-color: var(--c1);
-    box-shadow: 0 20px 40px rgba(102,0,148,0.4);
-}
-
-.mthumb {
-    height: 320px;
-    position: relative;
-    overflow: hidden;
-    background: linear-gradient(145deg, #1a0033, #660094);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-}
-
-.mthumb img {
-    position: absolute;
-    inset: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    transition: transform 0.3s;
-}
-
-.mcard:hover .mthumb img {
-    transform: scale(1.05);
-}
-
-.mthumb-title {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    text-align: center;
-    padding: 1rem;
-    line-height: 1.2;
-    z-index: 1;
-}
-
-.moverlay {
-    position: absolute;
-    inset: 0;
-    background: rgba(0,0,0,0.8);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    opacity: 0;
-    transition: opacity 0.3s;
-    z-index: 3;
-}
-
-.mcard:hover .moverlay {
-    opacity: 1;
-}
-
-.mbtn {
-    background: var(--grad-2);
-    border: none;
-    color: white;
-    padding: 0.75rem 1.5rem;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 600;
-    transition: all 0.3s;
-}
-
-.mbtn:hover {
-    transform: scale(1.05);
-}
-
-.minfo {
-    padding: 1rem;
-    flex: 1;
-}
-
-.mname {
-    font-weight: 600;
-    font-size: 1rem;
-    line-height: 1.3;
-    margin-bottom: 0.5rem;
-    word-wrap: break-word;
-}
-
-.genre-badge {
-    display: inline-block;
-    background: rgba(209,106,255,0.15);
-    color: var(--c1);
-    font-size: 0.7rem;
-    padding: 0.25rem 0.6rem;
-    border-radius: 6px;
-    margin-bottom: 0.75rem;
-}
-
-.mmeta {
-    display: flex;
-    justify-content: space-between;
-    margin-bottom: 0.75rem;
-}
-
-.mrating {
-    color: #ffc107;
-    font-size: 0.875rem;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-}
-
-.mdur {
-    color: var(--muted);
-    font-size: 0.875rem;
-    display: flex;
-    align-items: center;
-    gap: 0.25rem;
-}
-
-.mprice {
-    color: var(--c1);
-    font-size: 0.9rem;
-    font-weight: 600;
-    padding-top: 0.5rem;
-    border-top: 1px solid var(--border);
-    margin-top: 0.5rem;
-}
-
-.pagination-wrapper {
-    display: flex;
-    justify-content: center;
-    margin-top: 3rem;
-}
-
-.pagination-wrapper nav[role="navigation"] span,
-.pagination-wrapper nav[role="navigation"] a {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    min-width: 40px;
-    height: 40px;
-    padding: 0 12px;
-    margin: 0 4px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    color: white;
-    text-decoration: none;
-    transition: all 0.3s;
-}
-
-.pagination-wrapper nav[role="navigation"] a:hover {
-    background: var(--c1);
-    border-color: var(--c1);
-    transform: translateY(-2px);
-}
-
-.pagination-wrapper nav[role="navigation"] span[aria-current] {
-    background: var(--grad-2);
-    border-color: transparent;
-}
-
-@media (max-width: 768px) {
-    section {
-        padding: 100px 4% 3rem !important;
-    }
-    
-    .movies-grid {
-        gap: 1rem;
-        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
-    }
-    
-    .mthumb {
-        height: 260px;
-    }
-    
-    .minfo {
-        padding: 0.75rem;
-    }
-    
-    .mname {
-        font-size: 0.9rem;
-    }
-}
-
-@media (max-width: 480px) {
-    .movies-grid {
-        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-    }
-    
-    .mthumb {
-        height: 240px;
-    }
-    
-    .sec-title {
-        font-size: 2rem !important;
-    }
-}
-</style>
 
 @endsection

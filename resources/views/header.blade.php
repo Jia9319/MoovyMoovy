@@ -1,6 +1,5 @@
 <nav id="navbar">
     <a href="{{ url('/') }}" class="logo">
-        
         <div>
             <div class="logo-text">MoovyMoovy</div>
         </div>
@@ -8,10 +7,10 @@
 
     <ul class="nav-links" id="navLinks">
         <li><a href="{{ url('/') }}" class="{{ request()->is('/') ? 'active' : '' }}">Home</a></li>
-        <li><a href="{{ url('/movies') }}" class="{{ request()->is('movies*') ? 'active' : '' }}">Now Showing</a></li>
-        <li><a href="{{ url('/movies/coming-soon') }}" class="{{ request()->is('movies/coming-soon') ? 'active' : '' }}">Coming Soon</a></li>
-        <li><a href="{{ url('/cinemas') }}" class="{{ request()->is('cinemas*') ? 'active' : '' }}">Cinemas</a></li>
-        <li><a href="#" class="{{ request()->is('offers') ? 'active' : '' }}">Offers</a></li>
+        <li><a href="{{ route('movies.index') }}" class="{{ request()->routeIs('movies.index') ? 'active' : '' }}">Now Showing</a></li>
+        <li><a href="{{ route('movies.coming-soon') }}" class="{{ request()->routeIs('movies.coming-soon') ? 'active' : '' }}">Coming Soon</a></li>
+        <li><a href="{{ route('cinemas.index') }}" class="{{ request()->routeIs('cinemas.*') ? 'active' : '' }}">Cinemas</a></li>
+        <li><a href="{{ route('offers.index') }}" class="{{ request()->routeIs('offers.*') ? 'active' : '' }}">Offers</a></li>
     </ul>
 
     <div class="nav-right">
@@ -23,17 +22,17 @@
         <div class="profile-dropdown">
             <div class="profile-avatar">
                 @auth
-                    <span class="text-[10px] font-bold text-purple-300">{{ substr(Auth::user()->name, 0, 1) }}</span>
+                    <span style="font-size: 10px; font-weight: bold; color: #d16aff;">{{ substr(Auth::user()->name, 0, 1) }}</span>
                 @else
-                    <i class="fas fa-user text-purple-300/50"></i>
+                    <i class="fas fa-user" style="color: rgba(209,106,255,0.5);"></i>
                 @endauth
             </div>
 
             <div class="dropdown-content">
                 @auth
-                    <div class="px-4 py-2 border-b border-white/5 mb-1">
-                        <p class="text-[10px] text-gray-500 uppercase tracking-widest font-bold">Account</p>
-                        <p class="text-sm font-bold text-white truncate">{{ Auth::user()->name }}</p>
+                    <div style="padding: 0.75rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); margin-bottom: 0.25rem;">
+                        <p style="font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1px; font-weight: 600; margin-bottom: 0.25rem;">Account</p>
+                        <p style="font-size: 0.85rem; font-weight: 600; color: white; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">{{ Auth::user()->name }}</p>
                     </div>
                 @endauth
 
@@ -49,16 +48,16 @@
                     <i class="fas fa-ticket-alt"></i> My Bookings
                 </a>
 
-                <div class="dropdown-divider"></div>
+                <div style="height: 1px; background: rgba(255,255,255,0.05); margin: 0.25rem 0;"></div>
 
                 @auth
-                    <a href="#" class="dropdown-item text-red-400" 
+                    <a href="#" class="dropdown-item" style="color: #ef4444;" 
                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                         <i class="fas fa-sign-out-alt"></i> Logout
                     </a>
-                    <form id="logout-form" action="{{ route('logout') }}" method="POST" class="hidden">@csrf</form>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">@csrf</form>
                 @else
-                    <a href="{{ route('login') }}" class="dropdown-item font-bold text-purple-400">
+                    <a href="{{ route('login') }}" class="dropdown-item" style="color: #d16aff; font-weight: 600;">
                         <i class="fas fa-sign-in-alt"></i> Sign In
                     </a>
                     <a href="{{ route('register') }}" class="dropdown-item">

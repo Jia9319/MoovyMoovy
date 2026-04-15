@@ -115,13 +115,15 @@
     </section>
 
     <div class="promo">
-        <div class="promo-text">
-            <div class="promo-ey"> Limited Time Offer</div>
-            <div class="promo-h">STUDENT TUESDAYS<br>— 50% OFF</div>
-            <p class="promo-d">Flash your student ID every Tuesday and get half-price tickets to any screening. Valid at all MoovyMoovy locations across Malaysia.</p>
-        </div>
-        <button class="promo-btn">Claim Offer →</button>
+    <div class="promo-text">
+        <div class="promo-ey">🎉 Limited Time Offer</div>
+        <div class="promo-h">STUDENT TUESDAYS<br>— 50% OFF</div>
+        <p class="promo-d">Flash your student ID every Tuesday and get half-price tickets to any screening. Valid at all MoovyMoovy locations across Malaysia.</p>
     </div>
+    <a href="{{ route('offers.index') }}" class="promo-btn" style="text-decoration:none;">
+        Claim Offer →
+    </a>
+</div>
 </div>
 
 @push('scripts')
@@ -443,7 +445,7 @@
 
 .movies-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     gap: 1.5rem;
 }
 
@@ -477,7 +479,7 @@
     inset: 0;
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: contain;
     transition: transform 0.3s;
 }
 

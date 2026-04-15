@@ -54,8 +54,8 @@
             </div>
 
             <div>
-                <label style="display:block;margin-bottom:0.5rem;font-weight:500;">Rating (0–10)</label>
-                <input type="number" name="rating" value="{{ old('rating', $movie->rating) }}" min="0" max="10" step="0.1"
+                <label style="display:block;margin-bottom:0.5rem;font-weight:500;">Rating (0–5)</label>
+                <input type="number" name="rating" value="{{ old('rating', $movie->rating) }}" min="0" max="5" step="0.1"
                     style="width:100%;background:var(--bg);border:1px solid var(--border);color:white;padding:0.75rem 1rem;border-radius:10px;outline:none;box-sizing:border-box;">
             </div>
 

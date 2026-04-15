@@ -11,7 +11,7 @@ class HomeController extends Controller
         $nowShowing = Movie::nowShowing()
             ->with('showtimes')
             ->orderBy('release_date', 'desc')
-            ->limit(6)
+            ->limit(5)
             ->get();
         
         $featuredMovies = Movie::nowShowing()

@@ -41,7 +41,6 @@
             box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
         }
 
-        /* 顶部发光装饰 */
         .login-card::before {
             content: '';
             position: absolute;
@@ -108,10 +107,7 @@
             </div>
 
             <div class="input-group">
-                <div class="flex justify-between items-center mb-2 ml-1">
-                    <label class="block text-[10px] uppercase tracking-widest text-gray-500 font-bold">Password</label>
-                    <a href="{{ route('password.request') }}" class="text-[10px] text-purple-400 hover:text-white transition uppercase tracking-widest">Forgot?</a>
-                </div>
+                <label class="block text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-2 ml-1">Password</label>
                 <input type="password" name="password" required 
                        class="w-full px-5 py-4 rounded-xl text-white text-sm" 
                        placeholder="••••••••">

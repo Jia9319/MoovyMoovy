@@ -11,6 +11,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\OfferController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 
@@ -18,6 +19,7 @@ Route::get('/movies/coming-soon', [MovieController::class, 'comingSoon'])->name(
 Route::resource('movies', MovieController::class);
 
 Route::resource('cinemas', CinemaController::class)->only(['index', 'show']);
+Route::get('/cinemas/search', [CinemaController::class, 'search'])->name('cinemas.search');
 Route::resource('showtimes', ShowtimeController::class);
 
 Route::get('/booking/select', [BookingController::class, 'select'])->name('booking.select');
@@ -26,6 +28,11 @@ Route::get('/booking/food', [BookingController::class, 'food'])->name('booking.f
 Route::get('/booking/payment', [BookingController::class, 'payment'])->name('booking.payment');
 Route::post('/booking/ticket', [BookingController::class, 'ticket'])->name('booking.ticket');
 Route::get('/booking/summary', [BookingController::class, 'summary'])->name('booking.summary');
+
+Route::post('/offers/redeem',  [OfferController::class, 'redeem'])->name('offers.redeem');
+Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
+Route::get('/offers/{id}/claim', [OfferController::class, 'claim'])->name('offers.claim');
+Route::post('/offers/apply', [OfferController::class, 'apply'])->name('offers.apply');
 
 Route::post('/movies/{movie}/reviews', [ReviewController::class, 'store'])->name('reviews.store');
 Route::put('/reviews/{review}', [ReviewController::class, 'update'])->name('reviews.update');
