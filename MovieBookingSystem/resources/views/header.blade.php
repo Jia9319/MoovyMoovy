@@ -41,8 +41,8 @@
                     <i class="fas fa-user-circle"></i> My Profile
                 </a>
                 
-                <a href="{{ auth()->check() ? route('profile.reviews') : route('login') }}" class="dropdown-item">
-                    <i class="fas fa-star"></i> My Reviews
+                <a href="{{ auth()->check() ? route('profile.show') : route('login') }}" class="dropdown-item">
+                    <i class="fas fa-star"></i> My Profile
                 </a>
 
                 <a href="{{ auth()->check() ? url('/bookings') : route('login') }}" class="dropdown-item">

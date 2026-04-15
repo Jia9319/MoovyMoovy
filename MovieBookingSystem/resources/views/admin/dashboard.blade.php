@@ -7,7 +7,7 @@
     </h1>
     <div class="w-24 h-1 bg-neon mt-2"></div>
 </div>
-
+    
 <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
     <div class="card-stat p-10 relative overflow-hidden">
         <h3 class="uppercase text-xs font-black tracking-widest text-slate-400 mb-4">Database Inventory</h3>

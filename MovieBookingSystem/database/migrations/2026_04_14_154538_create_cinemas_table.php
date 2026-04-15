@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class AddRoleToUsersTable extends Migration
+class CreateCinemasTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,9 +13,13 @@ class AddRoleToUsersTable extends Migration
      */
     public function up()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->string('role')->default('user')->after('password');
-        });
+        Schema::create('cinemas', function (Blueprint $table) {
+        $table->id();
+        $table->string('name');
+        $table->string('location')->nullable();
+        $table->integer('total_seats')->default(100);
+        $table->timestamps();
+    });
     }
 
     /**
@@ -25,8 +29,6 @@ class AddRoleToUsersTable extends Migration
      */
     public function down()
     {
-        Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('role');
-        });
+        Schema::dropIfExists('cinemas');
     }
 }

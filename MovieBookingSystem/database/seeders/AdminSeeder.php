@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
+use Illuminate\Support\Facades\Hash;
 
 class AdminSeeder extends Seeder
 {
@@ -16,7 +17,7 @@ class AdminSeeder extends Seeder
         \App\Models\User::create([
             'name' => 'Admin Moovy',
             'email' => 'admin@moovy.com',
-            'password' => bcrypt('admin123'), 
+            'password' => Hash::make('admin123'), 
             'role' => 'admin',
         ]);
     }
