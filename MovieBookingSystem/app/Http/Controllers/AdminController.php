@@ -4,15 +4,12 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Models\Booking;
+use App\Models\Movie;
+use App\Models\User;
 
 class AdminController extends Controller
 {
-    public function movies()
-    {
-        $movies = \App\Models\Movie::all();
-        return view('admin.movies', compact('movies'));
-    }
-
     public function __construct()
     {
         $this->middleware(['auth', 'admin']);
@@ -22,23 +19,43 @@ class AdminController extends Controller
     {
         $movies = DB::table('movies')->get();
         $reportCount = DB::table('review_reports')->count();
-
         return view('admin.dashboard', compact('movies', 'reportCount'));
     }
 
-    public function viewReports()
-{
-    $reports = DB::table('review_reports')
-        ->leftJoin('reviews', 'review_reports.review_id', '=', 'reviews.id')
-        ->leftJoin('users', 'review_reports.user_id', '=', 'users.id')
-        ->select(
-            'review_reports.*',
-            'reviews.content',
-            'reviews.rating',
-            'users.name as reporter_name'
-        )
-        ->get();
+    public function movies()
+    {
+        $movies = Movie::all();
+        return view('admin.movies', compact('movies'));
+    }
 
-    return view('admin.reports', compact('reports'));
-}
+    public function bookings()
+    {
+        $bookings = Booking::with(['user', 'showtime.movie'])->get();
+        return view('admin.bookings', compact('bookings'));
+    }
+
+    public function reviews()
+    {
+        $reviews = \App\Models\Review::with('user', 'movie')->get();
+        return view('admin.reviews', compact('reviews'));
+    }
+
+    public function deleteReview($id)
+    {
+        \App\Models\Review::findOrFail($id)->delete();
+        return redirect()->route('admin.reviews')->with('success', 'Review deleted successfully!');
+    }
+
+    public function viewReports()
+    {
+        $totalMovies   = Movie::count();
+        $totalBookings = Booking::count();
+        $totalUsers    = User::count();
+        $totalRevenue  = Booking::sum('total_price');
+        $topMovies     = collect();
+
+        return view('admin.reports', compact(
+            'totalMovies', 'totalBookings', 'totalUsers', 'totalRevenue', 'topMovies'
+        ));
+    }
 }

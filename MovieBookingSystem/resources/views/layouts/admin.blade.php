@@ -9,7 +9,7 @@
         body { 
             background-color: #080112; 
             color: white; 
-            font-family: 'Bebas Neue', cursive; 
+            font-family: 'Montserrat', sans-serif; 
         }
         .bebas { font-family: 'Bebas Neue', cursive; }
         .sidebar { background-color: #0d0118; border-right: 1px solid #1f0b35; }
@@ -29,8 +29,10 @@
         <div class="bebas text-4xl tracking-wider text-neon">MOOVYMOOVY</div>
 
         <nav class="flex flex-col gap-6 uppercase">
-    <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->is('admin/dashboard') ? 'active' : '' }}">Dashboard</a>
+    <a href="{{ route('admin.dashboard') }}" class="nav-link {{ request()->is('admin') || request()->is('admin/dashboard') ? 'active' : '' }}">Dashboard</a>
     <a href="{{ route('admin.movies') }}" class="nav-link {{ request()->is('admin/movies') ? 'active' : '' }}">Movies</a>
+    <a href="{{ route('admin.bookings') }}" class="nav-link {{ request()->is('admin/bookings') ? 'active' : '' }}">Bookings</a>
+    <a href="{{ route('admin.reviews') }}" class="nav-link {{ request()->is('admin/reviews') ? 'active' : '' }}">Reviews</a>
     <a href="{{ route('admin.reports') }}" class="nav-link {{ request()->is('admin/reports') ? 'active' : '' }}">Reports</a>
 </nav>
 

@@ -19,6 +19,16 @@ class Movie extends Model
         'rating'       => 'decimal:1',
     ];
 
+    public function bookings()
+    {
+        return $this->hasManyThrough(
+            \App\Models\Booking::class,
+            \App\Models\Showtime::class,
+            'movie_id',   // foreign key on showtimes
+            'showtime_id' // foreign key on bookings
+        );
+    }
+
     public function showtimes()
     {
         return $this->hasMany(Showtime::class);
