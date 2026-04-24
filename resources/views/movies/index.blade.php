@@ -81,7 +81,6 @@
         @endforeach
     </div>
 
-    <!-- Simple Pagination - Only page numbers -->
     @if($movies->hasPages())
     <div class="pagination-wrapper">
         <div class="pagination">

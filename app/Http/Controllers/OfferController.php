@@ -31,12 +31,10 @@ class OfferController extends Controller
             return back()->with('offer_error', 'Invalid promo code. Please check and try again.');
         }
 
-        // Offer expired or inactive
         if (!$offer->isValid()) {
             return back()->with('offer_error', 'This offer has expired or is no longer available.');
         }
 
-        // Already redeemed by this user
         if ($offer->isRedeemedBy(Auth::id())) {
             return back()->with('offer_error', 'You have already redeemed this offer.');
         }

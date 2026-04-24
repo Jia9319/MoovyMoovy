@@ -46,26 +46,13 @@ class Movie extends Model
         return $this->poster ? asset('storage/' . $this->poster) : '';
     }
 
-    public function getStarRatingAttribute()
-    {
-        $rating = $this->rating ?? 0;
-        $fullStars = floor($rating);
-        $halfStar = ($rating - $fullStars) >= 0.5;
-        $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
-        
-        $stars = '';
-        for ($i = 0; $i < $fullStars; $i++) {
-            $stars .= '<i class="fas fa-star"></i>';
-        }
-        if ($halfStar) {
-            $stars .= '<i class="fas fa-star-half-alt"></i>';
-        }
-        for ($i = 0; $i < $emptyStars; $i++) {
-            $stars .= '<i class="far fa-star"></i>';
-        }
-        
-        return $stars;
-    }
+    // app/Models/Movie.php
+
+public function getRatingAttribute()
+{
+    $avgRating = $this->reviews()->avg('rating');
+    return $avgRating ? number_format($avgRating, 1) : '0.0';
+}
     
     public function getGradientAttribute(): string
     {

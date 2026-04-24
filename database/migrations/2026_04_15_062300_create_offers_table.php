@@ -17,12 +17,12 @@ class CreateOffersTable extends Migration
             $table->id();
             $table->string('title');
             $table->text('description');
-            $table->string('code')->unique();          // promo code e.g. STUDENT50
-            $table->integer('discount_percent');        // e.g. 50
+            $table->string('code')->unique();          
+            $table->integer('discount_percent');      
             $table->date('valid_from');
             $table->date('valid_until');
             $table->boolean('is_active')->default(true);
-            $table->integer('max_uses')->nullable();    // null = unlimited
+            $table->integer('max_uses')->nullable();    
             $table->integer('used_count')->default(0);
             $table->string('terms')->nullable();
             $table->timestamps();
@@ -33,7 +33,7 @@ class CreateOffersTable extends Migration
             $table->foreignId('offer_id')->constrained()->onDelete('cascade');
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->timestamp('redeemed_at');
-            $table->unique(['offer_id', 'user_id']); // one redemption per user per offer
+            $table->unique(['offer_id', 'user_id']); 
         });
     }
 

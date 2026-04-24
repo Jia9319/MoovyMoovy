@@ -5,6 +5,9 @@ namespace App\Http\Controllers;
 use App\Models\Movie;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use App\Models\Review;
+use Illuminate\Support\Facades\Auth;
+
 
 class MovieController extends Controller
 {
@@ -40,26 +43,30 @@ class MovieController extends Controller
         return view('movies.coming-soon', compact('comingSoon'));
     }
 
-    public function show(Movie $movie)
+    public function show(Request $request, $id)
     {
-        if ($movie->status === 'draft' && !(auth()->check() && auth()->user()->is_admin)) {
-            abort(404);
-        }
-
-        $movie->load([
-            'showtimes' => fn($q) => $q->where('date', '>=', today())->orderBy('date')->orderBy('time'),
+        // Load movie with relationships for API response
+        $movie = Movie::with([
+            'showtimes' => function($q) {
+                $q->where('date', '>=', today())
+                  ->orderBy('date')
+                  ->orderBy('time');
+            },
+            'showtimes.cinema',
             'reviews.user',
-        ]);
+        ])->findOrFail($id);
 
-        $avgRating = round($movie->reviews->avg('rating'), 1);
-        $reviewCount = $movie->reviews->count();
-        $ratingBreakdown = [];
-        for ($i = 5; $i >= 1; $i--) {
-            $count = $movie->reviews->where('rating', $i)->count();
-            $ratingBreakdown[$i] = $reviewCount > 0 ? round(($count / $reviewCount) * 100) : 0;
+        if ($request->wantsJson()) {
+            return response()->json([
+                'movie' => $movie,
+                'showtimes' => $movie->showtimes,
+                'reviews' => $movie->reviews,
+                'avgRating' => round($movie->reviews->avg('rating') ?: 0, 1),
+                'reviewCount' => $movie->reviews->count(),
+            ]);
         }
 
-        return view('movies.show', compact('movie', 'avgRating', 'reviewCount', 'ratingBreakdown'));
+        return view('movies.show', compact('movie'));
     }
 
     public function create()
@@ -69,6 +76,10 @@ class MovieController extends Controller
 
     public function store(Request $request)
     {
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            return redirect()->route('movies.index')->with('error', 'Unauthorized');
+        }
+        
         $validated = $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
@@ -86,41 +97,92 @@ class MovieController extends Controller
         }
 
         Movie::create($validated);
-        return redirect()->route('movies.index')->with('success', 'Movie added successfully!');
+        
+        return redirect()->route('movies.index')->with('success', 'Movie created successfully!');
     }
 
-    public function edit(Movie $movie)
+  
+public function edit($id)
     {
-        return view('movies.edit', compact('movie'));
-    }
-
-    public function update(Request $request, Movie $movie)
-    {
-        $validated = $request->validate([
-            'title' => 'required|string|max:255',
-            'description' => 'required|string',
-            'genre' => 'required|string|max:100',
-            'duration' => 'required|integer|min:1',
-            'release_date' => 'required|date',
-            'rating' => 'nullable|numeric|min:0|max:10',
-            'poster' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'status' => 'required|in:now_showing,coming_soon,draft',
-            'expected_release' => 'nullable|date',
-        ]);
-
-        if ($request->hasFile('poster')) {
-            if ($movie->poster) Storage::disk('public')->delete($movie->poster);
-            $validated['poster'] = $request->file('poster')->store('posters', 'public');
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            return response()->json(['message' => 'Unauthorized'], 403);
         }
-
-        $movie->update($validated);
-        return redirect()->route('movies.show', $movie->id)->with('success', 'Movie updated!');
+        
+        $movie = Movie::findOrFail($id);
+        
+        return response()->json([
+            'movie' => $movie
+        ]);
     }
 
-    public function destroy(Movie $movie)
-    {
-        if ($movie->poster) Storage::disk('public')->delete($movie->poster);
-        $movie->delete();
-        return redirect()->route('movies.index')->with('success', 'Movie deleted!');
+
+
+public function update(Request $request, $id)
+{
+    if (!Auth::check() || Auth::user()->role !== 'admin') {
+        return response()->json(['message' => 'Unauthorized'], 403);
     }
+    
+    \Log::info('Update request received', [
+        'id' => $id,
+        'method' => $request->method(),
+        'all_data' => $request->all(),
+        'has_file' => $request->hasFile('poster')
+    ]);
+    
+    $movie = Movie::findOrFail($id);
+    
+    $validated = $request->validate([
+        'title' => 'sometimes|required|string|max:255',
+        'description' => 'sometimes|required|string',
+        'genre' => 'sometimes|required|string|max:100',
+        'duration' => 'sometimes|required|integer|min:1',
+        'release_date' => 'sometimes|required|date',
+        'rating' => 'nullable|numeric|min:0|max:10',
+        'poster' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+        'status' => 'sometimes|required|in:now_showing,coming_soon,draft',
+        'expected_release' => 'nullable|date',
+    ]);
+
+    if ($request->hasFile('poster')) {
+        if ($movie->poster) {
+            Storage::disk('public')->delete($movie->poster);
+        }
+        $validated['poster'] = $request->file('poster')->store('posters', 'public');
+    }
+
+    $movie->update($validated);
+    
+    $movie->refresh();
+    
+    return response()->json([
+        'success' => true,
+        'message' => 'Movie updated successfully!',
+        'movie' => $movie
+    ]);
+}
+
+
+    public function destroy($id)
+{
+    // Check if user is admin
+    if (!Auth::check() || Auth::user()->role !== 'admin') {
+        if (request()->wantsJson()) {
+            return response()->json(['message' => 'Unauthorized'], 403);
+        }
+        return redirect()->route('movies.index')->with('error', 'Unauthorized');
+    }
+    
+    $movie = Movie::findOrFail($id);
+    
+    $movie->showtimes()->delete();
+    $movie->reviews()->delete();
+    $movie->delete();
+    
+    if (request()->wantsJson()) {
+        return response()->json(['success' => true, 'message' => 'Movie deleted successfully']);
+    }
+    
+    return redirect()->route('movies.index')->with('success', 'Movie deleted successfully');
+}
 }
