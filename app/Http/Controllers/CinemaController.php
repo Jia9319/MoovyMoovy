@@ -26,7 +26,7 @@ class CinemaController extends Controller
         $showtimes = Showtime::whereHas('movie', function($query) {
                 $query->where('status', 'now_showing');
             })
-            ->where('cinema', $cinema->name)
+            ->where('cinema_id', $cinema->id)
             ->where('date', '>=', now())
             ->with('movie')
             ->orderBy('date')
@@ -60,5 +60,14 @@ class CinemaController extends Controller
         }
         
         return redirect()->route('cinemas.index');
+    }
+
+    public function getList()
+    {
+        $cinemas = Cinema::where('is_active', true)
+            ->orderBy('name')
+            ->get(['id', 'name']); 
+        
+        return response()->json($cinemas);
     }
 }

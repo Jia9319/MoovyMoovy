@@ -1,28 +1,28 @@
 /******/ (() => { // webpackBootstrap
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./node_modules/@popperjs/core/lib/createPopper.js"
+/***/ "./node_modules/@popperjs/core/lib/createPopper.js":
 /*!*********************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/createPopper.js ***!
   \*********************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   createPopper: () => (/* binding */ createPopper),
-/* harmony export */   detectOverflow: () => (/* reexport safe */ _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_7__["default"]),
+/* harmony export */   detectOverflow: () => (/* reexport safe */ _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_8__["default"]),
 /* harmony export */   popperGenerator: () => (/* binding */ popperGenerator)
 /* harmony export */ });
-/* harmony import */ var _dom_utils_getCompositeRect_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom-utils/getCompositeRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js");
-/* harmony import */ var _dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dom-utils/getLayoutRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js");
-/* harmony import */ var _dom_utils_listScrollParents_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./dom-utils/listScrollParents.js */ "./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js");
-/* harmony import */ var _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./dom-utils/getOffsetParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js");
-/* harmony import */ var _utils_orderModifiers_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./utils/orderModifiers.js */ "./node_modules/@popperjs/core/lib/utils/orderModifiers.js");
-/* harmony import */ var _utils_debounce_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/debounce.js */ "./node_modules/@popperjs/core/lib/utils/debounce.js");
-/* harmony import */ var _utils_mergeByName_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./utils/mergeByName.js */ "./node_modules/@popperjs/core/lib/utils/mergeByName.js");
-/* harmony import */ var _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/detectOverflow.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
-/* harmony import */ var _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./dom-utils/instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+/* harmony import */ var _dom_utils_getCompositeRect_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./dom-utils/getCompositeRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js");
+/* harmony import */ var _dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./dom-utils/getLayoutRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js");
+/* harmony import */ var _dom_utils_listScrollParents_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./dom-utils/listScrollParents.js */ "./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js");
+/* harmony import */ var _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./dom-utils/getOffsetParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js");
+/* harmony import */ var _utils_orderModifiers_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./utils/orderModifiers.js */ "./node_modules/@popperjs/core/lib/utils/orderModifiers.js");
+/* harmony import */ var _utils_debounce_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./utils/debounce.js */ "./node_modules/@popperjs/core/lib/utils/debounce.js");
+/* harmony import */ var _utils_mergeByName_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./utils/mergeByName.js */ "./node_modules/@popperjs/core/lib/utils/mergeByName.js");
+/* harmony import */ var _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./utils/detectOverflow.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
+/* harmony import */ var _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./dom-utils/instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
 
 
 
@@ -84,12 +84,12 @@ function popperGenerator(generatorOptions) {
         cleanupModifierEffects();
         state.options = Object.assign({}, defaultOptions, state.options, options);
         state.scrollParents = {
-          reference: (0,_dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_8__.isElement)(reference) ? (0,_dom_utils_listScrollParents_js__WEBPACK_IMPORTED_MODULE_2__["default"])(reference) : reference.contextElement ? (0,_dom_utils_listScrollParents_js__WEBPACK_IMPORTED_MODULE_2__["default"])(reference.contextElement) : [],
-          popper: (0,_dom_utils_listScrollParents_js__WEBPACK_IMPORTED_MODULE_2__["default"])(popper)
+          reference: (0,_dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isElement)(reference) ? (0,_dom_utils_listScrollParents_js__WEBPACK_IMPORTED_MODULE_1__["default"])(reference) : reference.contextElement ? (0,_dom_utils_listScrollParents_js__WEBPACK_IMPORTED_MODULE_1__["default"])(reference.contextElement) : [],
+          popper: (0,_dom_utils_listScrollParents_js__WEBPACK_IMPORTED_MODULE_1__["default"])(popper)
         }; // Orders the modifiers based on their dependencies and `phase`
         // properties
 
-        var orderedModifiers = (0,_utils_orderModifiers_js__WEBPACK_IMPORTED_MODULE_4__["default"])((0,_utils_mergeByName_js__WEBPACK_IMPORTED_MODULE_6__["default"])([].concat(defaultModifiers, state.options.modifiers))); // Strip out disabled modifiers
+        var orderedModifiers = (0,_utils_orderModifiers_js__WEBPACK_IMPORTED_MODULE_2__["default"])((0,_utils_mergeByName_js__WEBPACK_IMPORTED_MODULE_3__["default"])([].concat(defaultModifiers, state.options.modifiers))); // Strip out disabled modifiers
 
         state.orderedModifiers = orderedModifiers.filter(function (m) {
           return m.enabled;
@@ -118,8 +118,8 @@ function popperGenerator(generatorOptions) {
 
 
         state.rects = {
-          reference: (0,_dom_utils_getCompositeRect_js__WEBPACK_IMPORTED_MODULE_0__["default"])(reference, (0,_dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_3__["default"])(popper), state.options.strategy === 'fixed'),
-          popper: (0,_dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_1__["default"])(popper)
+          reference: (0,_dom_utils_getCompositeRect_js__WEBPACK_IMPORTED_MODULE_4__["default"])(reference, (0,_dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_5__["default"])(popper), state.options.strategy === 'fixed'),
+          popper: (0,_dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_6__["default"])(popper)
         }; // Modifiers have the ability to reset the current update cycle. The
         // most common use case for this is the `flip` modifier changing the
         // placement, which then needs to re-run all the modifiers, because the
@@ -161,7 +161,7 @@ function popperGenerator(generatorOptions) {
       },
       // Async and optimistically optimized update – it will not be executed if
       // not necessary (debounced to run at most once-per-tick)
-      update: (0,_utils_debounce_js__WEBPACK_IMPORTED_MODULE_5__["default"])(function () {
+      update: (0,_utils_debounce_js__WEBPACK_IMPORTED_MODULE_7__["default"])(function () {
         return new Promise(function (resolve) {
           instance.forceUpdate();
           resolve(state);
@@ -223,13 +223,13 @@ var createPopper = /*#__PURE__*/popperGenerator(); // eslint-disable-next-line i
 
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/contains.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/contains.js":
 /*!***************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/contains.js ***!
   \***************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -261,13 +261,13 @@ function contains(parent, child) {
   return false;
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js":
 /*!****************************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js ***!
   \****************************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -320,32 +320,32 @@ function getBoundingClientRect(element, includeScale, isFixedStrategy) {
   };
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js ***!
   \**********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ getClippingRect)
 /* harmony export */ });
-/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
-/* harmony import */ var _getViewportRect_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getViewportRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js");
-/* harmony import */ var _getDocumentRect_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getDocumentRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js");
-/* harmony import */ var _listScrollParents_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./listScrollParents.js */ "./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js");
-/* harmony import */ var _getOffsetParent_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./getOffsetParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js");
-/* harmony import */ var _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
-/* harmony import */ var _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./getComputedStyle.js */ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js");
-/* harmony import */ var _instanceOf_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
-/* harmony import */ var _getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./getBoundingClientRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js");
-/* harmony import */ var _getParentNode_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./getParentNode.js */ "./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js");
-/* harmony import */ var _contains_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./contains.js */ "./node_modules/@popperjs/core/lib/dom-utils/contains.js");
-/* harmony import */ var _getNodeName_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
-/* harmony import */ var _utils_rectToClientRect_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ../utils/rectToClientRect.js */ "./node_modules/@popperjs/core/lib/utils/rectToClientRect.js");
+/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+/* harmony import */ var _getViewportRect_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getViewportRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js");
+/* harmony import */ var _getDocumentRect_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./getDocumentRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js");
+/* harmony import */ var _listScrollParents_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./listScrollParents.js */ "./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js");
+/* harmony import */ var _getOffsetParent_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./getOffsetParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js");
+/* harmony import */ var _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
+/* harmony import */ var _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./getComputedStyle.js */ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js");
+/* harmony import */ var _instanceOf_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+/* harmony import */ var _getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getBoundingClientRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js");
+/* harmony import */ var _getParentNode_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./getParentNode.js */ "./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js");
+/* harmony import */ var _contains_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./contains.js */ "./node_modules/@popperjs/core/lib/dom-utils/contains.js");
+/* harmony import */ var _getNodeName_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
+/* harmony import */ var _utils_rectToClientRect_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/rectToClientRect.js */ "./node_modules/@popperjs/core/lib/utils/rectToClientRect.js");
 /* harmony import */ var _utils_math_js__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! ../utils/math.js */ "./node_modules/@popperjs/core/lib/utils/math.js");
 
 
@@ -363,7 +363,7 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function getInnerBoundingClientRect(element, strategy) {
-  var rect = (0,_getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_8__["default"])(element, false, strategy === 'fixed');
+  var rect = (0,_getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element, false, strategy === 'fixed');
   rect.top = rect.top + element.clientTop;
   rect.left = rect.left + element.clientLeft;
   rect.bottom = rect.top + element.clientHeight;
@@ -376,24 +376,24 @@ function getInnerBoundingClientRect(element, strategy) {
 }
 
 function getClientRectFromMixedType(element, clippingParent, strategy) {
-  return clippingParent === _enums_js__WEBPACK_IMPORTED_MODULE_0__.viewport ? (0,_utils_rectToClientRect_js__WEBPACK_IMPORTED_MODULE_12__["default"])((0,_getViewportRect_js__WEBPACK_IMPORTED_MODULE_1__["default"])(element, strategy)) : (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_7__.isElement)(clippingParent) ? getInnerBoundingClientRect(clippingParent, strategy) : (0,_utils_rectToClientRect_js__WEBPACK_IMPORTED_MODULE_12__["default"])((0,_getDocumentRect_js__WEBPACK_IMPORTED_MODULE_2__["default"])((0,_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_5__["default"])(element)));
+  return clippingParent === _enums_js__WEBPACK_IMPORTED_MODULE_1__.viewport ? (0,_utils_rectToClientRect_js__WEBPACK_IMPORTED_MODULE_2__["default"])((0,_getViewportRect_js__WEBPACK_IMPORTED_MODULE_3__["default"])(element, strategy)) : (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_4__.isElement)(clippingParent) ? getInnerBoundingClientRect(clippingParent, strategy) : (0,_utils_rectToClientRect_js__WEBPACK_IMPORTED_MODULE_2__["default"])((0,_getDocumentRect_js__WEBPACK_IMPORTED_MODULE_5__["default"])((0,_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_6__["default"])(element)));
 } // A "clipping parent" is an overflowable container with the characteristic of
 // clipping (or hiding) overflowing elements with a position different from
 // `initial`
 
 
 function getClippingParents(element) {
-  var clippingParents = (0,_listScrollParents_js__WEBPACK_IMPORTED_MODULE_3__["default"])((0,_getParentNode_js__WEBPACK_IMPORTED_MODULE_9__["default"])(element));
-  var canEscapeClipping = ['absolute', 'fixed'].indexOf((0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_6__["default"])(element).position) >= 0;
-  var clipperElement = canEscapeClipping && (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_7__.isHTMLElement)(element) ? (0,_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_4__["default"])(element) : element;
+  var clippingParents = (0,_listScrollParents_js__WEBPACK_IMPORTED_MODULE_7__["default"])((0,_getParentNode_js__WEBPACK_IMPORTED_MODULE_8__["default"])(element));
+  var canEscapeClipping = ['absolute', 'fixed'].indexOf((0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_9__["default"])(element).position) >= 0;
+  var clipperElement = canEscapeClipping && (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_4__.isHTMLElement)(element) ? (0,_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_10__["default"])(element) : element;
 
-  if (!(0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_7__.isElement)(clipperElement)) {
+  if (!(0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_4__.isElement)(clipperElement)) {
     return [];
   } // $FlowFixMe[incompatible-return]: https://github.com/facebook/flow/issues/1414
 
 
   return clippingParents.filter(function (clippingParent) {
-    return (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_7__.isElement)(clippingParent) && (0,_contains_js__WEBPACK_IMPORTED_MODULE_10__["default"])(clippingParent, clipperElement) && (0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_11__["default"])(clippingParent) !== 'body';
+    return (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_4__.isElement)(clippingParent) && (0,_contains_js__WEBPACK_IMPORTED_MODULE_11__["default"])(clippingParent, clipperElement) && (0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_12__["default"])(clippingParent) !== 'body';
   });
 } // Gets the maximum area that the element is visible in due to any number of
 // clipping parents
@@ -418,27 +418,27 @@ function getClippingRect(element, boundary, rootBoundary, strategy) {
   return clippingRect;
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getCompositeRect.js ***!
   \***********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ getCompositeRect)
 /* harmony export */ });
-/* harmony import */ var _getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getBoundingClientRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js");
-/* harmony import */ var _getNodeScroll_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getNodeScroll.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js");
-/* harmony import */ var _getNodeName_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
-/* harmony import */ var _instanceOf_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
-/* harmony import */ var _getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./getWindowScrollBarX.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js");
-/* harmony import */ var _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
-/* harmony import */ var _isScrollParent_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./isScrollParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js");
-/* harmony import */ var _utils_math_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/math.js */ "./node_modules/@popperjs/core/lib/utils/math.js");
+/* harmony import */ var _getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getBoundingClientRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js");
+/* harmony import */ var _getNodeScroll_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./getNodeScroll.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js");
+/* harmony import */ var _getNodeName_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
+/* harmony import */ var _instanceOf_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+/* harmony import */ var _getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./getWindowScrollBarX.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js");
+/* harmony import */ var _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
+/* harmony import */ var _isScrollParent_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./isScrollParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js");
+/* harmony import */ var _utils_math_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/math.js */ "./node_modules/@popperjs/core/lib/utils/math.js");
 
 
 
@@ -450,8 +450,8 @@ __webpack_require__.r(__webpack_exports__);
 
 function isElementScaled(element) {
   var rect = element.getBoundingClientRect();
-  var scaleX = (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_7__.round)(rect.width) / element.offsetWidth || 1;
-  var scaleY = (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_7__.round)(rect.height) / element.offsetHeight || 1;
+  var scaleX = (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_0__.round)(rect.width) / element.offsetWidth || 1;
+  var scaleY = (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_0__.round)(rect.height) / element.offsetHeight || 1;
   return scaleX !== 1 || scaleY !== 1;
 } // Returns the composite rect of an element relative to its offsetParent.
 // Composite means it takes into account transforms as well as layout.
@@ -462,10 +462,10 @@ function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
     isFixed = false;
   }
 
-  var isOffsetParentAnElement = (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_3__.isHTMLElement)(offsetParent);
-  var offsetParentIsScaled = (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_3__.isHTMLElement)(offsetParent) && isElementScaled(offsetParent);
-  var documentElement = (0,_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_5__["default"])(offsetParent);
-  var rect = (0,_getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_0__["default"])(elementOrVirtualElement, offsetParentIsScaled, isFixed);
+  var isOffsetParentAnElement = (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_1__.isHTMLElement)(offsetParent);
+  var offsetParentIsScaled = (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_1__.isHTMLElement)(offsetParent) && isElementScaled(offsetParent);
+  var documentElement = (0,_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(offsetParent);
+  var rect = (0,_getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_3__["default"])(elementOrVirtualElement, offsetParentIsScaled, isFixed);
   var scroll = {
     scrollLeft: 0,
     scrollTop: 0
@@ -476,17 +476,17 @@ function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
   };
 
   if (isOffsetParentAnElement || !isOffsetParentAnElement && !isFixed) {
-    if ((0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_2__["default"])(offsetParent) !== 'body' || // https://github.com/popperjs/popper-core/issues/1078
-    (0,_isScrollParent_js__WEBPACK_IMPORTED_MODULE_6__["default"])(documentElement)) {
-      scroll = (0,_getNodeScroll_js__WEBPACK_IMPORTED_MODULE_1__["default"])(offsetParent);
+    if ((0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_4__["default"])(offsetParent) !== 'body' || // https://github.com/popperjs/popper-core/issues/1078
+    (0,_isScrollParent_js__WEBPACK_IMPORTED_MODULE_5__["default"])(documentElement)) {
+      scroll = (0,_getNodeScroll_js__WEBPACK_IMPORTED_MODULE_6__["default"])(offsetParent);
     }
 
-    if ((0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_3__.isHTMLElement)(offsetParent)) {
-      offsets = (0,_getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_0__["default"])(offsetParent, true);
+    if ((0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_1__.isHTMLElement)(offsetParent)) {
+      offsets = (0,_getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_3__["default"])(offsetParent, true);
       offsets.x += offsetParent.clientLeft;
       offsets.y += offsetParent.clientTop;
     } else if (documentElement) {
-      offsets.x = (0,_getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_4__["default"])(documentElement);
+      offsets.x = (0,_getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_7__["default"])(documentElement);
     }
   }
 
@@ -498,13 +498,13 @@ function getCompositeRect(elementOrVirtualElement, offsetParent, isFixed) {
   };
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js ***!
   \***********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -517,13 +517,13 @@ function getComputedStyle(element) {
   return (0,_getWindow_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element).getComputedStyle(element);
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js":
 /*!*************************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js ***!
   \*************************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -538,13 +538,13 @@ function getDocumentElement(element) {
   element.document) || window.document).documentElement;
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getDocumentRect.js ***!
   \**********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -552,10 +552,10 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ getDocumentRect)
 /* harmony export */ });
 /* harmony import */ var _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
-/* harmony import */ var _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getComputedStyle.js */ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js");
-/* harmony import */ var _getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getWindowScrollBarX.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js");
-/* harmony import */ var _getWindowScroll_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getWindowScroll.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js");
-/* harmony import */ var _utils_math_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/math.js */ "./node_modules/@popperjs/core/lib/utils/math.js");
+/* harmony import */ var _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./getComputedStyle.js */ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js");
+/* harmony import */ var _getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getWindowScrollBarX.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js");
+/* harmony import */ var _getWindowScroll_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getWindowScroll.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js");
+/* harmony import */ var _utils_math_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/math.js */ "./node_modules/@popperjs/core/lib/utils/math.js");
 
 
 
@@ -567,15 +567,15 @@ function getDocumentRect(element) {
   var _element$ownerDocumen;
 
   var html = (0,_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element);
-  var winScroll = (0,_getWindowScroll_js__WEBPACK_IMPORTED_MODULE_3__["default"])(element);
+  var winScroll = (0,_getWindowScroll_js__WEBPACK_IMPORTED_MODULE_1__["default"])(element);
   var body = (_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body;
-  var width = (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_4__.max)(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
-  var height = (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_4__.max)(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
-  var x = -winScroll.scrollLeft + (0,_getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_2__["default"])(element);
+  var width = (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_2__.max)(html.scrollWidth, html.clientWidth, body ? body.scrollWidth : 0, body ? body.clientWidth : 0);
+  var height = (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_2__.max)(html.scrollHeight, html.clientHeight, body ? body.scrollHeight : 0, body ? body.clientHeight : 0);
+  var x = -winScroll.scrollLeft + (0,_getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_3__["default"])(element);
   var y = -winScroll.scrollTop;
 
-  if ((0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_1__["default"])(body || html).direction === 'rtl') {
-    x += (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_4__.max)(html.clientWidth, body ? body.clientWidth : 0) - width;
+  if ((0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_4__["default"])(body || html).direction === 'rtl') {
+    x += (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_2__.max)(html.clientWidth, body ? body.clientWidth : 0) - width;
   }
 
   return {
@@ -586,13 +586,13 @@ function getDocumentRect(element) {
   };
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js ***!
   \***************************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -606,13 +606,13 @@ function getHTMLElementScroll(element) {
   };
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js":
 /*!********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js ***!
   \********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -646,13 +646,13 @@ function getLayoutRect(element) {
   };
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js":
 /*!******************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js ***!
   \******************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -663,55 +663,55 @@ function getNodeName(element) {
   return element ? (element.nodeName || '').toLowerCase() : null;
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js":
 /*!********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getNodeScroll.js ***!
   \********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ getNodeScroll)
 /* harmony export */ });
-/* harmony import */ var _getWindowScroll_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getWindowScroll.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js");
-/* harmony import */ var _getWindow_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
-/* harmony import */ var _instanceOf_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+/* harmony import */ var _getWindowScroll_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getWindowScroll.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js");
+/* harmony import */ var _getWindow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
+/* harmony import */ var _instanceOf_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
 /* harmony import */ var _getHTMLElementScroll_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getHTMLElementScroll.js */ "./node_modules/@popperjs/core/lib/dom-utils/getHTMLElementScroll.js");
 
 
 
 
 function getNodeScroll(node) {
-  if (node === (0,_getWindow_js__WEBPACK_IMPORTED_MODULE_1__["default"])(node) || !(0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_2__.isHTMLElement)(node)) {
-    return (0,_getWindowScroll_js__WEBPACK_IMPORTED_MODULE_0__["default"])(node);
+  if (node === (0,_getWindow_js__WEBPACK_IMPORTED_MODULE_0__["default"])(node) || !(0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_1__.isHTMLElement)(node)) {
+    return (0,_getWindowScroll_js__WEBPACK_IMPORTED_MODULE_2__["default"])(node);
   } else {
     return (0,_getHTMLElementScroll_js__WEBPACK_IMPORTED_MODULE_3__["default"])(node);
   }
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js ***!
   \**********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ getOffsetParent)
 /* harmony export */ });
-/* harmony import */ var _getWindow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
-/* harmony import */ var _getNodeName_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
-/* harmony import */ var _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getComputedStyle.js */ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js");
-/* harmony import */ var _instanceOf_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
-/* harmony import */ var _isTableElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./isTableElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/isTableElement.js");
-/* harmony import */ var _getParentNode_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./getParentNode.js */ "./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js");
-/* harmony import */ var _utils_userAgent_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/userAgent.js */ "./node_modules/@popperjs/core/lib/utils/userAgent.js");
+/* harmony import */ var _getWindow_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
+/* harmony import */ var _getNodeName_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
+/* harmony import */ var _getComputedStyle_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getComputedStyle.js */ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js");
+/* harmony import */ var _instanceOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+/* harmony import */ var _isTableElement_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./isTableElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/isTableElement.js");
+/* harmony import */ var _getParentNode_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getParentNode.js */ "./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js");
+/* harmony import */ var _utils_userAgent_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/userAgent.js */ "./node_modules/@popperjs/core/lib/utils/userAgent.js");
 
 
 
@@ -721,8 +721,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 function getTrueOffsetParent(element) {
-  if (!(0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_3__.isHTMLElement)(element) || // https://github.com/popperjs/popper-core/issues/837
-  (0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_2__["default"])(element).position === 'fixed') {
+  if (!(0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isHTMLElement)(element) || // https://github.com/popperjs/popper-core/issues/837
+  (0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_1__["default"])(element).position === 'fixed') {
     return null;
   }
 
@@ -732,26 +732,26 @@ function getTrueOffsetParent(element) {
 
 
 function getContainingBlock(element) {
-  var isFirefox = /firefox/i.test((0,_utils_userAgent_js__WEBPACK_IMPORTED_MODULE_6__["default"])());
-  var isIE = /Trident/i.test((0,_utils_userAgent_js__WEBPACK_IMPORTED_MODULE_6__["default"])());
+  var isFirefox = /firefox/i.test((0,_utils_userAgent_js__WEBPACK_IMPORTED_MODULE_2__["default"])());
+  var isIE = /Trident/i.test((0,_utils_userAgent_js__WEBPACK_IMPORTED_MODULE_2__["default"])());
 
-  if (isIE && (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_3__.isHTMLElement)(element)) {
+  if (isIE && (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isHTMLElement)(element)) {
     // In IE 9, 10 and 11 fixed elements containing block is always established by the viewport
-    var elementCss = (0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_2__["default"])(element);
+    var elementCss = (0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_1__["default"])(element);
 
     if (elementCss.position === 'fixed') {
       return null;
     }
   }
 
-  var currentNode = (0,_getParentNode_js__WEBPACK_IMPORTED_MODULE_5__["default"])(element);
+  var currentNode = (0,_getParentNode_js__WEBPACK_IMPORTED_MODULE_3__["default"])(element);
 
-  if ((0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_3__.isShadowRoot)(currentNode)) {
+  if ((0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isShadowRoot)(currentNode)) {
     currentNode = currentNode.host;
   }
 
-  while ((0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_3__.isHTMLElement)(currentNode) && ['html', 'body'].indexOf((0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_1__["default"])(currentNode)) < 0) {
-    var css = (0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_2__["default"])(currentNode); // This is non-exhaustive but covers the most common CSS properties that
+  while ((0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isHTMLElement)(currentNode) && ['html', 'body'].indexOf((0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_4__["default"])(currentNode)) < 0) {
+    var css = (0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_1__["default"])(currentNode); // This is non-exhaustive but covers the most common CSS properties that
     // create a containing block.
     // https://developer.mozilla.org/en-US/docs/Web/CSS/Containing_block#identifying_the_containing_block
 
@@ -768,27 +768,27 @@ function getContainingBlock(element) {
 
 
 function getOffsetParent(element) {
-  var window = (0,_getWindow_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element);
+  var window = (0,_getWindow_js__WEBPACK_IMPORTED_MODULE_5__["default"])(element);
   var offsetParent = getTrueOffsetParent(element);
 
-  while (offsetParent && (0,_isTableElement_js__WEBPACK_IMPORTED_MODULE_4__["default"])(offsetParent) && (0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_2__["default"])(offsetParent).position === 'static') {
+  while (offsetParent && (0,_isTableElement_js__WEBPACK_IMPORTED_MODULE_6__["default"])(offsetParent) && (0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_1__["default"])(offsetParent).position === 'static') {
     offsetParent = getTrueOffsetParent(offsetParent);
   }
 
-  if (offsetParent && ((0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_1__["default"])(offsetParent) === 'html' || (0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_1__["default"])(offsetParent) === 'body' && (0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_2__["default"])(offsetParent).position === 'static')) {
+  if (offsetParent && ((0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_4__["default"])(offsetParent) === 'html' || (0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_4__["default"])(offsetParent) === 'body' && (0,_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_1__["default"])(offsetParent).position === 'static')) {
     return window;
   }
 
   return offsetParent || getContainingBlock(element) || window;
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js":
 /*!********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js ***!
   \********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -796,8 +796,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ getParentNode)
 /* harmony export */ });
 /* harmony import */ var _getNodeName_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
-/* harmony import */ var _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
-/* harmony import */ var _instanceOf_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+/* harmony import */ var _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
+/* harmony import */ var _instanceOf_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
 
 
 
@@ -811,54 +811,54 @@ function getParentNode(element) {
     // $FlowFixMe[prop-missing]
     element.assignedSlot || // step into the shadow DOM of the parent of a slotted node
     element.parentNode || ( // DOM Element detected
-    (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_2__.isShadowRoot)(element) ? element.host : null) || // ShadowRoot detected
+    (0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_1__.isShadowRoot)(element) ? element.host : null) || // ShadowRoot detected
     // $FlowFixMe[incompatible-call]: HTMLElement is a Node
-    (0,_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_1__["default"])(element) // fallback
+    (0,_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(element) // fallback
 
   );
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js ***!
   \**********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ getScrollParent)
 /* harmony export */ });
-/* harmony import */ var _getParentNode_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getParentNode.js */ "./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js");
-/* harmony import */ var _isScrollParent_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./isScrollParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js");
-/* harmony import */ var _getNodeName_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
-/* harmony import */ var _instanceOf_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+/* harmony import */ var _getParentNode_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getParentNode.js */ "./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js");
+/* harmony import */ var _isScrollParent_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isScrollParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js");
+/* harmony import */ var _getNodeName_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
+/* harmony import */ var _instanceOf_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
 
 
 
 
 function getScrollParent(node) {
-  if (['html', 'body', '#document'].indexOf((0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_2__["default"])(node)) >= 0) {
+  if (['html', 'body', '#document'].indexOf((0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_0__["default"])(node)) >= 0) {
     // $FlowFixMe[incompatible-return]: assume body is always available
     return node.ownerDocument.body;
   }
 
-  if ((0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_3__.isHTMLElement)(node) && (0,_isScrollParent_js__WEBPACK_IMPORTED_MODULE_1__["default"])(node)) {
+  if ((0,_instanceOf_js__WEBPACK_IMPORTED_MODULE_1__.isHTMLElement)(node) && (0,_isScrollParent_js__WEBPACK_IMPORTED_MODULE_2__["default"])(node)) {
     return node;
   }
 
-  return getScrollParent((0,_getParentNode_js__WEBPACK_IMPORTED_MODULE_0__["default"])(node));
+  return getScrollParent((0,_getParentNode_js__WEBPACK_IMPORTED_MODULE_3__["default"])(node));
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getViewportRect.js ***!
   \**********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -867,8 +867,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _getWindow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
 /* harmony import */ var _getDocumentElement_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
-/* harmony import */ var _getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getWindowScrollBarX.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js");
-/* harmony import */ var _isLayoutViewport_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./isLayoutViewport.js */ "./node_modules/@popperjs/core/lib/dom-utils/isLayoutViewport.js");
+/* harmony import */ var _getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getWindowScrollBarX.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js");
+/* harmony import */ var _isLayoutViewport_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isLayoutViewport.js */ "./node_modules/@popperjs/core/lib/dom-utils/isLayoutViewport.js");
 
 
 
@@ -885,7 +885,7 @@ function getViewportRect(element, strategy) {
   if (visualViewport) {
     width = visualViewport.width;
     height = visualViewport.height;
-    var layoutViewport = (0,_isLayoutViewport_js__WEBPACK_IMPORTED_MODULE_3__["default"])();
+    var layoutViewport = (0,_isLayoutViewport_js__WEBPACK_IMPORTED_MODULE_2__["default"])();
 
     if (layoutViewport || !layoutViewport && strategy === 'fixed') {
       x = visualViewport.offsetLeft;
@@ -896,18 +896,18 @@ function getViewportRect(element, strategy) {
   return {
     width: width,
     height: height,
-    x: x + (0,_getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_2__["default"])(element),
+    x: x + (0,_getWindowScrollBarX_js__WEBPACK_IMPORTED_MODULE_3__["default"])(element),
     y: y
   };
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js":
 /*!****************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getWindow.js ***!
   \****************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -927,13 +927,13 @@ function getWindow(node) {
   return node;
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getWindowScroll.js ***!
   \**********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -952,13 +952,13 @@ function getWindowScroll(node) {
   };
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js":
 /*!**************************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/getWindowScrollBarX.js ***!
   \**************************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -982,13 +982,13 @@ function getWindowScrollBarX(element) {
   return (0,_getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_1__["default"])(element)).left + (0,_getWindowScroll_js__WEBPACK_IMPORTED_MODULE_2__["default"])(element).scrollLeft;
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js ***!
   \*****************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -1022,13 +1022,13 @@ function isShadowRoot(node) {
 
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/isLayoutViewport.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/isLayoutViewport.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/isLayoutViewport.js ***!
   \***********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -1041,13 +1041,13 @@ function isLayoutViewport() {
   return !/^((?!chrome|android).)*safari/i.test((0,_utils_userAgent_js__WEBPACK_IMPORTED_MODULE_0__["default"])());
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js ***!
   \*********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -1066,13 +1066,13 @@ function isScrollParent(element) {
   return /auto|scroll|overlay|hidden/.test(overflow + overflowY + overflowX);
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/isTableElement.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/isTableElement.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/isTableElement.js ***!
   \*********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -1085,13 +1085,13 @@ function isTableElement(element) {
   return ['table', 'td', 'th'].indexOf((0,_getNodeName_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element)) >= 0;
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js"
+/***/ "./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js":
 /*!************************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/dom-utils/listScrollParents.js ***!
   \************************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -1099,9 +1099,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ listScrollParents)
 /* harmony export */ });
 /* harmony import */ var _getScrollParent_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getScrollParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getScrollParent.js");
-/* harmony import */ var _getParentNode_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getParentNode.js */ "./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js");
-/* harmony import */ var _getWindow_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
-/* harmony import */ var _isScrollParent_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./isScrollParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js");
+/* harmony import */ var _getParentNode_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getParentNode.js */ "./node_modules/@popperjs/core/lib/dom-utils/getParentNode.js");
+/* harmony import */ var _getWindow_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
+/* harmony import */ var _isScrollParent_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./isScrollParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/isScrollParent.js");
 
 
 
@@ -1122,20 +1122,20 @@ function listScrollParents(element, list) {
 
   var scrollParent = (0,_getScrollParent_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element);
   var isBody = scrollParent === ((_element$ownerDocumen = element.ownerDocument) == null ? void 0 : _element$ownerDocumen.body);
-  var win = (0,_getWindow_js__WEBPACK_IMPORTED_MODULE_2__["default"])(scrollParent);
-  var target = isBody ? [win].concat(win.visualViewport || [], (0,_isScrollParent_js__WEBPACK_IMPORTED_MODULE_3__["default"])(scrollParent) ? scrollParent : []) : scrollParent;
+  var win = (0,_getWindow_js__WEBPACK_IMPORTED_MODULE_1__["default"])(scrollParent);
+  var target = isBody ? [win].concat(win.visualViewport || [], (0,_isScrollParent_js__WEBPACK_IMPORTED_MODULE_2__["default"])(scrollParent) ? scrollParent : []) : scrollParent;
   var updatedList = list.concat(target);
   return isBody ? updatedList : // $FlowFixMe[incompatible-call]: isBody tells us target will be an HTMLElement here
-  updatedList.concat(listScrollParents((0,_getParentNode_js__WEBPACK_IMPORTED_MODULE_1__["default"])(target)));
+  updatedList.concat(listScrollParents((0,_getParentNode_js__WEBPACK_IMPORTED_MODULE_3__["default"])(target)));
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/enums.js"
+/***/ "./node_modules/@popperjs/core/lib/enums.js":
 /*!**************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/enums.js ***!
   \**************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -1197,13 +1197,13 @@ var write = 'write';
 var afterWrite = 'afterWrite';
 var modifierPhases = [beforeRead, read, afterRead, beforeMain, main, afterMain, beforeWrite, write, afterWrite];
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/index.js"
+/***/ "./node_modules/@popperjs/core/lib/index.js":
 /*!**************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/index.js ***!
   \**************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -1262,21 +1262,21 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/modifiers/applyStyles.js"
+/***/ "./node_modules/@popperjs/core/lib/modifiers/applyStyles.js":
 /*!******************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/modifiers/applyStyles.js ***!
   \******************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _dom_utils_getNodeName_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../dom-utils/getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
-/* harmony import */ var _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dom-utils/instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+/* harmony import */ var _dom_utils_getNodeName_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dom-utils/getNodeName.js */ "./node_modules/@popperjs/core/lib/dom-utils/getNodeName.js");
+/* harmony import */ var _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../dom-utils/instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
 
  // This modifier takes the styles prepared by the `computeStyles` modifier
 // and applies them to the HTMLElements such as popper and arrow
@@ -1288,7 +1288,7 @@ function applyStyles(_ref) {
     var attributes = state.attributes[name] || {};
     var element = state.elements[name]; // arrow is optional + virtual elements
 
-    if (!(0,_dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_1__.isHTMLElement)(element) || !(0,_dom_utils_getNodeName_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element)) {
+    if (!(0,_dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isHTMLElement)(element) || !(0,_dom_utils_getNodeName_js__WEBPACK_IMPORTED_MODULE_1__["default"])(element)) {
       return;
     } // Flow doesn't support to extend this property, but it's the most
     // effective way to apply styles to an HTMLElement
@@ -1340,7 +1340,7 @@ function effect(_ref2) {
         return style;
       }, {}); // arrow is optional + virtual elements
 
-      if (!(0,_dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_1__.isHTMLElement)(element) || !(0,_dom_utils_getNodeName_js__WEBPACK_IMPORTED_MODULE_0__["default"])(element)) {
+      if (!(0,_dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_0__.isHTMLElement)(element) || !(0,_dom_utils_getNodeName_js__WEBPACK_IMPORTED_MODULE_1__["default"])(element)) {
         return;
       }
 
@@ -1362,28 +1362,28 @@ function effect(_ref2) {
   requires: ['computeStyles']
 });
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/modifiers/arrow.js"
+/***/ "./node_modules/@popperjs/core/lib/modifiers/arrow.js":
 /*!************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/modifiers/arrow.js ***!
   \************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
-/* harmony import */ var _dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dom-utils/getLayoutRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js");
-/* harmony import */ var _dom_utils_contains_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dom-utils/contains.js */ "./node_modules/@popperjs/core/lib/dom-utils/contains.js");
-/* harmony import */ var _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dom-utils/getOffsetParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js");
+/* harmony import */ var _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
+/* harmony import */ var _dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../dom-utils/getLayoutRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js");
+/* harmony import */ var _dom_utils_contains_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../dom-utils/contains.js */ "./node_modules/@popperjs/core/lib/dom-utils/contains.js");
+/* harmony import */ var _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../dom-utils/getOffsetParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js");
 /* harmony import */ var _utils_getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getMainAxisFromPlacement.js */ "./node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js");
-/* harmony import */ var _utils_within_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/within.js */ "./node_modules/@popperjs/core/lib/utils/within.js");
-/* harmony import */ var _utils_mergePaddingObject_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/mergePaddingObject.js */ "./node_modules/@popperjs/core/lib/utils/mergePaddingObject.js");
-/* harmony import */ var _utils_expandToHashMap_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/expandToHashMap.js */ "./node_modules/@popperjs/core/lib/utils/expandToHashMap.js");
-/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+/* harmony import */ var _utils_within_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/within.js */ "./node_modules/@popperjs/core/lib/utils/within.js");
+/* harmony import */ var _utils_mergePaddingObject_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/mergePaddingObject.js */ "./node_modules/@popperjs/core/lib/utils/mergePaddingObject.js");
+/* harmony import */ var _utils_expandToHashMap_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/expandToHashMap.js */ "./node_modules/@popperjs/core/lib/utils/expandToHashMap.js");
+/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
 
 
 
@@ -1398,7 +1398,7 @@ var toPaddingObject = function toPaddingObject(padding, state) {
   padding = typeof padding === 'function' ? padding(Object.assign({}, state.rects, {
     placement: state.placement
   })) : padding;
-  return (0,_utils_mergePaddingObject_js__WEBPACK_IMPORTED_MODULE_6__["default"])(typeof padding !== 'number' ? padding : (0,_utils_expandToHashMap_js__WEBPACK_IMPORTED_MODULE_7__["default"])(padding, _enums_js__WEBPACK_IMPORTED_MODULE_8__.basePlacements));
+  return (0,_utils_mergePaddingObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(typeof padding !== 'number' ? padding : (0,_utils_expandToHashMap_js__WEBPACK_IMPORTED_MODULE_1__["default"])(padding, _enums_js__WEBPACK_IMPORTED_MODULE_2__.basePlacements));
 };
 
 function arrow(_ref) {
@@ -1409,9 +1409,9 @@ function arrow(_ref) {
       options = _ref.options;
   var arrowElement = state.elements.arrow;
   var popperOffsets = state.modifiersData.popperOffsets;
-  var basePlacement = (0,_utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(state.placement);
+  var basePlacement = (0,_utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_3__["default"])(state.placement);
   var axis = (0,_utils_getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_4__["default"])(basePlacement);
-  var isVertical = [_enums_js__WEBPACK_IMPORTED_MODULE_8__.left, _enums_js__WEBPACK_IMPORTED_MODULE_8__.right].indexOf(basePlacement) >= 0;
+  var isVertical = [_enums_js__WEBPACK_IMPORTED_MODULE_2__.left, _enums_js__WEBPACK_IMPORTED_MODULE_2__.right].indexOf(basePlacement) >= 0;
   var len = isVertical ? 'height' : 'width';
 
   if (!arrowElement || !popperOffsets) {
@@ -1419,12 +1419,12 @@ function arrow(_ref) {
   }
 
   var paddingObject = toPaddingObject(options.padding, state);
-  var arrowRect = (0,_dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_1__["default"])(arrowElement);
-  var minProp = axis === 'y' ? _enums_js__WEBPACK_IMPORTED_MODULE_8__.top : _enums_js__WEBPACK_IMPORTED_MODULE_8__.left;
-  var maxProp = axis === 'y' ? _enums_js__WEBPACK_IMPORTED_MODULE_8__.bottom : _enums_js__WEBPACK_IMPORTED_MODULE_8__.right;
+  var arrowRect = (0,_dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_5__["default"])(arrowElement);
+  var minProp = axis === 'y' ? _enums_js__WEBPACK_IMPORTED_MODULE_2__.top : _enums_js__WEBPACK_IMPORTED_MODULE_2__.left;
+  var maxProp = axis === 'y' ? _enums_js__WEBPACK_IMPORTED_MODULE_2__.bottom : _enums_js__WEBPACK_IMPORTED_MODULE_2__.right;
   var endDiff = state.rects.reference[len] + state.rects.reference[axis] - popperOffsets[axis] - state.rects.popper[len];
   var startDiff = popperOffsets[axis] - state.rects.reference[axis];
-  var arrowOffsetParent = (0,_dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_3__["default"])(arrowElement);
+  var arrowOffsetParent = (0,_dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_6__["default"])(arrowElement);
   var clientSize = arrowOffsetParent ? axis === 'y' ? arrowOffsetParent.clientHeight || 0 : arrowOffsetParent.clientWidth || 0 : 0;
   var centerToReference = endDiff / 2 - startDiff / 2; // Make sure the arrow doesn't overflow the popper if the center point is
   // outside of the popper bounds
@@ -1432,7 +1432,7 @@ function arrow(_ref) {
   var min = paddingObject[minProp];
   var max = clientSize - arrowRect[len] - paddingObject[maxProp];
   var center = clientSize / 2 - arrowRect[len] / 2 + centerToReference;
-  var offset = (0,_utils_within_js__WEBPACK_IMPORTED_MODULE_5__.within)(min, center, max); // Prevents breaking syntax highlighting...
+  var offset = (0,_utils_within_js__WEBPACK_IMPORTED_MODULE_7__.within)(min, center, max); // Prevents breaking syntax highlighting...
 
   var axisProp = axis;
   state.modifiersData[name] = (_state$modifiersData$ = {}, _state$modifiersData$[axisProp] = offset, _state$modifiersData$.centerOffset = offset - center, _state$modifiersData$);
@@ -1457,7 +1457,7 @@ function effect(_ref2) {
     }
   }
 
-  if (!(0,_dom_utils_contains_js__WEBPACK_IMPORTED_MODULE_2__["default"])(state.elements.popper, arrowElement)) {
+  if (!(0,_dom_utils_contains_js__WEBPACK_IMPORTED_MODULE_8__["default"])(state.elements.popper, arrowElement)) {
     return;
   }
 
@@ -1475,13 +1475,13 @@ function effect(_ref2) {
   requiresIfExists: ['preventOverflow']
 });
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/modifiers/computeStyles.js"
+/***/ "./node_modules/@popperjs/core/lib/modifiers/computeStyles.js":
 /*!********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/modifiers/computeStyles.js ***!
   \********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -1489,14 +1489,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__),
 /* harmony export */   mapToStyles: () => (/* binding */ mapToStyles)
 /* harmony export */ });
-/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
-/* harmony import */ var _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dom-utils/getOffsetParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js");
-/* harmony import */ var _dom_utils_getWindow_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dom-utils/getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
-/* harmony import */ var _dom_utils_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dom-utils/getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
-/* harmony import */ var _dom_utils_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../dom-utils/getComputedStyle.js */ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js");
-/* harmony import */ var _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
-/* harmony import */ var _utils_getVariation_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getVariation.js */ "./node_modules/@popperjs/core/lib/utils/getVariation.js");
-/* harmony import */ var _utils_math_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/math.js */ "./node_modules/@popperjs/core/lib/utils/math.js");
+/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+/* harmony import */ var _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dom-utils/getOffsetParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js");
+/* harmony import */ var _dom_utils_getWindow_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dom-utils/getWindow.js */ "./node_modules/@popperjs/core/lib/dom-utils/getWindow.js");
+/* harmony import */ var _dom_utils_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../dom-utils/getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
+/* harmony import */ var _dom_utils_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../dom-utils/getComputedStyle.js */ "./node_modules/@popperjs/core/lib/dom-utils/getComputedStyle.js");
+/* harmony import */ var _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
+/* harmony import */ var _utils_getVariation_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/getVariation.js */ "./node_modules/@popperjs/core/lib/utils/getVariation.js");
+/* harmony import */ var _utils_math_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/math.js */ "./node_modules/@popperjs/core/lib/utils/math.js");
 
 
 
@@ -1520,8 +1520,8 @@ function roundOffsetsByDPR(_ref, win) {
       y = _ref.y;
   var dpr = win.devicePixelRatio || 1;
   return {
-    x: (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_7__.round)(x * dpr) / dpr || 0,
-    y: (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_7__.round)(y * dpr) / dpr || 0
+    x: (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_0__.round)(x * dpr) / dpr || 0,
+    y: (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_0__.round)(y * dpr) / dpr || 0
   };
 }
 
@@ -1555,19 +1555,19 @@ function mapToStyles(_ref2) {
   y = _ref3.y;
   var hasX = offsets.hasOwnProperty('x');
   var hasY = offsets.hasOwnProperty('y');
-  var sideX = _enums_js__WEBPACK_IMPORTED_MODULE_0__.left;
-  var sideY = _enums_js__WEBPACK_IMPORTED_MODULE_0__.top;
+  var sideX = _enums_js__WEBPACK_IMPORTED_MODULE_1__.left;
+  var sideY = _enums_js__WEBPACK_IMPORTED_MODULE_1__.top;
   var win = window;
 
   if (adaptive) {
-    var offsetParent = (0,_dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_1__["default"])(popper);
+    var offsetParent = (0,_dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_2__["default"])(popper);
     var heightProp = 'clientHeight';
     var widthProp = 'clientWidth';
 
-    if (offsetParent === (0,_dom_utils_getWindow_js__WEBPACK_IMPORTED_MODULE_2__["default"])(popper)) {
-      offsetParent = (0,_dom_utils_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_3__["default"])(popper);
+    if (offsetParent === (0,_dom_utils_getWindow_js__WEBPACK_IMPORTED_MODULE_3__["default"])(popper)) {
+      offsetParent = (0,_dom_utils_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_4__["default"])(popper);
 
-      if ((0,_dom_utils_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_4__["default"])(offsetParent).position !== 'static' && position === 'absolute') {
+      if ((0,_dom_utils_getComputedStyle_js__WEBPACK_IMPORTED_MODULE_5__["default"])(offsetParent).position !== 'static' && position === 'absolute') {
         heightProp = 'scrollHeight';
         widthProp = 'scrollWidth';
       }
@@ -1576,16 +1576,16 @@ function mapToStyles(_ref2) {
 
     offsetParent = offsetParent;
 
-    if (placement === _enums_js__WEBPACK_IMPORTED_MODULE_0__.top || (placement === _enums_js__WEBPACK_IMPORTED_MODULE_0__.left || placement === _enums_js__WEBPACK_IMPORTED_MODULE_0__.right) && variation === _enums_js__WEBPACK_IMPORTED_MODULE_0__.end) {
-      sideY = _enums_js__WEBPACK_IMPORTED_MODULE_0__.bottom;
+    if (placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.top || (placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.left || placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.right) && variation === _enums_js__WEBPACK_IMPORTED_MODULE_1__.end) {
+      sideY = _enums_js__WEBPACK_IMPORTED_MODULE_1__.bottom;
       var offsetY = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.height : // $FlowFixMe[prop-missing]
       offsetParent[heightProp];
       y -= offsetY - popperRect.height;
       y *= gpuAcceleration ? 1 : -1;
     }
 
-    if (placement === _enums_js__WEBPACK_IMPORTED_MODULE_0__.left || (placement === _enums_js__WEBPACK_IMPORTED_MODULE_0__.top || placement === _enums_js__WEBPACK_IMPORTED_MODULE_0__.bottom) && variation === _enums_js__WEBPACK_IMPORTED_MODULE_0__.end) {
-      sideX = _enums_js__WEBPACK_IMPORTED_MODULE_0__.right;
+    if (placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.left || (placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.top || placement === _enums_js__WEBPACK_IMPORTED_MODULE_1__.bottom) && variation === _enums_js__WEBPACK_IMPORTED_MODULE_1__.end) {
+      sideX = _enums_js__WEBPACK_IMPORTED_MODULE_1__.right;
       var offsetX = isFixed && offsetParent === win && win.visualViewport ? win.visualViewport.width : // $FlowFixMe[prop-missing]
       offsetParent[widthProp];
       x -= offsetX - popperRect.width;
@@ -1600,7 +1600,7 @@ function mapToStyles(_ref2) {
   var _ref4 = roundOffsets === true ? roundOffsetsByDPR({
     x: x,
     y: y
-  }, (0,_dom_utils_getWindow_js__WEBPACK_IMPORTED_MODULE_2__["default"])(popper)) : {
+  }, (0,_dom_utils_getWindow_js__WEBPACK_IMPORTED_MODULE_3__["default"])(popper)) : {
     x: x,
     y: y
   };
@@ -1627,8 +1627,8 @@ function computeStyles(_ref5) {
       _options$roundOffsets = options.roundOffsets,
       roundOffsets = _options$roundOffsets === void 0 ? true : _options$roundOffsets;
   var commonStyles = {
-    placement: (0,_utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_5__["default"])(state.placement),
-    variation: (0,_utils_getVariation_js__WEBPACK_IMPORTED_MODULE_6__["default"])(state.placement),
+    placement: (0,_utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_6__["default"])(state.placement),
+    variation: (0,_utils_getVariation_js__WEBPACK_IMPORTED_MODULE_7__["default"])(state.placement),
     popper: state.elements.popper,
     popperRect: state.rects.popper,
     gpuAcceleration: gpuAcceleration,
@@ -1667,13 +1667,13 @@ function computeStyles(_ref5) {
   data: {}
 });
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/modifiers/eventListeners.js"
+/***/ "./node_modules/@popperjs/core/lib/modifiers/eventListeners.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/modifiers/eventListeners.js ***!
   \*********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -1731,26 +1731,26 @@ function effect(_ref) {
   data: {}
 });
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/modifiers/flip.js"
+/***/ "./node_modules/@popperjs/core/lib/modifiers/flip.js":
 /*!***********************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/modifiers/flip.js ***!
   \***********************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _utils_getOppositePlacement_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/getOppositePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getOppositePlacement.js");
-/* harmony import */ var _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
-/* harmony import */ var _utils_getOppositeVariationPlacement_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/getOppositeVariationPlacement.js */ "./node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js");
-/* harmony import */ var _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/detectOverflow.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
+/* harmony import */ var _utils_getOppositePlacement_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/getOppositePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getOppositePlacement.js");
+/* harmony import */ var _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
+/* harmony import */ var _utils_getOppositeVariationPlacement_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getOppositeVariationPlacement.js */ "./node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js");
+/* harmony import */ var _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/detectOverflow.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
 /* harmony import */ var _utils_computeAutoPlacement_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/computeAutoPlacement.js */ "./node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js");
-/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
-/* harmony import */ var _utils_getVariation_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../utils/getVariation.js */ "./node_modules/@popperjs/core/lib/utils/getVariation.js");
+/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+/* harmony import */ var _utils_getVariation_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../utils/getVariation.js */ "./node_modules/@popperjs/core/lib/utils/getVariation.js");
 
 
 
@@ -1760,12 +1760,12 @@ __webpack_require__.r(__webpack_exports__);
  // eslint-disable-next-line import/no-unused-modules
 
 function getExpandedFallbackPlacements(placement) {
-  if ((0,_utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_1__["default"])(placement) === _enums_js__WEBPACK_IMPORTED_MODULE_5__.auto) {
+  if ((0,_utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(placement) === _enums_js__WEBPACK_IMPORTED_MODULE_1__.auto) {
     return [];
   }
 
-  var oppositePlacement = (0,_utils_getOppositePlacement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(placement);
-  return [(0,_utils_getOppositeVariationPlacement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(placement), oppositePlacement, (0,_utils_getOppositeVariationPlacement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(oppositePlacement)];
+  var oppositePlacement = (0,_utils_getOppositePlacement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(placement);
+  return [(0,_utils_getOppositeVariationPlacement_js__WEBPACK_IMPORTED_MODULE_3__["default"])(placement), oppositePlacement, (0,_utils_getOppositeVariationPlacement_js__WEBPACK_IMPORTED_MODULE_3__["default"])(oppositePlacement)];
 }
 
 function flip(_ref) {
@@ -1790,11 +1790,11 @@ function flip(_ref) {
       flipVariations = _options$flipVariatio === void 0 ? true : _options$flipVariatio,
       allowedAutoPlacements = options.allowedAutoPlacements;
   var preferredPlacement = state.options.placement;
-  var basePlacement = (0,_utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_1__["default"])(preferredPlacement);
+  var basePlacement = (0,_utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(preferredPlacement);
   var isBasePlacement = basePlacement === preferredPlacement;
-  var fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipVariations ? [(0,_utils_getOppositePlacement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(preferredPlacement)] : getExpandedFallbackPlacements(preferredPlacement));
+  var fallbackPlacements = specifiedFallbackPlacements || (isBasePlacement || !flipVariations ? [(0,_utils_getOppositePlacement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(preferredPlacement)] : getExpandedFallbackPlacements(preferredPlacement));
   var placements = [preferredPlacement].concat(fallbackPlacements).reduce(function (acc, placement) {
-    return acc.concat((0,_utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_1__["default"])(placement) === _enums_js__WEBPACK_IMPORTED_MODULE_5__.auto ? (0,_utils_computeAutoPlacement_js__WEBPACK_IMPORTED_MODULE_4__["default"])(state, {
+    return acc.concat((0,_utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(placement) === _enums_js__WEBPACK_IMPORTED_MODULE_1__.auto ? (0,_utils_computeAutoPlacement_js__WEBPACK_IMPORTED_MODULE_4__["default"])(state, {
       placement: placement,
       boundary: boundary,
       rootBoundary: rootBoundary,
@@ -1812,25 +1812,25 @@ function flip(_ref) {
   for (var i = 0; i < placements.length; i++) {
     var placement = placements[i];
 
-    var _basePlacement = (0,_utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_1__["default"])(placement);
+    var _basePlacement = (0,_utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(placement);
 
-    var isStartVariation = (0,_utils_getVariation_js__WEBPACK_IMPORTED_MODULE_6__["default"])(placement) === _enums_js__WEBPACK_IMPORTED_MODULE_5__.start;
-    var isVertical = [_enums_js__WEBPACK_IMPORTED_MODULE_5__.top, _enums_js__WEBPACK_IMPORTED_MODULE_5__.bottom].indexOf(_basePlacement) >= 0;
+    var isStartVariation = (0,_utils_getVariation_js__WEBPACK_IMPORTED_MODULE_5__["default"])(placement) === _enums_js__WEBPACK_IMPORTED_MODULE_1__.start;
+    var isVertical = [_enums_js__WEBPACK_IMPORTED_MODULE_1__.top, _enums_js__WEBPACK_IMPORTED_MODULE_1__.bottom].indexOf(_basePlacement) >= 0;
     var len = isVertical ? 'width' : 'height';
-    var overflow = (0,_utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_3__["default"])(state, {
+    var overflow = (0,_utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_6__["default"])(state, {
       placement: placement,
       boundary: boundary,
       rootBoundary: rootBoundary,
       altBoundary: altBoundary,
       padding: padding
     });
-    var mainVariationSide = isVertical ? isStartVariation ? _enums_js__WEBPACK_IMPORTED_MODULE_5__.right : _enums_js__WEBPACK_IMPORTED_MODULE_5__.left : isStartVariation ? _enums_js__WEBPACK_IMPORTED_MODULE_5__.bottom : _enums_js__WEBPACK_IMPORTED_MODULE_5__.top;
+    var mainVariationSide = isVertical ? isStartVariation ? _enums_js__WEBPACK_IMPORTED_MODULE_1__.right : _enums_js__WEBPACK_IMPORTED_MODULE_1__.left : isStartVariation ? _enums_js__WEBPACK_IMPORTED_MODULE_1__.bottom : _enums_js__WEBPACK_IMPORTED_MODULE_1__.top;
 
     if (referenceRect[len] > popperRect[len]) {
-      mainVariationSide = (0,_utils_getOppositePlacement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(mainVariationSide);
+      mainVariationSide = (0,_utils_getOppositePlacement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(mainVariationSide);
     }
 
-    var altVariationSide = (0,_utils_getOppositePlacement_js__WEBPACK_IMPORTED_MODULE_0__["default"])(mainVariationSide);
+    var altVariationSide = (0,_utils_getOppositePlacement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(mainVariationSide);
     var checks = [];
 
     if (checkMainAxis) {
@@ -1899,13 +1899,13 @@ function flip(_ref) {
   }
 });
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/modifiers/hide.js"
+/***/ "./node_modules/@popperjs/core/lib/modifiers/hide.js":
 /*!***********************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/modifiers/hide.js ***!
   \***********************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -1976,13 +1976,13 @@ function hide(_ref) {
   fn: hide
 });
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/modifiers/index.js"
+/***/ "./node_modules/@popperjs/core/lib/modifiers/index.js":
 /*!************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/modifiers/index.js ***!
   \************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2016,13 +2016,13 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/modifiers/offset.js"
+/***/ "./node_modules/@popperjs/core/lib/modifiers/offset.js":
 /*!*************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/modifiers/offset.js ***!
   \*************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2087,13 +2087,13 @@ function offset(_ref2) {
   fn: offset
 });
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/modifiers/popperOffsets.js"
+/***/ "./node_modules/@popperjs/core/lib/modifiers/popperOffsets.js":
 /*!********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/modifiers/popperOffsets.js ***!
   \********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2127,29 +2127,29 @@ function popperOffsets(_ref) {
   data: {}
 });
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/modifiers/preventOverflow.js"
+/***/ "./node_modules/@popperjs/core/lib/modifiers/preventOverflow.js":
 /*!**********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/modifiers/preventOverflow.js ***!
   \**********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
 /* harmony import */ var _utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../utils/getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
-/* harmony import */ var _utils_getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/getMainAxisFromPlacement.js */ "./node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js");
-/* harmony import */ var _utils_getAltAxis_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getAltAxis.js */ "./node_modules/@popperjs/core/lib/utils/getAltAxis.js");
-/* harmony import */ var _utils_within_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/within.js */ "./node_modules/@popperjs/core/lib/utils/within.js");
-/* harmony import */ var _dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../dom-utils/getLayoutRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js");
-/* harmony import */ var _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../dom-utils/getOffsetParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js");
-/* harmony import */ var _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/detectOverflow.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
-/* harmony import */ var _utils_getVariation_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/getVariation.js */ "./node_modules/@popperjs/core/lib/utils/getVariation.js");
-/* harmony import */ var _utils_getFreshSideObject_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../utils/getFreshSideObject.js */ "./node_modules/@popperjs/core/lib/utils/getFreshSideObject.js");
+/* harmony import */ var _utils_getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../utils/getMainAxisFromPlacement.js */ "./node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js");
+/* harmony import */ var _utils_getAltAxis_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../utils/getAltAxis.js */ "./node_modules/@popperjs/core/lib/utils/getAltAxis.js");
+/* harmony import */ var _utils_within_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../utils/within.js */ "./node_modules/@popperjs/core/lib/utils/within.js");
+/* harmony import */ var _dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../dom-utils/getLayoutRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getLayoutRect.js");
+/* harmony import */ var _dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../dom-utils/getOffsetParent.js */ "./node_modules/@popperjs/core/lib/dom-utils/getOffsetParent.js");
+/* harmony import */ var _utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../utils/detectOverflow.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
+/* harmony import */ var _utils_getVariation_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../utils/getVariation.js */ "./node_modules/@popperjs/core/lib/utils/getVariation.js");
+/* harmony import */ var _utils_getFreshSideObject_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../utils/getFreshSideObject.js */ "./node_modules/@popperjs/core/lib/utils/getFreshSideObject.js");
 /* harmony import */ var _utils_math_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ../utils/math.js */ "./node_modules/@popperjs/core/lib/utils/math.js");
 
 
@@ -2179,17 +2179,17 @@ function preventOverflow(_ref) {
       tether = _options$tether === void 0 ? true : _options$tether,
       _options$tetherOffset = options.tetherOffset,
       tetherOffset = _options$tetherOffset === void 0 ? 0 : _options$tetherOffset;
-  var overflow = (0,_utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_7__["default"])(state, {
+  var overflow = (0,_utils_detectOverflow_js__WEBPACK_IMPORTED_MODULE_0__["default"])(state, {
     boundary: boundary,
     rootBoundary: rootBoundary,
     padding: padding,
     altBoundary: altBoundary
   });
   var basePlacement = (0,_utils_getBasePlacement_js__WEBPACK_IMPORTED_MODULE_1__["default"])(state.placement);
-  var variation = (0,_utils_getVariation_js__WEBPACK_IMPORTED_MODULE_8__["default"])(state.placement);
+  var variation = (0,_utils_getVariation_js__WEBPACK_IMPORTED_MODULE_2__["default"])(state.placement);
   var isBasePlacement = !variation;
-  var mainAxis = (0,_utils_getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(basePlacement);
-  var altAxis = (0,_utils_getAltAxis_js__WEBPACK_IMPORTED_MODULE_3__["default"])(mainAxis);
+  var mainAxis = (0,_utils_getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_3__["default"])(basePlacement);
+  var altAxis = (0,_utils_getAltAxis_js__WEBPACK_IMPORTED_MODULE_4__["default"])(mainAxis);
   var popperOffsets = state.modifiersData.popperOffsets;
   var referenceRect = state.rects.reference;
   var popperRect = state.rects.popper;
@@ -2216,23 +2216,23 @@ function preventOverflow(_ref) {
   if (checkMainAxis) {
     var _offsetModifierState$;
 
-    var mainSide = mainAxis === 'y' ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.top : _enums_js__WEBPACK_IMPORTED_MODULE_0__.left;
-    var altSide = mainAxis === 'y' ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.bottom : _enums_js__WEBPACK_IMPORTED_MODULE_0__.right;
+    var mainSide = mainAxis === 'y' ? _enums_js__WEBPACK_IMPORTED_MODULE_5__.top : _enums_js__WEBPACK_IMPORTED_MODULE_5__.left;
+    var altSide = mainAxis === 'y' ? _enums_js__WEBPACK_IMPORTED_MODULE_5__.bottom : _enums_js__WEBPACK_IMPORTED_MODULE_5__.right;
     var len = mainAxis === 'y' ? 'height' : 'width';
     var offset = popperOffsets[mainAxis];
     var min = offset + overflow[mainSide];
     var max = offset - overflow[altSide];
     var additive = tether ? -popperRect[len] / 2 : 0;
-    var minLen = variation === _enums_js__WEBPACK_IMPORTED_MODULE_0__.start ? referenceRect[len] : popperRect[len];
-    var maxLen = variation === _enums_js__WEBPACK_IMPORTED_MODULE_0__.start ? -popperRect[len] : -referenceRect[len]; // We need to include the arrow in the calculation so the arrow doesn't go
+    var minLen = variation === _enums_js__WEBPACK_IMPORTED_MODULE_5__.start ? referenceRect[len] : popperRect[len];
+    var maxLen = variation === _enums_js__WEBPACK_IMPORTED_MODULE_5__.start ? -popperRect[len] : -referenceRect[len]; // We need to include the arrow in the calculation so the arrow doesn't go
     // outside the reference bounds
 
     var arrowElement = state.elements.arrow;
-    var arrowRect = tether && arrowElement ? (0,_dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_5__["default"])(arrowElement) : {
+    var arrowRect = tether && arrowElement ? (0,_dom_utils_getLayoutRect_js__WEBPACK_IMPORTED_MODULE_6__["default"])(arrowElement) : {
       width: 0,
       height: 0
     };
-    var arrowPaddingObject = state.modifiersData['arrow#persistent'] ? state.modifiersData['arrow#persistent'].padding : (0,_utils_getFreshSideObject_js__WEBPACK_IMPORTED_MODULE_9__["default"])();
+    var arrowPaddingObject = state.modifiersData['arrow#persistent'] ? state.modifiersData['arrow#persistent'].padding : (0,_utils_getFreshSideObject_js__WEBPACK_IMPORTED_MODULE_7__["default"])();
     var arrowPaddingMin = arrowPaddingObject[mainSide];
     var arrowPaddingMax = arrowPaddingObject[altSide]; // If the reference length is smaller than the arrow length, we don't want
     // to include its full size in the calculation. If the reference is small
@@ -2240,15 +2240,15 @@ function preventOverflow(_ref) {
     // reference is not overflowing as well (e.g. virtual elements with no
     // width or height)
 
-    var arrowLen = (0,_utils_within_js__WEBPACK_IMPORTED_MODULE_4__.within)(0, referenceRect[len], arrowRect[len]);
+    var arrowLen = (0,_utils_within_js__WEBPACK_IMPORTED_MODULE_8__.within)(0, referenceRect[len], arrowRect[len]);
     var minOffset = isBasePlacement ? referenceRect[len] / 2 - additive - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis : minLen - arrowLen - arrowPaddingMin - normalizedTetherOffsetValue.mainAxis;
     var maxOffset = isBasePlacement ? -referenceRect[len] / 2 + additive + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis : maxLen + arrowLen + arrowPaddingMax + normalizedTetherOffsetValue.mainAxis;
-    var arrowOffsetParent = state.elements.arrow && (0,_dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_6__["default"])(state.elements.arrow);
+    var arrowOffsetParent = state.elements.arrow && (0,_dom_utils_getOffsetParent_js__WEBPACK_IMPORTED_MODULE_9__["default"])(state.elements.arrow);
     var clientOffset = arrowOffsetParent ? mainAxis === 'y' ? arrowOffsetParent.clientTop || 0 : arrowOffsetParent.clientLeft || 0 : 0;
     var offsetModifierValue = (_offsetModifierState$ = offsetModifierState == null ? void 0 : offsetModifierState[mainAxis]) != null ? _offsetModifierState$ : 0;
     var tetherMin = offset + minOffset - offsetModifierValue - clientOffset;
     var tetherMax = offset + maxOffset - offsetModifierValue;
-    var preventedOffset = (0,_utils_within_js__WEBPACK_IMPORTED_MODULE_4__.within)(tether ? (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_10__.min)(min, tetherMin) : min, offset, tether ? (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_10__.max)(max, tetherMax) : max);
+    var preventedOffset = (0,_utils_within_js__WEBPACK_IMPORTED_MODULE_8__.within)(tether ? (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_10__.min)(min, tetherMin) : min, offset, tether ? (0,_utils_math_js__WEBPACK_IMPORTED_MODULE_10__.max)(max, tetherMax) : max);
     popperOffsets[mainAxis] = preventedOffset;
     data[mainAxis] = preventedOffset - offset;
   }
@@ -2256,9 +2256,9 @@ function preventOverflow(_ref) {
   if (checkAltAxis) {
     var _offsetModifierState$2;
 
-    var _mainSide = mainAxis === 'x' ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.top : _enums_js__WEBPACK_IMPORTED_MODULE_0__.left;
+    var _mainSide = mainAxis === 'x' ? _enums_js__WEBPACK_IMPORTED_MODULE_5__.top : _enums_js__WEBPACK_IMPORTED_MODULE_5__.left;
 
-    var _altSide = mainAxis === 'x' ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.bottom : _enums_js__WEBPACK_IMPORTED_MODULE_0__.right;
+    var _altSide = mainAxis === 'x' ? _enums_js__WEBPACK_IMPORTED_MODULE_5__.bottom : _enums_js__WEBPACK_IMPORTED_MODULE_5__.right;
 
     var _offset = popperOffsets[altAxis];
 
@@ -2268,7 +2268,7 @@ function preventOverflow(_ref) {
 
     var _max = _offset - overflow[_altSide];
 
-    var isOriginSide = [_enums_js__WEBPACK_IMPORTED_MODULE_0__.top, _enums_js__WEBPACK_IMPORTED_MODULE_0__.left].indexOf(basePlacement) !== -1;
+    var isOriginSide = [_enums_js__WEBPACK_IMPORTED_MODULE_5__.top, _enums_js__WEBPACK_IMPORTED_MODULE_5__.left].indexOf(basePlacement) !== -1;
 
     var _offsetModifierValue = (_offsetModifierState$2 = offsetModifierState == null ? void 0 : offsetModifierState[altAxis]) != null ? _offsetModifierState$2 : 0;
 
@@ -2276,7 +2276,7 @@ function preventOverflow(_ref) {
 
     var _tetherMax = isOriginSide ? _offset + referenceRect[_len] + popperRect[_len] - _offsetModifierValue - normalizedTetherOffsetValue.altAxis : _max;
 
-    var _preventedOffset = tether && isOriginSide ? (0,_utils_within_js__WEBPACK_IMPORTED_MODULE_4__.withinMaxClamp)(_tetherMin, _offset, _tetherMax) : (0,_utils_within_js__WEBPACK_IMPORTED_MODULE_4__.within)(tether ? _tetherMin : _min, _offset, tether ? _tetherMax : _max);
+    var _preventedOffset = tether && isOriginSide ? (0,_utils_within_js__WEBPACK_IMPORTED_MODULE_8__.withinMaxClamp)(_tetherMin, _offset, _tetherMax) : (0,_utils_within_js__WEBPACK_IMPORTED_MODULE_8__.within)(tether ? _tetherMin : _min, _offset, tether ? _tetherMax : _max);
 
     popperOffsets[altAxis] = _preventedOffset;
     data[altAxis] = _preventedOffset - _offset;
@@ -2294,47 +2294,47 @@ function preventOverflow(_ref) {
   requiresIfExists: ['offset']
 });
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/popper-lite.js"
+/***/ "./node_modules/@popperjs/core/lib/popper-lite.js":
 /*!********************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/popper-lite.js ***!
   \********************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   createPopper: () => (/* binding */ createPopper),
 /* harmony export */   defaultModifiers: () => (/* binding */ defaultModifiers),
-/* harmony export */   detectOverflow: () => (/* reexport safe */ _createPopper_js__WEBPACK_IMPORTED_MODULE_1__["default"]),
-/* harmony export */   popperGenerator: () => (/* reexport safe */ _createPopper_js__WEBPACK_IMPORTED_MODULE_0__.popperGenerator)
+/* harmony export */   detectOverflow: () => (/* reexport safe */ _createPopper_js__WEBPACK_IMPORTED_MODULE_5__["default"]),
+/* harmony export */   popperGenerator: () => (/* reexport safe */ _createPopper_js__WEBPACK_IMPORTED_MODULE_4__.popperGenerator)
 /* harmony export */ });
-/* harmony import */ var _createPopper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createPopper.js */ "./node_modules/@popperjs/core/lib/createPopper.js");
-/* harmony import */ var _createPopper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createPopper.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
-/* harmony import */ var _modifiers_eventListeners_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modifiers/eventListeners.js */ "./node_modules/@popperjs/core/lib/modifiers/eventListeners.js");
-/* harmony import */ var _modifiers_popperOffsets_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modifiers/popperOffsets.js */ "./node_modules/@popperjs/core/lib/modifiers/popperOffsets.js");
-/* harmony import */ var _modifiers_computeStyles_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modifiers/computeStyles.js */ "./node_modules/@popperjs/core/lib/modifiers/computeStyles.js");
-/* harmony import */ var _modifiers_applyStyles_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modifiers/applyStyles.js */ "./node_modules/@popperjs/core/lib/modifiers/applyStyles.js");
+/* harmony import */ var _createPopper_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./createPopper.js */ "./node_modules/@popperjs/core/lib/createPopper.js");
+/* harmony import */ var _createPopper_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./createPopper.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
+/* harmony import */ var _modifiers_eventListeners_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modifiers/eventListeners.js */ "./node_modules/@popperjs/core/lib/modifiers/eventListeners.js");
+/* harmony import */ var _modifiers_popperOffsets_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modifiers/popperOffsets.js */ "./node_modules/@popperjs/core/lib/modifiers/popperOffsets.js");
+/* harmony import */ var _modifiers_computeStyles_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modifiers/computeStyles.js */ "./node_modules/@popperjs/core/lib/modifiers/computeStyles.js");
+/* harmony import */ var _modifiers_applyStyles_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modifiers/applyStyles.js */ "./node_modules/@popperjs/core/lib/modifiers/applyStyles.js");
 
 
 
 
 
-var defaultModifiers = [_modifiers_eventListeners_js__WEBPACK_IMPORTED_MODULE_2__["default"], _modifiers_popperOffsets_js__WEBPACK_IMPORTED_MODULE_3__["default"], _modifiers_computeStyles_js__WEBPACK_IMPORTED_MODULE_4__["default"], _modifiers_applyStyles_js__WEBPACK_IMPORTED_MODULE_5__["default"]];
-var createPopper = /*#__PURE__*/(0,_createPopper_js__WEBPACK_IMPORTED_MODULE_0__.popperGenerator)({
+var defaultModifiers = [_modifiers_eventListeners_js__WEBPACK_IMPORTED_MODULE_0__["default"], _modifiers_popperOffsets_js__WEBPACK_IMPORTED_MODULE_1__["default"], _modifiers_computeStyles_js__WEBPACK_IMPORTED_MODULE_2__["default"], _modifiers_applyStyles_js__WEBPACK_IMPORTED_MODULE_3__["default"]];
+var createPopper = /*#__PURE__*/(0,_createPopper_js__WEBPACK_IMPORTED_MODULE_4__.popperGenerator)({
   defaultModifiers: defaultModifiers
 }); // eslint-disable-next-line import/no-unused-modules
 
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/popper.js"
+/***/ "./node_modules/@popperjs/core/lib/popper.js":
 /*!***************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/popper.js ***!
   \***************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2345,26 +2345,26 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   createPopper: () => (/* binding */ createPopper),
 /* harmony export */   createPopperLite: () => (/* reexport safe */ _popper_lite_js__WEBPACK_IMPORTED_MODULE_11__.createPopper),
 /* harmony export */   defaultModifiers: () => (/* binding */ defaultModifiers),
-/* harmony export */   detectOverflow: () => (/* reexport safe */ _createPopper_js__WEBPACK_IMPORTED_MODULE_1__["default"]),
+/* harmony export */   detectOverflow: () => (/* reexport safe */ _createPopper_js__WEBPACK_IMPORTED_MODULE_10__["default"]),
 /* harmony export */   eventListeners: () => (/* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__.eventListeners),
 /* harmony export */   flip: () => (/* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__.flip),
 /* harmony export */   hide: () => (/* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__.hide),
 /* harmony export */   offset: () => (/* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__.offset),
-/* harmony export */   popperGenerator: () => (/* reexport safe */ _createPopper_js__WEBPACK_IMPORTED_MODULE_0__.popperGenerator),
+/* harmony export */   popperGenerator: () => (/* reexport safe */ _createPopper_js__WEBPACK_IMPORTED_MODULE_9__.popperGenerator),
 /* harmony export */   popperOffsets: () => (/* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__.popperOffsets),
 /* harmony export */   preventOverflow: () => (/* reexport safe */ _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__.preventOverflow)
 /* harmony export */ });
-/* harmony import */ var _createPopper_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./createPopper.js */ "./node_modules/@popperjs/core/lib/createPopper.js");
-/* harmony import */ var _createPopper_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./createPopper.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
-/* harmony import */ var _modifiers_eventListeners_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modifiers/eventListeners.js */ "./node_modules/@popperjs/core/lib/modifiers/eventListeners.js");
-/* harmony import */ var _modifiers_popperOffsets_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modifiers/popperOffsets.js */ "./node_modules/@popperjs/core/lib/modifiers/popperOffsets.js");
-/* harmony import */ var _modifiers_computeStyles_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modifiers/computeStyles.js */ "./node_modules/@popperjs/core/lib/modifiers/computeStyles.js");
-/* harmony import */ var _modifiers_applyStyles_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modifiers/applyStyles.js */ "./node_modules/@popperjs/core/lib/modifiers/applyStyles.js");
-/* harmony import */ var _modifiers_offset_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modifiers/offset.js */ "./node_modules/@popperjs/core/lib/modifiers/offset.js");
-/* harmony import */ var _modifiers_flip_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modifiers/flip.js */ "./node_modules/@popperjs/core/lib/modifiers/flip.js");
-/* harmony import */ var _modifiers_preventOverflow_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modifiers/preventOverflow.js */ "./node_modules/@popperjs/core/lib/modifiers/preventOverflow.js");
-/* harmony import */ var _modifiers_arrow_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modifiers/arrow.js */ "./node_modules/@popperjs/core/lib/modifiers/arrow.js");
-/* harmony import */ var _modifiers_hide_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modifiers/hide.js */ "./node_modules/@popperjs/core/lib/modifiers/hide.js");
+/* harmony import */ var _createPopper_js__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./createPopper.js */ "./node_modules/@popperjs/core/lib/createPopper.js");
+/* harmony import */ var _createPopper_js__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./createPopper.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
+/* harmony import */ var _modifiers_eventListeners_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./modifiers/eventListeners.js */ "./node_modules/@popperjs/core/lib/modifiers/eventListeners.js");
+/* harmony import */ var _modifiers_popperOffsets_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./modifiers/popperOffsets.js */ "./node_modules/@popperjs/core/lib/modifiers/popperOffsets.js");
+/* harmony import */ var _modifiers_computeStyles_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./modifiers/computeStyles.js */ "./node_modules/@popperjs/core/lib/modifiers/computeStyles.js");
+/* harmony import */ var _modifiers_applyStyles_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./modifiers/applyStyles.js */ "./node_modules/@popperjs/core/lib/modifiers/applyStyles.js");
+/* harmony import */ var _modifiers_offset_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./modifiers/offset.js */ "./node_modules/@popperjs/core/lib/modifiers/offset.js");
+/* harmony import */ var _modifiers_flip_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modifiers/flip.js */ "./node_modules/@popperjs/core/lib/modifiers/flip.js");
+/* harmony import */ var _modifiers_preventOverflow_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./modifiers/preventOverflow.js */ "./node_modules/@popperjs/core/lib/modifiers/preventOverflow.js");
+/* harmony import */ var _modifiers_arrow_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modifiers/arrow.js */ "./node_modules/@popperjs/core/lib/modifiers/arrow.js");
+/* harmony import */ var _modifiers_hide_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modifiers/hide.js */ "./node_modules/@popperjs/core/lib/modifiers/hide.js");
 /* harmony import */ var _popper_lite_js__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./popper-lite.js */ "./node_modules/@popperjs/core/lib/popper-lite.js");
 /* harmony import */ var _modifiers_index_js__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ./modifiers/index.js */ "./node_modules/@popperjs/core/lib/modifiers/index.js");
 
@@ -2377,8 +2377,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-var defaultModifiers = [_modifiers_eventListeners_js__WEBPACK_IMPORTED_MODULE_2__["default"], _modifiers_popperOffsets_js__WEBPACK_IMPORTED_MODULE_3__["default"], _modifiers_computeStyles_js__WEBPACK_IMPORTED_MODULE_4__["default"], _modifiers_applyStyles_js__WEBPACK_IMPORTED_MODULE_5__["default"], _modifiers_offset_js__WEBPACK_IMPORTED_MODULE_6__["default"], _modifiers_flip_js__WEBPACK_IMPORTED_MODULE_7__["default"], _modifiers_preventOverflow_js__WEBPACK_IMPORTED_MODULE_8__["default"], _modifiers_arrow_js__WEBPACK_IMPORTED_MODULE_9__["default"], _modifiers_hide_js__WEBPACK_IMPORTED_MODULE_10__["default"]];
-var createPopper = /*#__PURE__*/(0,_createPopper_js__WEBPACK_IMPORTED_MODULE_0__.popperGenerator)({
+var defaultModifiers = [_modifiers_eventListeners_js__WEBPACK_IMPORTED_MODULE_0__["default"], _modifiers_popperOffsets_js__WEBPACK_IMPORTED_MODULE_1__["default"], _modifiers_computeStyles_js__WEBPACK_IMPORTED_MODULE_2__["default"], _modifiers_applyStyles_js__WEBPACK_IMPORTED_MODULE_3__["default"], _modifiers_offset_js__WEBPACK_IMPORTED_MODULE_4__["default"], _modifiers_flip_js__WEBPACK_IMPORTED_MODULE_5__["default"], _modifiers_preventOverflow_js__WEBPACK_IMPORTED_MODULE_6__["default"], _modifiers_arrow_js__WEBPACK_IMPORTED_MODULE_7__["default"], _modifiers_hide_js__WEBPACK_IMPORTED_MODULE_8__["default"]];
+var createPopper = /*#__PURE__*/(0,_createPopper_js__WEBPACK_IMPORTED_MODULE_9__.popperGenerator)({
   defaultModifiers: defaultModifiers
 }); // eslint-disable-next-line import/no-unused-modules
 
@@ -2388,21 +2388,21 @@ var createPopper = /*#__PURE__*/(0,_createPopper_js__WEBPACK_IMPORTED_MODULE_0__
 
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/computeAutoPlacement.js ***!
   \***********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ computeAutoPlacement)
 /* harmony export */ });
-/* harmony import */ var _getVariation_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getVariation.js */ "./node_modules/@popperjs/core/lib/utils/getVariation.js");
-/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+/* harmony import */ var _getVariation_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getVariation.js */ "./node_modules/@popperjs/core/lib/utils/getVariation.js");
+/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
 /* harmony import */ var _detectOverflow_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./detectOverflow.js */ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js");
 /* harmony import */ var _getBasePlacement_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
 
@@ -2421,11 +2421,11 @@ function computeAutoPlacement(state, options) {
       padding = _options.padding,
       flipVariations = _options.flipVariations,
       _options$allowedAutoP = _options.allowedAutoPlacements,
-      allowedAutoPlacements = _options$allowedAutoP === void 0 ? _enums_js__WEBPACK_IMPORTED_MODULE_1__.placements : _options$allowedAutoP;
-  var variation = (0,_getVariation_js__WEBPACK_IMPORTED_MODULE_0__["default"])(placement);
-  var placements = variation ? flipVariations ? _enums_js__WEBPACK_IMPORTED_MODULE_1__.variationPlacements : _enums_js__WEBPACK_IMPORTED_MODULE_1__.variationPlacements.filter(function (placement) {
-    return (0,_getVariation_js__WEBPACK_IMPORTED_MODULE_0__["default"])(placement) === variation;
-  }) : _enums_js__WEBPACK_IMPORTED_MODULE_1__.basePlacements;
+      allowedAutoPlacements = _options$allowedAutoP === void 0 ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.placements : _options$allowedAutoP;
+  var variation = (0,_getVariation_js__WEBPACK_IMPORTED_MODULE_1__["default"])(placement);
+  var placements = variation ? flipVariations ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.variationPlacements : _enums_js__WEBPACK_IMPORTED_MODULE_0__.variationPlacements.filter(function (placement) {
+    return (0,_getVariation_js__WEBPACK_IMPORTED_MODULE_1__["default"])(placement) === variation;
+  }) : _enums_js__WEBPACK_IMPORTED_MODULE_0__.basePlacements;
   var allowedPlacements = placements.filter(function (placement) {
     return allowedAutoPlacements.indexOf(placement) >= 0;
   });
@@ -2449,13 +2449,13 @@ function computeAutoPlacement(state, options) {
   });
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/computeOffsets.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/computeOffsets.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/computeOffsets.js ***!
   \*****************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2464,8 +2464,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */ });
 /* harmony import */ var _getBasePlacement_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./getBasePlacement.js */ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js");
 /* harmony import */ var _getVariation_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./getVariation.js */ "./node_modules/@popperjs/core/lib/utils/getVariation.js");
-/* harmony import */ var _getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./getMainAxisFromPlacement.js */ "./node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js");
-/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+/* harmony import */ var _getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./getMainAxisFromPlacement.js */ "./node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js");
+/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
 
 
 
@@ -2481,28 +2481,28 @@ function computeOffsets(_ref) {
   var offsets;
 
   switch (basePlacement) {
-    case _enums_js__WEBPACK_IMPORTED_MODULE_3__.top:
+    case _enums_js__WEBPACK_IMPORTED_MODULE_2__.top:
       offsets = {
         x: commonX,
         y: reference.y - element.height
       };
       break;
 
-    case _enums_js__WEBPACK_IMPORTED_MODULE_3__.bottom:
+    case _enums_js__WEBPACK_IMPORTED_MODULE_2__.bottom:
       offsets = {
         x: commonX,
         y: reference.y + reference.height
       };
       break;
 
-    case _enums_js__WEBPACK_IMPORTED_MODULE_3__.right:
+    case _enums_js__WEBPACK_IMPORTED_MODULE_2__.right:
       offsets = {
         x: reference.x + reference.width,
         y: commonY
       };
       break;
 
-    case _enums_js__WEBPACK_IMPORTED_MODULE_3__.left:
+    case _enums_js__WEBPACK_IMPORTED_MODULE_2__.left:
       offsets = {
         x: reference.x - element.width,
         y: commonY
@@ -2516,17 +2516,17 @@ function computeOffsets(_ref) {
       };
   }
 
-  var mainAxis = basePlacement ? (0,_getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_2__["default"])(basePlacement) : null;
+  var mainAxis = basePlacement ? (0,_getMainAxisFromPlacement_js__WEBPACK_IMPORTED_MODULE_3__["default"])(basePlacement) : null;
 
   if (mainAxis != null) {
     var len = mainAxis === 'y' ? 'height' : 'width';
 
     switch (variation) {
-      case _enums_js__WEBPACK_IMPORTED_MODULE_3__.start:
+      case _enums_js__WEBPACK_IMPORTED_MODULE_2__.start:
         offsets[mainAxis] = offsets[mainAxis] - (reference[len] / 2 - element[len] / 2);
         break;
 
-      case _enums_js__WEBPACK_IMPORTED_MODULE_3__.end:
+      case _enums_js__WEBPACK_IMPORTED_MODULE_2__.end:
         offsets[mainAxis] = offsets[mainAxis] + (reference[len] / 2 - element[len] / 2);
         break;
 
@@ -2537,13 +2537,13 @@ function computeOffsets(_ref) {
   return offsets;
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/debounce.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/debounce.js":
 /*!***********************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/debounce.js ***!
   \***********************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2566,28 +2566,28 @@ function debounce(fn) {
   };
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/detectOverflow.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/detectOverflow.js ***!
   \*****************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (/* binding */ detectOverflow)
 /* harmony export */ });
-/* harmony import */ var _dom_utils_getClippingRect_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../dom-utils/getClippingRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js");
-/* harmony import */ var _dom_utils_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ../dom-utils/getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
-/* harmony import */ var _dom_utils_getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../dom-utils/getBoundingClientRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js");
-/* harmony import */ var _computeOffsets_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./computeOffsets.js */ "./node_modules/@popperjs/core/lib/utils/computeOffsets.js");
-/* harmony import */ var _rectToClientRect_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./rectToClientRect.js */ "./node_modules/@popperjs/core/lib/utils/rectToClientRect.js");
-/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
-/* harmony import */ var _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../dom-utils/instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
-/* harmony import */ var _mergePaddingObject_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./mergePaddingObject.js */ "./node_modules/@popperjs/core/lib/utils/mergePaddingObject.js");
-/* harmony import */ var _expandToHashMap_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./expandToHashMap.js */ "./node_modules/@popperjs/core/lib/utils/expandToHashMap.js");
+/* harmony import */ var _dom_utils_getClippingRect_js__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../dom-utils/getClippingRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getClippingRect.js");
+/* harmony import */ var _dom_utils_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../dom-utils/getDocumentElement.js */ "./node_modules/@popperjs/core/lib/dom-utils/getDocumentElement.js");
+/* harmony import */ var _dom_utils_getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../dom-utils/getBoundingClientRect.js */ "./node_modules/@popperjs/core/lib/dom-utils/getBoundingClientRect.js");
+/* harmony import */ var _computeOffsets_js__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./computeOffsets.js */ "./node_modules/@popperjs/core/lib/utils/computeOffsets.js");
+/* harmony import */ var _rectToClientRect_js__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./rectToClientRect.js */ "./node_modules/@popperjs/core/lib/utils/rectToClientRect.js");
+/* harmony import */ var _enums_js__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../enums.js */ "./node_modules/@popperjs/core/lib/enums.js");
+/* harmony import */ var _dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../dom-utils/instanceOf.js */ "./node_modules/@popperjs/core/lib/dom-utils/instanceOf.js");
+/* harmony import */ var _mergePaddingObject_js__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./mergePaddingObject.js */ "./node_modules/@popperjs/core/lib/utils/mergePaddingObject.js");
+/* harmony import */ var _expandToHashMap_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./expandToHashMap.js */ "./node_modules/@popperjs/core/lib/utils/expandToHashMap.js");
 
 
 
@@ -2609,29 +2609,29 @@ function detectOverflow(state, options) {
       _options$strategy = _options.strategy,
       strategy = _options$strategy === void 0 ? state.strategy : _options$strategy,
       _options$boundary = _options.boundary,
-      boundary = _options$boundary === void 0 ? _enums_js__WEBPACK_IMPORTED_MODULE_5__.clippingParents : _options$boundary,
+      boundary = _options$boundary === void 0 ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.clippingParents : _options$boundary,
       _options$rootBoundary = _options.rootBoundary,
-      rootBoundary = _options$rootBoundary === void 0 ? _enums_js__WEBPACK_IMPORTED_MODULE_5__.viewport : _options$rootBoundary,
+      rootBoundary = _options$rootBoundary === void 0 ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.viewport : _options$rootBoundary,
       _options$elementConte = _options.elementContext,
-      elementContext = _options$elementConte === void 0 ? _enums_js__WEBPACK_IMPORTED_MODULE_5__.popper : _options$elementConte,
+      elementContext = _options$elementConte === void 0 ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.popper : _options$elementConte,
       _options$altBoundary = _options.altBoundary,
       altBoundary = _options$altBoundary === void 0 ? false : _options$altBoundary,
       _options$padding = _options.padding,
       padding = _options$padding === void 0 ? 0 : _options$padding;
-  var paddingObject = (0,_mergePaddingObject_js__WEBPACK_IMPORTED_MODULE_7__["default"])(typeof padding !== 'number' ? padding : (0,_expandToHashMap_js__WEBPACK_IMPORTED_MODULE_8__["default"])(padding, _enums_js__WEBPACK_IMPORTED_MODULE_5__.basePlacements));
-  var altContext = elementContext === _enums_js__WEBPACK_IMPORTED_MODULE_5__.popper ? _enums_js__WEBPACK_IMPORTED_MODULE_5__.reference : _enums_js__WEBPACK_IMPORTED_MODULE_5__.popper;
+  var paddingObject = (0,_mergePaddingObject_js__WEBPACK_IMPORTED_MODULE_1__["default"])(typeof padding !== 'number' ? padding : (0,_expandToHashMap_js__WEBPACK_IMPORTED_MODULE_2__["default"])(padding, _enums_js__WEBPACK_IMPORTED_MODULE_0__.basePlacements));
+  var altContext = elementContext === _enums_js__WEBPACK_IMPORTED_MODULE_0__.popper ? _enums_js__WEBPACK_IMPORTED_MODULE_0__.reference : _enums_js__WEBPACK_IMPORTED_MODULE_0__.popper;
   var popperRect = state.rects.popper;
   var element = state.elements[altBoundary ? altContext : elementContext];
-  var clippingClientRect = (0,_dom_utils_getClippingRect_js__WEBPACK_IMPORTED_MODULE_0__["default"])((0,_dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_6__.isElement)(element) ? element : element.contextElement || (0,_dom_utils_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_1__["default"])(state.elements.popper), boundary, rootBoundary, strategy);
-  var referenceClientRect = (0,_dom_utils_getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_2__["default"])(state.elements.reference);
-  var popperOffsets = (0,_computeOffsets_js__WEBPACK_IMPORTED_MODULE_3__["default"])({
+  var clippingClientRect = (0,_dom_utils_getClippingRect_js__WEBPACK_IMPORTED_MODULE_3__["default"])((0,_dom_utils_instanceOf_js__WEBPACK_IMPORTED_MODULE_4__.isElement)(element) ? element : element.contextElement || (0,_dom_utils_getDocumentElement_js__WEBPACK_IMPORTED_MODULE_5__["default"])(state.elements.popper), boundary, rootBoundary, strategy);
+  var referenceClientRect = (0,_dom_utils_getBoundingClientRect_js__WEBPACK_IMPORTED_MODULE_6__["default"])(state.elements.reference);
+  var popperOffsets = (0,_computeOffsets_js__WEBPACK_IMPORTED_MODULE_7__["default"])({
     reference: referenceClientRect,
     element: popperRect,
     strategy: 'absolute',
     placement: placement
   });
-  var popperClientRect = (0,_rectToClientRect_js__WEBPACK_IMPORTED_MODULE_4__["default"])(Object.assign({}, popperRect, popperOffsets));
-  var elementClientRect = elementContext === _enums_js__WEBPACK_IMPORTED_MODULE_5__.popper ? popperClientRect : referenceClientRect; // positive = overflowing the clipping rect
+  var popperClientRect = (0,_rectToClientRect_js__WEBPACK_IMPORTED_MODULE_8__["default"])(Object.assign({}, popperRect, popperOffsets));
+  var elementClientRect = elementContext === _enums_js__WEBPACK_IMPORTED_MODULE_0__.popper ? popperClientRect : referenceClientRect; // positive = overflowing the clipping rect
   // 0 or negative = within the clipping rect
 
   var overflowOffsets = {
@@ -2642,11 +2642,11 @@ function detectOverflow(state, options) {
   };
   var offsetData = state.modifiersData.offset; // Offsets can be applied only to the popper element
 
-  if (elementContext === _enums_js__WEBPACK_IMPORTED_MODULE_5__.popper && offsetData) {
+  if (elementContext === _enums_js__WEBPACK_IMPORTED_MODULE_0__.popper && offsetData) {
     var offset = offsetData[placement];
     Object.keys(overflowOffsets).forEach(function (key) {
-      var multiply = [_enums_js__WEBPACK_IMPORTED_MODULE_5__.right, _enums_js__WEBPACK_IMPORTED_MODULE_5__.bottom].indexOf(key) >= 0 ? 1 : -1;
-      var axis = [_enums_js__WEBPACK_IMPORTED_MODULE_5__.top, _enums_js__WEBPACK_IMPORTED_MODULE_5__.bottom].indexOf(key) >= 0 ? 'y' : 'x';
+      var multiply = [_enums_js__WEBPACK_IMPORTED_MODULE_0__.right, _enums_js__WEBPACK_IMPORTED_MODULE_0__.bottom].indexOf(key) >= 0 ? 1 : -1;
+      var axis = [_enums_js__WEBPACK_IMPORTED_MODULE_0__.top, _enums_js__WEBPACK_IMPORTED_MODULE_0__.bottom].indexOf(key) >= 0 ? 'y' : 'x';
       overflowOffsets[key] += offset[axis] * multiply;
     });
   }
@@ -2654,13 +2654,13 @@ function detectOverflow(state, options) {
   return overflowOffsets;
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/expandToHashMap.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/expandToHashMap.js":
 /*!******************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/expandToHashMap.js ***!
   \******************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2674,13 +2674,13 @@ function expandToHashMap(value, keys) {
   }, {});
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/getAltAxis.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/getAltAxis.js":
 /*!*************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/getAltAxis.js ***!
   \*************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2691,13 +2691,13 @@ function getAltAxis(axis) {
   return axis === 'x' ? 'y' : 'x';
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/getBasePlacement.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/getBasePlacement.js ***!
   \*******************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2709,13 +2709,13 @@ function getBasePlacement(placement) {
   return placement.split('-')[0];
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/getFreshSideObject.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/getFreshSideObject.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/getFreshSideObject.js ***!
   \*********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2731,13 +2731,13 @@ function getFreshSideObject() {
   };
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js":
 /*!***************************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/getMainAxisFromPlacement.js ***!
   \***************************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2748,13 +2748,13 @@ function getMainAxisFromPlacement(placement) {
   return ['top', 'bottom'].indexOf(placement) >= 0 ? 'x' : 'y';
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/getOppositePlacement.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/getOppositePlacement.js":
 /*!***********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/getOppositePlacement.js ***!
   \***********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2773,13 +2773,13 @@ function getOppositePlacement(placement) {
   });
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js":
 /*!********************************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/getOppositeVariationPlacement.js ***!
   \********************************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2796,13 +2796,13 @@ function getOppositeVariationPlacement(placement) {
   });
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/getVariation.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/getVariation.js":
 /*!***************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/getVariation.js ***!
   \***************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2813,13 +2813,13 @@ function getVariation(placement) {
   return placement.split('-')[1];
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/math.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/math.js":
 /*!*******************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/math.js ***!
   \*******************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2832,13 +2832,13 @@ var max = Math.max;
 var min = Math.min;
 var round = Math.round;
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/mergeByName.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/mergeByName.js":
 /*!**************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/mergeByName.js ***!
   \**************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2860,13 +2860,13 @@ function mergeByName(modifiers) {
   });
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/mergePaddingObject.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/mergePaddingObject.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/mergePaddingObject.js ***!
   \*********************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2879,13 +2879,13 @@ function mergePaddingObject(paddingObject) {
   return Object.assign({}, (0,_getFreshSideObject_js__WEBPACK_IMPORTED_MODULE_0__["default"])(), paddingObject);
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/orderModifiers.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/orderModifiers.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/orderModifiers.js ***!
   \*****************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2938,13 +2938,13 @@ function orderModifiers(modifiers) {
   }, []);
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/rectToClientRect.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/rectToClientRect.js":
 /*!*******************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/rectToClientRect.js ***!
   \*******************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2960,13 +2960,13 @@ function rectToClientRect(rect) {
   });
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/userAgent.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/userAgent.js":
 /*!************************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/userAgent.js ***!
   \************************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -2985,13 +2985,13 @@ function getUAString() {
   return navigator.userAgent;
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/@popperjs/core/lib/utils/within.js"
+/***/ "./node_modules/@popperjs/core/lib/utils/within.js":
 /*!*********************************************************!*\
   !*** ./node_modules/@popperjs/core/lib/utils/within.js ***!
   \*********************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -3009,23 +3009,23 @@ function withinMaxClamp(min, value, max) {
   return v > max ? max : v;
 }
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/index.js"
+/***/ "./node_modules/axios/index.js":
 /*!*************************************!*\
   !*** ./node_modules/axios/index.js ***!
   \*************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__(/*! ./lib/axios */ "./node_modules/axios/lib/axios.js");
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/adapters/xhr.js"
+/***/ "./node_modules/axios/lib/adapters/xhr.js":
 /*!************************************************!*\
   !*** ./node_modules/axios/lib/adapters/xhr.js ***!
   \************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -3219,13 +3219,13 @@ module.exports = function xhrAdapter(config) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/axios.js"
+/***/ "./node_modules/axios/lib/axios.js":
 /*!*****************************************!*\
   !*** ./node_modules/axios/lib/axios.js ***!
   \*****************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -3286,13 +3286,13 @@ module.exports = axios;
 module.exports["default"] = axios;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/cancel/Cancel.js"
+/***/ "./node_modules/axios/lib/cancel/Cancel.js":
 /*!*************************************************!*\
   !*** ./node_modules/axios/lib/cancel/Cancel.js ***!
   \*************************************************/
-(module) {
+/***/ ((module) => {
 
 "use strict";
 
@@ -3316,13 +3316,13 @@ Cancel.prototype.__CANCEL__ = true;
 module.exports = Cancel;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/cancel/CancelToken.js"
+/***/ "./node_modules/axios/lib/cancel/CancelToken.js":
 /*!******************************************************!*\
   !*** ./node_modules/axios/lib/cancel/CancelToken.js ***!
   \******************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -3384,13 +3384,13 @@ CancelToken.source = function source() {
 module.exports = CancelToken;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/cancel/isCancel.js"
+/***/ "./node_modules/axios/lib/cancel/isCancel.js":
 /*!***************************************************!*\
   !*** ./node_modules/axios/lib/cancel/isCancel.js ***!
   \***************************************************/
-(module) {
+/***/ ((module) => {
 
 "use strict";
 
@@ -3400,13 +3400,13 @@ module.exports = function isCancel(value) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/core/Axios.js"
+/***/ "./node_modules/axios/lib/core/Axios.js":
 /*!**********************************************!*\
   !*** ./node_modules/axios/lib/core/Axios.js ***!
   \**********************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -3559,13 +3559,13 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = Axios;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/core/InterceptorManager.js"
+/***/ "./node_modules/axios/lib/core/InterceptorManager.js":
 /*!***********************************************************!*\
   !*** ./node_modules/axios/lib/core/InterceptorManager.js ***!
   \***********************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -3624,13 +3624,13 @@ InterceptorManager.prototype.forEach = function forEach(fn) {
 module.exports = InterceptorManager;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/core/buildFullPath.js"
+/***/ "./node_modules/axios/lib/core/buildFullPath.js":
 /*!******************************************************!*\
   !*** ./node_modules/axios/lib/core/buildFullPath.js ***!
   \******************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -3655,13 +3655,13 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/core/createError.js"
+/***/ "./node_modules/axios/lib/core/createError.js":
 /*!****************************************************!*\
   !*** ./node_modules/axios/lib/core/createError.js ***!
   \****************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -3684,13 +3684,13 @@ module.exports = function createError(message, config, code, request, response) 
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/core/dispatchRequest.js"
+/***/ "./node_modules/axios/lib/core/dispatchRequest.js":
 /*!********************************************************!*\
   !*** ./node_modules/axios/lib/core/dispatchRequest.js ***!
   \********************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -3777,13 +3777,13 @@ module.exports = function dispatchRequest(config) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/core/enhanceError.js"
+/***/ "./node_modules/axios/lib/core/enhanceError.js":
 /*!*****************************************************!*\
   !*** ./node_modules/axios/lib/core/enhanceError.js ***!
   \*****************************************************/
-(module) {
+/***/ ((module) => {
 
 "use strict";
 
@@ -3830,13 +3830,13 @@ module.exports = function enhanceError(error, config, code, request, response) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/core/mergeConfig.js"
+/***/ "./node_modules/axios/lib/core/mergeConfig.js":
 /*!****************************************************!*\
   !*** ./node_modules/axios/lib/core/mergeConfig.js ***!
   \****************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -3928,13 +3928,13 @@ module.exports = function mergeConfig(config1, config2) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/core/settle.js"
+/***/ "./node_modules/axios/lib/core/settle.js":
 /*!***********************************************!*\
   !*** ./node_modules/axios/lib/core/settle.js ***!
   \***********************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -3964,13 +3964,13 @@ module.exports = function settle(resolve, reject, response) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/core/transformData.js"
+/***/ "./node_modules/axios/lib/core/transformData.js":
 /*!******************************************************!*\
   !*** ./node_modules/axios/lib/core/transformData.js ***!
   \******************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -3997,13 +3997,13 @@ module.exports = function transformData(data, headers, fns) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/defaults.js"
+/***/ "./node_modules/axios/lib/defaults.js":
 /*!********************************************!*\
   !*** ./node_modules/axios/lib/defaults.js ***!
   \********************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 /* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
@@ -4143,13 +4143,13 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/helpers/bind.js"
+/***/ "./node_modules/axios/lib/helpers/bind.js":
 /*!************************************************!*\
   !*** ./node_modules/axios/lib/helpers/bind.js ***!
   \************************************************/
-(module) {
+/***/ ((module) => {
 
 "use strict";
 
@@ -4165,13 +4165,13 @@ module.exports = function bind(fn, thisArg) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/helpers/buildURL.js"
+/***/ "./node_modules/axios/lib/helpers/buildURL.js":
 /*!****************************************************!*\
   !*** ./node_modules/axios/lib/helpers/buildURL.js ***!
   \****************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -4246,13 +4246,13 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/helpers/combineURLs.js"
+/***/ "./node_modules/axios/lib/helpers/combineURLs.js":
 /*!*******************************************************!*\
   !*** ./node_modules/axios/lib/helpers/combineURLs.js ***!
   \*******************************************************/
-(module) {
+/***/ ((module) => {
 
 "use strict";
 
@@ -4271,13 +4271,13 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/helpers/cookies.js"
+/***/ "./node_modules/axios/lib/helpers/cookies.js":
 /*!***************************************************!*\
   !*** ./node_modules/axios/lib/helpers/cookies.js ***!
   \***************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -4335,13 +4335,13 @@ module.exports = (
 );
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/helpers/isAbsoluteURL.js"
+/***/ "./node_modules/axios/lib/helpers/isAbsoluteURL.js":
 /*!*********************************************************!*\
   !*** ./node_modules/axios/lib/helpers/isAbsoluteURL.js ***!
   \*********************************************************/
-(module) {
+/***/ ((module) => {
 
 "use strict";
 
@@ -4360,13 +4360,13 @@ module.exports = function isAbsoluteURL(url) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/helpers/isAxiosError.js"
+/***/ "./node_modules/axios/lib/helpers/isAxiosError.js":
 /*!********************************************************!*\
   !*** ./node_modules/axios/lib/helpers/isAxiosError.js ***!
   \********************************************************/
-(module) {
+/***/ ((module) => {
 
 "use strict";
 
@@ -4382,13 +4382,13 @@ module.exports = function isAxiosError(payload) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/helpers/isURLSameOrigin.js"
+/***/ "./node_modules/axios/lib/helpers/isURLSameOrigin.js":
 /*!***********************************************************!*\
   !*** ./node_modules/axios/lib/helpers/isURLSameOrigin.js ***!
   \***********************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -4461,13 +4461,13 @@ module.exports = (
 );
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/helpers/normalizeHeaderName.js"
+/***/ "./node_modules/axios/lib/helpers/normalizeHeaderName.js":
 /*!***************************************************************!*\
   !*** ./node_modules/axios/lib/helpers/normalizeHeaderName.js ***!
   \***************************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -4484,13 +4484,13 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/helpers/parseHeaders.js"
+/***/ "./node_modules/axios/lib/helpers/parseHeaders.js":
 /*!********************************************************!*\
   !*** ./node_modules/axios/lib/helpers/parseHeaders.js ***!
   \********************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -4548,13 +4548,13 @@ module.exports = function parseHeaders(headers) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/helpers/spread.js"
+/***/ "./node_modules/axios/lib/helpers/spread.js":
 /*!**************************************************!*\
   !*** ./node_modules/axios/lib/helpers/spread.js ***!
   \**************************************************/
-(module) {
+/***/ ((module) => {
 
 "use strict";
 
@@ -4586,13 +4586,13 @@ module.exports = function spread(callback) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/helpers/validator.js"
+/***/ "./node_modules/axios/lib/helpers/validator.js":
 /*!*****************************************************!*\
   !*** ./node_modules/axios/lib/helpers/validator.js ***!
   \*****************************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -4702,13 +4702,13 @@ module.exports = {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/lib/utils.js"
+/***/ "./node_modules/axios/lib/utils.js":
 /*!*****************************************!*\
   !*** ./node_modules/axios/lib/utils.js ***!
   \*****************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -5062,60 +5062,37 @@ module.exports = {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./resources/js/app.js"
+/***/ "./resources/js/app.js":
 /*!*****************************!*\
   !*** ./resources/js/app.js ***!
   \*****************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
-/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
-/* harmony import */ var _bootstrap__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_bootstrap__WEBPACK_IMPORTED_MODULE_2__);
-/* harmony import */ var _components_BookingSelect__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./components/BookingSelect */ "./resources/js/components/BookingSelect.jsx");
-/* harmony import */ var _components_BookingSeat__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/BookingSeat */ "./resources/js/components/BookingSeat.jsx");
-/* harmony import */ var _components_BookingFood__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/BookingFood */ "./resources/js/components/BookingFood.jsx");
-/* harmony import */ var _components_BookingPayment__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./components/BookingPayment */ "./resources/js/components/BookingPayment.jsx");
-/* harmony import */ var _components_BookingSummary__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./components/BookingSummary */ "./resources/js/components/BookingSummary.jsx");
-/* harmony import */ var _components_BookingTicket__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./components/BookingTicket */ "./resources/js/components/BookingTicket.jsx");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/**
+ * First we will load all of this project's JavaScript dependencies which
+ * includes React and other helpers. It's a great starting point while
+ * building robust, powerful web applications using React + Laravel.
+ */
 
+__webpack_require__(/*! ./bootstrap */ "./resources/js/bootstrap.js");
 
+/**
+ * Next, we will create a fresh React component instance and attach it to
+ * the page. Then, you may begin adding components to this application
+ * or customize the JavaScript scaffolding to fit your unique needs.
+ */
 
+__webpack_require__(/*! ./components/MovieDetail */ "./resources/js/components/MovieDetail.js");
 
+/***/ }),
 
-
-
-
-
-
-var mountComponent = function mountComponent(id, Component, initialData) {
-  var element = document.getElementById(id);
-  if (!element) {
-    return;
-  }
-  react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_9__.jsx)(Component, {
-    initialData: initialData || {}
-  }), element);
-};
-mountComponent('booking-select-root', _components_BookingSelect__WEBPACK_IMPORTED_MODULE_3__["default"], window.MoovyBookingSelectData);
-mountComponent('booking-seat-root', _components_BookingSeat__WEBPACK_IMPORTED_MODULE_4__["default"], window.MoovyBookingSeatData);
-mountComponent('booking-food-root', _components_BookingFood__WEBPACK_IMPORTED_MODULE_5__["default"], window.MoovyBookingFoodData);
-mountComponent('booking-payment-root', _components_BookingPayment__WEBPACK_IMPORTED_MODULE_6__["default"], window.MoovyBookingPaymentData);
-mountComponent('booking-summary-root', _components_BookingSummary__WEBPACK_IMPORTED_MODULE_7__["default"], window.MoovyBookingSummaryData);
-mountComponent('booking-ticket-root', _components_BookingTicket__WEBPACK_IMPORTED_MODULE_8__["default"], window.MoovyBookingTicketData);
-
-/***/ },
-
-/***/ "./resources/js/bootstrap.js"
+/***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
   \***********************************/
-(__unused_webpack_module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
 window._ = __webpack_require__(/*! lodash */ "./node_modules/lodash/lodash.js");
 try {
@@ -5129,7 +5106,6 @@ try {
  */
 
 window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.withCredentials = true;
 window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 
 /**
@@ -5149,2052 +5125,1298 @@ window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 //     forceTLS: true
 // });
 
-/***/ },
+/***/ }),
 
-/***/ "./resources/js/components/BookingFood.jsx"
-/*!*************************************************!*\
-  !*** ./resources/js/components/BookingFood.jsx ***!
-  \*************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ BookingFood)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _bookingAuth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bookingAuth */ "./resources/js/components/bookingAuth.js");
-/* harmony import */ var _bookingSession__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bookingSession */ "./resources/js/components/bookingSession.js");
-/* harmony import */ var _bookingUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bookingUtils */ "./resources/js/components/bookingUtils.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-var buildInitialQuantityMap = function buildInitialQuantityMap(entries, initialValues) {
-  var map = {};
-  entries.forEach(function (_ref) {
-    var _initialValues$key;
-    var _ref2 = _slicedToArray(_ref, 1),
-      key = _ref2[0];
-    map[key] = Number((_initialValues$key = initialValues === null || initialValues === void 0 ? void 0 : initialValues[key]) !== null && _initialValues$key !== void 0 ? _initialValues$key : 0);
-  });
-  return map;
-};
-function BookingFood(_ref3) {
-  var _initialData$foodSele;
-  var initialData = _ref3.initialData;
-  var auth = (0,_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.useBookingAuthGuard)(initialData);
-  var storageKey = initialData.storageKey || 'booking.food.default';
-  var foodEntries = Object.entries(initialData.foodItems || {});
-  var beverageEntries = Object.entries(initialData.beverageItems || {});
-  var allEntries = [].concat(foodEntries, beverageEntries);
-  var formRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  var _useSessionStorageSta = (0,_bookingSession__WEBPACK_IMPORTED_MODULE_2__.useSessionStorageState)(storageKey, {
-      quantities: buildInitialQuantityMap(allEntries, (_initialData$foodSele = initialData.foodSelections) === null || _initialData$foodSele === void 0 ? void 0 : _initialData$foodSele.quantities),
-      temperatures: function (_initialData$foodSele2) {
-        var map = {};
-        var initialTemperatures = ((_initialData$foodSele2 = initialData.foodSelections) === null || _initialData$foodSele2 === void 0 ? void 0 : _initialData$foodSele2.temperatures) || {};
-        beverageEntries.forEach(function (_ref4) {
-          var _ref5 = _slicedToArray(_ref4, 2),
-            key = _ref5[0],
-            item = _ref5[1];
-          var options = item.temperature_options || ['cold'];
-          map[key] = options.length === 1 ? options[0] || 'cold' : initialTemperatures[key] || '';
-        });
-        return map;
-      }()
-    }),
-    _useSessionStorageSta2 = _slicedToArray(_useSessionStorageSta, 2),
-    persistedFoodState = _useSessionStorageSta2[0],
-    setPersistedFoodState = _useSessionStorageSta2[1];
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
-      var _initialData$foodSele3;
-      return persistedFoodState.quantities || buildInitialQuantityMap(allEntries, (_initialData$foodSele3 = initialData.foodSelections) === null || _initialData$foodSele3 === void 0 ? void 0 : _initialData$foodSele3.quantities);
-    }),
-    _useState2 = _slicedToArray(_useState, 2),
-    quantities = _useState2[0],
-    setQuantities = _useState2[1];
-  var _useState3 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
-      var _initialData$foodSele4;
-      if (persistedFoodState.temperatures) {
-        return persistedFoodState.temperatures;
-      }
-      var map = {};
-      var initialTemperatures = ((_initialData$foodSele4 = initialData.foodSelections) === null || _initialData$foodSele4 === void 0 ? void 0 : _initialData$foodSele4.temperatures) || {};
-      beverageEntries.forEach(function (_ref6) {
-        var _ref7 = _slicedToArray(_ref6, 2),
-          key = _ref7[0],
-          item = _ref7[1];
-        var options = item.temperature_options || ['cold'];
-        map[key] = options.length === 1 ? options[0] || 'cold' : initialTemperatures[key] || '';
-      });
-      return map;
-    }),
-    _useState4 = _slicedToArray(_useState3, 2),
-    temperatures = _useState4[0],
-    setTemperatures = _useState4[1];
-  var addonTotal = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    return allEntries.reduce(function (sum, _ref8) {
-      var _ref9 = _slicedToArray(_ref8, 2),
-        key = _ref9[0],
-        item = _ref9[1];
-      return sum + Number(quantities[key] || 0) * Number(item.price || 0);
-    }, 0);
-  }, [allEntries, quantities]);
-  var grandTotal = Number(initialData.seatTotal || 0) + addonTotal;
-  var _useState5 = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)({}),
-    _useState6 = _slicedToArray(_useState5, 2),
-    temperatureErrors = _useState6[0],
-    setTemperatureErrors = _useState6[1];
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setPersistedFoodState({
-      quantities: quantities,
-      temperatures: temperatures
-    });
-  }, [quantities, temperatures, setPersistedFoodState]);
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setTemperatures(function (current) {
-      var next = _objectSpread({}, current);
-      var changed = false;
-      beverageEntries.forEach(function (_ref0) {
-        var _ref1 = _slicedToArray(_ref0, 2),
-          key = _ref1[0],
-          item = _ref1[1];
-        var options = item.temperature_options || ['cold'];
-        var qty = Number(quantities[key] || 0);
-        if (options.length > 1 && qty === 0 && String(next[key] || '') !== '') {
-          next[key] = '';
-          changed = true;
-        }
-      });
-      return changed ? next : current;
-    });
-  }, [beverageEntries, quantities]);
-  var updateQuantity = function updateQuantity(key, delta) {
-    var beverageItem = (initialData.beverageItems || {})[key];
-    var temperatureOptions = (beverageItem === null || beverageItem === void 0 ? void 0 : beverageItem.temperature_options) || ['cold'];
-    setQuantities(function (current) {
-      var nextQty = Math.max(0, Number(current[key] || 0) + delta);
-      if (temperatureOptions.length > 1 && nextQty === 0) {
-        setTemperatures(function (currentTemps) {
-          return _objectSpread(_objectSpread({}, currentTemps), {}, _defineProperty({}, key, ''));
-        });
-      }
-      return _objectSpread(_objectSpread({}, current), {}, _defineProperty({}, key, nextQty));
-    });
-    setTemperatureErrors(function (current) {
-      if (!current[key]) {
-        return current;
-      }
-      var next = _objectSpread({}, current);
-      delete next[key];
-      return next;
-    });
-  };
-  var handleSubmit = function handleSubmit(event) {
-    var nextErrors = {};
-    beverageEntries.forEach(function (_ref10) {
-      var _ref11 = _slicedToArray(_ref10, 2),
-        key = _ref11[0],
-        item = _ref11[1];
-      var qty = Number(quantities[key] || 0);
-      var options = item.temperature_options || ['cold'];
-      var selectedTemperature = String(temperatures[key] || '').trim();
-      if (qty > 0 && options.length > 1 && selectedTemperature === '') {
-        nextErrors[key] = 'Please choose Hot or Cold';
-      }
-    });
-    setTemperatureErrors(nextErrors);
-    if (Object.keys(nextErrors).length > 0) {
-      event.preventDefault();
-    }
-  };
-  var skipFood = function skipFood() {
-    var resetQuantities = {};
-    allEntries.forEach(function (_ref12) {
-      var _ref13 = _slicedToArray(_ref12, 1),
-        key = _ref13[0];
-      resetQuantities[key] = 0;
-    });
-    setQuantities(resetQuantities);
-    window.requestAnimationFrame(function () {
-      if (formRef.current) {
-        formRef.current.submit();
-      }
-    });
-  };
-  if (auth.isLoading) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.BookingGuardFallback, {
-      message: "Checking your session..."
-    });
-  }
-  if (!auth.isAuthorized) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.BookingGuardFallback, {
-      message: "Please log in to continue food selection."
-    });
-  }
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("section", {
-    className: "food-page",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "food-shell",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "food-main",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "food-head",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
-            href: initialData.backUrl,
-            className: "seat-back",
-            title: "Back to seat selection",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-              className: "fas fa-arrow-left"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
-              children: "Add Food & Beverages"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-              children: "Optional step. You can skip and continue to payment."
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
-          method: "GET",
-          action: initialData.nextUrl,
-          id: "foodForm",
-          ref: formRef,
-          onSubmit: handleSubmit,
-          children: [Object.entries(initialData.bookingState || {}).map(function (_ref14) {
-            var _ref15 = _slicedToArray(_ref14, 2),
-              key = _ref15[0],
-              value = _ref15[1];
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-              type: "hidden",
-              name: key,
-              value: Array.isArray(value) ? value.join(',') : value !== null && value !== void 0 ? value : ''
-            }, key);
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "menu-block",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-              className: "menu-title",
-              children: "Food"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "food-grid",
-              children: foodEntries.map(function (_ref16) {
-                var _quantities$key;
-                var _ref17 = _slicedToArray(_ref16, 2),
-                  key = _ref17[0],
-                  item = _ref17[1];
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: "food-card beverage-card",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
-                    children: item.name
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-                    children: ["RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatCurrency)(item.price)]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                    className: "qty-row",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                      htmlFor: "".concat(key, "_qty"),
-                      children: "Qty"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                      className: "qty-control",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                        type: "button",
-                        className: "qty-btn",
-                        onClick: function onClick() {
-                          return updateQuantity(key, -1);
-                        },
-                        children: "-"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                        id: "".concat(key, "_qty"),
-                        name: "".concat(key, "_qty"),
-                        type: "number",
-                        min: "0",
-                        step: "1",
-                        value: (_quantities$key = quantities[key]) !== null && _quantities$key !== void 0 ? _quantities$key : 0,
-                        "data-price": item.price,
-                        className: "food-qty",
-                        readOnly: true
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                        type: "button",
-                        className: "qty-btn",
-                        onClick: function onClick() {
-                          return updateQuantity(key, 1);
-                        },
-                        children: "+"
-                      })]
-                    })]
-                  })]
-                }, key);
-              })
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "menu-block",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-              className: "menu-title",
-              children: "Beverages"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "food-grid",
-              children: beverageEntries.map(function (_ref18) {
-                var _quantities$key2;
-                var _ref19 = _slicedToArray(_ref18, 2),
-                  key = _ref19[0],
-                  item = _ref19[1];
-                var temperatureOptions = item.temperature_options || ['cold'];
-                var singleTemperature = temperatureOptions.length === 1;
-                var qty = Number(quantities[key] || 0);
-                var selectedTemperature = singleTemperature ? String(temperatureOptions[0] || 'cold') : qty > 0 ? String(temperatures[key] || '') : '';
-                var hasError = Boolean(temperatureErrors[key]);
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                  className: "food-card",
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
-                    children: item.name
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-                    children: ["RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatCurrency)(item.price)]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                    className: "qty-row",
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                      htmlFor: "".concat(key, "_qty"),
-                      children: "Qty"
-                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                      className: "qty-control",
-                      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                        type: "button",
-                        className: "qty-btn",
-                        onClick: function onClick() {
-                          return updateQuantity(key, -1);
-                        },
-                        children: "-"
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                        id: "".concat(key, "_qty"),
-                        name: "".concat(key, "_qty"),
-                        type: "number",
-                        min: "0",
-                        step: "1",
-                        value: (_quantities$key2 = quantities[key]) !== null && _quantities$key2 !== void 0 ? _quantities$key2 : 0,
-                        "data-price": item.price,
-                        className: "food-qty",
-                        readOnly: true
-                      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                        type: "button",
-                        className: "qty-btn",
-                        onClick: function onClick() {
-                          return updateQuantity(key, 1);
-                        },
-                        children: "+"
-                      })]
-                    })]
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                    className: "temp-row",
-                    style: hasError ? {
-                      border: '1px solid #ef4444',
-                      borderRadius: '10px',
-                      padding: '0.45rem 0.55rem',
-                      background: 'rgba(239,68,68,0.08)'
-                    } : undefined,
-                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                      htmlFor: "".concat(key, "_temp"),
-                      children: "Serve"
-                    }), singleTemperature ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-                        className: "temp-badge",
-                        children: [String(temperatureOptions[0]).charAt(0).toUpperCase() + String(temperatureOptions[0]).slice(1), " only"]
-                      })
-                    }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-                      className: "temp-toggle",
-                      role: "group",
-                      "aria-label": "Serve temperature for ".concat(item.name),
-                      children: temperatureOptions.map(function (tempOption) {
-                        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-                          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                            type: "radio",
-                            id: "".concat(key, "_temp_").concat(tempOption),
-                            name: "".concat(key, "_temp"),
-                            value: tempOption,
-                            className: "temp-radio",
-                            checked: selectedTemperature === tempOption,
-                            onChange: function onChange() {
-                              setTemperatures(function (current) {
-                                return _objectSpread(_objectSpread({}, current), {}, _defineProperty({}, key, tempOption));
-                              });
-                              setTemperatureErrors(function (current) {
-                                if (!current[key]) {
-                                  return current;
-                                }
-                                var next = _objectSpread({}, current);
-                                delete next[key];
-                                return next;
-                              });
-                            }
-                          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-                            htmlFor: "".concat(key, "_temp_").concat(tempOption),
-                            className: "temp-pill",
-                            children: String(tempOption).charAt(0).toUpperCase() + String(tempOption).slice(1)
-                          })]
-                        }, tempOption);
-                      })
-                    })]
-                  }), hasError ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("small", {
-                    style: {
-                      color: '#ef4444',
-                      marginTop: '0.35rem',
-                      display: 'block',
-                      fontSize: '0.78rem'
-                    },
-                    children: temperatureErrors[key]
-                  }) : null]
-                }, key);
-              })
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "food-footer",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("small", {
-                children: ["Seats: ", (initialData.seats || []).join(', ')]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "totals",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-                  children: ["Seat Total: RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatCurrency)(initialData.seatTotal)]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-                  id: "foodTotalText",
-                  children: ["Food Total: RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatCurrency)(addonTotal)]
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("strong", {
-                  id: "grandTotalText",
-                  children: ["Grand Total: RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatCurrency)(grandTotal)]
-                })]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "actions",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                type: "button",
-                id: "skipFoodBtn",
-                className: "ghost-btn",
-                onClick: skipFood,
-                children: "Skip Food"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
-                type: "submit",
-                className: "next-btn",
-                children: ["Proceed to Payment ", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-                  className: "fas fa-arrow-right"
-                })]
-              })]
-            })]
-          })]
-        })]
-      })
-    })
-  });
-}
-
-/***/ },
-
-/***/ "./resources/js/components/BookingPayment.jsx"
-/*!****************************************************!*\
-  !*** ./resources/js/components/BookingPayment.jsx ***!
-  \****************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ BookingPayment)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _bookingAuth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bookingAuth */ "./resources/js/components/bookingAuth.js");
-/* harmony import */ var _bookingSession__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bookingSession */ "./resources/js/components/bookingSession.js");
-/* harmony import */ var _bookingUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bookingUtils */ "./resources/js/components/bookingUtils.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-function BookingPayment(_ref) {
-  var _initialData$foodSele;
-  var initialData = _ref.initialData;
-  var auth = (0,_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.useBookingAuthGuard)(initialData);
-  var storageKey = initialData.storageKey || 'booking.payment.default';
-  var bookingState = initialData.bookingState || {};
-  var seats = initialData.seats || [];
-  var foodLines = initialData.foodLines || [];
-  var _useSessionStorageSta = (0,_bookingSession__WEBPACK_IMPORTED_MODULE_2__.useSessionStorageState)(storageKey, {
-      paymentMethod: initialData.paymentMethod || 'tng'
-    }),
-    _useSessionStorageSta2 = _slicedToArray(_useSessionStorageSta, 2),
-    paymentDraft = _useSessionStorageSta2[0],
-    setPaymentDraft = _useSessionStorageSta2[1];
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(paymentDraft.paymentMethod || initialData.paymentMethod || 'tng'),
-    _useState2 = _slicedToArray(_useState, 2),
-    paymentMethod = _useState2[0],
-    setPaymentMethod = _useState2[1];
-  react__WEBPACK_IMPORTED_MODULE_0__.useEffect(function () {
-    setPaymentDraft({
-      paymentMethod: paymentMethod
-    });
-  }, [paymentMethod, setPaymentDraft]);
-  if (auth.isLoading) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.BookingGuardFallback, {
-      message: "Checking your session..."
-    });
-  }
-  if (!auth.isAuthorized) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.BookingGuardFallback, {
-      message: "Please log in to continue payment."
-    });
-  }
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("section", {
-    className: "payment-page",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-      className: "payment-shell",
-      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "payment-main",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "payment-head",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
-            href: initialData.backUrl,
-            className: "seat-back",
-            title: "Back to food and beverage",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-              className: "fas fa-arrow-left"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
-              children: "Payment"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-              children: "Review details and choose payment method."
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "payment-grid",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "card-block",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
-              children: "Booking Details"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "line",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                children: "Movie"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-                children: bookingState.title
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "line",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                children: "Cinema"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("strong", {
-                children: [bookingState.cinema, " \u2022 ", bookingState.hall, " \u2022 ", bookingState.format]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "line",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                children: "Date & Time"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("strong", {
-                children: [(0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatLongDate)(bookingState.date), " ", bookingState.time]
-              })]
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "line",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                children: "Seats"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-                children: seats.join(', ')
-              })]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            className: "card-block",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
-              children: "Price Breakdown"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "line",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                children: "Seat Total"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("strong", {
-                children: ["RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatCurrency)(initialData.seatTotal)]
-              })]
-            }), initialData.isTuesday ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.Fragment, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "line",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                  children: "Tuesday Discount (50%)"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("strong", {
-                  style: {
-                    color: '#22c55e'
-                  },
-                  children: ["- RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatCurrency)(initialData.discountAmount)]
-                })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "line",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                  children: "Seat Total After Discount"
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("strong", {
-                  children: ["RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatCurrency)(initialData.discountedSeatTotal)]
-                })]
-              })]
-            }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "line",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                children: "Food Total"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("strong", {
-                children: ["RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatCurrency)(initialData.foodTotal)]
-              })]
-            }), foodLines.map(function (line) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "line small",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-                  children: [line.name, " x", line.qty, line.category === 'beverage' && line.temperatureLabel ? " \u2022 ".concat(line.temperatureLocked ? 'Cold only' : line.temperatureLabel) : '']
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("strong", {
-                  children: ["RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatCurrency)(line.lineTotal)]
-                })]
-              }, "".concat(line.key || line.name, "-").concat(line.qty));
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-              className: "line total",
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                children: "Grand Total"
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("strong", {
-                children: ["RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatCurrency)(initialData.grandTotal)]
-              })]
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
-          method: "POST",
-          action: initialData.nextUrl,
-          className: "pay-form",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "_token",
-            value: initialData.csrfToken
-          }), Object.entries(bookingState).map(function (_ref2) {
-            var _ref3 = _slicedToArray(_ref2, 2),
-              key = _ref3[0],
-              value = _ref3[1];
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-              type: "hidden",
-              name: key,
-              value: Array.isArray(value) ? value.join(',') : value !== null && value !== void 0 ? value : ''
-            }, key);
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "seat_total",
-            value: initialData.seatTotal
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "food_total",
-            value: initialData.foodTotal
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "payment_method",
-            value: paymentMethod
-          }), (((_initialData$foodSele = initialData.foodSelections) === null || _initialData$foodSele === void 0 ? void 0 : _initialData$foodSele.allEntries) || []).map(function (_ref4) {
-            var _initialData$foodSele2, _initialData$foodSele3, _initialData$foodSele4;
-            var _ref5 = _slicedToArray(_ref4, 2),
-              key = _ref5[0],
-              item = _ref5[1];
-            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                type: "hidden",
-                name: "".concat(key, "_qty"),
-                value: (_initialData$foodSele2 = (_initialData$foodSele3 = initialData.foodSelections.quantities) === null || _initialData$foodSele3 === void 0 ? void 0 : _initialData$foodSele3[key]) !== null && _initialData$foodSele2 !== void 0 ? _initialData$foodSele2 : 0
-              }), item.temperature_options && item.temperature_options.length > 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                type: "hidden",
-                name: "".concat(key, "_temp"),
-                value: ((_initialData$foodSele4 = initialData.foodSelections.temperatures) === null || _initialData$foodSele4 === void 0 ? void 0 : _initialData$foodSele4[key]) || item.default_temperature || item.temperature_options[0]
-              }) : null]
-            }, key);
-          }), initialData.isTuesday ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("p", {
-            style: {
-              margin: '0.5rem 0 0.8rem',
-              color: '#22c55e',
-              fontSize: '0.9rem'
-            },
-            children: "Tuesday Promo Applied: 50% off movie seat tickets."
-          }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h3", {
-            children: "Payment Method"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
-            className: "method",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-              type: "radio",
-              name: "payment_method_option",
-              checked: paymentMethod === 'tng',
-              onChange: function onChange() {
-                return setPaymentMethod('tng');
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-              children: "Touch 'n Go eWallet"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
-            className: "method",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-              type: "radio",
-              name: "payment_method_option",
-              checked: paymentMethod === 'debit',
-              onChange: function onChange() {
-                return setPaymentMethod('debit');
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-              children: "Debit Card"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
-            className: "method",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-              type: "radio",
-              name: "payment_method_option",
-              checked: paymentMethod === 'credit',
-              onChange: function onChange() {
-                return setPaymentMethod('credit');
-              }
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-              children: "Credit Card"
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-            type: "submit",
-            className: "pay-btn",
-            children: "Pay Now"
-          })]
-        })]
-      })
-    })
-  });
-}
-
-/***/ },
-
-/***/ "./resources/js/components/BookingSeat.jsx"
-/*!*************************************************!*\
-  !*** ./resources/js/components/BookingSeat.jsx ***!
-  \*************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ BookingSeat)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _bookingAuth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bookingAuth */ "./resources/js/components/bookingAuth.js");
-/* harmony import */ var _bookingSession__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bookingSession */ "./resources/js/components/bookingSession.js");
-/* harmony import */ var _bookingUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bookingUtils */ "./resources/js/components/bookingUtils.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
-function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
-function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-var createSeatLookup = function createSeatLookup(rows, seatsPerRow, coupleRows, couplePairStarts, bookedSeats) {
-  var bookedSet = new Set(bookedSeats || []);
-  var coupleRowSet = new Set(coupleRows || []);
-  var map = new Map();
-  (rows || []).forEach(function (row) {
-    var rowCouplePairStarts = coupleRowSet.has(row) ? (couplePairStarts || []).map(Number) : [];
-    for (var number = 1; number <= Number(seatsPerRow || 0); number += 1) {
-      var seatId = "".concat(row).concat(number);
-      var pairStart = rowCouplePairStarts.includes(number);
-      var pairFollower = rowCouplePairStarts.includes(number - 1);
-      if (pairFollower) {
-        continue;
-      }
-      if (pairStart) {
-        var secondNumber = Math.min(number + 1, Number(seatsPerRow || 0));
-        var seats = secondNumber === number ? [seatId] : [seatId, "".concat(row).concat(secondNumber)];
-        map.set(seatId, {
-          key: seats.join(','),
-          label: seats.join('-'),
-          seats: seats,
-          isCouple: true,
-          booked: seats.some(function (s) {
-            return bookedSet.has(s);
-          })
-        });
-        continue;
-      }
-      map.set(seatId, {
-        key: seatId,
-        label: seatId,
-        seats: [seatId],
-        isCouple: false,
-        booked: bookedSet.has(seatId)
-      });
-    }
-  });
-  return map;
-};
-var toSeatSet = function toSeatSet(value) {
-  return new Set(String(value || '').split(',').map(function (s) {
-    return s.trim();
-  }).filter(Boolean));
-};
-var formatMoney = function formatMoney(value) {
-  return "RM ".concat((0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatCurrency)(value));
-};
-function BookingSeat(_ref) {
-  var initialData = _ref.initialData;
-  var auth = (0,_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.useBookingAuthGuard)(initialData);
-  var storageKey = initialData.storageKey || 'booking.seat.default';
-  var rows = initialData.rows || [];
-  var seatsPerRow = Number(initialData.seatsPerRow || 0);
-  var aisleAfterColumns = (initialData.aisleAfterColumns || []).map(Number);
-  var showtime = initialData.showtime || {};
-  var movie = showtime.movie || {};
-  var seatLookup = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    return createSeatLookup(rows, seatsPerRow, initialData.coupleRows || [], initialData.couplePairStarts || [], initialData.bookedSeats || []);
-  }, [rows, seatsPerRow, initialData.coupleRows, initialData.couplePairStarts, initialData.bookedSeats]);
-  var _useSessionStorageSta = (0,_bookingSession__WEBPACK_IMPORTED_MODULE_2__.useSessionStorageState)(storageKey, String(initialData.selectedSeats || '').split(',').map(function (s) {
-      return s.trim();
-    }).filter(Boolean)),
-    _useSessionStorageSta2 = _slicedToArray(_useSessionStorageSta, 2),
-    persistedSeatIds = _useSessionStorageSta2[0],
-    setPersistedSeatIds = _useSessionStorageSta2[1];
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
-      var initial = (persistedSeatIds || []).length ? new Set(persistedSeatIds) : toSeatSet(initialData.selectedSeats);
-      return initial;
-    }),
-    _useState2 = _slicedToArray(_useState, 2),
-    selectedSeatSet = _useState2[0],
-    setSelectedSeatSet = _useState2[1];
-  var seatGridRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  var screenWrapRef = (0,react__WEBPACK_IMPORTED_MODULE_0__.useRef)(null);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    setPersistedSeatIds(Array.from(selectedSeatSet));
-  }, [selectedSeatSet, setPersistedSeatIds]);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var syncScreenWidth = function syncScreenWidth() {
-      if (!seatGridRef.current || !screenWrapRef.current) {
-        return;
-      }
-      var seatRows = Array.from(seatGridRef.current.querySelectorAll('.seat-row'));
-      if (!seatRows.length) {
-        return;
-      }
-      var widths = seatRows.map(function (rowEl) {
-        var seats = Array.from(rowEl.querySelectorAll('.seat'));
-        if (!seats.length) {
-          return 0;
-        }
-        var firstRect = seats[0].getBoundingClientRect();
-        var lastRect = seats[seats.length - 1].getBoundingClientRect();
-        return Math.ceil(lastRect.right - firstRect.left);
-      }).filter(function (value) {
-        return value > 0;
-      });
-      if (!widths.length) {
-        return;
-      }
-      var targetWidth = Math.max(Math.ceil(Math.max.apply(Math, _toConsumableArray(widths)) * 1.2), 220);
-      screenWrapRef.current.style.setProperty('--screen-width', "".concat(targetWidth, "px"));
-    };
-    var observer = typeof ResizeObserver !== 'undefined' && seatGridRef.current ? new ResizeObserver(syncScreenWidth) : null;
-    window.addEventListener('resize', syncScreenWidth);
-    if (observer) {
-      observer.observe(seatGridRef.current);
-    }
-    syncScreenWidth();
-    return function () {
-      window.removeEventListener('resize', syncScreenWidth);
-      if (observer) {
-        observer.disconnect();
-      }
-    };
-  }, []);
-  if (auth.isLoading) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.BookingGuardFallback, {
-      message: "Checking your session..."
-    });
-  }
-  if (!auth.isAuthorized) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.BookingGuardFallback, {
-      message: "Please log in to continue seat selection."
-    });
-  }
-  var selectedGroups = Array.from(seatLookup.values()).filter(function (group) {
-    return group.seats.every(function (seat) {
-      return selectedSeatSet.has(seat);
-    });
-  });
-  var selectedSeatIds = selectedGroups.flatMap(function (group) {
-    return group.seats;
-  }).sort(function (a, b) {
-    return a.localeCompare(b);
-  });
-  var totalPrice = selectedGroups.reduce(function (sum, group) {
-    var unitPrice = Number(initialData.basePrice || 0) + (group.isCouple ? Number(initialData.coupleExtra || 0) : 0);
-    return sum + unitPrice * group.seats.length;
-  }, 0);
-  var toggleSeatGroup = function toggleSeatGroup(group) {
-    if (!group || group.booked) {
-      return;
-    }
-    setSelectedSeatSet(function (current) {
-      var next = new Set(current);
-      var isSelected = group.seats.every(function (seat) {
-        return next.has(seat);
-      });
-      if (isSelected) {
-        group.seats.forEach(function (seat) {
-          return next["delete"](seat);
-        });
-      } else {
-        group.seats.forEach(function (seat) {
-          return next.add(seat);
-        });
-      }
-      return next;
-    });
-  };
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("section", {
-    className: "seat-page",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "seat-shell",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "seat-main",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "seat-head",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
-            href: initialData.backUrl,
-            className: "seat-back",
-            title: "Back to choose cinema and time",
-            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-              className: "fas fa-arrow-left"
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
-              className: "seat-title",
-              children: movie.title
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-              className: "seat-sub",
-              children: [showtime.cinema, showtime.hall ? ", ".concat(showtime.hall) : '', showtime.format ? ", ".concat(showtime.format) : '', " \u2022 ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatLongDate)(showtime.date), " ", showtime.time]
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "screen-wrap",
-          ref: screenWrapRef,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "screen-glow"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "screen-bar"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            children: "SCREEN"
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-          className: "seat-map-wrap",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "seat-grid",
-            id: "seatGrid",
-            ref: seatGridRef,
-            children: rows.map(function (row) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-                className: "seat-row",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                  className: "row-label",
-                  children: row
-                }), Array.from({
-                  length: seatsPerRow
-                }).map(function (_, seatIndex) {
-                  var number = seatIndex + 1;
-                  var seatId = "".concat(row).concat(number);
-                  var showAisle = aisleAfterColumns.includes(number - 1);
-                  var group = seatLookup.get(seatId);
-                  var isSelected = group ? group.seats.every(function (seat) {
-                    return selectedSeatSet.has(seat);
-                  }) : false;
-                  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)(react__WEBPACK_IMPORTED_MODULE_0__.Fragment, {
-                    children: [showAisle ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                      className: "aisle",
-                      "aria-hidden": "true"
-                    }) : null, group ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("button", {
-                      type: "button",
-                      className: "seat ".concat(group.isCouple ? 'couple couple-pair' : '', " ").concat(group.booked ? 'booked' : '', " ").concat(isSelected ? 'selected' : ''),
-                      disabled: group.booked,
-                      onClick: function onClick() {
-                        return toggleSeatGroup(group);
-                      },
-                      title: "Seat ".concat(group.label),
-                      children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-                        className: "fas fa-couch"
-                      })
-                    }) : null]
-                  }, "".concat(row, "-").concat(number));
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                  className: "row-label",
-                  children: row
-                })]
-              }, row);
-            })
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "seat-legend",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-              className: "seat-dot available"
-            }), " Available"]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-              className: "seat-dot selected"
-            }), " Selected"]
-          }), initialData.hasCoupleSeats ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-              className: "seat-dot couple"
-            }), " ", showtime.format === 'BEANIE' ? 'Beanie Sofa (2 seats)' : "Couple (2 seats, +RM ".concat((0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatCurrency)(initialData.coupleExtra || 0), " / seat)")]
-          }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-              className: "seat-dot booked"
-            }), " Booked"]
-          })]
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("aside", {
-        className: "booking-side",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h2", {
-          children: "Booking Summary"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "movie-mini",
-          children: [movie.poster ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("img", {
-            src: movie.poster,
-            alt: "".concat(movie.title, " poster")
-          }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            className: "movie-mini-placeholder",
-            children: String(movie.title || '').slice(0, 2).toUpperCase()
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("small", {
-              children: "NOW SHOWING"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-              children: movie.title
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-              children: [movie.genre, " \u2022 ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatDurationText)(movie.durationText)]
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "meta-line",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            children: "Cinema"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-            children: showtime.cinema
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "meta-line",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            children: "Date & Time"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("strong", {
-            children: [(0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatLongDate)(showtime.date), " ", showtime.time]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "meta-line",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            children: "Base Price"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-            children: formatMoney(showtime.price)
-          })]
-        }), initialData.hasCoupleSeats && showtime.format !== 'BEANIE' ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "meta-line",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            children: "Couple Seat Add-on"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("strong", {
-            children: ["+", formatMoney(initialData.coupleExtra || 0), " / seat"]
-          })]
-        }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "selected-block",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            children: "Selected Seats"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-            id: "selectedSeats",
-            className: "selected-list",
-            children: selectedSeatIds.length ? selectedGroups.map(function (group) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("span", {
-                className: "seat-chip ".concat(group.isCouple ? 'couple' : ''),
-                children: [group.label, group.isCouple ? showtime.format === 'BEANIE' ? ' Beanie' : ' Couple' : '']
-              }, group.key);
-            }) : 'None'
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "total-wrap",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-            children: "Total Price"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-            id: "totalPrice",
-            children: formatMoney(totalPrice)
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
-          method: "GET",
-          action: initialData.nextUrl,
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "movie_id",
-            value: initialData.bookingState.movie_id || ''
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "showtime_id",
-            value: initialData.bookingState.showtime_id || ''
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "title",
-            value: initialData.bookingState.title || movie.title || ''
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "genre",
-            value: initialData.bookingState.genre || movie.genre || ''
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "duration",
-            value: initialData.bookingState.duration || movie.durationText || ''
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "poster",
-            value: initialData.bookingState.poster || movie.poster || ''
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "cinema",
-            value: showtime.cinema || ''
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "hall",
-            value: showtime.hall || ''
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "format",
-            value: showtime.format || ''
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "price",
-            value: showtime.price || 0
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "date",
-            value: showtime.date || ''
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "time",
-            value: showtime.time || ''
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-            type: "hidden",
-            name: "seats",
-            value: selectedSeatIds.join(',')
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
-            type: "submit",
-            className: "proceed-btn",
-            disabled: selectedSeatIds.length === 0,
-            children: ["Continue to Food & Beverage", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-              className: "fas fa-arrow-right"
-            })]
-          })]
-        })]
-      })]
-    })
-  });
-}
-
-/***/ },
-
-/***/ "./resources/js/components/BookingSelect.jsx"
-/*!***************************************************!*\
-  !*** ./resources/js/components/BookingSelect.jsx ***!
-  \***************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ BookingSelect)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _bookingAuth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bookingAuth */ "./resources/js/components/bookingAuth.js");
-/* harmony import */ var _bookingSession__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bookingSession */ "./resources/js/components/bookingSession.js");
-/* harmony import */ var _bookingUtils__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./bookingUtils */ "./resources/js/components/bookingUtils.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
-function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
-function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
-function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
-function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
-function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-
-
-
-
-function BookingSelect(_ref) {
-  var initialData = _ref.initialData;
-  var movie = initialData.movie;
-  var cinemas = initialData.cinemas || [];
-  var types = initialData.types || [];
-  var dates = initialData.dates || [];
-  var times = initialData.times || [];
-  var selection = initialData.selection || {};
-  var auth = (0,_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.useBookingAuthGuard)(initialData);
-  var storageKey = initialData.storageKey || 'booking.select.default';
-  var initialCinema = selection.cinema ? cinemas.find(function (cinema) {
-    return cinema.name === selection.cinema;
-  }) || {
-    name: selection.cinema,
-    hall: selection.hall || ''
-  } : {
-    name: '',
-    hall: ''
-  };
-  var initialType = selection.format ? types.find(function (type) {
-    return type.label === selection.format;
-  }) || {
-    label: selection.format,
-    price: selection.price || 0
-  } : {
-    label: '',
-    price: ''
-  };
-  var initialDate = selection.date || '';
-  var initialTime = selection.time || '';
-  var _useSessionStorageSta = (0,_bookingSession__WEBPACK_IMPORTED_MODULE_2__.useSessionStorageState)(storageKey, {
-      selectedCinema: initialCinema.name,
-      selectedHall: initialCinema.hall,
-      selectedType: initialType.label,
-      selectedPrice: initialType.price,
-      selectedDate: initialDate,
-      selectedTime: initialTime
-    }),
-    _useSessionStorageSta2 = _slicedToArray(_useSessionStorageSta, 2),
-    draft = _useSessionStorageSta2[0],
-    setDraft = _useSessionStorageSta2[1];
-  var selectedCinema = draft.selectedCinema || initialCinema.name;
-  var selectedHall = draft.selectedHall || initialCinema.hall;
-  var selectedType = draft.selectedType || initialType.label;
-  var selectedPrice = draft.selectedPrice || initialType.price;
-  var selectedDate = draft.selectedDate || initialDate;
-  var selectedTime = draft.selectedTime || initialTime;
-  var canProceed = Boolean(selectedCinema && selectedType && selectedDate && selectedTime);
-  if (auth.isLoading) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.BookingGuardFallback, {
-      message: "Checking your session..."
-    });
-  }
-  if (!auth.isAuthorized) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)(_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.BookingGuardFallback, {
-      message: "Please log in to start your booking."
-    });
-  }
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("section", {
-    className: "booking-select-page",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-      className: "booking-select-card",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-        className: "booking-select-head",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("a", {
-          href: initialData.homeUrl,
-          className: "seat-back",
-          title: "Back to home",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-            className: "fas fa-arrow-left"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("h1", {
-            children: movie.title
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-            children: [movie.genre, " \u2022 ", movie.durationText]
-          })]
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("form", {
-        method: "GET",
-        action: initialData.seatUrl,
-        className: "booking-form",
-        id: "bookingForm",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-          type: "hidden",
-          name: "movie_id",
-          value: movie.id
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-          type: "hidden",
-          name: "title",
-          value: movie.title
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-          type: "hidden",
-          name: "genre",
-          value: movie.genre
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-          type: "hidden",
-          name: "duration",
-          value: movie.duration
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-          type: "hidden",
-          name: "poster",
-          value: movie.poster || ''
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-          type: "hidden",
-          name: "hall",
-          id: "hallInput",
-          value: selectedHall
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-          type: "hidden",
-          name: "format",
-          id: "formatInput",
-          value: selectedType
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-          type: "hidden",
-          name: "price",
-          id: "priceInput",
-          value: selectedPrice
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "booking-grid",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-              children: "Cinema"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "options",
-              id: "cinemaOptions",
-              children: cinemas.map(function (cinema) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
-                  type: "button",
-                  className: "option-btn cinema-option ".concat(selectedCinema === cinema.name ? 'active' : ''),
-                  "data-cinema": cinema.name,
-                  "data-hall": cinema.hall,
-                  onClick: function onClick() {
-                    setDraft(function (current) {
-                      return _objectSpread(_objectSpread({}, current), {}, {
-                        selectedCinema: cinema.name,
-                        selectedHall: cinema.hall
-                      });
-                    });
-                  },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("strong", {
-                    children: cinema.name
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                    children: cinema.hall
-                  })]
-                }, "".concat(cinema.name, "-").concat(cinema.hall));
-              })
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-              type: "hidden",
-              name: "cinema",
-              id: "cinemaInput",
-              value: selectedCinema
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-              children: "Experience"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "chips",
-              id: "typeOptions",
-              children: types.map(function (type) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
-                  type: "button",
-                  className: "chip-btn type-option ".concat(selectedType === type.label ? 'active' : ''),
-                  "data-format": type.label,
-                  "data-price": type.price,
-                  onClick: function onClick() {
-                    setDraft(function (current) {
-                      return _objectSpread(_objectSpread({}, current), {}, {
-                        selectedType: type.label,
-                        selectedPrice: type.price
-                      });
-                    });
-                  },
-                  children: [type.label, " \u2022 RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatCurrency)(type.price)]
-                }, type.label);
-              })
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-              children: "Select Date"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "chips",
-              children: dates.map(function (date) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
-                  className: "chip",
-                  onClick: function onClick() {
-                    return setDraft(function (current) {
-                      return _objectSpread(_objectSpread({}, current), {}, {
-                        selectedDate: date
-                      });
-                    });
-                  },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                    type: "radio",
-                    name: "date",
-                    value: date,
-                    checked: selectedDate === date,
-                    onChange: function onChange() {
-                      return setDraft(function (current) {
-                        return _objectSpread(_objectSpread({}, current), {}, {
-                          selectedDate: date
-                        });
-                      });
-                    }
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                    className: selectedDate === date ? 'active' : '',
-                    style: selectedDate === date ? {
-                      borderColor: 'var(--c1)',
-                      color: '#ffffff',
-                      background: 'rgba(209, 106, 255, 0.2)',
-                      fontWeight: 600
-                    } : undefined,
-                    children: (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatDateLabel)(date)
-                  })]
-                }, date);
-              })
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("label", {
-              children: "Available Showtimes"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("div", {
-              className: "chips",
-              children: times.map(function (time) {
-                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("label", {
-                  className: "chip",
-                  onClick: function onClick() {
-                    return setDraft(function (current) {
-                      return _objectSpread(_objectSpread({}, current), {}, {
-                        selectedTime: time
-                      });
-                    });
-                  },
-                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("input", {
-                    type: "radio",
-                    name: "time",
-                    value: time,
-                    checked: selectedTime === time,
-                    onChange: function onChange() {
-                      return setDraft(function (current) {
-                        return _objectSpread(_objectSpread({}, current), {}, {
-                          selectedTime: time
-                        });
-                      });
-                    }
-                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("span", {
-                    className: selectedTime === time ? 'active' : '',
-                    style: selectedTime === time ? {
-                      borderColor: 'var(--c1)',
-                      color: '#ffffff',
-                      background: 'rgba(209, 106, 255, 0.2)',
-                      fontWeight: 600
-                    } : undefined,
-                    children: time
-                  })]
-                }, time);
-              })
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-          className: "booking-footer",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("div", {
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("small", {
-              children: "Selection Summary"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-              id: "selectedCinemaText",
-              children: ["Cinema: ", selectedCinema || 'Not selected', selectedHall ? " \u2022 ".concat(selectedHall) : '']
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("p", {
-              id: "selectedTypeText",
-              style: {
-                color: 'var(--muted)',
-                marginTop: '0.15rem'
-              },
-              children: ["Type: ", selectedType || 'Not selected', selectedType ? " \u2022 RM ".concat((0,_bookingUtils__WEBPACK_IMPORTED_MODULE_3__.formatCurrency)(selectedPrice)) : '']
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsxs)("button", {
-            type: "submit",
-            className: "next-btn",
-            disabled: !canProceed,
-            children: ["Pick Your Seats", /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_4__.jsx)("i", {
-              className: "fas fa-arrow-right"
-            })]
-          })]
-        })]
-      })]
-    })
-  });
-}
-
-/***/ },
-
-/***/ "./resources/js/components/BookingSummary.jsx"
-/*!****************************************************!*\
-  !*** ./resources/js/components/BookingSummary.jsx ***!
-  \****************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ BookingSummary)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _bookingAuth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bookingAuth */ "./resources/js/components/bookingAuth.js");
-/* harmony import */ var _bookingUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bookingUtils */ "./resources/js/components/bookingUtils.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-function BookingSummary(_ref) {
-  var initialData = _ref.initialData;
-  var auth = (0,_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.useBookingAuthGuard)(initialData);
-  var summary = initialData.summary || {};
-  if (auth.isLoading) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.BookingGuardFallback, {
-      message: "Checking your session..."
-    });
-  }
-  if (!auth.isAuthorized) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.BookingGuardFallback, {
-      message: "Please log in to view your booking summary."
-    });
-  }
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("section", {
-    className: "booking-summary-page",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "booking-summary-card",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
-        children: "Booking Confirmed"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-        className: "sub",
-        children: "Your seats are reserved in this booking flow."
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "summary-grid",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-            children: "Movie"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("strong", {
-            children: summary.movieTitle
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-            children: "Cinema"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("strong", {
-            children: [summary.cinema, " \u2022 ", summary.hall, " \u2022 ", summary.format]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-            children: "Date & Time"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("strong", {
-            children: [(0,_bookingUtils__WEBPACK_IMPORTED_MODULE_2__.formatLongDate)(summary.date), " ", summary.time]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-            children: "Seats"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("strong", {
-            children: (summary.seats || []).join(', ')
-          })]
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "total-row",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-          children: "Total Paid"
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("strong", {
-          children: ["RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_2__.formatCurrency)(summary.total)]
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        style: {
-          display: 'flex',
-          gap: '0.75rem',
-          flexWrap: 'wrap',
-          marginTop: '1rem'
-        },
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
-          href: initialData.homeUrl,
-          className: "summary-btn",
-          children: "Back to Movies"
-        }), initialData.ticketUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
-          href: initialData.ticketUrl,
-          className: "summary-btn",
-          children: "View Ticket"
-        }) : null]
-      })]
-    })
-  });
-}
-
-/***/ },
-
-/***/ "./resources/js/components/BookingTicket.jsx"
-/*!***************************************************!*\
-  !*** ./resources/js/components/BookingTicket.jsx ***!
-  \***************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "default": () => (/* binding */ BookingTicket)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var _bookingAuth__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./bookingAuth */ "./resources/js/components/bookingAuth.js");
-/* harmony import */ var _bookingUtils__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./bookingUtils */ "./resources/js/components/bookingUtils.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
-
-
-
-
-function BookingTicket(_ref) {
-  var initialData = _ref.initialData;
-  var auth = (0,_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.useBookingAuthGuard)(initialData);
-  var ticket = initialData.ticket || {};
-  var foodLines = ticket.foodLines || [];
-  var seats = ticket.seats || [];
-  if (auth.isLoading) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.BookingGuardFallback, {
-      message: "Checking your session..."
-    });
-  }
-  if (!auth.isAuthorized) {
-    return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(_bookingAuth__WEBPACK_IMPORTED_MODULE_1__.BookingGuardFallback, {
-      message: "Please log in to view your ticket."
-    });
-  }
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("section", {
-    className: "ticket-page",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-      className: "ticket-card",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "ticket-head",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
-          href: initialData.homeUrl,
-          className: "seat-back",
-          title: "Back to home",
-          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
-            className: "fas fa-arrow-left"
-          })
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
-            children: "Your E-Ticket"
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
-            className: "sub",
-            children: "Payment successful. Show this QR code at cinema entry."
-          })]
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-        className: "ticket-layout",
-        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-          className: "ticket-details",
-          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-              children: "Ticket Code"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("strong", {
-              children: ticket.ticketCode
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-              children: "Movie"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("strong", {
-              children: ticket.title
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-              children: "Cinema"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("strong", {
-              children: [ticket.cinema, " \u2022 ", ticket.hall, " \u2022 ", ticket.format]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-              children: "Date & Time"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("strong", {
-              children: [(0,_bookingUtils__WEBPACK_IMPORTED_MODULE_2__.formatLongDate)(ticket.date), " ", ticket.time]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-              children: "Seats"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("strong", {
-              children: seats.join(', ')
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-              children: "Payment"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("strong", {
-              children: String(ticket.paymentMethod || 'N/A').toUpperCase()
-            })]
-          }), ticket.promoCode ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-              children: "Promo Code"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("strong", {
-              children: ticket.promoCode
-            })]
-          }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-              children: "Seat Total"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("strong", {
-              children: ["RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_2__.formatCurrency)(ticket.seatTotal)]
-            })]
-          }), ticket.isTuesday ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-              children: "Tuesday Discount (50%)"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("strong", {
-              style: {
-                color: '#22c55e'
-              },
-              children: ["- RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_2__.formatCurrency)(ticket.discountAmount)]
-            })]
-          }) : null, /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "row",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-              children: "Food Total"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("strong", {
-              children: ["RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_2__.formatCurrency)(ticket.foodTotal)]
-            })]
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-            className: "addons-block",
-            children: foodLines.length ? foodLines.map(function (line) {
-              return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-                className: "row small",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
-                  children: [line.name, " x", line.qty, line.category === 'beverage' && line.temperatureLabel ? " \u2022 ".concat(line.temperatureLocked ? 'Cold only' : line.temperatureLabel) : '']
-                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("strong", {
-                  children: ["RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_2__.formatCurrency)(line.lineTotal)]
-                })]
-              }, "".concat(line.key || line.name, "-").concat(line.qty));
-            }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-              className: "addons-empty",
-              children: "No food or beverage added."
-            })
-          }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
-            className: "row total",
-            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
-              children: "Total"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("strong", {
-              children: ["RM ", (0,_bookingUtils__WEBPACK_IMPORTED_MODULE_2__.formatCurrency)(ticket.grandTotal)]
-            })]
-          })]
-        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-          className: "qr-wrap",
-          children: ticket.qrUrl ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
-            src: ticket.qrUrl,
-            alt: "Ticket QR Code"
-          }) : null
-        })]
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
-        className: "actions",
-        children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("a", {
-          href: initialData.homeUrl,
-          className: "back-btn",
-          children: "Back to Home"
-        })
-      })]
-    })
-  });
-}
-
-/***/ },
-
-/***/ "./resources/js/components/bookingAuth.js"
+/***/ "./resources/js/components/MovieDetail.js":
 /*!************************************************!*\
-  !*** ./resources/js/components/bookingAuth.js ***!
+  !*** ./resources/js/components/MovieDetail.js ***!
   \************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   BookingGuardFallback: () => (/* binding */ BookingGuardFallback),
-/* harmony export */   useBookingAuthGuard: () => (/* binding */ useBookingAuthGuard)
+/* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+/* harmony import */ var react_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-dom */ "./node_modules/react-dom/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
+/* harmony import */ var axios__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(axios__WEBPACK_IMPORTED_MODULE_2__);
+/* harmony import */ var react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react/jsx-runtime */ "./node_modules/react/jsx-runtime.js");
+function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == typeof Symbol && "symbol" == typeof Symbol.iterator ? function (o) { return typeof o; } : function (o) { return o && "function" == typeof Symbol && o.constructor === Symbol && o !== Symbol.prototype ? "symbol" : typeof o; }, _typeof(o); }
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
 function _regenerator() { /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/babel/babel/blob/main/packages/babel-helpers/LICENSE */ var e, t, r = "function" == typeof Symbol ? Symbol : {}, n = r.iterator || "@@iterator", o = r.toStringTag || "@@toStringTag"; function i(r, n, o, i) { var c = n && n.prototype instanceof Generator ? n : Generator, u = Object.create(c.prototype); return _regeneratorDefine2(u, "_invoke", function (r, n, o) { var i, c, u, f = 0, p = o || [], y = !1, G = { p: 0, n: 0, v: e, a: d, f: d.bind(e, 4), d: function d(t, r) { return i = t, c = 0, u = e, G.n = r, a; } }; function d(r, n) { for (c = r, u = n, t = 0; !y && f && !o && t < p.length; t++) { var o, i = p[t], d = G.p, l = i[2]; r > 3 ? (o = l === n) && (u = i[(c = i[4]) ? 5 : (c = 3, 3)], i[4] = i[5] = e) : i[0] <= d && ((o = r < 2 && d < i[1]) ? (c = 0, G.v = n, G.n = i[1]) : d < l && (o = r < 3 || i[0] > n || n > l) && (i[4] = r, i[5] = n, G.n = l, c = 0)); } if (o || r > 1) return a; throw y = !0, n; } return function (o, p, l) { if (f > 1) throw TypeError("Generator is already running"); for (y && 1 === p && d(p, l), c = p, u = l; (t = c < 2 ? e : u) || !y;) { i || (c ? c < 3 ? (c > 1 && (G.n = -1), d(c, u)) : G.n = u : G.v = u); try { if (f = 2, i) { if (c || (o = "next"), t = i[o]) { if (!(t = t.call(i, u))) throw TypeError("iterator result is not an object"); if (!t.done) return t; u = t.value, c < 2 && (c = 0); } else 1 === c && (t = i["return"]) && t.call(i), c < 2 && (u = TypeError("The iterator does not provide a '" + o + "' method"), c = 1); i = e; } else if ((t = (y = G.n < 0) ? u : r.call(n, G)) !== a) break; } catch (t) { i = e, c = 1, u = t; } finally { f = 1; } } return { value: t, done: y }; }; }(r, o, i), !0), u; } var a = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} t = Object.getPrototypeOf; var c = [][n] ? t(t([][n]())) : (_regeneratorDefine2(t = {}, n, function () { return this; }), t), u = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(c); function f(e) { return Object.setPrototypeOf ? Object.setPrototypeOf(e, GeneratorFunctionPrototype) : (e.__proto__ = GeneratorFunctionPrototype, _regeneratorDefine2(e, o, "GeneratorFunction")), e.prototype = Object.create(u), e; } return GeneratorFunction.prototype = GeneratorFunctionPrototype, _regeneratorDefine2(u, "constructor", GeneratorFunctionPrototype), _regeneratorDefine2(GeneratorFunctionPrototype, "constructor", GeneratorFunction), GeneratorFunction.displayName = "GeneratorFunction", _regeneratorDefine2(GeneratorFunctionPrototype, o, "GeneratorFunction"), _regeneratorDefine2(u), _regeneratorDefine2(u, o, "Generator"), _regeneratorDefine2(u, n, function () { return this; }), _regeneratorDefine2(u, "toString", function () { return "[object Generator]"; }), (_regenerator = function _regenerator() { return { w: i, m: f }; })(); }
 function _regeneratorDefine2(e, r, n, t) { var i = Object.defineProperty; try { i({}, "", {}); } catch (e) { i = 0; } _regeneratorDefine2 = function _regeneratorDefine(e, r, n, t) { function o(r, n) { _regeneratorDefine2(e, r, function (e) { return this._invoke(r, n, e); }); } r ? i ? i(e, r, { value: n, enumerable: !t, configurable: !t, writable: !t }) : e[r] = n : (o("next", 0), o("throw", 1), o("return", 2)); }, _regeneratorDefine2(e, r, n, t); }
+function ownKeys(e, r) { var t = Object.keys(e); if (Object.getOwnPropertySymbols) { var o = Object.getOwnPropertySymbols(e); r && (o = o.filter(function (r) { return Object.getOwnPropertyDescriptor(e, r).enumerable; })), t.push.apply(t, o); } return t; }
+function _objectSpread(e) { for (var r = 1; r < arguments.length; r++) { var t = null != arguments[r] ? arguments[r] : {}; r % 2 ? ownKeys(Object(t), !0).forEach(function (r) { _defineProperty(e, r, t[r]); }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(e, Object.getOwnPropertyDescriptors(t)) : ownKeys(Object(t)).forEach(function (r) { Object.defineProperty(e, r, Object.getOwnPropertyDescriptor(t, r)); }); } return e; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _classCallCheck(a, n) { if (!(a instanceof n)) throw new TypeError("Cannot call a class as a function"); }
+function _defineProperties(e, r) { for (var t = 0; t < r.length; t++) { var o = r[t]; o.enumerable = o.enumerable || !1, o.configurable = !0, "value" in o && (o.writable = !0), Object.defineProperty(e, _toPropertyKey(o.key), o); } }
+function _createClass(e, r, t) { return r && _defineProperties(e.prototype, r), t && _defineProperties(e, t), Object.defineProperty(e, "prototype", { writable: !1 }), e; }
+function _callSuper(t, o, e) { return o = _getPrototypeOf(o), _possibleConstructorReturn(t, _isNativeReflectConstruct() ? Reflect.construct(o, e || [], _getPrototypeOf(t).constructor) : o.apply(t, e)); }
+function _possibleConstructorReturn(t, e) { if (e && ("object" == _typeof(e) || "function" == typeof e)) return e; if (void 0 !== e) throw new TypeError("Derived constructors may only return object or undefined"); return _assertThisInitialized(t); }
+function _assertThisInitialized(e) { if (void 0 === e) throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); return e; }
+function _isNativeReflectConstruct() { try { var t = !Boolean.prototype.valueOf.call(Reflect.construct(Boolean, [], function () {})); } catch (t) {} return (_isNativeReflectConstruct = function _isNativeReflectConstruct() { return !!t; })(); }
+function _getPrototypeOf(t) { return _getPrototypeOf = Object.setPrototypeOf ? Object.getPrototypeOf.bind() : function (t) { return t.__proto__ || Object.getPrototypeOf(t); }, _getPrototypeOf(t); }
+function _inherits(t, e) { if ("function" != typeof e && null !== e) throw new TypeError("Super expression must either be null or a function"); t.prototype = Object.create(e && e.prototype, { constructor: { value: t, writable: !0, configurable: !0 } }), Object.defineProperty(t, "prototype", { writable: !1 }), e && _setPrototypeOf(t, e); }
+function _setPrototypeOf(t, e) { return _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function (t, e) { return t.__proto__ = e, t; }, _setPrototypeOf(t, e); }
+function _defineProperty(e, r, t) { return (r = _toPropertyKey(r)) in e ? Object.defineProperty(e, r, { value: t, enumerable: !0, configurable: !0, writable: !0 }) : e[r] = t, e; }
+function _toPropertyKey(t) { var i = _toPrimitive(t, "string"); return "symbol" == _typeof(i) ? i : i + ""; }
+function _toPrimitive(t, r) { if ("object" != _typeof(t) || !t) return t; var e = t[Symbol.toPrimitive]; if (void 0 !== e) { var i = e.call(t, r || "default"); if ("object" != _typeof(i)) return i; throw new TypeError("@@toPrimitive must return a primitive value."); } return ("string" === r ? String : Number)(t); }
 
 
-var STATUS_LOADING = 'loading';
-var STATUS_AUTHORIZED = 'authorized';
-var STATUS_UNAUTHORIZED = 'unauthorized';
-var fallbackAuth = {
-  isAuthenticated: false,
-  userId: null
-};
-var useBookingAuthGuard = function useBookingAuthGuard(initialData) {
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(function () {
-      var _initialData$auth;
-      var isAuthenticated = Boolean(initialData === null || initialData === void 0 || (_initialData$auth = initialData.auth) === null || _initialData$auth === void 0 ? void 0 : _initialData$auth.isAuthenticated);
-      return isAuthenticated ? STATUS_AUTHORIZED : STATUS_LOADING;
-    }),
-    _useState2 = _slicedToArray(_useState, 2),
-    status = _useState2[0],
-    setStatus = _useState2[1];
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    var _initialData$auth2;
-    var authCheckUrl = initialData === null || initialData === void 0 ? void 0 : initialData.authCheckUrl;
-    var initialAuthenticated = Boolean(initialData === null || initialData === void 0 || (_initialData$auth2 = initialData.auth) === null || _initialData$auth2 === void 0 ? void 0 : _initialData$auth2.isAuthenticated);
-    if (!authCheckUrl) {
-      setStatus(initialAuthenticated ? STATUS_AUTHORIZED : STATUS_UNAUTHORIZED);
-      return;
-    }
-    var cancelled = false;
-    var validateSession = /*#__PURE__*/function () {
-      var _ref = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
-        var response, payload, isAuthenticated, _t;
-        return _regenerator().w(function (_context) {
-          while (1) switch (_context.p = _context.n) {
-            case 0:
-              _context.p = 0;
+
+
+(axios__WEBPACK_IMPORTED_MODULE_2___default().defaults).withCredentials = true;
+var MovieDetail = /*#__PURE__*/function (_Component) {
+  function MovieDetail(props) {
+    var _window$Laravel, _window$Laravel2;
+    var _this;
+    _classCallCheck(this, MovieDetail);
+    _this = _callSuper(this, MovieDetail, [props]);
+    _defineProperty(_this, "loadMovieData", /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee() {
+      var mountEl, movieId, res, reviews, avgRating, sum, _err$response, _t;
+      return _regenerator().w(function (_context) {
+        while (1) switch (_context.p = _context.n) {
+          case 0:
+            _context.p = 0;
+            mountEl = document.getElementById('movieDetail');
+            movieId = mountEl === null || mountEl === void 0 ? void 0 : mountEl.dataset.movieId;
+            if (movieId) {
               _context.n = 1;
-              return fetch(authCheckUrl, {
-                method: 'GET',
-                credentials: 'include',
-                headers: {
-                  Accept: 'application/json',
-                  'X-Requested-With': 'XMLHttpRequest'
+              break;
+            }
+            console.error('Movie ID not found');
+            _this.setState({
+              loading: false
+            });
+            return _context.a(2);
+          case 1:
+            _context.n = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().get("/api/movies/".concat(movieId));
+          case 2:
+            res = _context.v;
+            reviews = res.data.reviews || [];
+            avgRating = 0;
+            if (reviews.length > 0) {
+              sum = reviews.reduce(function (t, r) {
+                return t + parseFloat(r.rating);
+              }, 0);
+              avgRating = parseFloat((sum / reviews.length).toFixed(1));
+            }
+            _this.setState({
+              movie: _objectSpread(_objectSpread({}, res.data.movie), {}, {
+                avgRating: avgRating,
+                reviewCount: reviews.length
+              }),
+              showtimes: res.data.showtimes || [],
+              reviews: reviews,
+              loading: false
+            });
+            _context.n = 4;
+            break;
+          case 3:
+            _context.p = 3;
+            _t = _context.v;
+            console.error('loadMovieData error:', ((_err$response = _t.response) === null || _err$response === void 0 ? void 0 : _err$response.data) || _t.message);
+            _this.setState({
+              loading: false
+            });
+          case 4:
+            return _context.a(2);
+        }
+      }, _callee, null, [[0, 3]]);
+    })));
+    _defineProperty(_this, "loadCinemas", /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee2() {
+      var response, _t2;
+      return _regenerator().w(function (_context2) {
+        while (1) switch (_context2.p = _context2.n) {
+          case 0:
+            _context2.p = 0;
+            _context2.n = 1;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().get('/api/cinemas/list');
+          case 1:
+            response = _context2.v;
+            _this.setState({
+              cinemas: response.data
+            });
+            _context2.n = 3;
+            break;
+          case 2:
+            _context2.p = 2;
+            _t2 = _context2.v;
+            console.error('Failed to load cinemas:', _t2);
+          case 3:
+            return _context2.a(2);
+        }
+      }, _callee2, null, [[0, 2]]);
+    })));
+    _defineProperty(_this, "openEditMovieModal", function () {
+      var movie = _this.state.movie;
+      _this.setState({
+        editMovieModal: true,
+        editMovieForm: {
+          title: (movie === null || movie === void 0 ? void 0 : movie.title) || '',
+          description: (movie === null || movie === void 0 ? void 0 : movie.description) || '',
+          genre: (movie === null || movie === void 0 ? void 0 : movie.genre) || '',
+          duration: (movie === null || movie === void 0 ? void 0 : movie.duration) || '',
+          release_date: movie !== null && movie !== void 0 && movie.release_date ? movie.release_date.split('T')[0] : '',
+          rating: (movie === null || movie === void 0 ? void 0 : movie.rating) || '',
+          status: (movie === null || movie === void 0 ? void 0 : movie.status) || 'now_showing',
+          expected_release: movie !== null && movie !== void 0 && movie.expected_release ? movie.expected_release.split('T')[0] : '',
+          poster: null
+        }
+      });
+    });
+    _defineProperty(_this, "closeEditMovieModal", function () {
+      _this.setState({
+        editMovieModal: false
+      });
+    });
+    _defineProperty(_this, "handleEditMovieChange", function (e) {
+      var _e$target = e.target,
+        name = _e$target.name,
+        value = _e$target.value,
+        type = _e$target.type,
+        files = _e$target.files;
+      _this.setState({
+        editMovieForm: _objectSpread(_objectSpread({}, _this.state.editMovieForm), {}, _defineProperty({}, name, type === 'file' ? files[0] : value))
+      });
+    });
+    _defineProperty(_this, "updateMovie", /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee3() {
+      var _this$state$movie;
+      var formData, response, _err$response2, _err$response3, errors, errorMsg, _i, _Object$entries, _Object$entries$_i, field, messages, _t3;
+      return _regenerator().w(function (_context3) {
+        while (1) switch (_context3.p = _context3.n) {
+          case 0:
+            if ((_this$state$movie = _this.state.movie) !== null && _this$state$movie !== void 0 && _this$state$movie.id) {
+              _context3.n = 1;
+              break;
+            }
+            alert('Movie ID not found');
+            return _context3.a(2);
+          case 1:
+            if (_this.state.editMovieForm.title) {
+              _context3.n = 2;
+              break;
+            }
+            alert('Title is required');
+            return _context3.a(2);
+          case 2:
+            if (_this.state.editMovieForm.description) {
+              _context3.n = 3;
+              break;
+            }
+            alert('Description is required');
+            return _context3.a(2);
+          case 3:
+            if (_this.state.editMovieForm.genre) {
+              _context3.n = 4;
+              break;
+            }
+            alert('Genre is required');
+            return _context3.a(2);
+          case 4:
+            if (_this.state.editMovieForm.duration) {
+              _context3.n = 5;
+              break;
+            }
+            alert('Duration is required');
+            return _context3.a(2);
+          case 5:
+            if (_this.state.editMovieForm.release_date) {
+              _context3.n = 6;
+              break;
+            }
+            alert('Release date is required');
+            return _context3.a(2);
+          case 6:
+            if (_this.state.editMovieForm.status) {
+              _context3.n = 7;
+              break;
+            }
+            alert('Status is required');
+            return _context3.a(2);
+          case 7:
+            _context3.p = 7;
+            formData = new FormData();
+            Object.keys(_this.state.editMovieForm).forEach(function (key) {
+              if (key === 'poster') {
+                if (_this.state.editMovieForm.poster) {
+                  formData.append('poster', _this.state.editMovieForm.poster);
                 }
-              });
+              } else if (_this.state.editMovieForm[key] !== null && _this.state.editMovieForm[key] !== '') {
+                formData.append(key, _this.state.editMovieForm[key]);
+              }
+            });
+            formData.append('_method', 'PUT');
+            _context3.n = 8;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/movies/".concat(_this.state.movie.id), formData, {
+              headers: {
+                'Content-Type': 'multipart/form-data'
+              }
+            });
+          case 8:
+            response = _context3.v;
+            if (!(response.data.success || response.data.message === 'Movie updated successfully!')) {
+              _context3.n = 10;
+              break;
+            }
+            _this.closeEditMovieModal();
+            _context3.n = 9;
+            return _this.loadMovieData();
+          case 9:
+            alert('Movie updated successfully!');
+            _context3.n = 11;
+            break;
+          case 10:
+            alert(response.data.message || 'Failed to update movie');
+          case 11:
+            _context3.n = 13;
+            break;
+          case 12:
+            _context3.p = 12;
+            _t3 = _context3.v;
+            console.error('Update movie error:', _t3);
+            if ((_err$response2 = _t3.response) !== null && _err$response2 !== void 0 && (_err$response2 = _err$response2.data) !== null && _err$response2 !== void 0 && _err$response2.errors) {
+              errors = _t3.response.data.errors;
+              errorMsg = 'Validation failed:\n';
+              for (_i = 0, _Object$entries = Object.entries(errors); _i < _Object$entries.length; _i++) {
+                _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2), field = _Object$entries$_i[0], messages = _Object$entries$_i[1];
+                errorMsg += "".concat(field, ": ").concat(messages.join(', '), "\n");
+              }
+              alert(errorMsg);
+            } else if ((_err$response3 = _t3.response) !== null && _err$response3 !== void 0 && (_err$response3 = _err$response3.data) !== null && _err$response3 !== void 0 && _err$response3.message) {
+              alert(_t3.response.data.message);
+            } else {
+              alert('Failed to update movie. Check console for details.');
+            }
+          case 13:
+            return _context3.a(2);
+        }
+      }, _callee3, null, [[7, 12]]);
+    })));
+    _defineProperty(_this, "deleteMovie", /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee4() {
+      var _err$response4, _err$response5, _t4;
+      return _regenerator().w(function (_context4) {
+        while (1) switch (_context4.p = _context4.n) {
+          case 0:
+            if (window.confirm('Delete this movie? All showtimes and reviews will also be deleted.')) {
+              _context4.n = 1;
+              break;
+            }
+            return _context4.a(2);
+          case 1:
+            _context4.p = 1;
+            _context4.n = 2;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("/api/movies/".concat(_this.state.movie.id));
+          case 2:
+            alert('Movie deleted successfully!');
+            window.location.href = '/movies';
+            _context4.n = 4;
+            break;
+          case 3:
+            _context4.p = 3;
+            _t4 = _context4.v;
+            console.error('deleteMovie error:', (_err$response4 = _t4.response) === null || _err$response4 === void 0 ? void 0 : _err$response4.data);
+            alert(((_err$response5 = _t4.response) === null || _err$response5 === void 0 || (_err$response5 = _err$response5.data) === null || _err$response5 === void 0 ? void 0 : _err$response5.message) || 'Failed to delete movie');
+          case 4:
+            return _context4.a(2);
+        }
+      }, _callee4, null, [[1, 3]]);
+    })));
+    _defineProperty(_this, "openShowtimeModal", function () {
+      _this.setState({
+        showtimeModal: true,
+        editingShowtime: null,
+        showtimeForm: {
+          cinema_id: '',
+          hall: '',
+          format: '',
+          date: '',
+          time: '',
+          price: ''
+        }
+      });
+    });
+    _defineProperty(_this, "closeShowtimeModal", function () {
+      _this.setState({
+        showtimeModal: false,
+        editingShowtime: null
+      });
+    });
+    _defineProperty(_this, "handleShowtimeChange", function (e) {
+      _this.setState({
+        showtimeForm: _objectSpread(_objectSpread({}, _this.state.showtimeForm), {}, _defineProperty({}, e.target.name, e.target.value))
+      });
+    });
+    _defineProperty(_this, "addShowtime", /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee5() {
+      var _this$state$showtimeF, cinema_id, date, time, price, movieId, response, _err$response6, _err$response7, _t5;
+      return _regenerator().w(function (_context5) {
+        while (1) switch (_context5.p = _context5.n) {
+          case 0:
+            _this$state$showtimeF = _this.state.showtimeForm, cinema_id = _this$state$showtimeF.cinema_id, date = _this$state$showtimeF.date, time = _this$state$showtimeF.time, price = _this$state$showtimeF.price;
+            if (cinema_id) {
+              _context5.n = 1;
+              break;
+            }
+            alert('Please select a cinema');
+            return _context5.a(2);
+          case 1:
+            if (date) {
+              _context5.n = 2;
+              break;
+            }
+            alert('Please select a date');
+            return _context5.a(2);
+          case 2:
+            if (time) {
+              _context5.n = 3;
+              break;
+            }
+            alert('Please select a time');
+            return _context5.a(2);
+          case 3:
+            if (price) {
+              _context5.n = 4;
+              break;
+            }
+            alert('Please enter a price');
+            return _context5.a(2);
+          case 4:
+            _context5.p = 4;
+            movieId = _this.state.movie.id;
+            _context5.n = 5;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/movies/".concat(movieId, "/showtimes"), _this.state.showtimeForm);
+          case 5:
+            response = _context5.v;
+            if (response.data.success) {
+              _this.closeShowtimeModal();
+              _this.loadMovieData();
+              alert('Showtime added successfully!');
+            } else {
+              alert(response.data.message || 'Failed to add showtime');
+            }
+            _context5.n = 7;
+            break;
+          case 6:
+            _context5.p = 6;
+            _t5 = _context5.v;
+            console.error('Add showtime error:', (_err$response6 = _t5.response) === null || _err$response6 === void 0 ? void 0 : _err$response6.data);
+            alert(((_err$response7 = _t5.response) === null || _err$response7 === void 0 || (_err$response7 = _err$response7.data) === null || _err$response7 === void 0 ? void 0 : _err$response7.message) || 'Failed to add showtime');
+          case 7:
+            return _context5.a(2);
+        }
+      }, _callee5, null, [[4, 6]]);
+    })));
+    _defineProperty(_this, "editShowtime", function (st) {
+      _this.setState({
+        editingShowtime: st,
+        showtimeForm: {
+          cinema_id: st.cinema_id || '',
+          hall: st.hall || '',
+          format: st.format || '',
+          date: st.date || '',
+          time: st.time || '',
+          price: st.price || ''
+        },
+        showtimeModal: true
+      });
+    });
+    _defineProperty(_this, "updateShowtime", /*#__PURE__*/_asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee6() {
+      var _this$state$showtimeF2, cinema_id, date, time, price, id, response, _err$response8, _err$response9, errors, errorMsg, _i2, _Object$entries2, _Object$entries2$_i, field, messages, _t6;
+      return _regenerator().w(function (_context6) {
+        while (1) switch (_context6.p = _context6.n) {
+          case 0:
+            if (_this.state.editingShowtime) {
+              _context6.n = 1;
+              break;
+            }
+            alert('No showtime selected for editing');
+            return _context6.a(2);
+          case 1:
+            _this$state$showtimeF2 = _this.state.showtimeForm, cinema_id = _this$state$showtimeF2.cinema_id, date = _this$state$showtimeF2.date, time = _this$state$showtimeF2.time, price = _this$state$showtimeF2.price;
+            if (cinema_id) {
+              _context6.n = 2;
+              break;
+            }
+            alert('Please select a cinema');
+            return _context6.a(2);
+          case 2:
+            if (date) {
+              _context6.n = 3;
+              break;
+            }
+            alert('Please select a date');
+            return _context6.a(2);
+          case 3:
+            if (time) {
+              _context6.n = 4;
+              break;
+            }
+            alert('Please select a time');
+            return _context6.a(2);
+          case 4:
+            if (price) {
+              _context6.n = 5;
+              break;
+            }
+            alert('Please enter a price');
+            return _context6.a(2);
+          case 5:
+            _context6.p = 5;
+            id = _this.state.editingShowtime.id;
+            _context6.n = 6;
+            return axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/showtimes/".concat(id), _this.state.showtimeForm);
+          case 6:
+            response = _context6.v;
+            if (response.data.success) {
+              _this.closeShowtimeModal();
+              _this.loadMovieData();
+              alert('Showtime updated successfully!');
+            } else {
+              alert(response.data.message || 'Failed to update showtime');
+            }
+            _context6.n = 8;
+            break;
+          case 7:
+            _context6.p = 7;
+            _t6 = _context6.v;
+            console.error('Update error:', _t6);
+            if ((_err$response8 = _t6.response) !== null && _err$response8 !== void 0 && (_err$response8 = _err$response8.data) !== null && _err$response8 !== void 0 && _err$response8.errors) {
+              errors = _t6.response.data.errors;
+              errorMsg = 'Validation failed:\n';
+              for (_i2 = 0, _Object$entries2 = Object.entries(errors); _i2 < _Object$entries2.length; _i2++) {
+                _Object$entries2$_i = _slicedToArray(_Object$entries2[_i2], 2), field = _Object$entries2$_i[0], messages = _Object$entries2$_i[1];
+                errorMsg += "".concat(field, ": ").concat(messages.join(', '), "\n");
+              }
+              alert(errorMsg);
+            } else if ((_err$response9 = _t6.response) !== null && _err$response9 !== void 0 && (_err$response9 = _err$response9.data) !== null && _err$response9 !== void 0 && _err$response9.message) {
+              alert(_t6.response.data.message);
+            } else {
+              alert('Failed to update showtime. Check console for details.');
+            }
+          case 8:
+            return _context6.a(2);
+        }
+      }, _callee6, null, [[5, 7]]);
+    })));
+    _defineProperty(_this, "deleteShowtime", /*#__PURE__*/function () {
+      var _ref7 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7(id) {
+        var _err$response0, _err$response1, _t7;
+        return _regenerator().w(function (_context7) {
+          while (1) switch (_context7.p = _context7.n) {
+            case 0:
+              if (window.confirm('Delete this showtime?')) {
+                _context7.n = 1;
+                break;
+              }
+              return _context7.a(2);
             case 1:
-              response = _context.v;
-              if (!cancelled) {
-                _context.n = 2;
-                break;
-              }
-              return _context.a(2);
+              _context7.p = 1;
+              _context7.n = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("/api/showtimes/".concat(id));
             case 2:
-              if (response.ok) {
-                _context.n = 3;
+              alert('Showtime deleted successfully!');
+              _this.loadMovieData();
+              _context7.n = 4;
+              break;
+            case 3:
+              _context7.p = 3;
+              _t7 = _context7.v;
+              console.error('Delete showtime error:', (_err$response0 = _t7.response) === null || _err$response0 === void 0 ? void 0 : _err$response0.data);
+              alert(((_err$response1 = _t7.response) === null || _err$response1 === void 0 || (_err$response1 = _err$response1.data) === null || _err$response1 === void 0 ? void 0 : _err$response1.message) || 'Failed to delete showtime');
+            case 4:
+              return _context7.a(2);
+          }
+        }, _callee7, null, [[1, 3]]);
+      }));
+      return function (_x) {
+        return _ref7.apply(this, arguments);
+      };
+    }());
+    _defineProperty(_this, "openReviewModal", function () {
+      _this.setState({
+        reviewModal: true,
+        editingReview: null,
+        reviewRating: 0,
+        reviewTitle: '',
+        reviewContent: '',
+        reviewIsAnonymous: false,
+        reviewHoverRating: 0
+      });
+    });
+    _defineProperty(_this, "closeReviewModal", function () {
+      _this.setState({
+        reviewModal: false,
+        editingReview: null,
+        reviewRating: 0,
+        reviewTitle: '',
+        reviewContent: '',
+        reviewIsAnonymous: false,
+        reviewHoverRating: 0
+      });
+    });
+    _defineProperty(_this, "handleStarClick", function (r) {
+      return _this.setState({
+        reviewRating: r
+      });
+    });
+    _defineProperty(_this, "handleStarHover", function (r) {
+      return _this.setState({
+        reviewHoverRating: r
+      });
+    });
+    _defineProperty(_this, "handleStarLeave", function () {
+      return _this.setState({
+        reviewHoverRating: 0
+      });
+    });
+    _defineProperty(_this, "submitReview", /*#__PURE__*/function () {
+      var _ref8 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee8(e) {
+        var data, response, _err$response10, _err$response11, errors, errorMsg, _i3, _Object$entries3, _Object$entries3$_i, field, messages, _t8;
+        return _regenerator().w(function (_context8) {
+          while (1) switch (_context8.p = _context8.n) {
+            case 0:
+              e.preventDefault();
+              if (!(_this.state.reviewRating === 0)) {
+                _context8.n = 1;
                 break;
               }
-              setStatus(STATUS_UNAUTHORIZED);
-              return _context.a(2);
-            case 3:
-              _context.n = 4;
-              return response.json();
+              alert('Please select a rating');
+              return _context8.a(2);
+            case 1:
+              if (_this.state.reviewContent.trim()) {
+                _context8.n = 2;
+                break;
+              }
+              alert('Please write a review');
+              return _context8.a(2);
+            case 2:
+              data = {
+                rating: _this.state.reviewRating,
+                title: _this.state.reviewTitle,
+                content: _this.state.reviewContent,
+                is_anonymous: _this.state.reviewIsAnonymous
+              };
+              _context8.p = 3;
+              if (!_this.state.editingReview) {
+                _context8.n = 5;
+                break;
+              }
+              _context8.n = 4;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/reviews/".concat(_this.state.editingReview.id), data);
             case 4:
-              payload = _context.v;
-              isAuthenticated = Boolean(payload === null || payload === void 0 ? void 0 : payload.authenticated);
-              setStatus(isAuthenticated ? STATUS_AUTHORIZED : STATUS_UNAUTHORIZED);
-              _context.n = 6;
+              response = _context8.v;
+              alert('Review updated!');
+              _context8.n = 7;
               break;
             case 5:
-              _context.p = 5;
-              _t = _context.v;
-              if (!cancelled) {
-                setStatus(initialAuthenticated ? STATUS_AUTHORIZED : STATUS_UNAUTHORIZED);
-              }
+              _context8.n = 6;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/movies/".concat(_this.state.movie.id, "/reviews"), data);
             case 6:
-              return _context.a(2);
+              response = _context8.v;
+              alert('Review submitted!');
+            case 7:
+              if (!response.data.success) {
+                _context8.n = 9;
+                break;
+              }
+              _this.closeReviewModal();
+              _this.setState({
+                reviewRating: 0,
+                reviewTitle: '',
+                reviewContent: '',
+                reviewIsAnonymous: false,
+                editingReview: null
+              });
+              _context8.n = 8;
+              return _this.loadMovieData();
+            case 8:
+              _context8.n = 10;
+              break;
+            case 9:
+              alert(response.data.message || 'Failed to save review');
+            case 10:
+              _context8.n = 12;
+              break;
+            case 11:
+              _context8.p = 11;
+              _t8 = _context8.v;
+              console.error('submitReview error:', _t8);
+              if ((_err$response10 = _t8.response) !== null && _err$response10 !== void 0 && (_err$response10 = _err$response10.data) !== null && _err$response10 !== void 0 && _err$response10.errors) {
+                errors = _t8.response.data.errors;
+                errorMsg = 'Validation failed:\n';
+                for (_i3 = 0, _Object$entries3 = Object.entries(errors); _i3 < _Object$entries3.length; _i3++) {
+                  _Object$entries3$_i = _slicedToArray(_Object$entries3[_i3], 2), field = _Object$entries3$_i[0], messages = _Object$entries3$_i[1];
+                  errorMsg += "".concat(field, ": ").concat(messages.join(', '), "\n");
+                }
+                alert(errorMsg);
+              } else if ((_err$response11 = _t8.response) !== null && _err$response11 !== void 0 && (_err$response11 = _err$response11.data) !== null && _err$response11 !== void 0 && _err$response11.message) {
+                alert(_t8.response.data.message);
+              } else {
+                alert('Failed to save review. Please try again.');
+              }
+            case 12:
+              return _context8.a(2);
           }
-        }, _callee, null, [[0, 5]]);
+        }, _callee8, null, [[3, 11]]);
       }));
-      return function validateSession() {
-        return _ref.apply(this, arguments);
+      return function (_x2) {
+        return _ref8.apply(this, arguments);
       };
-    }();
-    validateSession();
-    return function () {
-      cancelled = true;
-    };
-  }, [initialData]);
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (status !== STATUS_UNAUTHORIZED || !(initialData !== null && initialData !== void 0 && initialData.loginUrl)) {
-      return;
-    }
-    var timer = window.setTimeout(function () {
-      window.location.assign(initialData.loginUrl);
-    }, 600);
-    return function () {
-      window.clearTimeout(timer);
-    };
-  }, [status, initialData]);
-  return {
-    status: status,
-    isAuthorized: status === STATUS_AUTHORIZED,
-    isLoading: status === STATUS_LOADING,
-    auth: (initialData === null || initialData === void 0 ? void 0 : initialData.auth) || fallbackAuth
-  };
-};
-var BookingGuardFallback = function BookingGuardFallback(_ref2) {
-  var message = _ref2.message;
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("section", {
-    className: "booking-select-page",
-    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsxs)("div", {
-      className: "booking-select-card",
-      style: {
-        textAlign: 'center'
+    }());
+    _defineProperty(_this, "editReview", function (rv) {
+      _this.setState({
+        editingReview: rv,
+        reviewModal: true,
+        reviewRating: rv.rating,
+        reviewTitle: rv.title || '',
+        reviewContent: rv.content || '',
+        reviewIsAnonymous: rv.is_anonymous || false
+      });
+    });
+    _defineProperty(_this, "deleteReview", /*#__PURE__*/function () {
+      var _ref9 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee9(id) {
+        var _err$response12, _err$response13, _t9;
+        return _regenerator().w(function (_context9) {
+          while (1) switch (_context9.p = _context9.n) {
+            case 0:
+              if (window.confirm('Delete this review?')) {
+                _context9.n = 1;
+                break;
+              }
+              return _context9.a(2);
+            case 1:
+              _context9.p = 1;
+              _context9.n = 2;
+              return axios__WEBPACK_IMPORTED_MODULE_2___default()["delete"]("/api/reviews/".concat(id));
+            case 2:
+              _this.loadMovieData();
+              alert('Review deleted!');
+              _context9.n = 4;
+              break;
+            case 3:
+              _context9.p = 3;
+              _t9 = _context9.v;
+              console.error('deleteReview error:', (_err$response12 = _t9.response) === null || _err$response12 === void 0 ? void 0 : _err$response12.data);
+              alert(((_err$response13 = _t9.response) === null || _err$response13 === void 0 || (_err$response13 = _err$response13.data) === null || _err$response13 === void 0 ? void 0 : _err$response13.message) || 'Failed to delete review');
+            case 4:
+              return _context9.a(2);
+          }
+        }, _callee9, null, [[1, 3]]);
+      }));
+      return function (_x3) {
+        return _ref9.apply(this, arguments);
+      };
+    }());
+    _defineProperty(_this, "renderStars", function () {
+      var active = _this.state.reviewHoverRating || _this.state.reviewRating;
+      return [1, 2, 3, 4, 5].map(function (i) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+          className: i <= active ? 'fas fa-star' : 'far fa-star',
+          style: {
+            fontSize: '2rem',
+            cursor: 'pointer',
+            color: '#ffc107',
+            marginRight: '4px'
+          },
+          onClick: function onClick() {
+            return _this.handleStarClick(i);
+          },
+          onMouseEnter: function onMouseEnter() {
+            return _this.handleStarHover(i);
+          },
+          onMouseLeave: _this.handleStarLeave
+        }, i);
+      });
+    });
+    var userId = ((_window$Laravel = window.Laravel) === null || _window$Laravel === void 0 ? void 0 : _window$Laravel.userId) || null;
+    var isAdmin = ((_window$Laravel2 = window.Laravel) === null || _window$Laravel2 === void 0 ? void 0 : _window$Laravel2.isAdmin) || false;
+    _this.state = {
+      movie: null,
+      showtimes: [],
+      reviews: [],
+      cinemas: [],
+      loading: true,
+      editMovieModal: false,
+      editMovieForm: {
+        title: '',
+        description: '',
+        genre: '',
+        duration: '',
+        release_date: '',
+        rating: '',
+        status: 'now_showing',
+        expected_release: '',
+        poster: null
       },
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("h1", {
-        children: "Session Required"
-      }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_1__.jsx)("p", {
-        style: {
-          color: 'var(--muted)'
-        },
-        children: message || 'Please log in to view your bookings.'
-      })]
-    })
-  });
-};
-
-/***/ },
-
-/***/ "./resources/js/components/bookingSession.js"
-/*!***************************************************!*\
-  !*** ./resources/js/components/bookingSession.js ***!
-  \***************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   clearSessionStorageKey: () => (/* binding */ clearSessionStorageKey),
-/* harmony export */   useSessionStorageState: () => (/* binding */ useSessionStorageState)
-/* harmony export */ });
-/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
-function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
-function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
-function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
-function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
-function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
-function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
-
-var isBrowser = typeof window !== 'undefined';
-var readStorageValue = function readStorageValue(key, fallback) {
-  if (!isBrowser || !key) {
-    return fallback;
+      showtimeModal: false,
+      editingShowtime: null,
+      showtimeForm: {
+        cinema_id: '',
+        hall: '',
+        format: '',
+        date: '',
+        time: '',
+        price: ''
+      },
+      reviewModal: false,
+      editingReview: null,
+      reviewRating: 0,
+      reviewHoverRating: 0,
+      reviewTitle: '',
+      reviewContent: '',
+      reviewIsAnonymous: false,
+      currentUserId: userId,
+      isAdmin: isAdmin
+    };
+    _this.addShowtime = _this.addShowtime.bind(_this);
+    _this.updateShowtime = _this.updateShowtime.bind(_this);
+    _this.deleteShowtime = _this.deleteShowtime.bind(_this);
+    _this.openShowtimeModal = _this.openShowtimeModal.bind(_this);
+    _this.closeShowtimeModal = _this.closeShowtimeModal.bind(_this);
+    _this.handleShowtimeChange = _this.handleShowtimeChange.bind(_this);
+    return _this;
   }
-  try {
-    var raw = window.sessionStorage.getItem(key);
-    if (!raw) {
-      return fallback;
+  _inherits(MovieDetail, _Component);
+  return _createClass(MovieDetail, [{
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      this.loadMovieData();
+      this.loadCinemas();
     }
-    return JSON.parse(raw);
-  } catch (error) {
-    return fallback;
-  }
-};
-var useSessionStorageState = function useSessionStorageState(key, initialValue) {
-  var resolvedInitialValue = (0,react__WEBPACK_IMPORTED_MODULE_0__.useMemo)(function () {
-    var fallback = typeof initialValue === 'function' ? initialValue() : initialValue;
-    return readStorageValue(key, fallback);
-  }, [key, initialValue]);
-  var _useState = (0,react__WEBPACK_IMPORTED_MODULE_0__.useState)(resolvedInitialValue),
-    _useState2 = _slicedToArray(_useState, 2),
-    value = _useState2[0],
-    setValue = _useState2[1];
-  (0,react__WEBPACK_IMPORTED_MODULE_0__.useEffect)(function () {
-    if (!isBrowser || !key) {
-      return;
+  }, {
+    key: "render",
+    value: function render() {
+      var _this2 = this;
+      var _this$state = this.state,
+        movie = _this$state.movie,
+        showtimes = _this$state.showtimes,
+        reviews = _this$state.reviews,
+        cinemas = _this$state.cinemas,
+        loading = _this$state.loading,
+        editMovieModal = _this$state.editMovieModal,
+        editMovieForm = _this$state.editMovieForm,
+        showtimeModal = _this$state.showtimeModal,
+        editingShowtime = _this$state.editingShowtime,
+        showtimeForm = _this$state.showtimeForm,
+        reviewModal = _this$state.reviewModal,
+        reviewTitle = _this$state.reviewTitle,
+        reviewContent = _this$state.reviewContent,
+        reviewIsAnonymous = _this$state.reviewIsAnonymous,
+        currentUserId = _this$state.currentUserId,
+        isAdmin = _this$state.isAdmin;
+      if (loading) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "movie-detail-loading",
+          children: "Loading..."
+        });
+      }
+      if (!movie) {
+        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "movie-detail-not-found",
+          children: "Movie not found"
+        });
+      }
+      var heroBgStyle = movie.poster ? {
+        background: "linear-gradient(105deg, rgba(0,0,0,0.9) 35%, rgba(0,0,0,0.3) 100%), url('/storage/".concat(movie.poster, "') center/cover no-repeat")
+      } : {
+        background: 'linear-gradient(135deg, #1a0033, #0a0018)'
+      };
+      return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+        children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "movie-detail-hero-section",
+          style: heroBgStyle,
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "movie-detail-hero-content",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: "movie-detail-hero-max-width",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h1", {
+                className: "movie-detail-hero-title",
+                children: movie.title
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "movie-detail-hero-details",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+                  children: ["\u2605 ", movie.avgRating || movie.rating || '0.0']
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+                  children: [movie.duration, " min"]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                  children: movie.genre
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("span", {
+                  children: new Date(movie.release_date).getFullYear()
+                }), movie.reviewCount > 0 && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+                  children: ["\u2022 ", movie.reviewCount, " reviews"]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: "movie-detail-hero-description",
+                children: movie.description
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "movie-detail-hero-buttons",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                  onClick: function onClick() {
+                    return window.location.href = "/booking/select?movie_id=".concat(movie.id);
+                  },
+                  className: "movie-detail-btn-book",
+                  children: "Book Tickets"
+                }), isAdmin && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                    onClick: this.openEditMovieModal,
+                    className: "movie-detail-btn-edit",
+                    children: "Edit Movie"
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                    onClick: this.deleteMovie,
+                    className: "movie-detail-btn-delete",
+                    children: "Delete Movie"
+                  })]
+                })]
+              })]
+            })
+          })
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("section", {
+          className: "movie-detail-showtimes-section",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "movie-detail-showtimes-header",
+            children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+              className: "movie-detail-showtimes-title",
+              children: "Showtimes"
+            })
+          }), showtimes.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "movie-detail-showtimes-empty",
+            children: ["No showtimes available yet.", isAdmin && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+              className: "movie-detail-showtimes-empty-btn",
+              children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                onClick: this.openShowtimeModal,
+                className: "movie-detail-btn-add-showtime",
+                children: "+ Add First Showtime"
+              })
+            })]
+          }) : showtimes.map(function (st) {
+            var _st$cinema;
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: "movie-detail-showtime-item",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "movie-detail-showtime-info",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                  className: "movie-detail-showtime-cinema",
+                  children: [((_st$cinema = st.cinema) === null || _st$cinema === void 0 ? void 0 : _st$cinema.name) || 'Unknown Cinema', " ", st.hall ? "\u2014 Hall ".concat(st.hall) : '', " ", st.format ? "(".concat(st.format, ")") : '']
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                  className: "movie-detail-showtime-datetime",
+                  children: [new Date(st.date + 'T00:00:00').toLocaleDateString('en-MY', {
+                    weekday: 'long',
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric'
+                  }), " at ", st.time]
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "movie-detail-showtime-actions",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
+                  className: "movie-detail-showtime-price",
+                  children: ["RM ", st.price]
+                }), isAdmin && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                    onClick: function onClick() {
+                      return _this2.editShowtime(st);
+                    },
+                    className: "movie-detail-btn-edit-showtime",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+                      className: "fas fa-edit"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                    onClick: function onClick() {
+                      return _this2.deleteShowtime(st.id);
+                    },
+                    className: "movie-detail-btn-delete-showtime",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+                      className: "fas fa-trash"
+                    })
+                  })]
+                })]
+              })]
+            }, st.id);
+          })]
+        }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("section", {
+          className: "movie-detail-reviews-section",
+          children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "movie-detail-reviews-header",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h2", {
+              className: "movie-detail-reviews-title",
+              children: "Reviews"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+              onClick: this.openReviewModal,
+              className: "movie-detail-btn-write-review",
+              children: "\u270F Write a Review"
+            })]
+          }), reviews.length === 0 ? /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+            className: "movie-detail-reviews-empty",
+            children: "No reviews yet. Be the first to review!"
+          }) : reviews.map(function (rv) {
+            var _rv$user;
+            var isOwner = currentUserId && rv.user_id === parseInt(currentUserId);
+            var canEdit = isOwner;
+            var canDelete = isOwner || isAdmin;
+            return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: "movie-detail-review-item",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "movie-detail-review-header",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                  className: "movie-detail-review-user",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                    className: "movie-detail-review-avatar",
+                    children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+                      className: "fas fa-user"
+                    })
+                  }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                      className: "movie-detail-review-user-name",
+                      children: rv.is_anonymous ? 'Anonymous' : (_rv$user = rv.user) === null || _rv$user === void 0 ? void 0 : _rv$user.name
+                    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                      className: "movie-detail-review-stars",
+                      children: [1, 2, 3, 4, 5].map(function (s) {
+                        return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+                          className: s <= rv.rating ? 'fas fa-star' : 'far fa-star'
+                        }, s);
+                      })
+                    })]
+                  })]
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                  className: "movie-detail-review-date",
+                  children: new Date(rv.created_at).toLocaleDateString()
+                })]
+              }), rv.title && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h5", {
+                className: "movie-detail-review-title",
+                children: rv.title
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("p", {
+                className: "movie-detail-review-content",
+                children: rv.content
+              }), (canEdit || canDelete) && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "movie-detail-review-actions",
+                children: [canEdit && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
+                  onClick: function onClick() {
+                    return _this2.editReview(rv);
+                  },
+                  className: "movie-detail-btn-edit-review",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+                    className: "fas fa-edit"
+                  }), " Edit"]
+                }), canDelete && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("button", {
+                  onClick: function onClick() {
+                    return _this2.deleteReview(rv.id);
+                  },
+                  className: "movie-detail-btn-delete-review",
+                  children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("i", {
+                    className: "fas fa-trash"
+                  }), " Delete"]
+                })]
+              })]
+            }, rv.id);
+          })]
+        }), editMovieModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "movie-detail-modal-overlay",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "movie-detail-modal-container",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: "movie-detail-modal-header",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
+                className: "movie-detail-modal-title",
+                children: "Edit Movie"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                onClick: this.closeEditMovieModal,
+                className: "movie-detail-modal-close",
+                children: "\xD7"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "text",
+              name: "title",
+              placeholder: "Title",
+              value: editMovieForm.title,
+              onChange: this.handleEditMovieChange,
+              className: "movie-detail-input"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("textarea", {
+              name: "description",
+              placeholder: "Description",
+              value: editMovieForm.description,
+              onChange: this.handleEditMovieChange,
+              rows: "4",
+              className: "movie-detail-textarea"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "text",
+              name: "genre",
+              placeholder: "Genre",
+              value: editMovieForm.genre,
+              onChange: this.handleEditMovieChange,
+              className: "movie-detail-input"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "number",
+              name: "duration",
+              placeholder: "Duration (min)",
+              value: editMovieForm.duration,
+              onChange: this.handleEditMovieChange,
+              className: "movie-detail-input"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "date",
+              name: "release_date",
+              value: editMovieForm.release_date,
+              onChange: this.handleEditMovieChange,
+              className: "movie-detail-input"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "number",
+              name: "rating",
+              placeholder: "Rating (0-10)",
+              value: editMovieForm.rating,
+              onChange: this.handleEditMovieChange,
+              step: "0.1",
+              min: "0",
+              max: "10",
+              className: "movie-detail-input"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "file",
+              name: "poster",
+              onChange: this.handleEditMovieChange,
+              accept: "image/*",
+              className: "movie-detail-file-input"
+            }), movie.poster && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("img", {
+              src: "/storage/".concat(movie.poster),
+              alt: "poster",
+              className: "movie-detail-preview-image"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+              name: "status",
+              value: editMovieForm.status,
+              onChange: this.handleEditMovieChange,
+              className: "movie-detail-select",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                value: "now_showing",
+                children: "Now Showing"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                value: "coming_soon",
+                children: "Coming Soon"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                value: "draft",
+                children: "Draft"
+              })]
+            }), editMovieForm.status === 'coming_soon' && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "date",
+              name: "expected_release",
+              value: editMovieForm.expected_release,
+              onChange: this.handleEditMovieChange,
+              className: "movie-detail-input"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: "movie-detail-form-buttons",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                onClick: this.updateMovie,
+                className: "movie-detail-btn-save",
+                children: "Save Changes"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                onClick: this.closeEditMovieModal,
+                className: "movie-detail-btn-cancel",
+                children: "Cancel"
+              })]
+            })]
+          })
+        }), showtimeModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "movie-detail-modal-overlay",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "movie-detail-modal-container-sm",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: "movie-detail-modal-header",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
+                className: "movie-detail-modal-title",
+                children: editingShowtime ? 'Edit Showtime' : 'Add Showtime'
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                onClick: this.closeShowtimeModal,
+                className: "movie-detail-modal-close",
+                children: "\xD7"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+              name: "cinema_id",
+              value: showtimeForm.cinema_id,
+              onChange: this.handleShowtimeChange,
+              className: "movie-detail-select",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                value: "",
+                children: "Select Cinema"
+              }), cinemas && cinemas.length > 0 ? cinemas.map(function (cinema) {
+                return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                  value: cinema.id,
+                  children: cinema.name
+                }, cinema.id);
+              }) : /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                disabled: true,
+                children: "Loading cinemas..."
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "text",
+              name: "hall",
+              placeholder: "Hall",
+              value: showtimeForm.hall,
+              onChange: this.handleShowtimeChange,
+              className: "movie-detail-input"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("select", {
+              name: "format",
+              value: showtimeForm.format,
+              onChange: this.handleShowtimeChange,
+              className: "movie-detail-select",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                value: "",
+                children: "Standard"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                value: "IMAX",
+                children: "IMAX"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                value: "4DX",
+                children: "4DX"
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
+                value: "Dolby",
+                children: "Dolby"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "date",
+              name: "date",
+              value: showtimeForm.date,
+              onChange: this.handleShowtimeChange,
+              className: "movie-detail-input"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "time",
+              name: "time",
+              value: showtimeForm.time,
+              onChange: this.handleShowtimeChange,
+              className: "movie-detail-input"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+              type: "number",
+              name: "price",
+              placeholder: "Price (RM)",
+              value: showtimeForm.price,
+              onChange: this.handleShowtimeChange,
+              step: "0.5",
+              min: "0",
+              className: "movie-detail-input"
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: "movie-detail-form-buttons",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                onClick: editingShowtime ? this.updateShowtime : this.addShowtime,
+                className: "movie-detail-btn-save",
+                children: editingShowtime ? 'Save Changes' : 'Add Showtime'
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                onClick: this.closeShowtimeModal,
+                className: "movie-detail-btn-cancel",
+                children: "Cancel"
+              })]
+            })]
+          })
+        }), reviewModal && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+          className: "movie-detail-modal-overlay",
+          children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+            className: "movie-detail-modal-container-sm",
+            children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              className: "movie-detail-modal-header-center",
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("h3", {
+                className: "movie-detail-modal-title-lg",
+                children: this.state.editingReview ? 'Edit Review' : 'Write a Review'
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                onClick: this.closeReviewModal,
+                className: "movie-detail-modal-close-lg",
+                children: "\xD7"
+              })]
+            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("form", {
+              onSubmit: this.submitReview,
+              children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                style: {
+                  marginBottom: '1.5rem'
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+                  className: "movie-detail-review-rating-label",
+                  children: "Rating *"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
+                  className: "movie-detail-review-stars-container",
+                  children: this.renderStars()
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                style: {
+                  marginBottom: '1rem'
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+                  className: "movie-detail-review-label",
+                  children: "Title"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                  type: "text",
+                  value: reviewTitle,
+                  onChange: function onChange(e) {
+                    return _this2.setState({
+                      reviewTitle: e.target.value
+                    });
+                  },
+                  placeholder: "Summarize your experience",
+                  className: "movie-detail-input"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                style: {
+                  marginBottom: '1rem'
+                },
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("label", {
+                  className: "movie-detail-review-label",
+                  children: "Review *"
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("textarea", {
+                  rows: "5",
+                  value: reviewContent,
+                  onChange: function onChange(e) {
+                    return _this2.setState({
+                      reviewContent: e.target.value
+                    });
+                  },
+                  placeholder: "What did you think about this movie?",
+                  className: "movie-detail-textarea"
+                })]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("label", {
+                className: "movie-detail-checkbox-label",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
+                  type: "checkbox",
+                  checked: reviewIsAnonymous,
+                  onChange: function onChange(e) {
+                    return _this2.setState({
+                      reviewIsAnonymous: e.target.checked
+                    });
+                  }
+                }), "Post anonymously"]
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+                className: "movie-detail-form-buttons",
+                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                  type: "submit",
+                  className: "movie-detail-btn-submit",
+                  children: this.state.editingReview ? 'Update Review' : 'Submit Review'
+                }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
+                  type: "button",
+                  onClick: this.closeReviewModal,
+                  className: "movie-detail-btn-cancel-gray",
+                  children: "Cancel"
+                })]
+              })]
+            })]
+          })
+        })]
+      });
     }
-    try {
-      window.sessionStorage.setItem(key, JSON.stringify(value));
-    } catch (error) {
-      // Ignore storage quota / disabled storage errors.
-    }
-  }, [key, value]);
-  return [value, setValue];
-};
-var clearSessionStorageKey = function clearSessionStorageKey(key) {
-  if (!isBrowser || !key) {
-    return;
-  }
-  try {
-    window.sessionStorage.removeItem(key);
-  } catch (error) {
-    // Ignore storage access errors.
-  }
-};
+  }]);
+}(react__WEBPACK_IMPORTED_MODULE_0__.Component);
+var mountElement = document.getElementById('movieDetail');
+if (mountElement) {
+  react_dom__WEBPACK_IMPORTED_MODULE_1__.render(/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)(MovieDetail, {}), mountElement);
+}
+/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (MovieDetail);
 
-/***/ },
+/***/ }),
 
-/***/ "./resources/js/components/bookingUtils.js"
-/*!*************************************************!*\
-  !*** ./resources/js/components/bookingUtils.js ***!
-  \*************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   formatCurrency: () => (/* binding */ formatCurrency),
-/* harmony export */   formatDateLabel: () => (/* binding */ formatDateLabel),
-/* harmony export */   formatDurationText: () => (/* binding */ formatDurationText),
-/* harmony export */   formatLongDate: () => (/* binding */ formatLongDate)
-/* harmony export */ });
-var formatCurrency = function formatCurrency(value) {
-  return Number(value || 0).toFixed(2);
-};
-var formatDateLabel = function formatDateLabel(value) {
-  var date = new Date(value);
-  if (Number.isNaN(date.getTime())) {
-    return value;
-  }
-  return date.toLocaleDateString('en-GB', {
-    weekday: 'short',
-    day: '2-digit',
-    month: 'short'
-  });
-};
-var formatLongDate = function formatLongDate(value) {
-  var date = new Date(value);
-  if (Number.isNaN(date.getTime())) {
-    return value;
-  }
-  return date.toLocaleDateString('en-GB', {
-    weekday: 'short',
-    day: '2-digit',
-    month: 'short',
-    year: 'numeric'
-  });
-};
-var formatDurationText = function formatDurationText(value) {
-  var raw = String(value || '').trim();
-  if (raw === '') {
-    return '0h 0m';
-  }
-  var hourMatch = raw.match(/^(\d+)\s*h(?:\s*(\d+)\s*m)?$/i);
-  if (hourMatch) {
-    var hours = Number(hourMatch[1] || 0);
-    var minutes = Number(hourMatch[2] || 0);
-    return "".concat(hours, "h ").concat(minutes, "m");
-  }
-  var minuteMatch = raw.match(/^(\d+)\s*m(?:in(?:ute)?s?)?$/i);
-  if (minuteMatch) {
-    return "0h ".concat(Number(minuteMatch[1] || 0), "m");
-  }
-  var totalMinutes = Number(raw || 0);
-  if (!Number.isFinite(totalMinutes) || totalMinutes <= 0) {
-    return '0h 0m';
-  }
-  return "".concat(Math.floor(totalMinutes / 60), "h ").concat(totalMinutes % 60, "m");
-};
-
-/***/ },
-
-/***/ "./node_modules/bootstrap/dist/js/bootstrap.esm.js"
+/***/ "./node_modules/bootstrap/dist/js/bootstrap.esm.js":
 /*!*********************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.esm.js ***!
   \*********************************************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
@@ -11663,13 +10885,13 @@ defineJQueryPlugin(Toast);
 //# sourceMappingURL=bootstrap.esm.js.map
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/lodash/lodash.js"
+/***/ "./node_modules/lodash/lodash.js":
 /*!***************************************!*\
   !*** ./node_modules/lodash/lodash.js ***!
   \***************************************/
-(module, exports, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 /* module decorator */ module = __webpack_require__.nmd(module);
 var __WEBPACK_AMD_DEFINE_RESULT__;/**
@@ -28921,31 +28143,30 @@ var __WEBPACK_AMD_DEFINE_RESULT__;/**
 		__WEBPACK_AMD_DEFINE_RESULT__ !== undefined && (module.exports = __WEBPACK_AMD_DEFINE_RESULT__));
   }
   // Check for `exports` after `define` in case a build optimizer adds it.
-  else // removed by dead control flow
-{}
+  else {}
 }.call(this));
 
 
-/***/ },
+/***/ }),
 
-/***/ "./resources/sass/app.scss"
+/***/ "./resources/sass/app.scss":
 /*!*********************************!*\
   !*** ./resources/sass/app.scss ***!
   \*********************************/
-(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 // extracted by mini-css-extract-plugin
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/object-assign/index.js"
+/***/ "./node_modules/object-assign/index.js":
 /*!*********************************************!*\
   !*** ./node_modules/object-assign/index.js ***!
   \*********************************************/
-(module) {
+/***/ ((module) => {
 
 "use strict";
 /*
@@ -29040,13 +28261,13 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/process/browser.js"
+/***/ "./node_modules/process/browser.js":
 /*!*****************************************!*\
   !*** ./node_modules/process/browser.js ***!
   \*****************************************/
-(module) {
+/***/ ((module) => {
 
 // shim for using process in browser
 var process = module.exports = {};
@@ -29234,13 +28455,13 @@ process.chdir = function (dir) {
 process.umask = function() { return 0; };
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/react-dom/cjs/react-dom.development.js"
+/***/ "./node_modules/react-dom/cjs/react-dom.development.js":
 /*!*************************************************************!*\
   !*** ./node_modules/react-dom/cjs/react-dom.development.js ***!
   \*************************************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 /** @license React v17.0.2
@@ -49328,8 +48549,7 @@ function logCapturedError(boundary, errorInfo) {
       // displayed by the browser thanks to the DEV-only fake event trick in ReactErrorUtils.
 
       console['error'](combinedMessage); // Don't transform to our wrapper
-    } else // removed by dead control flow
-{}
+    } else {}
   } catch (e) {
     // This method must not throw, or React internal state will get messed up.
     // If console.error is overridden, or logCapturedError() shows a dialog that throws,
@@ -55503,13 +54723,13 @@ exports.version = ReactVersion;
 }
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/react-dom/index.js"
+/***/ "./node_modules/react-dom/index.js":
 /*!*****************************************!*\
   !*** ./node_modules/react-dom/index.js ***!
   \*****************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
@@ -55532,23 +54752,28 @@ function checkDCE() {
     // a false positive.
     throw new Error('^_^');
   }
-  // removed by dead control flow
-
+  try {
+    // Verify that the code above has been dead code eliminated (DCE'd).
+    __REACT_DEVTOOLS_GLOBAL_HOOK__.checkDCE(checkDCE);
+  } catch (err) {
+    // DevTools shouldn't crash React, no matter what.
+    // We should still report in case we break this code.
+    console.error(err);
+  }
 }
 
-if (false) // removed by dead control flow
-{} else {
+if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-dom.development.js */ "./node_modules/react-dom/cjs/react-dom.development.js");
 }
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/react/cjs/react-jsx-runtime.development.js"
+/***/ "./node_modules/react/cjs/react-jsx-runtime.development.js":
 /*!*****************************************************************!*\
   !*** ./node_modules/react/cjs/react-jsx-runtime.development.js ***!
   \*****************************************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 /** @license React v17.0.2
@@ -56774,13 +55999,13 @@ exports.jsxs = jsxs;
 }
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/react/cjs/react.development.js"
+/***/ "./node_modules/react/cjs/react.development.js":
 /*!*****************************************************!*\
   !*** ./node_modules/react/cjs/react.development.js ***!
   \*****************************************************/
-(__unused_webpack_module, exports, __webpack_require__) {
+/***/ ((__unused_webpack_module, exports, __webpack_require__) => {
 
 "use strict";
 /** @license React v17.0.2
@@ -59118,47 +58343,45 @@ exports.version = ReactVersion;
 }
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/react/index.js"
+/***/ "./node_modules/react/index.js":
 /*!*************************************!*\
   !*** ./node_modules/react/index.js ***!
   \*************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-if (false) // removed by dead control flow
-{} else {
+if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react.development.js */ "./node_modules/react/cjs/react.development.js");
 }
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/react/jsx-runtime.js"
+/***/ "./node_modules/react/jsx-runtime.js":
 /*!*******************************************!*\
   !*** ./node_modules/react/jsx-runtime.js ***!
   \*******************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-if (false) // removed by dead control flow
-{} else {
+if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/react-jsx-runtime.development.js */ "./node_modules/react/cjs/react-jsx-runtime.development.js");
 }
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/scheduler/cjs/scheduler-tracing.development.js"
+/***/ "./node_modules/scheduler/cjs/scheduler-tracing.development.js":
 /*!*********************************************************************!*\
   !*** ./node_modules/scheduler/cjs/scheduler-tracing.development.js ***!
   \*********************************************************************/
-(__unused_webpack_module, exports) {
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 /** @license React v0.20.2
@@ -59510,13 +58733,13 @@ exports.unstable_wrap = unstable_wrap;
 }
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/scheduler/cjs/scheduler.development.js"
+/***/ "./node_modules/scheduler/cjs/scheduler.development.js":
 /*!*************************************************************!*\
   !*** ./node_modules/scheduler/cjs/scheduler.development.js ***!
   \*************************************************************/
-(__unused_webpack_module, exports) {
+/***/ ((__unused_webpack_module, exports) => {
 
 "use strict";
 /** @license React v0.20.2
@@ -60167,52 +59390,50 @@ exports.unstable_wrapCallback = unstable_wrapCallback;
 }
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/scheduler/index.js"
+/***/ "./node_modules/scheduler/index.js":
 /*!*****************************************!*\
   !*** ./node_modules/scheduler/index.js ***!
   \*****************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-if (false) // removed by dead control flow
-{} else {
+if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/scheduler.development.js */ "./node_modules/scheduler/cjs/scheduler.development.js");
 }
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/scheduler/tracing.js"
+/***/ "./node_modules/scheduler/tracing.js":
 /*!*******************************************!*\
   !*** ./node_modules/scheduler/tracing.js ***!
   \*******************************************/
-(module, __unused_webpack_exports, __webpack_require__) {
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 "use strict";
 
 
-if (false) // removed by dead control flow
-{} else {
+if (false) {} else {
   module.exports = __webpack_require__(/*! ./cjs/scheduler-tracing.development.js */ "./node_modules/scheduler/cjs/scheduler-tracing.development.js");
 }
 
 
-/***/ },
+/***/ }),
 
-/***/ "./node_modules/axios/package.json"
+/***/ "./node_modules/axios/package.json":
 /*!*****************************************!*\
   !*** ./node_modules/axios/package.json ***!
   \*****************************************/
-(module) {
+/***/ ((module) => {
 
 "use strict";
-module.exports = /*#__PURE__*/JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
+module.exports = JSON.parse('{"name":"axios","version":"0.21.4","description":"Promise based HTTP client for the browser and node.js","main":"index.js","scripts":{"test":"grunt test","start":"node ./sandbox/server.js","build":"NODE_ENV=production grunt build","preversion":"npm test","version":"npm run build && grunt version && git add -A dist && git add CHANGELOG.md bower.json package.json","postversion":"git push && git push --tags","examples":"node ./examples/server.js","coveralls":"cat coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js","fix":"eslint --fix lib/**/*.js"},"repository":{"type":"git","url":"https://github.com/axios/axios.git"},"keywords":["xhr","http","ajax","promise","node"],"author":"Matt Zabriskie","license":"MIT","bugs":{"url":"https://github.com/axios/axios/issues"},"homepage":"https://axios-http.com","devDependencies":{"coveralls":"^3.0.0","es6-promise":"^4.2.4","grunt":"^1.3.0","grunt-banner":"^0.6.0","grunt-cli":"^1.2.0","grunt-contrib-clean":"^1.1.0","grunt-contrib-watch":"^1.0.0","grunt-eslint":"^23.0.0","grunt-karma":"^4.0.0","grunt-mocha-test":"^0.13.3","grunt-ts":"^6.0.0-beta.19","grunt-webpack":"^4.0.2","istanbul-instrumenter-loader":"^1.0.0","jasmine-core":"^2.4.1","karma":"^6.3.2","karma-chrome-launcher":"^3.1.0","karma-firefox-launcher":"^2.1.0","karma-jasmine":"^1.1.1","karma-jasmine-ajax":"^0.1.13","karma-safari-launcher":"^1.0.0","karma-sauce-launcher":"^4.3.6","karma-sinon":"^1.0.5","karma-sourcemap-loader":"^0.3.8","karma-webpack":"^4.0.2","load-grunt-tasks":"^3.5.2","minimist":"^1.2.0","mocha":"^8.2.1","sinon":"^4.5.0","terser-webpack-plugin":"^4.2.3","typescript":"^4.0.5","url-search-params":"^0.10.0","webpack":"^4.44.2","webpack-dev-server":"^3.11.0"},"browser":{"./lib/adapters/http.js":"./lib/adapters/xhr.js"},"jsdelivr":"dist/axios.min.js","unpkg":"dist/axios.min.js","typings":"./index.d.ts","dependencies":{"follow-redirects":"^1.14.0"},"bundlesize":[{"path":"./dist/axios.min.js","threshold":"5kB"}]}');
 
-/***/ }
+/***/ })
 
 /******/ 	});
 /************************************************************************/
@@ -60234,12 +59455,6 @@ module.exports = /*#__PURE__*/JSON.parse('{"name":"axios","version":"0.21.4","de
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
-/******/ 		if (!(moduleId in __webpack_modules__)) {
-/******/ 			delete __webpack_module_cache__[moduleId];
-/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
-/******/ 			e.code = 'MODULE_NOT_FOUND';
-/******/ 			throw e;
-/******/ 		}
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Flag the module as loaded
