@@ -3313,7 +3313,6 @@ module.exports = axios;
 module.exports["default"] = axios;
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/cancel/Cancel.js":
@@ -3321,7 +3320,6 @@ module.exports["default"] = axios;
   !*** ./node_modules/axios/lib/cancel/Cancel.js ***!
   \*************************************************/
 /***/ ((module) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/cancel/Cancel.js"
@@ -3329,7 +3327,6 @@ module.exports["default"] = axios;
   !*** ./node_modules/axios/lib/cancel/Cancel.js ***!
   \*************************************************/
 (module) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -3353,7 +3350,6 @@ Cancel.prototype.__CANCEL__ = true;
 module.exports = Cancel;
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/cancel/CancelToken.js":
@@ -3361,7 +3357,6 @@ module.exports = Cancel;
   !*** ./node_modules/axios/lib/cancel/CancelToken.js ***!
   \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/cancel/CancelToken.js"
@@ -3369,7 +3364,6 @@ module.exports = Cancel;
   !*** ./node_modules/axios/lib/cancel/CancelToken.js ***!
   \******************************************************/
 (module, __unused_webpack_exports, __webpack_require__) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -3431,7 +3425,6 @@ CancelToken.source = function source() {
 module.exports = CancelToken;
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/cancel/isCancel.js":
@@ -3439,7 +3432,6 @@ module.exports = CancelToken;
   !*** ./node_modules/axios/lib/cancel/isCancel.js ***!
   \***************************************************/
 /***/ ((module) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/cancel/isCancel.js"
@@ -3447,7 +3439,6 @@ module.exports = CancelToken;
   !*** ./node_modules/axios/lib/cancel/isCancel.js ***!
   \***************************************************/
 (module) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -3457,7 +3448,6 @@ module.exports = function isCancel(value) {
 };
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/Axios.js":
@@ -3465,7 +3455,6 @@ module.exports = function isCancel(value) {
   !*** ./node_modules/axios/lib/core/Axios.js ***!
   \**********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/core/Axios.js"
@@ -3473,7 +3462,6 @@ module.exports = function isCancel(value) {
   !*** ./node_modules/axios/lib/core/Axios.js ***!
   \**********************************************/
 (module, __unused_webpack_exports, __webpack_require__) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -3626,7 +3614,6 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = Axios;
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/InterceptorManager.js":
@@ -3634,7 +3621,6 @@ module.exports = Axios;
   !*** ./node_modules/axios/lib/core/InterceptorManager.js ***!
   \***********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/core/InterceptorManager.js"
@@ -3642,7 +3628,6 @@ module.exports = Axios;
   !*** ./node_modules/axios/lib/core/InterceptorManager.js ***!
   \***********************************************************/
 (module, __unused_webpack_exports, __webpack_require__) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -3701,7 +3686,6 @@ InterceptorManager.prototype.forEach = function forEach(fn) {
 module.exports = InterceptorManager;
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/buildFullPath.js":
@@ -3709,7 +3693,6 @@ module.exports = InterceptorManager;
   !*** ./node_modules/axios/lib/core/buildFullPath.js ***!
   \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/core/buildFullPath.js"
@@ -3717,7 +3700,6 @@ module.exports = InterceptorManager;
   !*** ./node_modules/axios/lib/core/buildFullPath.js ***!
   \******************************************************/
 (module, __unused_webpack_exports, __webpack_require__) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -3742,7 +3724,6 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
 };
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/createError.js":
@@ -3750,7 +3731,6 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
   !*** ./node_modules/axios/lib/core/createError.js ***!
   \****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/core/createError.js"
@@ -3758,7 +3738,6 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
   !*** ./node_modules/axios/lib/core/createError.js ***!
   \****************************************************/
 (module, __unused_webpack_exports, __webpack_require__) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -3781,7 +3760,6 @@ module.exports = function createError(message, config, code, request, response) 
 };
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/dispatchRequest.js":
@@ -3789,7 +3767,6 @@ module.exports = function createError(message, config, code, request, response) 
   !*** ./node_modules/axios/lib/core/dispatchRequest.js ***!
   \********************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/core/dispatchRequest.js"
@@ -3797,7 +3774,6 @@ module.exports = function createError(message, config, code, request, response) 
   !*** ./node_modules/axios/lib/core/dispatchRequest.js ***!
   \********************************************************/
 (module, __unused_webpack_exports, __webpack_require__) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -3884,7 +3860,6 @@ module.exports = function dispatchRequest(config) {
 };
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/enhanceError.js":
@@ -3892,7 +3867,6 @@ module.exports = function dispatchRequest(config) {
   !*** ./node_modules/axios/lib/core/enhanceError.js ***!
   \*****************************************************/
 /***/ ((module) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/core/enhanceError.js"
@@ -3900,7 +3874,6 @@ module.exports = function dispatchRequest(config) {
   !*** ./node_modules/axios/lib/core/enhanceError.js ***!
   \*****************************************************/
 (module) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -3947,7 +3920,6 @@ module.exports = function enhanceError(error, config, code, request, response) {
 };
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/mergeConfig.js":
@@ -3955,7 +3927,6 @@ module.exports = function enhanceError(error, config, code, request, response) {
   !*** ./node_modules/axios/lib/core/mergeConfig.js ***!
   \****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/core/mergeConfig.js"
@@ -3963,7 +3934,6 @@ module.exports = function enhanceError(error, config, code, request, response) {
   !*** ./node_modules/axios/lib/core/mergeConfig.js ***!
   \****************************************************/
 (module, __unused_webpack_exports, __webpack_require__) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -4055,7 +4025,6 @@ module.exports = function mergeConfig(config1, config2) {
 };
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/settle.js":
@@ -4063,7 +4032,6 @@ module.exports = function mergeConfig(config1, config2) {
   !*** ./node_modules/axios/lib/core/settle.js ***!
   \***********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/core/settle.js"
@@ -4071,7 +4039,6 @@ module.exports = function mergeConfig(config1, config2) {
   !*** ./node_modules/axios/lib/core/settle.js ***!
   \***********************************************/
 (module, __unused_webpack_exports, __webpack_require__) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -4101,7 +4068,6 @@ module.exports = function settle(resolve, reject, response) {
 };
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/core/transformData.js":
@@ -4109,7 +4075,6 @@ module.exports = function settle(resolve, reject, response) {
   !*** ./node_modules/axios/lib/core/transformData.js ***!
   \******************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/core/transformData.js"
@@ -4117,7 +4082,6 @@ module.exports = function settle(resolve, reject, response) {
   !*** ./node_modules/axios/lib/core/transformData.js ***!
   \******************************************************/
 (module, __unused_webpack_exports, __webpack_require__) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -4144,7 +4108,6 @@ module.exports = function transformData(data, headers, fns) {
 };
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/defaults.js":
@@ -4152,7 +4115,6 @@ module.exports = function transformData(data, headers, fns) {
   !*** ./node_modules/axios/lib/defaults.js ***!
   \********************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/defaults.js"
@@ -4160,7 +4122,6 @@ module.exports = function transformData(data, headers, fns) {
   !*** ./node_modules/axios/lib/defaults.js ***!
   \********************************************/
 (module, __unused_webpack_exports, __webpack_require__) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 /* provided dependency */ var process = __webpack_require__(/*! process/browser.js */ "./node_modules/process/browser.js");
@@ -4300,7 +4261,6 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/helpers/bind.js":
@@ -4308,7 +4268,6 @@ module.exports = defaults;
   !*** ./node_modules/axios/lib/helpers/bind.js ***!
   \************************************************/
 /***/ ((module) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/helpers/bind.js"
@@ -4316,7 +4275,6 @@ module.exports = defaults;
   !*** ./node_modules/axios/lib/helpers/bind.js ***!
   \************************************************/
 (module) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -4332,7 +4290,6 @@ module.exports = function bind(fn, thisArg) {
 };
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/helpers/buildURL.js":
@@ -4340,7 +4297,6 @@ module.exports = function bind(fn, thisArg) {
   !*** ./node_modules/axios/lib/helpers/buildURL.js ***!
   \****************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/helpers/buildURL.js"
@@ -4348,7 +4304,6 @@ module.exports = function bind(fn, thisArg) {
   !*** ./node_modules/axios/lib/helpers/buildURL.js ***!
   \****************************************************/
 (module, __unused_webpack_exports, __webpack_require__) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -4423,7 +4378,6 @@ module.exports = function buildURL(url, params, paramsSerializer) {
 };
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/helpers/combineURLs.js":
@@ -4431,7 +4385,6 @@ module.exports = function buildURL(url, params, paramsSerializer) {
   !*** ./node_modules/axios/lib/helpers/combineURLs.js ***!
   \*******************************************************/
 /***/ ((module) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/helpers/combineURLs.js"
@@ -4439,7 +4392,6 @@ module.exports = function buildURL(url, params, paramsSerializer) {
   !*** ./node_modules/axios/lib/helpers/combineURLs.js ***!
   \*******************************************************/
 (module) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -4458,7 +4410,6 @@ module.exports = function combineURLs(baseURL, relativeURL) {
 };
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/helpers/cookies.js":
@@ -4466,7 +4417,6 @@ module.exports = function combineURLs(baseURL, relativeURL) {
   !*** ./node_modules/axios/lib/helpers/cookies.js ***!
   \***************************************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/helpers/cookies.js"
@@ -4474,7 +4424,6 @@ module.exports = function combineURLs(baseURL, relativeURL) {
   !*** ./node_modules/axios/lib/helpers/cookies.js ***!
   \***************************************************/
 (module, __unused_webpack_exports, __webpack_require__) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -4532,7 +4481,6 @@ module.exports = (
 );
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/helpers/isAbsoluteURL.js":
@@ -4540,7 +4488,6 @@ module.exports = (
   !*** ./node_modules/axios/lib/helpers/isAbsoluteURL.js ***!
   \*********************************************************/
 /***/ ((module) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/helpers/isAbsoluteURL.js"
@@ -4548,7 +4495,6 @@ module.exports = (
   !*** ./node_modules/axios/lib/helpers/isAbsoluteURL.js ***!
   \*********************************************************/
 (module) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -4567,7 +4513,6 @@ module.exports = function isAbsoluteURL(url) {
 };
 
 
-<<<<<<< HEAD
 /***/ }),
 
 /***/ "./node_modules/axios/lib/helpers/isAxiosError.js":
@@ -4575,7 +4520,6 @@ module.exports = function isAbsoluteURL(url) {
   !*** ./node_modules/axios/lib/helpers/isAxiosError.js ***!
   \********************************************************/
 /***/ ((module) => {
-=======
 /***/ },
 
 /***/ "./node_modules/axios/lib/helpers/isAxiosError.js"
@@ -4583,7 +4527,6 @@ module.exports = function isAbsoluteURL(url) {
   !*** ./node_modules/axios/lib/helpers/isAxiosError.js ***!
   \********************************************************/
 (module) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 
@@ -7138,12 +7081,10 @@ function BookingFood(_ref3) {
   !*** ./resources/js/components/BookingPayment.jsx ***!
   \****************************************************/
 (__unused_webpack_module, __webpack_exports__, __webpack_require__) {
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-<<<<<<< HEAD
 /* harmony export */   Alert: () => (/* binding */ Alert),
 /* harmony export */   Button: () => (/* binding */ Button),
 /* harmony export */   Carousel: () => (/* binding */ Carousel),
@@ -91304,5 +91245,4 @@ module.exports = /*#__PURE__*/JSON.parse('{"name":"axios","version":"0.21.4","de
 /******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/app"], () => (__webpack_require__("./resources/css/app.css")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
-/******/ })()
-;
+/******/ })();

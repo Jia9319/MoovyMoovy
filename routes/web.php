@@ -34,8 +34,6 @@ Route::middleware('auth')->group(function () {
     Route::get('/booking/ticket/{id}', [BookingController::class, 'showTicket'])->name('bookings.show');
     Route::post('/booking/ticket/{id}/cancel', [BookingController::class, 'cancelTicket'])->name('bookings.cancel');
 
-<<<<<<< HEAD
-=======
     Route::prefix('booking')->name('booking.')->group(function () {
         Route::get('select', [BookingController::class, 'select'])->name('select');
         Route::get('seat', [BookingController::class, 'seat'])->name('seat');
@@ -57,7 +55,6 @@ Route::middleware('auth')->group(function () {
     });
 });
 
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 Route::post('/offers/redeem', [OfferController::class, 'redeem'])->name('offers.redeem');
 Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
 Route::get('/offers/{id}/claim', [OfferController::class, 'claim'])->name('offers.claim');
@@ -69,7 +66,6 @@ Route::delete('/reviews/{review}', [ReviewController::class, 'destroy'])->name('
 Route::post('/reviews/{review}/like', [ReviewController::class, 'like'])->name('reviews.like');
 Route::post('/reviews/{review}/report', [ReviewController::class, 'report'])->name('reviews.report');
 
-<<<<<<< HEAD
 // Movie data for React (returns JSON)
 Route::resource('movies', MovieController::class);
 Route::get('/movies/{id}/data', [MovieController::class, 'show']);
@@ -89,7 +85,6 @@ Route::middleware(['auth'])->group(function () {
 
 Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
 Route::post('login', [LoginController::class, 'login']);
-=======
 Route::middleware('guest')->group(function () {
     Route::get('login', [LoginController::class, 'showLoginForm'])->name('login');
     Route::post('login', [LoginController::class, 'login']);
@@ -98,12 +93,10 @@ Route::middleware('guest')->group(function () {
     Route::post('register', [RegisterController::class, 'register']);
 });
 
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
 Route::post('logout', [LoginController::class, 'logout'])->name('logout');
 
 Route::get('/api/movies-status', [App\Http\Controllers\WatchlistController::class, 'getMoviesStatus'])->name('api.movies.status');
 
-<<<<<<< HEAD
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/reviews', fn() => view('profile.reviews'))->name('profile.reviews');
@@ -114,9 +107,7 @@ Route::middleware(['auth'])->group(function () {
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-=======
 Route::post('/watchlist/toggle/{movieId}', [App\Http\Controllers\WatchlistController::class, 'toggle'])->name('watchlist.toggle');
 
 Route::post('/watchlist/add/{movieId}', [App\Http\Controllers\WatchlistController::class, 'store'])->name('watchlist.add');
 Route::delete('/watchlist/remove/{movieId}', [App\Http\Controllers\WatchlistController::class, 'destroy'])->name('watchlist.remove');
->>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
