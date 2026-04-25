@@ -258,7 +258,6 @@ class MovieDetail extends Component {
         if (!cinema_id) { alert('Please select a cinema'); return; }
         if (!date) { alert('Please select a date'); return; }
         if (!time) { alert('Please select a time'); return; }
-        if (!price) { alert('Please enter a price'); return; }
 
         try {
             const movieId = this.state.movie.id;
@@ -286,7 +285,6 @@ class MovieDetail extends Component {
                 format: st.format || '',
                 date: st.date || '',
                 time: st.time || '',
-                price: st.price || '',
             },
             showtimeModal: true,
         });
@@ -302,7 +300,6 @@ class MovieDetail extends Component {
         if (!cinema_id) { alert('Please select a cinema'); return; }
         if (!date) { alert('Please select a date'); return; }
         if (!time) { alert('Please select a time'); return; }
-        if (!price) { alert('Please enter a price'); return; }
 
         try {
             const id = this.state.editingShowtime.id;
@@ -555,11 +552,15 @@ class MovieDetail extends Component {
                                         {st.cinema?.name || 'Unknown Cinema'} {st.hall ? `— Hall ${st.hall}` : ''} {st.format ? `(${st.format})` : ''}
                                     </div>
                                     <div className="movie-detail-showtime-datetime">
-                                        {new Date(st.date + 'T00:00:00').toLocaleDateString('en-MY', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })} at {st.time}
+                                        {new Date(st.date).toLocaleDateString('en-MY', { 
+                                            weekday: 'long', 
+                                            year: 'numeric', 
+                                            month: 'long', 
+                                            day: 'numeric' 
+                                        })} at {st.time}                                    
                                     </div>
                                 </div>
                                 <div className="movie-detail-showtime-actions">
-                                    <span className="movie-detail-showtime-price">RM {st.price}</span>
                                     {isAdmin && (
                                         <>
                                             <button onClick={() => this.editShowtime(st)} className="movie-detail-btn-edit-showtime">
@@ -698,15 +699,14 @@ class MovieDetail extends Component {
                             <input type="text" name="hall" placeholder="Hall" value={showtimeForm.hall} onChange={this.handleShowtimeChange} className="movie-detail-input" />
                             
                             <select name="format" value={showtimeForm.format} onChange={this.handleShowtimeChange} className="movie-detail-select">
-                                <option value="">Standard</option>
-                                <option value="IMAX">IMAX</option>
-                                <option value="4DX">4DX</option>
-                                <option value="Dolby">Dolby</option>
+                                <option value="2d">2D</option>
+                                <option value="3d">3D</option>
+                                <option value="Imax">Imax</option>
+                                <option value="Beanie">Beanie</option>
                             </select>
                             
                             <input type="date" name="date" value={showtimeForm.date} onChange={this.handleShowtimeChange} className="movie-detail-input" />
                             <input type="time" name="time" value={showtimeForm.time} onChange={this.handleShowtimeChange} className="movie-detail-input" />
-                            <input type="number" name="price" placeholder="Price (RM)" value={showtimeForm.price} onChange={this.handleShowtimeChange} step="0.5" min="0" className="movie-detail-input" />
                             
                             <div className="movie-detail-form-buttons">
                                 <button onClick={editingShowtime ? this.updateShowtime : this.addShowtime} className="movie-detail-btn-save">

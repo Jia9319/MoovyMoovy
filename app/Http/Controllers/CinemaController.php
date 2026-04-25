@@ -26,7 +26,7 @@ class CinemaController extends Controller
         $showtimes = Showtime::whereHas('movie', function($query) {
                 $query->where('status', 'now_showing');
             })
-            ->where('cinema_id', $cinema->id)  // ✅ CHANGE: use cinema_id instead of cinema name
+            ->where('cinema_id', $cinema->id) 
             ->where('date', '>=', now())
             ->with('movie')
             ->orderBy('date')

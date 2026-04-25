@@ -13,6 +13,8 @@ class MovieController extends Controller
 {
     public function index(Request $request)
     {
+            \Log::info('Movie posters check:', Movie::all()->pluck('poster')->toArray());
+
         $query = Movie::nowShowing()->with('showtimes');
 
         if ($request->filled('search')) {
@@ -45,7 +47,6 @@ class MovieController extends Controller
 
     public function show(Request $request, $id)
     {
-        // Load movie with relationships for API response
         $movie = Movie::with([
             'showtimes' => function($q) {
                 $q->where('date', '>=', today())
@@ -164,25 +165,25 @@ public function update(Request $request, $id)
 
 
     public function destroy($id)
-{
-    // Check if user is admin
-    if (!Auth::check() || Auth::user()->role !== 'admin') {
-        if (request()->wantsJson()) {
-            return response()->json(['message' => 'Unauthorized'], 403);
+    {
+        // Check if user is admin
+        if (!Auth::check() || Auth::user()->role !== 'admin') {
+            if (request()->wantsJson()) {
+                return response()->json(['message' => 'Unauthorized'], 403);
+            }
+            return redirect()->route('movies.index')->with('error', 'Unauthorized');
         }
-        return redirect()->route('movies.index')->with('error', 'Unauthorized');
+        
+        $movie = Movie::findOrFail($id);
+        
+        $movie->showtimes()->delete();
+        $movie->reviews()->delete();
+        $movie->delete();
+        
+        if (request()->wantsJson()) {
+            return response()->json(['success' => true, 'message' => 'Movie deleted successfully']);
+        }
+        
+        return redirect()->route('movies.index')->with('success', 'Movie deleted successfully');
     }
-    
-    $movie = Movie::findOrFail($id);
-    
-    $movie->showtimes()->delete();
-    $movie->reviews()->delete();
-    $movie->delete();
-    
-    if (request()->wantsJson()) {
-        return response()->json(['success' => true, 'message' => 'Movie deleted successfully']);
-    }
-    
-    return redirect()->route('movies.index')->with('success', 'Movie deleted successfully');
-}
 }

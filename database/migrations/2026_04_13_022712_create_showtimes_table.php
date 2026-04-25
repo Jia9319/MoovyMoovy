@@ -17,12 +17,11 @@ class CreateShowtimesTable extends Migration
             $table->id();
             $table->foreignId('movie_id')->constrained()->onDelete('cascade');
             $table->foreignId('cinema_id')->constrained()->onDelete('cascade');
-            $table->string('cinema_name')->nullable(); // Optional, can be used for quick reference
+            $table->string('cinema_name')->nullable();
             $table->string('hall')->nullable();
             $table->string('format')->nullable();
             $table->date('date');
             $table->time('time');
-            $table->decimal('price', 6, 2);
             $table->timestamps();
         });
     }

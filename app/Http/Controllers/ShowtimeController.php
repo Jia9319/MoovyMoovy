@@ -50,7 +50,6 @@ class ShowtimeController extends Controller
             'format' => 'nullable|string|max:50',
             'date'   => 'required|date',
             'time'   => 'required',
-            'price'  => 'required|numeric|min:0',
         ]);
 
         if ($validator->fails()) {
@@ -69,7 +68,6 @@ class ShowtimeController extends Controller
             'format' => $request->format,
             'date'   => $request->date,
             'time'   => $request->time,
-            'price'  => $request->price,
         ]);
 
         return response()->json([
@@ -131,7 +129,6 @@ public function update(Request $request, $id)
         'format' => 'nullable|string|max:50',
         'date'   => 'required|date',
         'time'   => 'required',
-        'price'  => 'required|numeric|min:0',
     ]);
 
     if ($validator->fails()) {
@@ -151,7 +148,6 @@ public function update(Request $request, $id)
         'format' => $request->format,
         'date'   => $request->date,
         'time'   => $request->time,
-        'price'  => $request->price,
     ]);
 
     return response()->json([

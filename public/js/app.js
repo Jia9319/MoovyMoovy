@@ -5483,18 +5483,11 @@ var MovieDetail = /*#__PURE__*/function (_Component) {
             alert('Please select a time');
             return _context5.a(2);
           case 3:
-            if (price) {
-              _context5.n = 4;
-              break;
-            }
-            alert('Please enter a price');
-            return _context5.a(2);
-          case 4:
-            _context5.p = 4;
+            _context5.p = 3;
             movieId = _this.state.movie.id;
-            _context5.n = 5;
+            _context5.n = 4;
             return axios__WEBPACK_IMPORTED_MODULE_2___default().post("/api/movies/".concat(movieId, "/showtimes"), _this.state.showtimeForm);
-          case 5:
+          case 4:
             response = _context5.v;
             if (response.data.success) {
               _this.closeShowtimeModal();
@@ -5503,17 +5496,17 @@ var MovieDetail = /*#__PURE__*/function (_Component) {
             } else {
               alert(response.data.message || 'Failed to add showtime');
             }
-            _context5.n = 7;
+            _context5.n = 6;
             break;
-          case 6:
-            _context5.p = 6;
+          case 5:
+            _context5.p = 5;
             _t5 = _context5.v;
             console.error('Add showtime error:', (_err$response6 = _t5.response) === null || _err$response6 === void 0 ? void 0 : _err$response6.data);
             alert(((_err$response7 = _t5.response) === null || _err$response7 === void 0 || (_err$response7 = _err$response7.data) === null || _err$response7 === void 0 ? void 0 : _err$response7.message) || 'Failed to add showtime');
-          case 7:
+          case 6:
             return _context5.a(2);
         }
-      }, _callee5, null, [[4, 6]]);
+      }, _callee5, null, [[3, 5]]);
     })));
     _defineProperty(_this, "editShowtime", function (st) {
       _this.setState({
@@ -5523,8 +5516,7 @@ var MovieDetail = /*#__PURE__*/function (_Component) {
           hall: st.hall || '',
           format: st.format || '',
           date: st.date || '',
-          time: st.time || '',
-          price: st.price || ''
+          time: st.time || ''
         },
         showtimeModal: true
       });
@@ -5563,18 +5555,11 @@ var MovieDetail = /*#__PURE__*/function (_Component) {
             alert('Please select a time');
             return _context6.a(2);
           case 4:
-            if (price) {
-              _context6.n = 5;
-              break;
-            }
-            alert('Please enter a price');
-            return _context6.a(2);
-          case 5:
-            _context6.p = 5;
+            _context6.p = 4;
             id = _this.state.editingShowtime.id;
-            _context6.n = 6;
+            _context6.n = 5;
             return axios__WEBPACK_IMPORTED_MODULE_2___default().put("/api/showtimes/".concat(id), _this.state.showtimeForm);
-          case 6:
+          case 5:
             response = _context6.v;
             if (response.data.success) {
               _this.closeShowtimeModal();
@@ -5583,10 +5568,10 @@ var MovieDetail = /*#__PURE__*/function (_Component) {
             } else {
               alert(response.data.message || 'Failed to update showtime');
             }
-            _context6.n = 8;
+            _context6.n = 7;
             break;
-          case 7:
-            _context6.p = 7;
+          case 6:
+            _context6.p = 6;
             _t6 = _context6.v;
             console.error('Update error:', _t6);
             if ((_err$response8 = _t6.response) !== null && _err$response8 !== void 0 && (_err$response8 = _err$response8.data) !== null && _err$response8 !== void 0 && _err$response8.errors) {
@@ -5602,10 +5587,10 @@ var MovieDetail = /*#__PURE__*/function (_Component) {
             } else {
               alert('Failed to update showtime. Check console for details.');
             }
-          case 8:
+          case 7:
             return _context6.a(2);
         }
-      }, _callee6, null, [[5, 7]]);
+      }, _callee6, null, [[4, 6]]);
     })));
     _defineProperty(_this, "deleteShowtime", /*#__PURE__*/function () {
       var _ref7 = _asyncToGenerator(/*#__PURE__*/_regenerator().m(function _callee7(id) {
@@ -6008,19 +5993,16 @@ var MovieDetail = /*#__PURE__*/function (_Component) {
                   children: [((_st$cinema = st.cinema) === null || _st$cinema === void 0 ? void 0 : _st$cinema.name) || 'Unknown Cinema', " ", st.hall ? "\u2014 Hall ".concat(st.hall) : '', " ", st.format ? "(".concat(st.format, ")") : '']
                 }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
                   className: "movie-detail-showtime-datetime",
-                  children: [new Date(st.date + 'T00:00:00').toLocaleDateString('en-MY', {
+                  children: [new Date(st.date).toLocaleDateString('en-MY', {
                     weekday: 'long',
                     year: 'numeric',
                     month: 'long',
                     day: 'numeric'
                   }), " at ", st.time]
                 })]
-              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
+              }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("div", {
                 className: "movie-detail-showtime-actions",
-                children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("span", {
-                  className: "movie-detail-showtime-price",
-                  children: ["RM ", st.price]
-                }), isAdmin && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
+                children: isAdmin && /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.Fragment, {
                   children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("button", {
                     onClick: function onClick() {
                       return _this2.editShowtime(st);
@@ -6038,7 +6020,7 @@ var MovieDetail = /*#__PURE__*/function (_Component) {
                       className: "fas fa-trash"
                     })
                   })]
-                })]
+                })
               })]
             }, st.id);
           })]
@@ -6264,17 +6246,17 @@ var MovieDetail = /*#__PURE__*/function (_Component) {
               onChange: this.handleShowtimeChange,
               className: "movie-detail-select",
               children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                value: "",
-                children: "Standard"
+                value: "2d",
+                children: "2D"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                value: "IMAX",
-                children: "IMAX"
+                value: "3d",
+                children: "3D"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                value: "4DX",
-                children: "4DX"
+                value: "Imax",
+                children: "Imax"
               }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("option", {
-                value: "Dolby",
-                children: "Dolby"
+                value: "Beanie",
+                children: "Beanie"
               })]
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
               type: "date",
@@ -6287,15 +6269,6 @@ var MovieDetail = /*#__PURE__*/function (_Component) {
               name: "time",
               value: showtimeForm.time,
               onChange: this.handleShowtimeChange,
-              className: "movie-detail-input"
-            }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsx)("input", {
-              type: "number",
-              name: "price",
-              placeholder: "Price (RM)",
-              value: showtimeForm.price,
-              onChange: this.handleShowtimeChange,
-              step: "0.5",
-              min: "0",
               className: "movie-detail-input"
             }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_3__.jsxs)("div", {
               className: "movie-detail-form-buttons",

@@ -46,13 +46,11 @@ class Movie extends Model
         return $this->poster ? asset('storage/' . $this->poster) : '';
     }
 
-    // app/Models/Movie.php
-
-public function getRatingAttribute()
-{
-    $avgRating = $this->reviews()->avg('rating');
-    return $avgRating ? number_format($avgRating, 1) : '0.0';
-}
+    public function getRatingAttribute()
+    {
+        $avgRating = $this->reviews()->avg('rating');
+        return $avgRating ? number_format($avgRating, 1) : '0.0';
+    }
     
     public function getGradientAttribute(): string
     {
