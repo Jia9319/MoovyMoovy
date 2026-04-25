@@ -98,6 +98,7 @@
 
         <form method="POST" action="{{ route('register') }}" class="space-y-5">
             @csrf
+            <input type="hidden" name="redirect" value="{{ old('redirect', $redirect ?? '') }}">
             
             <div class="input-group">
                 <label class="block text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-2 ml-1">Full Name</label>
@@ -130,7 +131,7 @@
         <div class="mt-8 text-center">
             <p class="text-xs text-gray-500">
                 Already have an account? 
-                <a href="{{ route('login') }}" class="text-white font-bold hover:text-purple-400 transition underline underline-offset-4 decoration-purple-500/30">Sign In</a>
+                <a href="{{ $redirect ? route('login', ['redirect' => $redirect]) : route('login') }}" class="text-white font-bold hover:text-purple-400 transition underline underline-offset-4 decoration-purple-500/30">Sign In</a>
             </p>
         </div>
     </div>

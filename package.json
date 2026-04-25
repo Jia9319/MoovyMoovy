@@ -10,6 +10,7 @@
         "production": "mix --production"
     },
     "devDependencies": {
+<<<<<<< HEAD
         "@babel/preset-react": "^7.13.13",
         "@popperjs/core": "^2.10.2",
         "axios": "^0.21.4",
@@ -26,5 +27,16 @@
     },
     "dependencies": {
         "reactstrap": "^9.2.3"
+=======
+        "@babel/preset-react": "^7.28.5",
+        "axios": "^0.21",
+        "laravel-mix": "^6.0.6",
+        "lodash": "^4.17.19",
+        "postcss": "^8.1.14"
+    },
+    "dependencies": {
+        "react": "^19.2.5",
+        "react-dom": "^19.2.5"
+>>>>>>> 232664b70b1a11c398655d2d56352bb17d1806b0
     }
 }

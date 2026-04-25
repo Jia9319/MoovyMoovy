@@ -44,8 +44,8 @@
                     <i class="fas fa-star"></i> My Reviews
                 </a>
 
-                <a href="{{ auth()->check() ? url('/bookings') : route('login') }}" class="dropdown-item">
-                    <i class="fas fa-ticket-alt"></i> My Bookings
+                <a href="{{ auth()->check() ? route('bookings.history') : route('login') }}" class="dropdown-item">
+                    <i class="fas fa-ticket-alt"></i> My Tickets
                 </a>
 
                 <div style="height: 1px; background: rgba(255,255,255,0.05); margin: 0.25rem 0;"></div>

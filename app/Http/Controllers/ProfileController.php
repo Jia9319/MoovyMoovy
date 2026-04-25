@@ -11,28 +11,25 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        $watchlistMovies = Movie::latest()->take(4)->get();
+        $watchedCount = \App\Models\Ticket::where('user_id', $user->id)->count();
+        $watchlistMovies = $user->watchlistMovies()->latest()->get();
+        $averageRating = $user->reviews()->avg('rating');
 
         $stats = [
-            'tickets' => 12,
-            'watched' => 28,
+            'watched' => $watchedCount,
             'saved' => $watchlistMovies->count(),
-            'rating' => 4.8
+            'rating' => $averageRating ? number_format($averageRating, 1) : '0.0'
         ];
         
-        $recentActivities = collect([]);
-        $paymentMethods = collect([]);
+       $recentTickets = \App\Models\Ticket::where('user_id', $user->id)
+        ->with('movie') 
+        ->latest()
+        ->get()
+        ->unique('movie_id') 
+        ->take(5); 
 
-        $activeTickets = [
-            (object) [
-                'booking_id' => 'CP-99281-RT',
-                'show_time' => 'Tonight • 8:30 PM',
-                'location' => 'Grand Cinema • Hall 4',
-                'movie' => Movie::first() ?? (object) ['title' => 'No Movie', 'poster' => '']
-            ]
-        ];
 
-        return view('profile.profile', compact('user', 'watchlistMovies', 'stats', 'activeTickets','recentActivities', 
-        'paymentMethods'));
+
+        return view('profile.profile', compact('user', 'watchlistMovies', 'stats','recentTickets'));
     }
 }

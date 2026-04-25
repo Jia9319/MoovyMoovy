@@ -3,7 +3,9 @@
 @section('title', 'Payment - ' . ($bookingQuery['title'] ?? 'Booking'))
 
 @section('content')
-<section class="payment-page">
+<div id="booking-payment-root"></div>
+
+<section class="payment-page" style="display:none;">
     <div class="payment-shell">
         <div class="payment-main">
             <div class="payment-head">
@@ -23,15 +25,15 @@
                     <div class="line"><span>Cinema</span><strong>{{ $bookingQuery['cinema'] }} • {{ $bookingQuery['hall'] }} • {{ $bookingQuery['format'] }}</strong></div>
                     <div class="line"><span>Date & Time</span><strong>{{ \Carbon\Carbon::parse($bookingQuery['date'])->format('D, d M Y') }} {{ $bookingQuery['time'] }}</strong></div>
                     <div class="line"><span>Seats</span><strong>{{ $seats->join(', ') }}</strong></div>
+                    <div class="edit-actions">
+                        <a href="{{ route('booking.seat', array_merge($bookingQuery, request()->query(), ['return_to' => 'payment'])) }}" class="edit-link">Edit Seats</a>
+                        <a href="{{ route('booking.food', array_merge($bookingQuery, request()->query())) }}" class="edit-link">Edit Food & Beverage</a>
+                    </div>
                 </div>
 
                 <div class="card-block">
                     <h3>Price Breakdown</h3>
                     <div class="line"><span>Seat Total</span><strong>RM {{ number_format((float) $seatTotal, 2) }}</strong></div>
-                    @if($isTuesday)
-                        <div class="line"><span>Tuesday Discount (50%)</span><strong style="color:#22c55e;">- RM {{ number_format((float) $discountAmount, 2) }}</strong></div>
-                        <div class="line"><span>Seat Total After Discount</span><strong>RM {{ number_format((float) $discountedSeatTotal, 2) }}</strong></div>
-                    @endif
                     <div class="line"><span>Food Total</span><strong>RM {{ number_format((float) $foodTotal, 2) }}</strong></div>
                     @if($foodLines->count())
                         @foreach($foodLines as $line)
@@ -58,34 +60,14 @@
                 <input type="hidden" name="seat_total" value="{{ $seatTotal }}">
                 <input type="hidden" name="food_total" value="{{ $foodTotal }}">
 
-                <div style="margin-bottom:1rem;">
-                    <label for="promo_code" style="display:block;margin-bottom:0.5rem;color:var(--muted);font-size:0.9rem;">Promotion Code</label>
-                    <div style="display:flex;gap:0.6rem;flex-wrap:wrap;">
-                        <input
-                            type="text"
-                            id="promo_code"
-                            name="promo_code"
-                            placeholder="Enter promo code"
-                            style="flex:1;min-width:220px;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:10px;padding:0.8rem 0.95rem;color:var(--white);outline:none;"
-                        >
-                        <button type="button" style="border:none;border-radius:10px;padding:0.8rem 1rem;font-weight:700;cursor:pointer;background:rgba(255,255,255,0.1);color:var(--white);border:1px solid var(--border);">
-                            Apply
-                        </button>
-                    </div>
-                </div>
-
-                @if($isTuesday)
-                    <p style="margin:0.5rem 0 0.8rem;color:#22c55e;font-size:0.9rem;">
-                        Tuesday Promo Applied: 50% off movie seat tickets.
-                    </p>
-                @endif
-
                 <h3>Payment Method</h3>
                 <label class="method"><input type="radio" name="payment_method" value="tng" checked><span>Touch 'n Go eWallet</span></label>
                 <label class="method"><input type="radio" name="payment_method" value="debit"><span>Debit Card</span></label>
                 <label class="method"><input type="radio" name="payment_method" value="credit"><span>Credit Card</span></label>
 
-                <button type="submit" class="pay-btn">Pay Now</button>
+                <div class="pay-footer">
+                    <button type="submit" class="pay-btn">Pay Now <i class="fas fa-arrow-right"></i></button>
+                </div>
             </form>
         </div>
     </div>
@@ -117,9 +99,29 @@
 .line span { color: var(--muted); }
 .line.small { font-size: 0.85rem; }
 .line.total { border-top: 1px solid var(--border); padding-top: 0.6rem; margin-top: 0.4rem; }
-.pay-form { margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; }
+.edit-actions { margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 0.55rem; }
+.edit-link {
+    color: #fff;
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.82rem;
+}
+.edit-link:hover { border-color: var(--c1); }
+.pay-form { margin-top: 1rem; border-top: 1px solid var(--border); padding-top: 1rem; display: flex; flex-direction: column; }
+.pay-footer { margin-top: 0.9rem; width: fit-content; margin-left: auto; }
 .method { display: flex; align-items: center; gap: 0.55rem; margin-top: 0.55rem; color: var(--white); }
-.pay-btn { margin-top: 0.9rem; border: none; border-radius: 10px; padding: 0.8rem 1rem; color: white; background: var(--grad-2); font-weight: 700; cursor: pointer; }
+.pay-btn { width: 100%; margin-top: 1rem; border: none; border-radius: 12px; padding: 0.85rem 1rem; font-weight: 700; color: #fff; cursor: pointer; background: var(--grad-2); transition: all 0.2s; }
+.pay-btn i { margin-left: 0.4rem; }
+.pay-btn:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(150, 20, 208, 0.4); }
+.pay-btn:disabled { opacity: 0.5; cursor: not-allowed; }
 @media (max-width: 720px) { .payment-page { padding: 95px 4% 2rem; } }
 </style>
+
+@push('scripts')
+<script>
+    window.MoovyBookingPaymentData = @json($bookingPaymentData);
+</script>
+@endpush
 @endsection

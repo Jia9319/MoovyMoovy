@@ -23,6 +23,20 @@ class RegisterController extends Controller
     */
 
     use RegistersUsers;
+    private function sanitizeRedirect(?string $redirect): ?string
+    {
+        $value = trim((string) $redirect);
+
+        if ($value === '') {
+            return null;
+        }
+
+        if (str_starts_with($value, '/') && !str_starts_with($value, '//')) {
+            return $value;
+        }
+
+        return null;
+    }
 
     /**
      * Where to redirect users after registration.
@@ -47,6 +61,30 @@ class RegisterController extends Controller
      * @param  array  $data
      * @return \Illuminate\Contracts\Validation\Validator
      */
+    public function register(Request $request)
+    {
+        // Verify the data
+        $validated = $request->validate([
+            'name' => ['required', 'string', 'max:255'],
+            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'redirect' => ['nullable', 'string'],
+        ]);
+
+        // Create User
+        $user = $this->create($validated);
+
+        Auth::login($user);
+
+        $redirect = $this->sanitizeRedirect($validated['redirect'] ?? null);
+
+        if ($redirect !== null) {
+            $request->session()->put('url.intended', $redirect);
+        }
+
+        return redirect()->intended(route('profile.show'));
+    }
+
     protected function validator(array $data)
     {
         return Validator::make($data, [

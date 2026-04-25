@@ -23,13 +23,29 @@ class MovieController extends Controller
         if ($request->filled('genre')) {
             $query->where('genre', $request->genre);
         }
-        
+
         if ($request->sort == 'rating') {
             $query->orderBy('rating', 'desc');
         } elseif ($request->sort == 'popular') {
             $query->orderBy('id', 'desc');
         } else {
             $query->orderBy('created_at', 'desc');
+        }
+
+        if ($request->ajax() || $request->wantsJson()) {
+            $movies = $query->get();
+            $user = auth()->user();
+
+            $data = $movies->map(function ($movie) use ($user) {
+                return [
+                    'id' => $movie->id,
+                    'title' => $movie->title,
+                    'genre' => $movie->genre,
+                    'poster_url' => $movie->poster_url,
+                    'is_added' => $user ? $user->watchlist->contains($movie->id) : false,
+                ];
+            });
+            return response()->json($data);
         }
 
         $movies = $query->paginate(10)->withQueryString();
@@ -41,7 +57,7 @@ class MovieController extends Controller
         $comingSoon = Movie::comingSoon()
             ->orderBy('expected_release', 'asc')
             ->paginate(10);
-        
+
         return view('movies.coming-soon', compact('comingSoon'));
     }
 
@@ -103,14 +119,36 @@ class MovieController extends Controller
     }
 
   
-public function edit($id)
+    public function edit($id)
     {
         if (!Auth::check() || Auth::user()->role !== 'admin') {
             return response()->json(['message' => 'Unauthorized'], 403);
         }
-        
         $movie = Movie::findOrFail($id);
+        return view('movies.edit', compact('movie'));
+    }
+
+    public function update(Request $request, Movie $movie)
+    {
+        $validated = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'genre' => 'required|string|max:100',
+            'duration' => 'required|integer|min:1',
+            'release_date' => 'required|date',
+            'rating' => 'nullable|numeric|min:0|max:10',
+            'poster' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
+            'status' => 'required|in:now_showing,coming_soon,draft',
+            'expected_release' => 'nullable|date',
+        ]);
+
+        if ($request->hasFile('poster')) {
+            if ($movie->poster)
+                Storage::disk('public')->delete($movie->poster);
+            $validated['poster'] = $request->file('poster')->store('posters', 'public');
+        }
         
+        $movie->update($validated);        
         return response()->json([
             'movie' => $movie
         ]);
@@ -118,50 +156,6 @@ public function edit($id)
 
 
 
-public function update(Request $request, $id)
-{
-    if (!Auth::check() || Auth::user()->role !== 'admin') {
-        return response()->json(['message' => 'Unauthorized'], 403);
-    }
-    
-    \Log::info('Update request received', [
-        'id' => $id,
-        'method' => $request->method(),
-        'all_data' => $request->all(),
-        'has_file' => $request->hasFile('poster')
-    ]);
-    
-    $movie = Movie::findOrFail($id);
-    
-    $validated = $request->validate([
-        'title' => 'sometimes|required|string|max:255',
-        'description' => 'sometimes|required|string',
-        'genre' => 'sometimes|required|string|max:100',
-        'duration' => 'sometimes|required|integer|min:1',
-        'release_date' => 'sometimes|required|date',
-        'rating' => 'nullable|numeric|min:0|max:10',
-        'poster' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-        'status' => 'sometimes|required|in:now_showing,coming_soon,draft',
-        'expected_release' => 'nullable|date',
-    ]);
-
-    if ($request->hasFile('poster')) {
-        if ($movie->poster) {
-            Storage::disk('public')->delete($movie->poster);
-        }
-        $validated['poster'] = $request->file('poster')->store('posters', 'public');
-    }
-
-    $movie->update($validated);
-    
-    $movie->refresh();
-    
-    return response()->json([
-        'success' => true,
-        'message' => 'Movie updated successfully!',
-        'movie' => $movie
-    ]);
-}
 
 
     public function destroy($id)
@@ -178,6 +172,8 @@ public function update(Request $request, $id)
         
         $movie->showtimes()->delete();
         $movie->reviews()->delete();
+        if ($movie->poster)
+            Storage::disk('public')->delete($movie->poster);
         $movie->delete();
         
         if (request()->wantsJson()) {

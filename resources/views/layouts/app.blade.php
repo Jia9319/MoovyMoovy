@@ -60,6 +60,7 @@ const scrollBtn = document.getElementById('scrollTop');
 window.addEventListener('scroll', () => scrollBtn.classList.toggle('show', window.scrollY > 300));
 scrollBtn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
 </script>
+<script src="{{ mix('js/app.js') }}" defer></script>
 @stack('scripts')
 </body>
 </html>
