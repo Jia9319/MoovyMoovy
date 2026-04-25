@@ -609,7 +609,6 @@ class BookingController extends Controller
         ->orderBy('created_at', 'desc')
         ->get();
 
-    // 计算统计数据
     $stats = [
         'totalTickets' => $tickets->count(),
         'spent' => $tickets->sum('grand_total'),
@@ -623,10 +622,8 @@ public function showTicket($id)
     // 1. 获取该用户的这张票
     $ticket = \App\Models\Ticket::where('user_id', auth()->id())->findOrFail($id);
 
-    // 2. 准备 React 和 Blade 共享的数据
     return view('booking.ticket', [
-        // --- 供 Blade 模板直接使用的变量 ---
-        'ticket'         => $ticket, // 传入整个对象方便你 details 里的 $ticket->... 调用
+        'ticket'         => $ticket, 
         'title'          => $ticket->movie_title ?? 'Movie Ticket', 
         'cinema'         => $ticket->cinema,
         'hall'           => $ticket->hall,
@@ -666,10 +663,8 @@ public function showTicket($id)
 
 public function showDetails($id)
 {
-    // 1. 只查当前用户的票
     $ticket = \App\Models\Ticket::where('user_id', auth()->id())->findOrFail($id);
 
-    // 2. 准备数据 (完全模仿详情页需要的结构)
     $bookingTicketData = [
         'ticket' => [
             'ticketCode' => $ticket->ticket_code,
@@ -679,7 +674,7 @@ public function showDetails($id)
             'format'     => $ticket->format,
             'date'       => $ticket->date,
             'time'       => $ticket->time,
-            'seats'      => $ticket->seats, // 已经在模型 cast 过了
+            'seats'      => $ticket->seats, 
             'paymentMethod' => $ticket->payment_method,
             'seatTotal'  => (float)$ticket->seat_total,
             'foodTotal'  => (float)$ticket->food_total,
@@ -688,7 +683,7 @@ public function showDetails($id)
             'foodLines'  => $ticket->food_lines,
         ],
         'homeUrl' => route('home'),
-        'isAuthenticated' => true, // 解决你的 Session Required 问题
+        'isAuthenticated' => true, 
     ];
 
     return view('profile.details', [
