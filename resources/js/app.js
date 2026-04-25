@@ -14,6 +14,8 @@ require('./bootstrap');
 
 require('./components/MovieDetail');
 import React from 'react';
+import ReactDOM from 'react-dom';
+
 import { createRoot } from 'react-dom/client';
 import BookingSelect from './components/BookingSelect';
 import BookingSeat from './components/BookingSeat';
