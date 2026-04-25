@@ -1,39 +1,56 @@
 @extends('layouts.app')
 
-@section('title', 'E-Ticket - ' . $title)
+@section('title', 'E-Ticket - ' . (optional($ticket->movie)->title ?? $ticket->ticket_code))
 
 @section('content')
-<div id="booking-ticket-root"></div>
-
-<section class="ticket-page" style="display:none;">
+<section class="ticket-page">
     <div class="ticket-card">
         <div class="ticket-head">
-            <a href="{{ route('home') }}" class="seat-back" title="Back to home">
-                <i class="fas fa-arrow-left"></i>
+            <a href="javascript:void(0);" onclick="window.history.back();" class="seat-back" title="Go back">
+            <i class="fas fa-arrow-left"></i>
             </a>
             <div>
-                <h1>Your E-Ticket</h1>
-                <p class="sub">Payment successful. Show this QR code at cinema entry.</p>
+                <h1>Ticket Details</h1>
+                <p class="sub">Show this QR code at cinema entry.</p>
             </div>
         </div>
 
         <div class="ticket-layout">
             @php
-                $seatTotalValue = $seatTotal ?? $seat_total ?? 0;
-                $foodTotalValue = $foodTotal ?? $food_total ?? 0;
+                $seatTotalValue = $ticket->seat_total ?? 0;
+                $foodTotalValue = $ticket->food_total ?? 0;
+                $seatsDisplay = is_array($ticket->seats) ? implode(', ', $ticket->seats) : (string) $ticket->seats;
+                $hallLabel = trim((string) $ticket->hall);
+                $hallLabel = preg_replace('/^\s*hall\s*/i', '', $hallLabel);
+                $locationLabel = trim((string) $ticket->cinema);
+
+                if ($hallLabel !== '') {
+                    $locationLabel .= ' • Hall ' . $hallLabel;
+                }
+
+                if (!empty($ticket->format)) {
+                    $locationLabel .= ' • ' . $ticket->format;
+                }
             @endphp
+
             <div class="ticket-details">
-                <div class="row"><span>Ticket Code</span><strong>{{ $ticketCode }}</strong></div>
-                <div class="row"><span>Movie</span><strong>{{ $title }}</strong></div>
-                <div class="row"><span>Cinema</span><strong>{{ $cinema }} • {{ $hall }} • {{ $format }}</strong></div>
-                <div class="row"><span>Date & Time</span><strong>{{ $date->format('D, d M Y') }} {{ $time }}</strong></div>
-                <div class="row"><span>Seats</span><strong>{{ is_array($seats) ? implode(', ', $seats) : $seats }}</strong></div>
-                <div class="row"><span>Payment</span><strong>{{ strtoupper($paymentMethod ?? $payment_method ?? 'N/A') }}</strong></div>
-                
+                <div class="row"><span>Ticket Code</span><strong>{{ $ticket->ticket_code }}</strong></div>
+                <div class="row"><span>Movie</span><strong>{{ optional($ticket->movie)->title ?? 'Unknown Movie' }}</strong></div>
+                <div class="row"><span>Cinema</span><strong>{{ $locationLabel }}</strong></div>
+                <div class="row"><span>Date & Time</span><strong>{{ $ticket->date->format('D, d M Y') }} {{ $ticket->time }}</strong></div>
+                <div class="row"><span>Seats</span><strong>{{ $seatsDisplay }}</strong></div>
+                <div class="row"><span>Payment</span><strong>{{ strtoupper($ticket->payment_method ?? 'N/A') }}</strong></div>
+                @if(!empty($ticket->promo_code))
+                    <div class="row"><span>Promo Code</span><strong>{{ $ticket->promo_code }}</strong></div>
+                @endif
+                <div class="row"><span>Seat Total</span><strong>RM {{ number_format((float) $seatTotalValue, 2) }}</strong></div>
+                @if((float) $ticket->discount_amount > 0)
+                    <div class="row"><span>Tuesday Discount (50%)</span><strong style="color:#22c55e;">- RM {{ number_format((float) $ticket->discount_amount, 2) }}</strong></div>
+                @endif
                 <div class="row"><span>Food Total</span><strong>RM {{ number_format((float) $foodTotalValue, 2) }}</strong></div>
                 <div class="addons-block">
-                    @if(!empty($foodLines) && collect($foodLines)->count())
-                        @foreach($foodLines as $line)
+                    @if(!empty($ticket->food_lines) && collect($ticket->food_lines)->count())
+                        @foreach($ticket->food_lines as $line)
                             <div class="row small">
                                 <span>
                                     {{ $line['name'] }} x{{ $line['qty'] }}
@@ -48,15 +65,15 @@
                         <div class="addons-empty">No food or beverage added.</div>
                     @endif
                 </div>
-                <div class="row total"><span>Total</span><strong>RM {{ number_format((float) $grandTotal, 2) }}</strong></div>
+                <div class="row total"><span>Total</span><strong>RM {{ number_format((float) $ticket->grand_total, 2) }}</strong></div>
             </div>
             <div class="qr-wrap">
-                <img src="{{ $qrUrl }}" alt="Ticket QR Code">
+                <img src="{{ $ticket->qr_url }}" alt="Ticket QR Code">
             </div>
         </div>
 
         <div class="actions">
-            <a href="{{ route('home') }}" class="back-btn">Back to Home <i class="fas fa-arrow-right"></i></a>
+            <a href="{{ route('home') }}" class="back-btn">Back to Home </a>
         </div>
     </div>
 </section>
@@ -125,14 +142,6 @@
     padding-top: 0.65rem;
     border-top: 1px solid var(--border);
 }
-.addons-title {
-    margin-bottom: 0.45rem;
-    color: var(--white);
-    font-size: 0.88rem;
-    font-weight: 700;
-    letter-spacing: 0.4px;
-    text-transform: uppercase;
-}
 .addons-empty {
     color: var(--muted);
     font-size: 0.9rem;
@@ -171,7 +180,12 @@
     border: 2px solid rgba(0,0,0,0.15);
     margin-top: 1.1rem;
 }
-.actions { margin-top: 1rem; width: 100%; }
+
+.actions {
+    margin-top: 1rem;
+    width: 100%;
+}
+
 .back-btn {
     width: 100%;
     border: none;
@@ -188,7 +202,12 @@
     gap: 0.4rem;
     text-decoration: none;
 }
-.back-btn:hover { transform: translateY(-2px); box-shadow: 0 10px 20px rgba(150, 20, 208, 0.4); }
+
+.back-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(150, 20, 208, 0.4);
+}
+
 @media (max-width: 760px) {
     .ticket-page { padding: 95px 4% 2rem; }
     .ticket-layout { grid-template-columns: 1fr; }
@@ -198,7 +217,7 @@
 
 @push('scripts')
 <script>
-    window.MoovyBookingTicketData = @json($bookingTicketData);
+    window.MoovyBookingSummaryData = @json($ticket);
 </script>
 @endpush
 @endsection

@@ -3,116 +3,7 @@
 @section('title', 'Choose Cinema & Time - ' . $movie['title'])
 
 @section('content')
-<section class="booking-select-page">
-    <div class="booking-select-card">
-        <div class="booking-select-head">
-            <a href="{{ route('home') }}" class="seat-back" title="Back to home">
-                <i class="fas fa-arrow-left"></i>
-            </a>
-            @php
-                $durationRaw = (string) ($movie['duration'] ?? 0);
-                if (preg_match('/^(\d+)\s*h(?:\s*(\d+)\s*m)?$/i', $durationRaw, $matches)) {
-                    $durationMinutes = ((int) $matches[1] * 60) + (int) ($matches[2] ?? 0);
-                } elseif (preg_match('/^(\d+)\s*m(?:in(?:ute)?s?)?$/i', $durationRaw, $matches)) {
-                    $durationMinutes = (int) $matches[1];
-                } else {
-                    $durationMinutes = (int) $durationRaw;
-                }
-                if ($durationMinutes > 0 && $durationMinutes <= 12) {
-                    $durationMinutes *= 60;
-                }
-                $durationMinutes = max($durationMinutes, 0);
-                $durationText = intdiv($durationMinutes, 60) . 'h ' . ($durationMinutes % 60) . 'm';
-
-                $randomCinemas = collect($cinemas)->random(min(6, count($cinemas)))->values();
-                
-                $randomTimes = collect($times)->random(min(10, count($times)))->sort()->values();
-            @endphp
-            <div>
-                <h1>{{ $movie['title'] }}</h1>
-                <p>{{ $movie['genre'] }} • {{ $durationText }}</p>
-            </div>
-        </div>
-
-        <form method="GET" action="{{ route('booking.seat') }}" class="booking-form" id="bookingForm">
-            <input type="hidden" name="movie_id" value="{{ $movie['id'] }}">
-            <input type="hidden" name="title" value="{{ $movie['title'] }}">
-            <input type="hidden" name="genre" value="{{ $movie['genre'] }}">
-            <input type="hidden" name="duration" value="{{ $movie['duration'] }}">
-            
-            <input type="hidden" name="hall" id="hallInput" value="{{ $randomCinemas[0]['hall'] }}">
-            <input type="hidden" name="format" id="formatInput" value="{{ $types[0]['label'] }}">
-            <input type="hidden" name="price" id="priceInput" value="{{ $types[0]['price'] }}">
-
-            <div class="booking-grid">
-                <div>
-                    <label>Cinema</label>
-                    <div class="options" id="cinemaOptions">
-                        @foreach($randomCinemas as $index => $cinema)
-                            <button
-                                type="button"
-                                class="option-btn cinema-option {{ $index === 0 ? 'active' : '' }}"
-                                data-cinema="{{ $cinema['name'] }}"
-                                data-hall="{{ $cinema['hall'] }}"
-                            >
-                                <strong>{{ $cinema['name'] }}</strong>
-                                <span>{{ $cinema['hall'] }}</span>
-                            </button>
-                        @endforeach
-                    </div>
-                    <input type="hidden" name="cinema" id="cinemaInput" value="{{ $randomCinemas[0]['name'] }}">
-                </div>
-
-                <div>
-                    <label>Experience</label>
-                    <div class="chips" id="typeOptions">
-                        @foreach($types as $idx => $type)
-                            <button type="button" class="chip-btn type-option {{ $idx === 0 ? 'active' : '' }}" data-format="{{ $type['label'] }}" data-price="{{ $type['price'] }}">
-                                {{ $type['label'] }} • RM {{ number_format((float) $type['price'], 2) }}
-                            </button>
-                        @endforeach
-                    </div>
-                </div>
-
-                <div>
-                    <label>Select Date</label>
-                    <div class="chips">
-                        @foreach($dates as $idx => $date)
-                            <label class="chip">
-                                <input type="radio" name="date" value="{{ $date }}" {{ $idx === 0 ? 'checked' : '' }}>
-                                <span>{{ \Carbon\Carbon::parse($date)->format('D, d M') }}</span>
-                            </label>
-                        @endforeach
-                    </div>
-                </div>
-
-                <div>
-                    <label>Available Showtimes</label>
-                    <div class="chips">
-                        @foreach($randomTimes as $idx => $time)
-                            <label class="chip">
-                                <input type="radio" name="time" value="{{ $time }}" {{ $idx === 0 ? 'checked' : '' }}>
-                                <span>{{ $time }}</span>
-                            </label>
-                        @endforeach
-                    </div>
-                </div>
-            </div>
-
-            <div class="booking-footer">
-                <div>
-                    <small>Selection Summary</small>
-                    <p id="selectedCinemaText">Cinema: {{ $randomCinemas[0]['name'] }} • {{ $randomCinemas[0]['hall'] }}</p>
-                    <p id="selectedTypeText" style="color: var(--muted); margin-top: 0.15rem;">Type: {{ $types[0]['label'] }} • RM {{ number_format((float) $types[0]['price'], 2) }}</p>
-                </div>
-                <button type="submit" class="next-btn">
-                    Pick Your Seats
-                    <i class="fas fa-arrow-right"></i>
-                </button>
-            </div>
-        </form>
-    </div>
-</section>
+<div id="booking-select-root"></div>
 
 <style>
 .booking-select-page { min-height: 100vh; padding: 108px 5% 3rem; }
@@ -146,54 +37,9 @@
 }
 </style>
 
+@push('scripts')
 <script>
-(() => {
-    const cinemaOptions = document.querySelectorAll('.cinema-option');
-    const cinemaInput = document.getElementById('cinemaInput');
-    const hallInput = document.getElementById('hallInput');
-    const formatInput = document.getElementById('formatInput');
-    const priceInput = document.getElementById('priceInput');
-    const selectedCinemaText = document.getElementById('selectedCinemaText');
-    const selectedTypeText = document.getElementById('selectedTypeText');
-    const typeOptions = document.querySelectorAll('.type-option');
-
-    let currentCinema = cinemaInput.value;
-    let currentHall = hallInput.value;
-    let currentFormat = formatInput.value;
-    let currentPrice = priceInput.value;
-
-    const refreshSummary = () => {
-        selectedCinemaText.textContent = `Cinema: ${currentCinema} • ${currentHall}`;
-        selectedTypeText.textContent = `Type: ${currentFormat} • RM ${Number(currentPrice).toFixed(2)}`;
-    };
-
-    cinemaOptions.forEach((option) => {
-        option.addEventListener('click', () => {
-            cinemaOptions.forEach((x) => x.classList.remove('active'));
-            option.classList.add('active');
-
-            cinemaInput.value = option.dataset.cinema;
-            hallInput.value = option.dataset.hall;
-            currentCinema = option.dataset.cinema;
-            currentHall = option.dataset.hall;
-            refreshSummary();
-        });
-    });
-
-    typeOptions.forEach((option) => {
-        option.addEventListener('click', () => {
-            typeOptions.forEach((x) => x.classList.remove('active'));
-            option.classList.add('active');
-
-            formatInput.value = option.dataset.format;
-            priceInput.value = option.dataset.price;
-            currentFormat = option.dataset.format;
-            currentPrice = option.dataset.price;
-            refreshSummary();
-        });
-    });
-
-    refreshSummary();
-})();
+    window.MoovyBookingSelectData = @json($bookingSelectData);
 </script>
+@endpush
 @endsection

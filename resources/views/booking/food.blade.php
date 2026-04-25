@@ -3,7 +3,9 @@
 @section('title', 'Food & Beverage - ' . ($bookingQuery['title'] ?? 'Booking'))
 
 @section('content')
-    <section class="food-page">
+<div id="booking-food-root"></div>
+
+    <section class="food-page" style="display:none;">
         <div class="food-shell">
             <div class="food-main">
                 <div class="food-head">
@@ -372,50 +374,9 @@
         }
     </style>
 
-    <script>
-        (() => {
-            const seatTotal = Number(@json((float) $seatTotal));
-            const qtyInputs = document.querySelectorAll('.food-qty');
-            const qtyButtons = document.querySelectorAll('.qty-btn');
-            const foodTotalText = document.getElementById('foodTotalText');
-            const grandTotalText = document.getElementById('grandTotalText');
-            const skipFoodBtn = document.getElementById('skipFoodBtn');
-            const foodForm = document.getElementById('foodForm');
-
-            const updateTotals = () => {
-                let foodTotal = 0;
-                qtyInputs.forEach((input) => {
-                    const rawQty = Number(input.value || 0);
-                    const qty = Math.max(rawQty, 0);
-                    input.value = String(qty);
-                    const price = Number(input.dataset.price || 0);
-                    foodTotal += qty * price;
-                });
-                foodTotalText.textContent = `Food Total: RM ${foodTotal.toFixed(2)}`;
-                grandTotalText.textContent = `Grand Total: RM ${(seatTotal + foodTotal).toFixed(2)}`;
-            };
-
-            qtyButtons.forEach((button) => {
-                button.addEventListener('click', () => {
-                    const targetId = button.dataset.target;
-                    const action = button.dataset.action;
-                    const input = document.getElementById(targetId);
-                    if (!input) return;
-                    const current = Number(input.value || 0);
-                    input.value = String(action === 'increment' ? current + 1 : Math.max(current - 1, 0));
-                    updateTotals();
-                });
-            });
-
-            qtyInputs.forEach((input) => {
-                input.addEventListener('input', updateTotals);
-            });
-            skipFoodBtn.addEventListener('click', () => {
-                qtyInputs.forEach((input) => { input.value = '0'; });
-                updateTotals();
-                foodForm.submit();
-            });
-            updateTotals();
-        })();
-    </script>
+@push('scripts')
+<script>
+    window.MoovyBookingFoodData = @json($bookingFoodData);
+</script>
+@endpush
 @endsection

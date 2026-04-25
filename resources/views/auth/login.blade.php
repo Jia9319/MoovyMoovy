@@ -97,6 +97,7 @@
 
         <form method="POST" action="{{ route('login') }}" class="space-y-6">
             @csrf
+            <input type="hidden" name="redirect" value="{{ old('redirect', $redirect ?? request()->query('redirect')) }}">
             
             <div class="input-group">
                 <label class="block text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-2 ml-1">Account Email</label>

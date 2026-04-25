@@ -22,14 +22,19 @@ Route::resource('cinemas', CinemaController::class)->only(['index', 'show']);
 Route::get('/cinemas/search', [CinemaController::class, 'search'])->name('cinemas.search');
 Route::resource('showtimes', ShowtimeController::class);
 
-Route::get('/booking/select', [BookingController::class, 'select'])->name('booking.select');
-Route::get('/booking/seat', [BookingController::class, 'seat'])->name('booking.seat');
-Route::get('/booking/food', [BookingController::class, 'food'])->name('booking.food');
-Route::get('/booking/payment', [BookingController::class, 'payment'])->name('booking.payment');
-Route::post('/booking/ticket', [BookingController::class, 'ticket'])->name('booking.ticket');
-Route::get('/booking/summary', [BookingController::class, 'summary'])->name('booking.summary');
+Route::middleware(['auth'])->group(function () {
+    Route::get('/booking/history', [BookingController::class, 'history'])->name('bookings.history');
+    Route::get('/booking/select', [BookingController::class, 'select'])->name('booking.select');
+    Route::get('/booking/seat', [BookingController::class, 'seat'])->name('booking.seat');
+    Route::get('/booking/food', [BookingController::class, 'food'])->name('booking.food');
+    Route::get('/booking/payment', [BookingController::class, 'payment'])->name('booking.payment');
+    Route::post('/booking/ticket', [BookingController::class, 'ticket'])->name('booking.ticket');
+    Route::get('/booking/summary', [BookingController::class, 'summary'])->name('booking.summary');
+});
+Route::get('/booking/ticket/{id}', [App\Http\Controllers\BookingController::class, 'showTicket'])->name('bookings.show');
+Route::get('/profile/details/{id}', [BookingController::class, 'showDetails'])->name('bookings.show');
 
-Route::post('/offers/redeem',  [OfferController::class, 'redeem'])->name('offers.redeem');
+Route::post('/offers/redeem', [OfferController::class, 'redeem'])->name('offers.redeem');
 Route::get('/offers', [OfferController::class, 'index'])->name('offers.index');
 Route::get('/offers/{id}/claim', [OfferController::class, 'claim'])->name('offers.claim');
 Route::post('/offers/apply', [OfferController::class, 'apply'])->name('offers.apply');
@@ -50,6 +55,14 @@ Route::post('register', [RegisterController::class, 'register']);
 Route::middleware(['auth'])->group(function () {
     Route::get('/profile', [ProfileController::class, 'show'])->name('profile.show');
     Route::get('/profile/reviews', fn() => view('profile.reviews'))->name('profile.reviews');
+
+Route::get('/api/movies-status', [App\Http\Controllers\WatchlistController::class, 'getMoviesStatus'])->name('api.movies.status');
+
+Route::post('/watchlist/toggle/{movieId}', [App\Http\Controllers\WatchlistController::class, 'toggle'])->name('watchlist.toggle');
+
+    Route::post('/watchlist/add/{movieId}', [App\Http\Controllers\WatchlistController::class, 'store'])->name('watchlist.add');
+    Route::delete('/watchlist/remove/{movieId}', [App\Http\Controllers\WatchlistController::class, 'destroy'])->name('watchlist.remove');
+
     Route::get('/admin/dashboard', [AdminController::class, 'index'])->name('admin.dashboard');
     Route::get('/admin/reports', [AdminController::class, 'viewReports'])->name('admin.reports');
 });

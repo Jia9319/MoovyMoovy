@@ -11,13 +11,15 @@ class ProfileController extends Controller
     {
         $user = Auth::user();
 
-        $watchlistMovies = Movie::latest()->take(4)->get();
+        $watchlistMovies = $user->watchlistMovies()->latest()->get();
+
+        $averageRating = $user->reviews()->avg('rating');
 
         $stats = [
             'tickets' => 12,
             'watched' => 28,
             'saved' => $watchlistMovies->count(),
-            'rating' => 4.8
+            'rating' => $averageRating ? number_format($averageRating, 1) : '0.0'
         ];
         
         $recentActivities = collect([]);

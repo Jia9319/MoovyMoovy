@@ -18,13 +18,29 @@ class MovieController extends Controller
         if ($request->filled('genre')) {
             $query->where('genre', $request->genre);
         }
-        
+
         if ($request->sort == 'rating') {
             $query->orderBy('rating', 'desc');
         } elseif ($request->sort == 'popular') {
             $query->orderBy('id', 'desc');
         } else {
             $query->orderBy('created_at', 'desc');
+        }
+
+        if ($request->ajax() || $request->wantsJson()) {
+            $movies = $query->get();
+            $user = auth()->user();
+
+            $data = $movies->map(function ($movie) use ($user) {
+                return [
+                    'id' => $movie->id,
+                    'title' => $movie->title,
+                    'genre' => $movie->genre,
+                    'poster_url' => $movie->poster_url,
+                    'is_added' => $user ? $user->watchlist->contains($movie->id) : false,
+                ];
+            });
+            return response()->json($data);
         }
 
         $movies = $query->paginate(10)->withQueryString();
@@ -36,7 +52,7 @@ class MovieController extends Controller
         $comingSoon = Movie::comingSoon()
             ->orderBy('expected_release', 'asc')
             ->paginate(10);
-        
+
         return view('movies.coming-soon', compact('comingSoon'));
     }
 
@@ -109,7 +125,8 @@ class MovieController extends Controller
         ]);
 
         if ($request->hasFile('poster')) {
-            if ($movie->poster) Storage::disk('public')->delete($movie->poster);
+            if ($movie->poster)
+                Storage::disk('public')->delete($movie->poster);
             $validated['poster'] = $request->file('poster')->store('posters', 'public');
         }
 
@@ -119,7 +136,8 @@ class MovieController extends Controller
 
     public function destroy(Movie $movie)
     {
-        if ($movie->poster) Storage::disk('public')->delete($movie->poster);
+        if ($movie->poster)
+            Storage::disk('public')->delete($movie->poster);
         $movie->delete();
         return redirect()->route('movies.index')->with('success', 'Movie deleted!');
     }

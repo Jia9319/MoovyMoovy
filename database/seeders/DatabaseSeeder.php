@@ -10,6 +10,7 @@ class DatabaseSeeder extends Seeder
     {
         // Seed movies data
         $this->call([
+            AdminSeeder::class,
             MovieSeeder::class,
             OfferSeeder::class,
         ]);

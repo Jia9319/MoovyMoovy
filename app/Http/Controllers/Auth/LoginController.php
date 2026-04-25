@@ -9,12 +9,36 @@ use Illuminate\Validation\ValidationException;
 
 class LoginController extends Controller
 {
+    private function sanitizeRedirect(?string $redirect): ?string
+    {
+        $value = trim((string) $redirect);
+
+        if ($value === '') {
+            return null;
+        }
+
+        // Only allow in-app absolute paths to avoid open redirect issues.
+        if (str_starts_with($value, '/') && !str_starts_with($value, '//')) {
+            return $value;
+        }
+
+        return null;
+    }
+
     /**
      * show login page
      */
-    public function showLoginForm()
+    public function showLoginForm(Request $request)
     {
-        return view('auth.login');
+        $redirect = $this->sanitizeRedirect($request->query('redirect'));
+
+        if ($redirect !== null) {
+            $request->session()->put('url.intended', $redirect);
+        }
+
+        return view('auth.login', [
+            'redirect' => $redirect,
+        ]);
     }
 
     /**
@@ -22,14 +46,26 @@ class LoginController extends Controller
      */
     public function login(Request $request)
     {
-        // 1. Verify Input
-        $credentials = $request->validate([
+        // 1. Verify input
+        $validated = $request->validate([
             'email' => ['required', 'email'],
             'password' => ['required'],
+            'redirect' => ['nullable', 'string'],
         ]);
+
+        $credentials = [
+            'email' => $validated['email'],
+            'password' => $validated['password'],
+        ];
+
+        $redirect = $this->sanitizeRedirect($validated['redirect'] ?? null);
 
         if (Auth::attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
+
+            if ($redirect !== null) {
+                $request->session()->put('url.intended', $redirect);
+            }
 
             $user = Auth::user();
 

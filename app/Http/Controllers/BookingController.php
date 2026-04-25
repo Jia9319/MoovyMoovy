@@ -1,7 +1,8 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Auth;
+use App\Models\Ticket;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 
@@ -148,7 +149,7 @@ class BookingController extends Controller
     private function buildAddonLines(Request $request)
     {
         return collect($this->getFoodMenu())->map(function ($item, $key) use ($request) {
-            $qty = max((int) $request->query($key . '_qty', 0), 0);
+            $qty = max((int) $request->input($key . '_qty', 0), 0);
 
             if ($qty <= 0) {
                 return null;
@@ -166,7 +167,7 @@ class BookingController extends Controller
             if (($item['category'] ?? null) === 'beverage') {
                 $temperatureOptions = $item['temperature_options'] ?? ['cold'];
                 $defaultTemperature = $item['default_temperature'] ?? 'cold';
-                $selectedTemperature = strtolower((string) $request->query($key . '_temp', $defaultTemperature));
+                $selectedTemperature = strtolower((string) $request->input($key . '_temp', $defaultTemperature));
 
                 if (count($temperatureOptions) === 1) {
                     $selectedTemperature = $temperatureOptions[0];
@@ -245,12 +246,42 @@ class BookingController extends Controller
             ['label' => 'BEANIE', 'price' => 20],
         ];
 
-        $times = [
+        $timePool = [
             '09:00', '09:30', '10:00', '10:30', '11:00', '11:45', 
             '12:15', '12:45', '13:20', '13:50', '14:20', '15:00', 
             '15:40', '16:10', '16:50', '17:20', '17:50', '18:30', 
             '19:00', '19:40', '20:15', '20:45', '21:15', '21:50', 
             '22:20', '22:50', '23:15', '23:45', '00:30', '01:00'
+        ];
+
+        $times = collect($timePool)
+            ->shuffle()
+            ->take(10)
+            ->sort()
+            ->values()
+            ->all();
+
+        $bookingSelectData = [
+            'movie' => array_merge($movie, [
+                'durationText' => $movie['duration'] . ' min',
+            ]),
+            'cinemas' => $cinemas->values()->all(),
+            'types' => $types,
+            'dates' => $dates->values()->all(),
+            'times' => $times,
+            'selection' => [
+                'cinema' => $request->query('cinema', ''),
+                'hall' => $request->query('hall', ''),
+                'format' => strtoupper((string) $request->query('format', '')),
+                'price' => (float) $request->query('price', 0),
+                'date' => $request->query('date', ''),
+                'time' => $request->query('time', ''),
+            ],
+            'homeUrl' => route('home'),
+            'seatUrl' => route('booking.seat'),
+            'storageKey' => 'booking.select.' . ($movie['id'] ?: 'default'),
+            'isAuthenticated' => auth()->check(),
+            'loginUrl' => route('login'),
         ];
 
         return view('booking.booking', [
@@ -259,6 +290,7 @@ class BookingController extends Controller
             'cinemas' => $cinemas,
             'types' => $types,
             'times' => $times,
+            'bookingSelectData' => $bookingSelectData,
         ]);
     }
 
@@ -287,6 +319,48 @@ class BookingController extends Controller
             return $rows[$seed % count($rows)] . (($seed % $seatsPerRow) + 1);
         })->unique()->values();
 
+        $bookingSeatData = [
+            'storageKey' => 'booking.seat.' . ($bookingQuery['movie_id'] ?: 'default') . '.' . $bookingQuery['date'] . '.' . str_replace(':', '', $bookingQuery['time']),
+            'rows' => $rows,
+            'seatsPerRow' => $seatsPerRow,
+            'aisleAfterColumns' => $seatConfig['aisleAfterColumns'],
+            'coupleRows' => $seatConfig['coupleRows'],
+            'couplePairStarts' => $seatConfig['couplePairStarts'],
+            'bookedSeats' => $bookedSeats->all(),
+            'selectedSeats' => (string) ($bookingQuery['seats'] ?? ''),
+            'basePrice' => (float) $bookingQuery['price'],
+            'coupleExtra' => (float) $seatConfig['coupleExtra'],
+            'hasCoupleSeats' => !empty($seatConfig['coupleRows']) && !empty($seatConfig['couplePairStarts']),
+            'showtime' => [
+                'id' => $showtime->id,
+                'cinema' => $bookingQuery['cinema'],
+                'hall' => $bookingQuery['hall'],
+                'format' => $bookingQuery['format'],
+                'date' => $bookingQuery['date'],
+                'time' => $bookingQuery['time'],
+                'price' => (float) $bookingQuery['price'],
+                'movie' => [
+                    'id' => $bookingQuery['movie_id'],
+                    'title' => $bookingQuery['title'],
+                    'genre' => $bookingQuery['genre'],
+                    'duration' => $bookingQuery['duration'],
+                    'durationText' => $bookingQuery['duration'] . ' min',
+                    'poster' => $bookingQuery['poster'],
+                ],
+            ],
+            'bookingState' => array_merge($bookingQuery, [
+                'showtime_id' => $request->query('showtime_id', $showtime->id),
+            ]),
+            'backUrl' => route('booking.select', $bookingQuery),
+            'nextUrl' => route('booking.food'),
+            'isAuthenticated' => auth()->check(),
+            'auth' => [
+                'isAuthenticated' => auth()->check(),
+                'userId' => auth()->id(),
+            ],
+            'loginUrl' => route('login'),
+        ];
+
         return view('booking.seat', [
             'showtime' => $showtime,
             'rows' => $rows,
@@ -298,6 +372,7 @@ class BookingController extends Controller
             'coupleExtra' => (float) $seatConfig['coupleExtra'],
             'hasCoupleSeats' => !empty($seatConfig['coupleRows']) && !empty($seatConfig['couplePairStarts']),
             'bookingQuery' => $bookingQuery,
+            'bookingSeatData' => $bookingSeatData,
         ]);
     }
 
@@ -306,82 +381,321 @@ class BookingController extends Controller
         $bookingQuery = $this->buildBookingQuery($request);
         $seatTotal = $this->calculateSeatTotal((string) $bookingQuery['seats'], (float) $bookingQuery['price'], (string) $bookingQuery['format']);
         $menu = $this->getFoodMenu();
+        $seats = collect(explode(',', (string) $bookingQuery['seats']))->filter()->values();
+        $foodItems = collect($menu)->filter(fn($item) => $item['category'] === 'food')->all();
+        $beverageItems = collect($menu)->filter(fn($item) => $item['category'] === 'beverage')->all();
+
+        $foodSelections = [
+            'quantities' => collect($menu)->mapWithKeys(function ($item, $key) use ($request) {
+                return [$key => max((int) $request->query($key . '_qty', 0), 0)];
+            })->all(),
+            'temperatures' => collect($beverageItems)->mapWithKeys(function ($item, $key) use ($request) {
+                $options = $item['temperature_options'] ?? ['cold'];
+                $default = $item['default_temperature'] ?? ($options[0] ?? 'cold');
+                $selected = strtolower((string) $request->query($key . '_temp', $default));
+
+                if (!in_array($selected, $options, true)) {
+                    $selected = $default;
+                }
+
+                return [$key => $selected];
+            })->all(),
+        ];
+
+        $bookingFoodData = [
+            'storageKey' => 'booking.food.' . ($bookingQuery['movie_id'] ?: 'default') . '.' . $bookingQuery['date'] . '.' . str_replace(':', '', $bookingQuery['time']),
+            'bookingState' => $bookingQuery,
+            'seats' => $seats->all(),
+            'seatTotal' => (float) $seatTotal,
+            'foodItems' => $foodItems,
+            'beverageItems' => $beverageItems,
+            'foodSelections' => $foodSelections,
+            'backUrl' => route('booking.seat', $bookingQuery),
+            'nextUrl' => route('booking.payment'),
+            'isAuthenticated' => auth()->check(),
+            'auth' => [
+                'isAuthenticated' => auth()->check(),
+                'userId' => auth()->id(),
+            ],
+            'loginUrl' => route('login'),
+        ];
 
         return view('booking.food', [
             'bookingQuery' => $bookingQuery,
-            'seats' => collect(explode(',', (string) $bookingQuery['seats']))->filter()->values(),
+            'seats' => $seats,
             'seatTotal' => $seatTotal,
-            'foodItems' => collect($menu)->filter(fn($item) => $item['category'] === 'food')->all(),
-            'beverageItems' => collect($menu)->filter(fn($item) => $item['category'] === 'beverage')->all(),
+            'foodItems' => $foodItems,
+            'beverageItems' => $beverageItems,
+            'bookingFoodData' => $bookingFoodData,
         ]);
     }
 
     public function payment(Request $request)
     {
         $bookingQuery = $this->buildBookingQuery($request);
+        $bookingState = array_merge($bookingQuery, [
+            'showtime_id' => $request->query('showtime_id'),
+        ]);
         $seatTotal = $this->calculateSeatTotal((string) $bookingQuery['seats'], (float) $bookingQuery['price'], (string) $bookingQuery['format']);
         $foodLines = $this->buildAddonLines($request);
+        $foodTotal = (float) $foodLines->sum('lineTotal');
+        $seats = collect(explode(',', (string) $bookingQuery['seats']))->filter()->values();
+        $menu = $this->getFoodMenu();
+        $foodItems = collect($menu)->filter(fn($item) => $item['category'] === 'food')->all();
+        $beverageItems = collect($menu)->filter(fn($item) => $item['category'] === 'beverage')->all();
+        $allEntries = collect(array_merge($foodItems, $beverageItems))
+            ->map(function ($item, $key) {
+                return [$key, $item];
+            })->values()->all();
 
         $isTuesday = Carbon::parse($bookingQuery['date'])->isTuesday();
         $discountAmount = $isTuesday ? ($seatTotal * 0.5) : 0;
+        $discountedSeatTotal = $seatTotal - $discountAmount;
+        $grandTotal = $discountedSeatTotal + $foodTotal;
+
+        $foodSelections = [
+            'allEntries' => $allEntries,
+            'quantities' => collect($menu)->mapWithKeys(function ($item, $key) use ($request) {
+                return [$key => max((int) $request->query($key . '_qty', 0), 0)];
+            })->all(),
+            'temperatures' => collect($beverageItems)->mapWithKeys(function ($item, $key) use ($request) {
+                $options = $item['temperature_options'] ?? ['cold'];
+                $default = $item['default_temperature'] ?? ($options[0] ?? 'cold');
+                $selected = strtolower((string) $request->query($key . '_temp', $default));
+
+                if (!in_array($selected, $options, true)) {
+                    $selected = $default;
+                }
+
+                return [$key => $selected];
+            })->all(),
+        ];
+
+        $bookingPaymentData = [
+            'storageKey' => 'booking.payment.' . ($bookingQuery['movie_id'] ?: 'default') . '.' . $bookingQuery['date'] . '.' . str_replace(':', '', $bookingQuery['time']),
+            'bookingState' => $bookingState,
+            'seats' => $seats->all(),
+            'seatTotal' => (float) $seatTotal,
+            'isTuesday' => $isTuesday,
+            'discountAmount' => (float) $discountAmount,
+            'discountedSeatTotal' => (float) $discountedSeatTotal,
+            'foodLines' => $foodLines->values()->all(),
+            'foodTotal' => $foodTotal,
+            'grandTotal' => (float) $grandTotal,
+            'foodSelections' => $foodSelections,
+            'paymentMethod' => (string) $request->query('payment_method', 'tng'),
+            'backUrl' => route('booking.food', array_merge($bookingQuery, $request->query())),
+            'nextUrl' => route('booking.ticket'),
+            'csrfToken' => csrf_token(),
+            'isAuthenticated' => auth()->check(),
+            'auth' => [
+                'isAuthenticated' => auth()->check(),
+                'userId' => auth()->id(),
+            ],
+            'loginUrl' => route('login'),
+        ];
 
         return view('booking.payment', [
             'bookingQuery' => $bookingQuery,
-            'seats' => collect(explode(',', (string) $bookingQuery['seats']))->filter()->values(),
+            'seats' => $seats,
             'seatTotal' => $seatTotal,
             'isTuesday' => $isTuesday,
             'discountAmount' => $discountAmount,
-            'discountedSeatTotal' => $seatTotal - $discountAmount,
+            'discountedSeatTotal' => $discountedSeatTotal,
             'foodLines' => $foodLines,
-            'foodTotal' => $foodLines->sum('lineTotal'),
-            'grandTotal' => ($seatTotal - $discountAmount) + $foodLines->sum('lineTotal'),
+            'foodTotal' => $foodTotal,
+            'grandTotal' => $grandTotal,
+            'bookingPaymentData' => $bookingPaymentData,
         ]);
     }
 
     public function ticket(Request $request)
-    {
-        $validated = $request->validate([
-            'title' => 'required', 'cinema' => 'required', 'hall' => 'nullable', 'format' => 'nullable',
-            'date' => 'required|date', 'time' => 'required', 'seats' => 'required',
-            'seat_total' => 'required|numeric', 'food_total' => 'required|numeric', 'payment_method' => 'required',
-            'promo_code' => 'nullable|string|max:50',
+{
+    // 1. Validation
+    $validated = $request->validate([
+        'title'          => 'required',
+        'movie_id'       => 'nullable',
+        'showtime_id'    => 'nullable',
+        'cinema'         => 'required',
+        'hall'           => 'nullable',
+        'format'         => 'nullable',
+        'date'           => 'required',
+        'time'           => 'required',
+        'seats'          => 'required',
+        'seat_total'     => 'required',
+        'food_total'     => 'required',
+        'payment_method' => 'required',
+    ]);
+
+    // 2. Data Preparation
+    $seatsArray = collect(explode(',', (string) $validated['seats']))
+                    ->map(fn($seat) => trim($seat))
+                    ->filter()
+                    ->values()
+                    ->all();
+
+    $seatTotal = (float)$validated['seat_total'];
+    $foodTotal = (float)$validated['food_total'];
+    $grandTotal = $seatTotal + $foodTotal;
+    $ticketCode = 'MM-' . strtoupper(substr(md5($validated['title'].$validated['seats'].microtime()), 0, 10));
+    $qrUrl = 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=' . $ticketCode;
+    
+    $foodLines = $this->buildAddonLines($request);
+
+    // 3. Database Insertion
+    if (Auth::check()) {
+        Ticket::create([
+            'user_id'         => Auth::id(),
+            'movie_id'        => $request->input('movie_id'),
+            'showtime_id'     => $request->input('showtime_id'),
+            'ticket_code'     => $ticketCode,
+            'qr_url'          => $qrUrl,
+            'cinema'          => $validated['cinema'],
+            'hall'            => $validated['hall'] ?? 'Hall 1',
+            'format'          => $validated['format'] ?? '2D',
+            'date'            => $validated['date'],
+            'time'            => $validated['time'],
+            'seats'           => $seatsArray,
+            'seat_count'      => count($seatsArray),
+            'seat_total'      => $seatTotal,
+            'food_lines'      => $foodLines->all(),
+            'food_total'      => $foodTotal,
+            'discount_amount' => 0,
+            'grand_total'     => $grandTotal,
+            'payment_method'  => $validated['payment_method'],
+            'promo_code'      => $request->input('promo_code'),
+            'status'          => 'paid',
         ]);
-
-        $isTuesday = Carbon::parse($validated['date'])->isTuesday();
-        $discount = $isTuesday ? ($validated['seat_total'] * 0.5) : 0;
-        $total = ($validated['seat_total'] - $discount) + $validated['food_total'];
-        $foodLines = $this->buildAddonLines($request);
-        $ticketCode = 'MM-' . strtoupper(substr(md5($validated['title'].$validated['seats'].now()), 0, 10));
-
-        return view('booking.ticket', array_merge($validated, [
-            'ticketCode' => $ticketCode,
-            'date' => Carbon::parse($validated['date']),
-            'discountAmount' => $discount,
-            'isTuesday' => $isTuesday,
-            'grandTotal' => $total,
-            'promoCode' => $validated['promo_code'] ?? null,
-            'foodLines' => $foodLines,
-            'qrUrl' => 'https://api.qrserver.com/v1/create-qr-code/?size=240x240&data=' . urlencode($ticketCode),
-        ]));
     }
 
-    public function summary(Request $request)
-    {
-        $bookingQuery = $this->buildBookingQuery($request);
-        $seatTotal = $this->calculateSeatTotal((string) $bookingQuery['seats'], (float) $bookingQuery['price'], (string) $bookingQuery['format']);
-        $foodTotal = $this->buildAddonLines($request)->sum('lineTotal');
-        $isTuesday = Carbon::parse($bookingQuery['date'])->isTuesday();
-        $discount = $isTuesday ? ($seatTotal * 0.5) : 0;
+    // 4. Prepare Data for React Component (BookingTicket.js)
+    $bookingTicketData = [
+        'ticket' => [
+            'ticketCode'    => $ticketCode,
+            'title'         => $validated['title'],
+            'cinema'        => $validated['cinema'],
+            'hall'          => $validated['hall'] ?? 'Hall 1',
+            'format'        => $validated['format'] ?? '2D',
+            'date'          => $validated['date'],
+            'time'          => $validated['time'],
+            'seats'         => $seatsArray,
+            'paymentMethod' => $validated['payment_method'],
+            'promoCode'     => $request->input('promo_code'),
+            'seatTotal'     => $seatTotal,
+            'foodTotal'     => $foodTotal,
+            'grandTotal'    => $grandTotal,
+            'qrUrl'         => $qrUrl,
+            'foodLines'     => $foodLines->values()->all(),
+            'isTuesday'     => false,
+            'discountAmount'=> 0,
+        ],
+        'homeUrl' => route('home'),
+        'isAuthenticated' => auth()->check(),
+    ];
 
-        return view('booking.summary', [
-            'movieTitle' => $bookingQuery['title'],
-            'cinema' => $bookingQuery['cinema'],
-            'hall' => $bookingQuery['hall'],
-            'format' => $bookingQuery['format'],
-            'date' => Carbon::parse($bookingQuery['date']),
-            'time' => $bookingQuery['time'],
-            'seats' => collect(explode(',', (string) $bookingQuery['seats']))->filter()->values(),
-            'total' => ($seatTotal - $discount) + $foodTotal,
-        ]);
-    }
+    // 5. Return View with both individual vars and the bundled data
+    return view('booking.ticket', array_merge($bookingTicketData['ticket'], [
+        'bookingTicketData' => $bookingTicketData,
+        'date'              => \Carbon\Carbon::parse($validated['date']),
+        'foodLines'         => $foodLines,
+        'payment_method'    => $validated['payment_method'], 
+    ]));
+}
+    public function history()
+{
+    $user = auth()->user();
+
+    $tickets = \App\Models\Ticket::where('user_id', $user->id)
+        ->orderBy('created_at', 'desc')
+        ->get();
+
+    // 计算统计数据
+    $stats = [
+        'totalTickets' => $tickets->count(),
+        'spent' => $tickets->sum('grand_total'),
+    ];
+
+    return view('profile.history', compact('tickets', 'stats'));
+}
+
+public function showTicket($id)
+{
+    // 1. 获取该用户的这张票
+    $ticket = \App\Models\Ticket::where('user_id', auth()->id())->findOrFail($id);
+
+    // 2. 准备 React 和 Blade 共享的数据
+    return view('booking.ticket', [
+        // --- 供 Blade 模板直接使用的变量 ---
+        'ticket'         => $ticket, // 传入整个对象方便你 details 里的 $ticket->... 调用
+        'title'          => $ticket->movie_title ?? 'Movie Ticket', 
+        'cinema'         => $ticket->cinema,
+        'hall'           => $ticket->hall,
+        'format'         => $ticket->format,
+        'date'           => \Carbon\Carbon::parse($ticket->date),
+        'time'           => $ticket->time,
+        'seats'          => $ticket->seats, 
+        'seatTotal'      => $ticket->seat_total,
+        'foodTotal'      => $ticket->food_total,
+        'grandTotal'     => $ticket->grand_total,
+        'ticketCode'     => $ticket->ticket_code,
+        'foodLines'      => $ticket->food_lines,
+        'qrUrl'          => $ticket->qr_url,
+
+        'bookingTicketData' => [
+            'ticket' => [
+                'ticketCode'    => $ticket->ticket_code,
+                'title'         => $ticket->movie_title ?? 'Movie Ticket',
+                'cinema'        => $ticket->cinema,
+                'hall'          => $ticket->hall,
+                'format'        => $ticket->format,
+                'date'          => $ticket->date,
+                'time'          => $ticket->time,
+                'seats'         => is_array($ticket->seats) ? $ticket->seats : json_decode($ticket->seats, true),
+                'paymentMethod' => $ticket->payment_method,
+                'seatTotal'     => (float)$ticket->seat_total,
+                'foodTotal'     => (float)$ticket->food_total,
+                'grandTotal'    => (float)$ticket->grand_total,
+                'qrUrl'         => $ticket->qr_url,
+                'foodLines'     => is_array($ticket->food_lines) ? $ticket->food_lines : json_decode($ticket->food_lines, true),
+            ],
+            'homeUrl'         => route('home'),
+            'isAuthenticated' => true, 
+        ]
+    ]);
+}
+
+public function showDetails($id)
+{
+    // 1. 只查当前用户的票
+    $ticket = \App\Models\Ticket::where('user_id', auth()->id())->findOrFail($id);
+
+    // 2. 准备数据 (完全模仿详情页需要的结构)
+    $bookingTicketData = [
+        'ticket' => [
+            'ticketCode' => $ticket->ticket_code,
+            'title'      => $ticket->movie_title ?? 'Movie Ticket',
+            'cinema'     => $ticket->cinema,
+            'hall'       => $ticket->hall,
+            'format'     => $ticket->format,
+            'date'       => $ticket->date,
+            'time'       => $ticket->time,
+            'seats'      => $ticket->seats, // 已经在模型 cast 过了
+            'paymentMethod' => $ticket->payment_method,
+            'seatTotal'  => (float)$ticket->seat_total,
+            'foodTotal'  => (float)$ticket->food_total,
+            'grandTotal' => (float)$ticket->grand_total,
+            'qrUrl'      => $ticket->qr_url,
+            'foodLines'  => $ticket->food_lines,
+        ],
+        'homeUrl' => route('home'),
+        'isAuthenticated' => true, // 解决你的 Session Required 问题
+    ];
+
+    return view('profile.details', [
+        'ticket'            => $ticket,
+        'bookingTicketData' => $bookingTicketData,
+        'title'             => $bookingTicketData['ticket']['title'],
+        'date'              => \Carbon\Carbon::parse($ticket->date),
+    ]);
+}
 }
