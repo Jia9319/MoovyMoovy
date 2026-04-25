@@ -3,7 +3,9 @@
 @section('title', 'Select Seats - ' . $showtime->movie->title)
 
 @section('content')
-<section class="seat-page">
+<div id="booking-seat-root"></div>
+
+<section class="seat-page" style="display:none;">
     <div class="seat-shell">
         <div class="seat-main">
             <div class="seat-head">
@@ -16,7 +18,7 @@
                         {{ $showtime->cinema }}
                         @if($showtime->hall) , {{ $showtime->hall }} @endif
                         @if($showtime->format) , {{ $showtime->format }} @endif
-                        • {{ $showtime->date->format('D, d M Y') }} {{ \Carbon\Carbon::parse($showtime->time)->format('H:i') }}
+                        • {{ \Carbon\Carbon::parse($showtime->date)->format('D, d M Y') }} {{ \Carbon\Carbon::parse($showtime->time)->format('H:i') }}
                     </p>
                 </div>
             </div>
@@ -143,7 +145,7 @@
             </div>
             <div class="meta-line">
                 <span>Date & Time</span>
-                <strong>{{ $showtime->date->format('M d, Y') }} {{ \Carbon\Carbon::parse($showtime->time)->format('H:i') }}</strong>
+                <strong>{{ \Carbon\Carbon::parse($showtime->date)->format('M d, Y') }} {{ \Carbon\Carbon::parse($showtime->time)->format('H:i') }}</strong>
             </div>
             <div class="meta-line">
                 <span>Base Price</span>
@@ -250,124 +252,9 @@
 @media (max-width: 640px) { .seat-page { padding: 95px 4% 2.5rem; } .seat-main, .booking-side { border-radius: 14px; } .seat-map-wrap { --seat-size: 22px; --seat-gap: 0.15rem; --row-label-size: 12px; --aisle-size: 9px; } .seat { border-radius: 8px; } }
 </style>
 
+@push('scripts')
 <script>
-(() => {
-    const basePrice = Number(@json((float) $showtime->price));
-    const coupleExtra = Number(@json((float) $coupleExtra));
-    const isBeanieHall = @json(strtoupper((string) ($showtime->format ?? '')) === 'BEANIE');
-    const bookingQuery = @json($bookingQuery ?? []);
-    const selectedSeatsWrap = document.getElementById('selectedSeats');
-    const totalPriceEl = document.getElementById('totalPrice');
-    const proceedBtn = document.getElementById('proceedBtn');
-    const seatGrid = document.getElementById('seatGrid');
-    const screenWrap = document.querySelector('.screen-wrap');
-   
-    const selected = new Map();
-
-    const formatMoney = (value) => `RM ${value.toFixed(2)}`;
-
-    const syncScreenWidth = () => {
-        if (!seatGrid || !screenWrap) {
-            return;
-        }
-
-        const rows = Array.from(seatGrid.querySelectorAll('.seat-row'));
-        if (rows.length === 0) {
-            return;
-        }
-
-        const seatBlockWidths = rows.map((row) => {
-            const seats = Array.from(row.querySelectorAll('.seat'));
-            if (seats.length === 0) {
-                return 0;
-            }
-
-            const firstSeatRect = seats[0].getBoundingClientRect();
-            const lastSeatRect = seats[seats.length - 1].getBoundingClientRect();
-            return Math.ceil(lastSeatRect.right - firstSeatRect.left);
-        }).filter((width) => width > 0);
-
-        if (seatBlockWidths.length === 0) {
-            return;
-        }
-
-        const seatBlockWidth = Math.max(...seatBlockWidths);
-        const targetWidth = Math.max(Math.ceil(seatBlockWidth * 1.2), 220);
-        screenWrap.style.setProperty('--screen-width', `${targetWidth}px`);
-    };
-
-    const renderSummary = () => {
-        const selectedGroups = Array.from(selected.values())
-            .sort((a, b) => a.label.localeCompare(b.label));
-
-        if (selectedGroups.length === 0) {
-            selectedSeatsWrap.textContent = 'None';
-            totalPriceEl.textContent = formatMoney(0);
-            proceedBtn.disabled = true;
-            return;
-        }
-
-        // 渲染已选座位的 Chip
-        selectedSeatsWrap.innerHTML = selectedGroups
-            .map((group) => `<span class="seat-chip ${group.isCouple ? 'couple' : ''}">${group.label}${group.isCouple ? (isBeanieHall ? ' Beanie' : ' Couple') : ''}</span>`)
-            .join('');
-
-        // 计算总金额：(单人票价 + 加价) * 该组座位数量
-        const total = selectedGroups.reduce((sum, group) => {
-            const unitPrice = group.isCouple ? (basePrice + coupleExtra) : basePrice;
-            return sum + (unitPrice * group.seats.length);
-        }, 0);
-
-        totalPriceEl.textContent = formatMoney(total);
-        proceedBtn.disabled = false;
-    };
-
-    document.querySelectorAll('.seat:not(.booked)').forEach((seatBtn) => {
-        seatBtn.addEventListener('click', () => {
-            const seatLabel = seatBtn.dataset.seatLabel;
-            const seatGroup = (seatBtn.dataset.seatGroup || '').split(',').filter(Boolean);
-            const isCouple = seatBtn.dataset.couple === '1';
-
-            if (selected.has(seatLabel)) {
-                selected.delete(seatLabel);
-                seatBtn.classList.remove('selected');
-            } else {
-                selected.set(seatLabel, {
-                    label: seatLabel,
-                    seats: seatGroup,
-                    isCouple,
-                });
-                seatBtn.classList.add('selected');
-            }
-
-            renderSummary();
-        });
-    });
-
-    proceedBtn.addEventListener('click', () => {
-        // 获取所有具体的座位号（展开 Couple Seat 的两个 ID）
-        const allSeats = Array.from(selected.values())
-            .flatMap((group) => group.seats)
-            .sort((a, b) => a.localeCompare(b));
-
-        if (allSeats.length === 0) return;
-
-        // 拼接成逗号分隔的字符串传给下一个页面
-        const params = new URLSearchParams({ 
-            ...bookingQuery, 
-            seats: allSeats.join(',') 
-        });
-        window.location.href = `{{ route('booking.food') }}?${params.toString()}`;
-    });
-
-    window.addEventListener('resize', syncScreenWidth);
-    if (typeof ResizeObserver !== 'undefined' && seatGrid) {
-        const observer = new ResizeObserver(syncScreenWidth);
-        observer.observe(seatGrid);
-    }
-
-    syncScreenWidth();
-    renderSummary();
-})();
+    window.MoovyBookingSeatData = @json($bookingSeatData);
 </script>
+@endpush
 @endsection

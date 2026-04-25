@@ -10,9 +10,15 @@ class Movie extends Model
     use HasFactory;
 
     protected $fillable = [
-        'title', 'description', 'genre', 'duration',
-        'release_date', 'rating', 'poster',
-        'status', 'expected_release',
+        'title',
+        'description',
+        'genre',
+        'duration',
+        'release_date',
+        'rating',
+        'poster',
+        'status',
+        'expected_release',
     ];
 
     protected $casts = [
@@ -52,7 +58,7 @@ class Movie extends Model
         $fullStars = floor($rating);
         $halfStar = ($rating - $fullStars) >= 0.5;
         $emptyStars = 5 - $fullStars - ($halfStar ? 1 : 0);
-        
+
         $stars = '';
         for ($i = 0; $i < $fullStars; $i++) {
             $stars .= '<i class="fas fa-star"></i>';
@@ -63,10 +69,10 @@ class Movie extends Model
         for ($i = 0; $i < $emptyStars; $i++) {
             $stars .= '<i class="far fa-star"></i>';
         }
-        
+
         return $stars;
     }
-    
+
     public function getGradientAttribute(): string
     {
         $gradients = [
@@ -80,5 +86,10 @@ class Movie extends Model
             'linear-gradient(145deg,#180030,#440088)',
         ];
         return $gradients[$this->id % count($gradients)];
+    }
+
+    public function users()
+    {
+        return $this->belongsToMany(User::class, 'movie_user');
     }
 }

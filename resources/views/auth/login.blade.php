@@ -97,6 +97,7 @@
 
         <form method="POST" action="{{ route('login') }}" class="space-y-6">
             @csrf
+            <input type="hidden" name="redirect" value="{{ old('redirect', $redirect ?? '') }}">
             
             <div class="input-group">
                 <label class="block text-[10px] uppercase tracking-widest text-gray-500 font-bold mb-2 ml-1">Account Email</label>
@@ -126,7 +127,7 @@
         <div class="mt-10 text-center">
             <p class="text-sm text-gray-500">
                 New to Moovy? 
-                <a href="{{ route('register') }}" class="text-white font-bold hover:text-purple-400 transition underline underline-offset-4 decoration-purple-500/30">Create Account</a>
+                <a href="{{ $redirect ? route('register', ['redirect' => $redirect]) : route('register') }}" class="text-white font-bold hover:text-purple-400 transition underline underline-offset-4 decoration-purple-500/30">Create Account</a>
             </p>
         </div>
     </div>
